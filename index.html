@@ -32,7 +32,7 @@ h1{font-size:clamp(42px,9vw,76px);font-weight:normal;line-height:.98;text-align:
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.location{transition:none}.video-background{display:none}body{background:linear-gradient(135deg,#263f42,#594044,#26343a)}}
 </style></head>
 <body>
-<video id="weddingVideo" class="video-background" autoplay loop playsinline aria-label="Looping lantern festival background"><source src="lantern-background.mp4" type="video/mp4"></video><div class="video-tint" aria-hidden="true"></div>
+<video id="weddingVideo" class="video-background" autoplay muted loop playsinline aria-label="Looping lantern festival background"><source src="lantern-background.mp4" type="video/mp4"></video><audio id="weddingAudio" src="chand-tu-nabhatla.mp3" loop preload="auto"></audio><div class="video-tint" aria-hidden="true"></div>
 <button id="musicToggle" class="music-toggle" type="button" aria-pressed="true" aria-label="Turn wedding music off"><span aria-hidden="true">♫</span><span id="musicLabel">Turn music off</span></button>
 <main class="page"><article class="card">
 <div class="topline">Bear &amp; Panda Got Hitched</div><div class="eyebrow">Joyfully invite you to celebrate the wedding of</div>
@@ -46,33 +46,34 @@ h1{font-size:clamp(42px,9vw,76px);font-weight:normal;line-height:.98;text-align:
 </article><p class="footer">A little celebration of love, family, and forever.<br>We can’t wait to celebrate with you.</p></main>
 <script>
 (function(){
-  const video=document.getElementById('weddingVideo');
+  const audio=document.getElementById('weddingAudio');
   const toggle=document.getElementById('musicToggle');
   const label=document.getElementById('musicLabel');
-  function syncButton(){
-    const musicOn=!video.muted;
-    label.textContent=musicOn?'Turn music off':'Turn music on';
-    toggle.setAttribute('aria-pressed',String(musicOn));
-    toggle.setAttribute('aria-label',musicOn?'Turn wedding music off':'Turn wedding music on');
+  function syncButton(playing){
+    label.textContent=playing?'Turn music off':'Turn music on';
+    toggle.setAttribute('aria-pressed',String(playing));
+    toggle.setAttribute('aria-label',playing?'Turn wedding music off':'Turn wedding music on');
+  }
+  async function startMusic(){
+    try {
+      await audio.play();
+      syncButton(true);
+    } catch (e) {
+      // Audible autoplay can be blocked until the visitor interacts with the page.
+      syncButton(false);
+    }
   }
   toggle.addEventListener('click',async function(){
-    video.muted=!video.muted;
-    if(!video.muted){try{await video.play();}catch(e){video.muted=true;}}
-    syncButton();
+    if(!audio.paused){
+      audio.pause();
+      syncButton(false);
+    } else {
+      await startMusic();
+    }
   });
-  video.muted=false;
-  video.volume=0.7;
-  const start=video.play();
-  if(start&&typeof start.catch==='function'){
-    start.catch(function(){
-      // Browsers can block audible autoplay before a visitor interacts.
-      // Keep the lantern video playing muted, and offer one-tap sound control.
-      video.muted=true;
-      video.play().catch(function(){});
-      syncButton();
-    });
-  }
-  syncButton();
+  audio.addEventListener('play',function(){syncButton(true);});
+  audio.addEventListener('pause',function(){syncButton(false);});
+  startMusic();
 })();
 </script>
 </body></html>
