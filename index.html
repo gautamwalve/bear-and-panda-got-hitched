@@ -10,27 +10,30 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;color:var(--ink);background:#26343a;font-family:Georgia,"Times New Roman",serif}
 .video-background{position:fixed;inset:0;width:100%;height:100%;z-index:-3;object-fit:cover;object-position:center;filter:blur(2px) saturate(.82);transform:scale(1.035)}
-.video-tint{position:fixed;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(20,25,35,.38),rgba(20,25,35,.24) 45%,rgba(20,25,35,.48));pointer-events:none}
+.video-tint{position:fixed;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(20,25,35,.32),rgba(20,25,35,.18) 45%,rgba(20,25,35,.38));pointer-events:none}
 .page{width:min(100% - 28px,760px);margin:24px auto;position:relative}
-.card{position:relative;overflow:hidden;background:rgba(255,250,241,.96);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);border:1px solid var(--gold);outline:1px solid rgba(184,148,82,.35);outline-offset:5px;border-radius:5px;padding:clamp(24px,5vw,58px);box-shadow:0 18px 60px rgba(57,44,31,.12)}
+.card{position:relative;overflow:hidden;background:rgba(255,250,241,.84);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border:1px solid var(--gold);outline:1px solid rgba(184,148,82,.35);outline-offset:5px;border-radius:5px;padding:clamp(24px,5vw,58px);box-shadow:0 18px 60px rgba(57,44,31,.12)}
 .card:before,.card:after{content:"❧";position:absolute;color:var(--teal);font-size:clamp(42px,8vw,76px);opacity:.55;line-height:1}.card:before{top:10px;left:15px;transform:rotate(-30deg)}.card:after{bottom:8px;right:15px;transform:rotate(150deg)}
 .topline{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--gold);letter-spacing:.22em;font-size:11px;text-transform:uppercase}.topline:before,.topline:after{content:"";height:1px;width:56px;background:var(--gold)}
 .eyebrow{text-align:center;color:var(--teal);letter-spacing:.18em;text-transform:uppercase;font-size:12px;margin:25px 0 12px}
 h1{font-size:clamp(42px,9vw,76px);font-weight:normal;line-height:.98;text-align:center;color:var(--maroon);margin:0}.amp{color:var(--gold);font-style:italic;font-size:.78em}
 .subtitle{text-align:center;color:var(--teal-dark);font-size:clamp(15px,3vw,20px);font-style:italic;margin:18px 0 22px}
 .flourish{display:flex;justify-content:center;align-items:center;gap:10px;color:var(--gold);margin:18px 0}.flourish:before,.flourish:after{content:"";height:1px;width:min(24%,120px);background:var(--gold-light)}.flower{font-size:20px}
-.intro{text-align:center;line-height:1.8;color:var(--muted);max-width:510px;margin:0 auto}
-.details{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:28px 0}.detail{border:1px solid rgba(184,148,82,.55);background:rgba(247,241,230,.72);padding:18px 12px;text-align:center;border-radius:4px}
+.intro{text-align:center;line-height:1.8;color:#62574e;max-width:510px;margin:0 auto}
+.details{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:28px 0}.detail{border:1px solid rgba(184,148,82,.52);background:rgba(247,241,230,.55);padding:18px 12px;text-align:center;border-radius:4px}
 .label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:8px}.value{color:var(--maroon);font-size:clamp(17px,3.5vw,23px);line-height:1.3}.time{font-size:16px;color:var(--ink);margin-top:5px}
-.venue{text-align:center;padding:23px 16px 20px;border-top:1px solid var(--gold-light);border-bottom:1px solid var(--gold-light)}.venue .temple{font-size:25px;color:var(--gold);margin-bottom:8px}.venue h2{font-weight:normal;color:var(--maroon);font-size:clamp(20px,4vw,28px);margin:0 0 10px}.address{line-height:1.7;color:var(--muted);font-size:15px}
+.venue{text-align:center;padding:23px 16px 20px;border-top:1px solid var(--gold-light);border-bottom:1px solid var(--gold-light)}.venue .temple{font-size:25px;color:var(--gold);margin-bottom:8px}.venue h2{font-weight:normal;color:var(--maroon);font-size:clamp(20px,4vw,28px);margin:0 0 10px}.address{line-height:1.7;color:#62574e;font-size:15px}
 .location{display:inline-flex;align-items:center;justify-content:center;gap:9px;margin-top:19px;padding:13px 22px;border-radius:999px;background:var(--teal);color:#fffaf1;text-decoration:none;font:600 13px/1.2 Arial,sans-serif;letter-spacing:.04em;border:1px solid var(--teal-dark);transition:transform .2s,background .2s}.location:hover{background:var(--teal-dark);transform:translateY(-1px)}
 .closing{text-align:center;color:var(--maroon);font-size:clamp(18px,4vw,24px);font-style:italic;margin:28px 0 5px}.names-small{text-align:center;color:var(--teal);letter-spacing:.13em;font-size:11px;text-transform:uppercase;margin-top:12px}
-.footer{display:inline-block;position:relative;left:50%;transform:translateX(-50%);background:rgba(255,250,241,.88);padding:8px 14px;border-radius:5px;text-align:center;color:#8c8174;font:11px/1.7 Arial,sans-serif;margin:22px 0 0}
-@media(max-width:480px){.page{width:calc(100% - 24px);margin:17px auto}.card{padding:32px 18px}.details{gap:8px}.detail{padding:15px 8px}.address{font-size:14px}.topline{letter-spacing:.13em}}
+.footer{display:inline-block;position:relative;left:50%;transform:translateX(-50%);background:rgba(255,250,241,.72);padding:8px 14px;border-radius:5px;text-align:center;color:#746b61;font:11px/1.7 Arial,sans-serif;margin:22px 0 0}
+.music-toggle{position:fixed;right:16px;bottom:16px;z-index:10;display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border:1px solid rgba(223,201,148,.85);border-radius:999px;background:rgba(41,72,68,.88);backdrop-filter:blur(8px);color:#fffaf1;font:600 13px/1 Arial,sans-serif;letter-spacing:.02em;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.18)}
+.music-toggle:hover{background:rgba(41,72,68,.98)}.music-toggle:focus-visible{outline:3px solid var(--gold-light);outline-offset:3px}
+@media(max-width:480px){.page{width:calc(100% - 24px);margin:17px auto}.card{padding:32px 18px}.details{gap:8px}.detail{padding:15px 8px}.address{font-size:14px}.topline{letter-spacing:.13em}.music-toggle{right:12px;bottom:12px;padding:11px 14px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.location{transition:none}.video-background{display:none}body{background:linear-gradient(135deg,#263f42,#594044,#26343a)}}
 </style></head>
 <body>
-<video class="video-background" autoplay muted loop playsinline aria-hidden="true"><source src="lantern-background.mp4" type="video/mp4"></video><div class="video-tint" aria-hidden="true"></div>
+<video id="weddingVideo" class="video-background" autoplay loop playsinline aria-label="Looping lantern festival background"><source src="lantern-background.mp4" type="video/mp4"></video><div class="video-tint" aria-hidden="true"></div>
+<button id="musicToggle" class="music-toggle" type="button" aria-pressed="true" aria-label="Turn wedding music off"><span aria-hidden="true">♫</span><span id="musicLabel">Turn music off</span></button>
 <main class="page"><article class="card">
 <div class="topline">Bear &amp; Panda Got Hitched</div><div class="eyebrow">Joyfully invite you to celebrate the wedding of</div>
 <h1>Gautam <span class="amp">&amp;</span><br>Tejasvini</h1><p class="subtitle">Two hearts · One beautiful beginning</p>
@@ -41,4 +44,35 @@ h1{font-size:clamp(42px,9vw,76px);font-weight:normal;line-height:.98;text-align:
 <a class="location" href="https://www.google.com/maps?q=18.905137816391697,73.22917755573111" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> Open Location in Google Maps</a></section>
 <p class="closing">Your presence will make our day even more special.</p><div class="flourish"><span class="flower">♡</span></div><div class="names-small">With love, Gautam &amp; Tejasvini</div>
 </article><p class="footer">A little celebration of love, family, and forever.<br>We can’t wait to celebrate with you.</p></main>
+<script>
+(function(){
+  const video=document.getElementById('weddingVideo');
+  const toggle=document.getElementById('musicToggle');
+  const label=document.getElementById('musicLabel');
+  function syncButton(){
+    const musicOn=!video.muted;
+    label.textContent=musicOn?'Turn music off':'Turn music on';
+    toggle.setAttribute('aria-pressed',String(musicOn));
+    toggle.setAttribute('aria-label',musicOn?'Turn wedding music off':'Turn wedding music on');
+  }
+  toggle.addEventListener('click',async function(){
+    video.muted=!video.muted;
+    if(!video.muted){try{await video.play();}catch(e){video.muted=true;}}
+    syncButton();
+  });
+  video.muted=false;
+  video.volume=0.7;
+  const start=video.play();
+  if(start&&typeof start.catch==='function'){
+    start.catch(function(){
+      // Browsers can block audible autoplay before a visitor interacts.
+      // Keep the lantern video playing muted, and offer one-tap sound control.
+      video.muted=true;
+      video.play().catch(function(){});
+      syncButton();
+    });
+  }
+  syncButton();
+})();
+</script>
 </body></html>
