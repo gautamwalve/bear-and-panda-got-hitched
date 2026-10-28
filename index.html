@@ -63,6 +63,57 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 .music-row{display:flex;justify-content:flex-end;align-items:center;margin:0 0 clamp(8px,1.5vw,18px);position:relative;z-index:5;min-height:36px}
 .music-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border:1px solid rgba(135,155,139,.8);border-radius:99px;background:#edf1e9;color:var(--sage-dark);font:600 12px/1 Arial,sans-serif;cursor:pointer}
 .music-toggle:hover{background:#e2eadd}.music-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+.playful-runway{position:relative;width:100%;height:132px;margin:clamp(26px,4vw,44px) 0 0;overflow:hidden;isolation:isolate;border-top:1px solid rgba(195,165,108,.38);border-bottom:1px solid rgba(195,165,108,.2);background:linear-gradient(180deg,rgba(237,241,233,.32),rgba(255,245,240,.42));pointer-events:none}
+.playful-runway:before{content:"";position:absolute;left:0;right:0;bottom:15px;height:1px;background:linear-gradient(90deg,transparent,rgba(195,165,108,.54) 12%,rgba(195,165,108,.54) 88%,transparent)}
+.runway-sparkle{position:absolute;color:var(--gold);font-size:12px;opacity:.75;animation:sparkleTwinkle 2.8s ease-in-out infinite}
+.runway-sparkle.one{left:26%;top:25px}.runway-sparkle.two{left:72%;top:42px;animation-delay:1s}.runway-sparkle.three{left:49%;top:13px;animation-delay:.4s}
+@keyframes sparkleTwinkle{0%,100%{opacity:.22;transform:scale(.8) rotate(0)}50%{opacity:.9;transform:scale(1.2) rotate(30deg)}}
+.chibi-runner{position:absolute;bottom:13px;width:70px;height:94px;will-change:left,transform;z-index:2}
+.chibi-runner.dudu{--run-duration:14s;left:3%;animation:chaseDudu var(--run-duration) ease-in-out infinite;animation-delay:var(--run-delay,0s)}
+.chibi-runner.bubu{--run-duration:15.5s;left:calc(100% - 78px);animation:chaseBubu var(--run-duration) ease-in-out infinite;animation-delay:var(--run-delay,-3s)}
+.character-art{width:70px;height:84px;overflow:visible;filter:drop-shadow(0 2px 1px rgba(80,60,45,.08))}
+.body-bob{transform-box:fill-box;transform-origin:center bottom;animation:bodyBounce .34s ease-in-out infinite alternate}
+.leg{transform-box:fill-box;transform-origin:50% 0%;animation:legSwing .22s ease-in-out infinite alternate}
+.arm{transform-box:fill-box;transform-origin:50% 15%;animation:armSwing .3s ease-in-out infinite alternate}
+.chibi-runner.bubu .leg{animation-duration:.28s}.chibi-runner.bubu .arm{animation-duration:.36s}
+@keyframes bodyBounce{from{transform:translateY(0) rotate(-2deg)}to{transform:translateY(-3px) rotate(2deg)}}
+@keyframes legSwing{from{transform:rotate(-22deg)}to{transform:rotate(22deg)}}
+@keyframes armSwing{from{transform:rotate(18deg)}to{transform:rotate(-22deg)}}
+@keyframes chaseDudu{
+  0%,4%{left:3%;transform:scaleX(1)}
+  18%{left:calc(36% - 35px);transform:scaleX(1)}
+  27%{left:calc(50% - 75px);transform:scaleX(1)}
+  31%{left:calc(50% - 64px);transform:scaleX(-1)}
+  37%{left:calc(50% - 8px);transform:scaleX(-1)}
+  53%{left:calc(100% - 78px);transform:scaleX(-1)}
+  59%{left:calc(100% - 78px);transform:scaleX(-1)}
+  72%{left:calc(60% - 35px);transform:scaleX(-1)}
+  82%{left:calc(28% - 35px);transform:scaleX(-1)}
+  91%{left:3%;transform:scaleX(-1)}
+  96%,100%{left:3%;transform:scaleX(1)}
+}
+@keyframes chaseBubu{
+  0%,5%{left:calc(100% - 78px);transform:scaleX(-1)}
+  18%{left:calc(64% - 35px);transform:scaleX(-1)}
+  26%{left:calc(50% + 12px);transform:scaleX(-1)}
+  31%{left:calc(50% + 30px);transform:scaleX(1)}
+  42%{left:calc(74% - 35px);transform:scaleX(1)}
+  56%{left:calc(100% - 78px);transform:scaleX(1)}
+  62%{left:calc(100% - 78px);transform:scaleX(-1)}
+  74%{left:calc(62% - 35px);transform:scaleX(-1)}
+  83%{left:calc(45% - 35px);transform:scaleX(1)}
+  94%{left:calc(100% - 78px);transform:scaleX(1)}
+  100%{left:calc(100% - 78px);transform:scaleX(-1)}
+}
+.tease-bubble{position:absolute;top:-15px;left:34px;z-index:3;padding:4px 7px;border-radius:9px 9px 9px 2px;background:var(--paper);border:1px solid rgba(195,165,108,.7);box-shadow:0 2px 7px rgba(90,65,54,.06);color:var(--rose-dark);font:9px/1.1 Arial,sans-serif;white-space:nowrap;opacity:0;animation:teaseDudu var(--run-duration) ease-in-out infinite;animation-delay:var(--run-delay,0s)}
+.bubu .tease-bubble{left:-34px;top:-10px;color:var(--sage-dark);border-radius:9px 9px 2px 9px;animation-name:teaseBubu}
+@keyframes teaseDudu{0%,17%,43%,100%{opacity:0;transform:translateY(4px)}22%,32%{opacity:1;transform:translateY(0)}}
+@keyframes teaseBubu{0%,23%,50%,100%{opacity:0;transform:translateY(4px)}29%,40%{opacity:1;transform:translateY(0)}}
+.character-name{position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);color:var(--sage-dark);font:8px/1 Arial,sans-serif;letter-spacing:.06em;opacity:.85}
+@media(max-width:440px){.playful-runway{height:118px;margin-top:25px}.chibi-runner{width:60px;height:82px;bottom:12px}.character-art{width:60px;height:74px}.chibi-runner.dudu{--run-duration:12.5s}.chibi-runner.bubu{--run-duration:14s}.character-name{font-size:7px}}
+@media(prefers-reduced-motion:reduce){.chibi-runner,.body-bob,.leg,.arm,.tease-bubble,.runway-sparkle{animation:none!important}.chibi-runner.dudu{left:30%}.chibi-runner.bubu{left:60%}.tease-bubble{opacity:1}}
+
 .footer{text-align:center;color:#878478;font:11px/1.8 Arial,sans-serif;margin:10px auto 0;padding:0 12px}
 @media(max-width:620px){.event-venue-grid{grid-template-columns:1fr;gap:12px}.event-venue-grid .venue{padding:24px 14px}.event-venue-grid .details{gap:10px}.event-venue-grid .detail{padding:22px 12px}.event-venue-grid .programme{min-height:60px}.countdown-section{margin-top:18px}}
 @media(max-width:440px){.page{width:100%;margin:0;padding:6px}.card{min-height:calc(100svh - 12px);padding:24px 12px}.tiny-animals{margin-top:12px}.hero{padding:24px 0 22px}h1{font-size:clamp(27px,8.1vw,36px);gap:5px;letter-spacing:-.06em}.event-venue-grid{margin:20px auto}.details{gap:10px;margin:0}.detail{padding:18px 8px}.merged-date{font-size:clamp(18px,5vw,25px)}.merged-time{font-size:25px}.detail-label,.section-label{font-size:9px;letter-spacing:.14em}.detail-date,.detail-note{font-size:14px}.detail-day,.detail-time{font-size:clamp(17px,5vw,22px)}.programme{font-size:14px;padding:14px 6px}.address{font-size:14px}.map-link{font-size:11px;padding:12px 17px}.footer{padding-bottom:6px}}
@@ -118,6 +169,54 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 <div class="signature">With love, Gautam &amp; Tejasvini</div>
 <div class="bottom-decoration" aria-hidden="true"><span>✦</span><span>✿</span><span>✦</span></div>
 
+<section class="playful-runway" aria-label="Dudu and Bubu playfully chasing and teasing each other" aria-hidden="true">
+  <span class="runway-sparkle one">✦</span><span class="runway-sparkle two">✧</span><span class="runway-sparkle three">✦</span>
+  <div class="chibi-runner dudu">
+    <span class="tease-bubble">Catch me!</span>
+    <svg class="character-art" viewBox="0 0 70 84" role="presentation">
+      <ellipse cx="35" cy="79" rx="19" ry="3" fill="#c8b9a4" opacity=".3"/>
+      <g class="body-bob">
+        <g class="leg"><ellipse cx="26" cy="69" rx="9" ry="7" fill="#b98565" stroke="#875a43" stroke-width="1.2"/></g>
+        <g class="leg"><ellipse cx="45" cy="69" rx="9" ry="7" fill="#b98565" stroke="#875a43" stroke-width="1.2"/></g>
+        <rect x="18" y="39" width="34" height="33" rx="15" fill="#c39170" stroke="#875a43" stroke-width="1.2"/>
+        <g class="arm"><ellipse cx="17" cy="51" rx="7" ry="12" fill="#c39170" stroke="#875a43" stroke-width="1.2" transform="rotate(20 17 51)"/></g>
+        <g class="arm"><ellipse cx="53" cy="51" rx="7" ry="12" fill="#c39170" stroke="#875a43" stroke-width="1.2" transform="rotate(-20 53 51)"/></g>
+        <circle cx="20" cy="18" r="10" fill="#c39170" stroke="#875a43" stroke-width="1.2"/><circle cx="50" cy="18" r="10" fill="#c39170" stroke="#875a43" stroke-width="1.2"/>
+        <circle cx="20" cy="18" r="4.5" fill="#e5c0a5"/><circle cx="50" cy="18" r="4.5" fill="#e5c0a5"/>
+        <circle cx="35" cy="29" r="23" fill="#c89573" stroke="#875a43" stroke-width="1.3"/>
+        <ellipse cx="26" cy="34" rx="4" ry="5" fill="#e4a5a1" opacity=".8"/><ellipse cx="44" cy="34" rx="4" ry="5" fill="#e4a5a1" opacity=".8"/>
+        <ellipse cx="35" cy="36" rx="10" ry="7" fill="#f0d8c4"/>
+        <circle cx="29" cy="27" r="1.8" fill="#523d35"/><circle cx="41" cy="27" r="1.8" fill="#523d35"/>
+        <ellipse cx="35" cy="34" rx="2.2" ry="1.7" fill="#523d35"/>
+        <path d="M31 38 Q35 42 39 38" fill="none" stroke="#523d35" stroke-width="1.3" stroke-linecap="round"/>
+      </g>
+    </svg>
+    <span class="character-name">Dudu</span>
+  </div>
+  <div class="chibi-runner bubu">
+    <span class="tease-bubble">Wait for me!</span>
+    <svg class="character-art" viewBox="0 0 70 84" role="presentation">
+      <ellipse cx="35" cy="79" rx="19" ry="3" fill="#c8b9a4" opacity=".3"/>
+      <g class="body-bob">
+        <g class="leg"><ellipse cx="26" cy="69" rx="9" ry="7" fill="#fffdf8" stroke="#8d8881" stroke-width="1.2"/></g>
+        <g class="leg"><ellipse cx="45" cy="69" rx="9" ry="7" fill="#fffdf8" stroke="#8d8881" stroke-width="1.2"/></g>
+        <rect x="18" y="39" width="34" height="33" rx="15" fill="#fffdf8" stroke="#8d8881" stroke-width="1.2"/>
+        <g class="arm"><ellipse cx="17" cy="51" rx="7" ry="12" fill="#fffdf8" stroke="#8d8881" stroke-width="1.2" transform="rotate(20 17 51)"/></g>
+        <g class="arm"><ellipse cx="53" cy="51" rx="7" ry="12" fill="#fffdf8" stroke="#8d8881" stroke-width="1.2" transform="rotate(-20 53 51)"/></g>
+        <circle cx="20" cy="18" r="10" fill="#5c4a43" stroke="#453832" stroke-width="1.2"/><circle cx="50" cy="18" r="10" fill="#5c4a43" stroke="#453832" stroke-width="1.2"/>
+        <circle cx="20" cy="18" r="4.5" fill="#342c29"/><circle cx="50" cy="18" r="4.5" fill="#342c29"/>
+        <circle cx="35" cy="29" r="23" fill="#fffdf8" stroke="#8d8881" stroke-width="1.3"/>
+        <ellipse cx="26" cy="27" rx="6.2" ry="8.2" fill="#5c4a43" transform="rotate(20 26 27)"/><ellipse cx="44" cy="27" rx="6.2" ry="8.2" fill="#5c4a43" transform="rotate(-20 44 27)"/>
+        <circle cx="27" cy="27" r="2" fill="#2d2826"/><circle cx="43" cy="27" r="2" fill="#2d2826"/>
+        <ellipse cx="26" cy="35" rx="4" ry="5" fill="#e9a5ae" opacity=".8"/><ellipse cx="44" cy="35" rx="4" ry="5" fill="#e9a5ae" opacity=".8"/>
+        <ellipse cx="35" cy="37" rx="7" ry="5" fill="#f5e4d8"/>
+        <ellipse cx="35" cy="34" rx="2.2" ry="1.7" fill="#453832"/>
+        <path d="M31.5 38 Q35 41 38.5 38" fill="none" stroke="#453832" stroke-width="1.2" stroke-linecap="round"/>
+      </g>
+    </svg>
+    <span class="character-name">Bubu</span>
+  </div>
+</section>
 </article>
 <p class="footer">A little celebration of love, family, and forever.<br>We can't wait to celebrate with you.</p>
 </main>
@@ -167,6 +266,17 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
  }
  updateCountdown();
  setInterval(updateCountdown, 1000);
+})();
+
+(function(){
+ const runners = document.querySelectorAll('.chibi-runner');
+ runners.forEach(function(runner){
+   const base = runner.classList.contains('dudu') ? 12.5 : 14;
+   const duration = base + Math.random() * 4.5;
+   const delay = -Math.random() * duration;
+   runner.style.setProperty('--run-duration', duration.toFixed(2) + 's');
+   runner.style.setProperty('--run-delay', delay.toFixed(2) + 's');
+ });
 })();
 </script>
 </body>
