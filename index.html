@@ -81,30 +81,30 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 
 
 @keyframes chaseDudu{
-  0%,4%{left:3%;transform:scaleX(1)}
-  18%{left:calc(36% - 35px);transform:scaleX(1)}
-  27%{left:calc(50% - 75px);transform:scaleX(1)}
-  31%{left:calc(50% - 64px);transform:scaleX(-1)}
-  37%{left:calc(50% - 8px);transform:scaleX(-1)}
-  53%{left:calc(100% - 78px);transform:scaleX(-1)}
-  59%{left:calc(100% - 78px);transform:scaleX(-1)}
-  72%{left:calc(60% - 35px);transform:scaleX(-1)}
-  82%{left:calc(28% - 35px);transform:scaleX(-1)}
-  91%{left:3%;transform:scaleX(-1)}
-  96%,100%{left:3%;transform:scaleX(1)}
+  0%,4%{left:3%;transform:translateY(0) rotate(0deg)}
+  15%{left:calc(30% - 39px);transform:translateY(-2px) rotate(3deg)}
+  27%{left:calc(48% - 39px);transform:translateY(0) rotate(-3deg)}
+  31%{left:calc(50% - 39px);transform:translateY(-6px) rotate(9deg)}
+  39%{left:calc(63% - 39px);transform:translateY(0) rotate(-2deg)}
+  53%{left:calc(100% - 84px);transform:translateY(-3px) rotate(3deg)}
+  60%{left:calc(100% - 84px);transform:translateY(0) rotate(0deg)}
+  73%{left:calc(62% - 39px);transform:translateY(-5px) rotate(-3deg)}
+  82%{left:calc(28% - 39px);transform:translateY(0) rotate(3deg)}
+  91%{left:3%;transform:translateY(-4px) rotate(-3deg)}
+  96%,100%{left:3%;transform:translateY(0) rotate(0deg)}
 }
 @keyframes chaseBubu{
-  0%,5%{left:calc(100% - 78px);transform:scaleX(-1)}
-  18%{left:calc(64% - 35px);transform:scaleX(-1)}
-  26%{left:calc(50% + 12px);transform:scaleX(-1)}
-  31%{left:calc(50% + 30px);transform:scaleX(1)}
-  42%{left:calc(74% - 35px);transform:scaleX(1)}
-  56%{left:calc(100% - 78px);transform:scaleX(1)}
-  62%{left:calc(100% - 78px);transform:scaleX(-1)}
-  74%{left:calc(62% - 35px);transform:scaleX(-1)}
-  83%{left:calc(45% - 35px);transform:scaleX(1)}
-  94%{left:calc(100% - 78px);transform:scaleX(1)}
-  100%{left:calc(100% - 78px);transform:scaleX(-1)}
+  0%,5%{left:calc(100% - 84px);transform:translateY(0) rotate(0deg)}
+  18%{left:calc(70% - 39px);transform:translateY(-5px) rotate(-4deg)}
+  26%{left:calc(54% - 39px);transform:translateY(0) rotate(3deg)}
+  31%{left:calc(51% - 39px);transform:translateY(-9px) rotate(-8deg)}
+  42%{left:calc(70% - 39px);transform:translateY(0) rotate(4deg)}
+  56%{left:calc(100% - 84px);transform:translateY(-3px) rotate(-3deg)}
+  62%{left:calc(100% - 84px);transform:translateY(0) rotate(0deg)}
+  74%{left:calc(62% - 39px);transform:translateY(-6px) rotate(4deg)}
+  83%{left:calc(43% - 39px);transform:translateY(0) rotate(-4deg)}
+  94%{left:calc(100% - 84px);transform:translateY(-4px) rotate(2deg)}
+  100%{left:calc(100% - 84px);transform:translateY(0) rotate(0deg)}
 }
 .tease-bubble{position:absolute;top:-15px;left:34px;z-index:3;padding:4px 7px;border-radius:9px 9px 9px 2px;background:var(--paper);border:1px solid rgba(195,165,108,.7);box-shadow:0 2px 7px rgba(90,65,54,.06);color:var(--rose-dark);font:9px/1.1 Arial,sans-serif;white-space:nowrap;opacity:0;animation:teaseDudu var(--run-duration) ease-in-out infinite;animation-delay:var(--run-delay,0s)}
 .bubu .tease-bubble{left:-34px;top:-10px;color:var(--sage-dark);border-radius:9px 9px 2px 9px;animation-name:teaseBubu}
