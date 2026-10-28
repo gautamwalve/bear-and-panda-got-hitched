@@ -21,6 +21,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
+      - name: Build 3D Dudu and Bubu assets
+        run: |
+          python -m pip install --disable-pip-version-check trimesh numpy
+          python scripts/create_3d_mascots.py
       - name: Build lightweight 3D Dudu and Bubu models
         run: |
           python -m pip install --disable-pip-version-check trimesh numpy
