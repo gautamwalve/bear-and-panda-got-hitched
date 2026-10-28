@@ -25,10 +25,6 @@ jobs:
         run: |
           python -m pip install --disable-pip-version-check trimesh numpy
           python scripts/create_3d_mascots.py
-      - name: Build lightweight 3D Dudu and Bubu models
-        run: |
-          python -m pip install --disable-pip-version-check trimesh numpy
-          python scripts/create_3d_mascots.py
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
