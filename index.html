@@ -6,6 +6,7 @@
 <meta name="theme-color" content="#fbf8f0">
 <meta name="description" content="Gautam and Tejasvini's wedding invitation — Saturday, 12 December 2026, at Shri Kshetra Panchayatan Mandir, Nadhal.">
 <title>Gautam &amp; Tejasvini | Wedding Invitation</title>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 <style>
 :root{
   --paper:#fffdf8;--cream:#fbf8f0;--cream-dark:#f3eee3;
@@ -70,9 +71,11 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 .runway-sparkle.one{left:26%;top:25px}.runway-sparkle.two{left:72%;top:42px;animation-delay:1s}.runway-sparkle.three{left:49%;top:13px;animation-delay:.4s}
 @keyframes sparkleTwinkle{0%,100%{opacity:.22;transform:scale(.8) rotate(0)}50%{opacity:.9;transform:scale(1.2) rotate(30deg)}}
 .chibi-runner{position:absolute;bottom:13px;width:78px;height:112px;will-change:left,transform;z-index:2}
+.model-stage{position:absolute;left:0;bottom:8px;width:76px;height:102px}
+.model-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;opacity:1;transition:opacity .25s;z-index:0}
 .chibi-runner.dudu{--run-duration:14s;left:3%;animation:chaseDudu var(--run-duration) ease-in-out infinite;animation-delay:var(--run-delay,0s)}
 .chibi-runner.bubu{--run-duration:15.5s;left:calc(100% - 78px);animation:chaseBubu var(--run-duration) ease-in-out infinite;animation-delay:var(--run-delay,-3s)}
-.character-art{position:absolute;left:0;bottom:8px;width:76px;height:102px;object-fit:contain;object-position:center bottom;overflow:visible;filter:drop-shadow(0 3px 2px rgba(80,60,45,.13));animation:mascotHop .42s ease-in-out infinite alternate;transform-origin:center bottom}
+.character-art{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:visible;background:transparent;--poster-color:transparent;filter:drop-shadow(0 3px 2px rgba(80,60,45,.13));animation:mascotHop .42s ease-in-out infinite alternate;transform-origin:center bottom;z-index:1;pointer-events:none}
 .body-bob{transform-box:fill-box;transform-origin:center bottom;animation:bodyBounce .34s ease-in-out infinite alternate}
 .leg{transform-box:fill-box;transform-origin:50% 0%;animation:legSwing .22s ease-in-out infinite alternate}
 .arm{transform-box:fill-box;transform-origin:50% 15%;animation:armSwing .3s ease-in-out infinite alternate}
@@ -173,12 +176,12 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
   <span class="runway-sparkle one">✦</span><span class="runway-sparkle two">✧</span><span class="runway-sparkle three">✦</span>
   <div class="chibi-runner dudu">
     <span class="tease-bubble">Catch me!</span>
-    <img class="character-art" src="dudu.webp" alt="" loading="lazy" decoding="async">
+    <div class="model-stage"><img class="model-fallback" src="dudu.webp" alt="" loading="lazy" decoding="async"><model-viewer class="character-art" src="dudu-3d.glb" alt="3D Dudu the brown bear" loading="eager" reveal="auto" camera-orbit="0deg 75deg 2.9m" camera-target="0m 0.75m 0m" field-of-view="36deg" environment-image="neutral" shadow-intensity="0.55" exposure="1.05" interaction-prompt="none" disable-zoom disable-pan></model-viewer></div>
     <span class="character-name">Dudu</span>
   </div>
   <div class="chibi-runner bubu">
     <span class="tease-bubble">Wait for me!</span>
-    <img class="character-art" src="bubu.webp" alt="" loading="lazy" decoding="async">
+    <div class="model-stage"><img class="model-fallback" src="bubu.webp" alt="" loading="lazy" decoding="async"><model-viewer class="character-art" src="bubu-3d.glb" alt="3D Bubu the white panda" loading="eager" reveal="auto" camera-orbit="0deg 75deg 2.9m" camera-target="0m 0.75m 0m" field-of-view="36deg" environment-image="neutral" shadow-intensity="0.55" exposure="1.05" interaction-prompt="none" disable-zoom disable-pan></model-viewer></div>
     <span class="character-name">Bubu</span>
   </div>
 </section>
@@ -241,6 +244,14 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
    const delay = -Math.random() * duration;
    runner.style.setProperty('--run-duration', duration.toFixed(2) + 's');
    runner.style.setProperty('--run-delay', delay.toFixed(2) + 's');
+ });
+})();
+
+(function(){
+ document.querySelectorAll('.model-stage model-viewer').forEach(function(viewer){
+   const fallback = viewer.parentElement.querySelector('.model-fallback');
+   viewer.addEventListener('load', function(){ if(fallback) fallback.style.opacity='0'; });
+   viewer.addEventListener('error', function(){ if(fallback) fallback.style.opacity='1'; });
  });
 })();
 </script>
