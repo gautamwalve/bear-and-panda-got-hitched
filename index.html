@@ -27,9 +27,7 @@ body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;bac
 @keyframes floatDown{0%{translate:0 -5vh;rotate:0deg}50%{translate:18px 55vh;rotate:140deg}100%{translate:-12px 112vh;rotate:280deg}}
 .page{width:100%;max-width:none;margin:0 auto;padding:12px;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;position:relative;z-index:1}
 .card{position:relative;flex:1;width:100%;min-height:calc(100vh - 24px);min-height:calc(100svh - 24px);overflow:hidden;background:rgba(255,253,248,.93);border:1px solid var(--line);outline:1px solid rgba(195,165,108,.24);outline-offset:0;border-radius:4px;padding:clamp(24px,4.2vw,64px);box-shadow:0 18px 55px rgba(91,81,62,.08)}
-.card:before,.card:after{position:absolute;color:var(--sage);opacity:.7;font-size:clamp(34px,7vw,62px);line-height:1;pointer-events:none}
-.card:before{content:"❧";top:12px;left:15px;transform:rotate(-25deg)}
-.card:after{content:"❧";bottom:10px;right:15px;transform:rotate(155deg)}
+.card:before,.card:after{content:none}
 .brand{display:flex;align-items:center;justify-content:center;gap:12px;text-align:center;color:var(--gold);font-size:11px;letter-spacing:.2em;text-transform:uppercase;line-height:1.7}
 .brand:before,.brand:after{content:"";width:44px;height:1px;background:var(--gold-light)}
 .tiny-animals{margin:18px 0 7px;text-align:center;font-size:24px;letter-spacing:8px;filter:saturate(.75)}
@@ -77,7 +75,7 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 </div>
 <main class="page">
 <article class="card">
-<div class="tiny-animals" aria-label="A bear and a panda">🐻 ♡ 🐼</div>
+<div class="tiny-animals" aria-label="A bear and a panda">🐻 · 🐼</div>
 <div class="eyebrow">Together with our families<br>joyfully invite you to celebrate</div>
 <section class="hero" aria-label="The wedding of Gautam and Tejasvini">
 <div class="arch" aria-hidden="true"></div>
@@ -95,16 +93,16 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 </section>
 <div class="programme">Marriage ceremony followed by lunch &amp; reception</div>
 <section class="venue" aria-label="Wedding venue">
-<div class="venue-symbol">✧ ❧ ✧</div>
+<div class="venue-symbol">✧ ✦ ✧</div>
 <div class="section-label">The venue</div>
 <h2>Shri Kshetra Panchayatan Mandir</h2>
 <div class="address">Nadhal, Navi Mumbai – 410206<br>Maharashtra, India</div>
 <a class="map-link" href="https://www.google.com/maps?q=18.905137816391697,73.22917755573111" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> Open location in Google Maps</a>
 </section>
-<div class="ornament"><span>♡</span></div>
+<div class="ornament"><span>✦</span></div>
 <p class="closing">Your presence will make our day even more special.</p>
 <div class="signature">With love, Gautam &amp; Tejasvini</div>
-<div class="bottom-decoration" aria-hidden="true"><span>❦</span><span>✿</span><span>❦</span></div>
+<div class="bottom-decoration" aria-hidden="true"><span>✦</span><span>✿</span><span>✦</span></div>
 <div class="music-row"><button class="music-toggle" id="musicToggle" type="button" aria-pressed="false"><span aria-hidden="true">♫</span><span id="musicLabel">Play our wedding song</span></button></div>
 </article>
 <p class="footer">A little celebration of love, family, and forever.<br>We can't wait to celebrate with you.</p>
