@@ -21,7 +21,7 @@ body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;bac
  radial-gradient(ellipse at 88% 38%,rgba(200,121,135,.10),transparent 31%),
  radial-gradient(ellipse at 22% 86%,rgba(135,155,139,.12),transparent 34%),
  linear-gradient(135deg,#fcfaf4,#f5f0e6)}
-.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:2;isolation:isolate}
 .confetti span{position:absolute;top:-8vh;width:7px;height:12px;border-radius:70% 30% 70% 30%;opacity:.72;animation:floatDown var(--duration,20s) linear infinite;animation-delay:var(--delay,0s);transform:rotate(var(--rot,20deg));will-change:transform;}
 .confetti span:nth-child(4n+1){background:#dfb9be}.confetti span:nth-child(4n+2){background:#d9c49c;width:5px;height:8px}.confetti span:nth-child(4n+3){background:#b8c9b8}.confetti span:nth-child(4n){background:#eadcc5;width:6px;height:10px}
 @keyframes floatDown{0%{transform:translate3d(0,-5vh,0) rotate(0deg)}50%{transform:translate3d(18px,55vh,0) rotate(140deg)}100%{transform:translate3d(-12px,112vh,0) rotate(280deg)}}
