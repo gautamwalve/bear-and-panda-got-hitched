@@ -44,7 +44,7 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 .ornament:before,.ornament:after{content:"";height:1px;background:var(--gold-light);width:min(22%,105px)}
 .ornament span{font-size:17px}
 .intro{width:min(100%,900px);max-width:900px;margin:0 auto;text-align:center;color:#696960;font-size:clamp(16px,2.2vw,22px);line-height:1.8}
-.details{display:grid;grid-template-columns:1fr;gap:0;width:min(100%,1050px);margin:clamp(24px,4vw,44px) auto clamp(22px,3vw,36px)}
+.event-venue-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch;gap:clamp(12px,2.4vw,28px);width:min(100%,1250px);margin:clamp(22px,3vw,36px) auto}.details{display:flex;flex-direction:column;gap:12px;width:100%;margin:0}.event-venue-grid .detail{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center}.event-venue-grid .programme{display:flex;align-items:center;justify-content:center;min-height:78px;margin:0}.event-venue-grid .venue{display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(251,248,240,.76);border:1px solid rgba(195,165,108,.55);border-radius:3px;padding:clamp(18px,3vw,34px) clamp(10px,2vw,22px);min-width:0}.countdown-section{text-align:center;width:min(100%,1000px);margin:clamp(18px,3vw,32px) auto 0;padding:clamp(14px,2.2vw,24px);border-top:1px solid var(--gold-light);border-bottom:1px solid var(--gold-light)}.countdown-heading{font:10px/1.5 Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--sage-dark);margin-bottom:12px}.countdown{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(6px,1.3vw,14px);max-width:700px;margin:0 auto}.countdown-unit{border:1px solid rgba(195,165,108,.45);background:rgba(251,248,240,.7);border-radius:3px;padding:clamp(9px,1.6vw,16px) 4px}.countdown-unit span{display:block;color:var(--rose-dark);font-size:clamp(22px,4vw,38px);font-variant-numeric:tabular-nums;line-height:1.1}.countdown-unit small{display:block;color:var(--sage-dark);font:9px/1.5 Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;margin-top:6px}
 .detail{background:rgba(251,248,240,.76);border:1px solid rgba(195,165,108,.55);border-radius:3px;padding:clamp(20px,3vw,32px) 16px;text-align:center}.merged-detail{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px}.merged-date{font-size:clamp(20px,3.5vw,31px);line-height:1.35;color:var(--rose-dark);margin-top:5px}.merged-time{font-size:clamp(24px,4vw,34px);line-height:1.2;color:var(--rose-dark);margin-top:3px}
 .detail-label,.section-label{font:10px/1.5 Arial,sans-serif;letter-spacing:.22em;color:var(--sage-dark);text-transform:uppercase}
 .detail-day{font-size:clamp(19px,4vw,25px);color:var(--rose-dark);margin:12px 0 6px}
@@ -53,7 +53,7 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 .detail-note{font-size:15px;line-height:1.5;color:#555951}
 .programme{border-top:1px solid var(--gold-light);border-bottom:1px solid var(--gold-light);padding:17px 10px;text-align:center;font-size:15px;line-height:1.7;color:var(--sage-dark);font-style:italic}
 .venue{padding:28px 6px 10px;text-align:center}
-.venue h2{font-weight:normal;color:var(--rose-dark);font-size:clamp(22px,3.8vw,36px);line-height:1.25;margin:12px auto 10px;max-width:850px}
+.venue h2{font-weight:normal;color:var(--rose-dark);font-size:clamp(22px,3.1vw,36px);line-height:1.25;margin:12px auto 10px;max-width:850px}
 .address{font-size:15px;line-height:1.85;color:#696960}
 .map-link{display:inline-flex;justify-content:center;align-items:center;gap:9px;margin-top:20px;padding:13px 22px;border:1px solid var(--sage);border-radius:99px;background:#edf1e9;color:var(--sage-dark);font:600 12px/1.2 Arial,sans-serif;letter-spacing:.04em;text-decoration:none;transition:background .2s,transform .2s}
 .map-link:hover{background:#e3eade;transform:translateY(-1px)}
@@ -64,7 +64,8 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 .music-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border:1px solid rgba(135,155,139,.8);border-radius:99px;background:#edf1e9;color:var(--sage-dark);font:600 12px/1 Arial,sans-serif;cursor:pointer}
 .music-toggle:hover{background:#e2eadd}.music-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .footer{text-align:center;color:#878478;font:11px/1.8 Arial,sans-serif;margin:10px auto 0;padding:0 12px}
-@media(max-width:440px){.page{width:100%;margin:0;padding:6px}.card{min-height:calc(100svh - 12px);padding:24px 12px}.tiny-animals{margin-top:12px}.hero{padding:24px 0 22px}h1{font-size:clamp(27px,8.1vw,36px);gap:5px;letter-spacing:-.06em}.details{gap:0;margin:22px 0 20px}.detail{padding:18px 8px}.merged-date{font-size:clamp(18px,5vw,25px)}.merged-time{font-size:25px}.detail-label,.section-label{font-size:9px;letter-spacing:.14em}.detail-date,.detail-note{font-size:14px}.detail-day,.detail-time{font-size:clamp(17px,5vw,22px)}.programme{font-size:14px;padding:14px 6px}.address{font-size:14px}.map-link{font-size:11px;padding:12px 17px}.footer{padding-bottom:6px}}
+@media(max-width:620px){.event-venue-grid{grid-template-columns:1fr;gap:12px}.event-venue-grid .venue{padding:24px 14px}.event-venue-grid .details{gap:10px}.event-venue-grid .detail{padding:22px 12px}.event-venue-grid .programme{min-height:60px}.countdown-section{margin-top:18px}}
+@media(max-width:440px){.page{width:100%;margin:0;padding:6px}.card{min-height:calc(100svh - 12px);padding:24px 12px}.tiny-animals{margin-top:12px}.hero{padding:24px 0 22px}h1{font-size:clamp(27px,8.1vw,36px);gap:5px;letter-spacing:-.06em}.event-venue-grid{margin:20px auto}.details{gap:10px;margin:0}.detail{padding:18px 8px}.merged-date{font-size:clamp(18px,5vw,25px)}.merged-time{font-size:25px}.detail-label,.section-label{font-size:9px;letter-spacing:.14em}.detail-date,.detail-note{font-size:14px}.detail-day,.detail-time{font-size:clamp(17px,5vw,22px)}.programme{font-size:14px;padding:14px 6px}.address{font-size:14px}.map-link{font-size:11px;padding:12px 17px}.footer{padding-bottom:6px}}
 @media(prefers-reduced-motion:reduce){.map-link{transition:none}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -87,21 +88,32 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 </div>
 </section>
 <p class="intro">With love and the blessings of our families, we invite you to share in the joy of our wedding and the beginning of our forever.</p>
-<section class="details" aria-label="Wedding date and time">
-<div class="detail merged-detail">
-  <div class="detail-label">Wedding day &amp; time</div>
-  <div class="merged-date">Saturday, 12 December 2026</div>
-  <div class="merged-time">12:30 PM</div>
-  <div class="detail-note">Wedding ceremony</div>
+<section class="countdown-section" aria-label="Countdown to the wedding">
+  <div class="countdown-heading">Counting down to our big day</div>
+  <div class="countdown" role="timer" aria-live="off">
+    <div class="countdown-unit"><span id="countDays">--</span><small>Days</small></div>
+    <div class="countdown-unit"><span id="countHours">--</span><small>Hours</small></div>
+    <div class="countdown-unit"><span id="countMinutes">--</span><small>Minutes</small></div>
+    <div class="countdown-unit"><span id="countSeconds">--</span><small>Seconds</small></div>
+  </div>
+</section>
+<div class="event-venue-grid">
+  <section class="details" aria-label="Wedding date and time">
+    <div class="detail merged-detail">
+      <div class="detail-label">Wedding day &amp; time</div>
+      <div class="merged-date">Saturday, 12 December 2026</div>
+      <div class="merged-time">12:32 PM</div>
+      <div class="detail-note">Wedding ceremony</div>
+    </div>
+    <div class="programme">Marriage ceremony followed by lunch &amp; reception</div>
+  </section>
+  <section class="venue" aria-label="Wedding venue">
+    <div class="section-label">The venue</div>
+    <h2>Shri Kshetra Panchayatan Mandir</h2>
+    <div class="address">Nadhal, Navi Mumbai – 410206<br>Maharashtra, India</div>
+    <a class="map-link" href="https://www.google.com/maps?q=18.905137816391697,73.22917755573111" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> Open location in Google Maps</a>
+  </section>
 </div>
-</section>
-<div class="programme">Marriage ceremony followed by lunch &amp; reception</div>
-<section class="venue" aria-label="Wedding venue">
-<div class="section-label">The venue</div>
-<h2>Shri Kshetra Panchayatan Mandir</h2>
-<div class="address">Nadhal, Navi Mumbai – 410206<br>Maharashtra, India</div>
-<a class="map-link" href="https://www.google.com/maps?q=18.905137816391697,73.22917755573111" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> Open location in Google Maps</a>
-</section>
 <div class="ornament"><span>✦</span></div>
 <p class="closing">Your presence will make our day even more special.</p>
 <div class="signature">With love, Gautam &amp; Tejasvini</div>
@@ -128,6 +140,34 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
  });
  audio.addEventListener('play',()=>setPlaying(true));
  audio.addEventListener('pause',()=>setPlaying(false));
+})();
+
+(function(){
+ const target = new Date('2026-12-12T12:32:00+05:30').getTime();
+ const $ = id => document.getElementById(id);
+ const parts = {
+   days: $('countDays'),
+   hours: $('countHours'),
+   minutes: $('countMinutes'),
+   seconds: $('countSeconds')
+ };
+ function updateCountdown(){
+   let remaining = Math.max(0, target - Date.now());
+   const day = 86400000, hour = 3600000, minute = 60000;
+   const days = Math.floor(remaining / day); remaining %= day;
+   const hours = Math.floor(remaining / hour); remaining %= hour;
+   const minutes = Math.floor(remaining / minute); remaining %= minute;
+   const seconds = Math.floor(remaining / 1000);
+   parts.days.textContent = days;
+   parts.hours.textContent = String(hours).padStart(2, '0');
+   parts.minutes.textContent = String(minutes).padStart(2, '0');
+   parts.seconds.textContent = String(seconds).padStart(2, '0');
+   if (target <= Date.now()) {
+     document.querySelector('.countdown-heading').textContent = 'Today is our big day!';
+   }
+ }
+ updateCountdown();
+ setInterval(updateCountdown, 1000);
 })();
 </script>
 </body>
