@@ -64,7 +64,7 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 .music-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border:1px solid rgba(135,155,139,.8);border-radius:99px;background:#edf1e9;color:var(--sage-dark);font:600 12px/1 Arial,sans-serif;cursor:pointer}
 .music-toggle:hover{background:#e2eadd}.music-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
-.playful-runway{position:relative;width:100%;height:132px;margin:clamp(26px,4vw,44px) 0 0;overflow:hidden;isolation:isolate;border-top:1px solid rgba(195,165,108,.38);border-bottom:1px solid rgba(195,165,108,.2);background:linear-gradient(180deg,rgba(237,241,233,.32),rgba(255,245,240,.42));pointer-events:none}
+.playful-runway{position:relative;width:100%;height:176px;margin:clamp(26px,4vw,44px) 0 0;overflow:hidden;isolation:isolate;border-top:1px solid rgba(195,165,108,.38);border-bottom:1px solid rgba(195,165,108,.2);background-image:linear-gradient(180deg,rgba(255,253,248,.12),rgba(255,245,240,.20)),url("dudu-bubu-garden-bg.webp");background-size:cover;background-position:center 58%;background-repeat:no-repeat;pointer-events:none}
 .playful-runway:before{content:"";position:absolute;left:0;right:0;bottom:15px;height:1px;background:linear-gradient(90deg,transparent,rgba(195,165,108,.54) 12%,rgba(195,165,108,.54) 88%,transparent)}
 .runway-sparkle{position:absolute;color:var(--gold);font-size:12px;opacity:.75;animation:sparkleTwinkle 2.8s ease-in-out infinite}
 .runway-sparkle.one{left:26%;top:25px}.runway-sparkle.two{left:72%;top:42px;animation-delay:1s}.runway-sparkle.three{left:49%;top:13px;animation-delay:.4s}
@@ -111,7 +111,7 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 @keyframes teaseDudu{0%,17%,43%,100%{opacity:0;transform:translateY(4px)}22%,32%{opacity:1;transform:translateY(0)}}
 @keyframes teaseBubu{0%,23%,50%,100%{opacity:0;transform:translateY(4px)}29%,40%{opacity:1;transform:translateY(0)}}
 .character-name{position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);color:var(--sage-dark);font:8px/1 Arial,sans-serif;letter-spacing:.06em;opacity:.85}
-@media(max-width:440px){.playful-runway{height:118px;margin-top:25px}.chibi-runner{width:60px;height:82px;bottom:12px}.character-art{width:60px;height:74px}.chibi-runner.dudu{--run-duration:12.5s}.chibi-runner.bubu{--run-duration:14s}.character-name{font-size:7px}}
+@media(max-width:440px){.playful-runway{height:145px;margin-top:25px;background-position:center 62%}.chibi-runner{width:60px;height:82px;bottom:12px}.character-art{width:60px;height:74px}.chibi-runner.dudu{--run-duration:12.5s}.chibi-runner.bubu{--run-duration:14s}.character-name{font-size:7px}}
 @media(prefers-reduced-motion:reduce){.chibi-runner,.body-bob,.leg,.arm,.tease-bubble,.runway-sparkle{animation:none!important}.chibi-runner.dudu{left:30%}.chibi-runner.bubu{left:60%}.tease-bubble{opacity:1}}
 
 .footer{text-align:center;color:#878478;font:11px/1.8 Arial,sans-serif;margin:10px auto 0;padding:0 12px}
