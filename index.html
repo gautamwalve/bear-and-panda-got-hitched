@@ -44,8 +44,8 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 .ornament:before,.ornament:after{content:"";height:1px;background:var(--gold-light);width:min(22%,105px)}
 .ornament span{font-size:17px}
 .intro{width:min(100%,900px);max-width:900px;margin:0 auto;text-align:center;color:#696960;font-size:clamp(16px,2.2vw,22px);line-height:1.8}
-.details{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,2vw,24px);width:min(100%,1050px);margin:clamp(24px,4vw,44px) auto clamp(22px,3vw,36px)}
-.detail{background:rgba(251,248,240,.76);border:1px solid rgba(195,165,108,.55);border-radius:3px;padding:20px 12px;text-align:center}
+.details{display:grid;grid-template-columns:1fr;gap:0;width:min(100%,1050px);margin:clamp(24px,4vw,44px) auto clamp(22px,3vw,36px)}
+.detail{background:rgba(251,248,240,.76);border:1px solid rgba(195,165,108,.55);border-radius:3px;padding:clamp(20px,3vw,32px) 16px;text-align:center}.merged-detail{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px}.merged-date{font-size:clamp(20px,3.5vw,31px);line-height:1.35;color:var(--rose-dark);margin-top:5px}.merged-time{font-size:clamp(24px,4vw,34px);line-height:1.2;color:var(--rose-dark);margin-top:3px}
 .detail-label,.section-label{font:10px/1.5 Arial,sans-serif;letter-spacing:.22em;color:var(--sage-dark);text-transform:uppercase}
 .detail-day{font-size:clamp(19px,4vw,25px);color:var(--rose-dark);margin:12px 0 6px}
 .detail-date{font-size:clamp(15px,3vw,19px);line-height:1.45;color:#555951}
@@ -65,7 +65,7 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 .music-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border:1px solid rgba(135,155,139,.8);border-radius:99px;background:#edf1e9;color:var(--sage-dark);font:600 12px/1 Arial,sans-serif;cursor:pointer}
 .music-toggle:hover{background:#e2eadd}.music-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .footer{text-align:center;color:#878478;font:11px/1.8 Arial,sans-serif;margin:10px auto 0;padding:0 12px}
-@media(max-width:440px){.page{width:100%;margin:0;padding:6px}.card{min-height:calc(100svh - 12px);padding:24px 12px}.tiny-animals{margin-top:12px}.hero{padding:24px 0 22px}h1{font-size:clamp(27px,8.1vw,36px);gap:5px;letter-spacing:-.06em}.details{gap:8px;margin:22px 0 20px}.detail{padding:15px 6px}.detail-label,.section-label{font-size:9px;letter-spacing:.14em}.detail-date,.detail-note{font-size:14px}.detail-day,.detail-time{font-size:clamp(17px,5vw,22px)}.programme{font-size:14px;padding:14px 6px}.address{font-size:14px}.map-link{font-size:11px;padding:12px 17px}.footer{padding-bottom:6px}}
+@media(max-width:440px){.page{width:100%;margin:0;padding:6px}.card{min-height:calc(100svh - 12px);padding:24px 12px}.tiny-animals{margin-top:12px}.hero{padding:24px 0 22px}h1{font-size:clamp(27px,8.1vw,36px);gap:5px;letter-spacing:-.06em}.details{gap:0;margin:22px 0 20px}.detail{padding:18px 8px}.merged-date{font-size:clamp(18px,5vw,25px)}.merged-time{font-size:25px}.detail-label,.section-label{font-size:9px;letter-spacing:.14em}.detail-date,.detail-note{font-size:14px}.detail-day,.detail-time{font-size:clamp(17px,5vw,22px)}.programme{font-size:14px;padding:14px 6px}.address{font-size:14px}.map-link{font-size:11px;padding:12px 17px}.footer{padding-bottom:6px}}
 @media(prefers-reduced-motion:reduce){.map-link{transition:none}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -88,8 +88,12 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 </section>
 <p class="intro">With love and the blessings of our families, we invite you to share in the joy of our wedding and the beginning of our forever.</p>
 <section class="details" aria-label="Wedding date and time">
-<div class="detail"><div class="detail-label">The day</div><div class="detail-day">Saturday</div><div class="detail-date">12 December<br>2026</div></div>
-<div class="detail"><div class="detail-label">The time</div><div class="detail-time">12:30 PM</div><div class="detail-note">Wedding ceremony</div></div>
+<div class="detail merged-detail">
+  <div class="detail-label">Wedding day &amp; time</div>
+  <div class="merged-date">Saturday, 12 December 2026</div>
+  <div class="merged-time">12:30 PM</div>
+  <div class="detail-note">Wedding ceremony</div>
+</div>
 </section>
 <div class="programme">Marriage ceremony followed by lunch &amp; reception</div>
 <section class="venue" aria-label="Wedding venue">
