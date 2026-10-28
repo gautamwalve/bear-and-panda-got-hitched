@@ -61,8 +61,8 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 .closing{text-align:center;color:var(--rose-dark);font-size:clamp(19px,3vw,29px);line-height:1.5;font-style:italic;margin:clamp(20px,3vw,34px) auto 3px;max-width:850px}
 .signature{text-align:center;color:var(--sage-dark);font:10px/1.8 Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;margin-top:11px}
 .bottom-decoration{display:flex;justify-content:center;align-items:center;gap:16px;color:var(--gold);margin-top:24px;font-size:20px}
-.music-row{text-align:center;margin:18px 0 0}
-.music-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border:1px solid rgba(135,155,139,.8);border-radius:99px;background:#edf1e9;color:var(--sage-dark);font:600 12px/1 Arial,sans-serif;cursor:pointer}
+.music-row{display:flex;justify-content:flex-end;align-items:center;margin:0 0 clamp(8px,1.5vw,18px);position:relative;z-index:5;min-height:36px}
+.music-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border:1px solid rgba(135,155,139,.8);border-radius:99px;background:#edf1e9;color:var(--sage-dark);font:600 12px/1 Arial,sans-serif;cursor:pointer}
 .music-toggle:hover{background:#e2eadd}.music-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .footer{text-align:center;color:#878478;font:11px/1.8 Arial,sans-serif;margin:10px auto 0;padding:0 12px}
 @media(max-width:440px){.page{width:100%;margin:0;padding:6px}.card{min-height:calc(100svh - 12px);padding:24px 12px}.tiny-animals{margin-top:12px}.hero{padding:24px 0 22px}h1{font-size:clamp(27px,8.1vw,36px);gap:5px;letter-spacing:-.06em}.details{gap:0;margin:22px 0 20px}.detail{padding:18px 8px}.merged-date{font-size:clamp(18px,5vw,25px)}.merged-time{font-size:25px}.detail-label,.section-label{font-size:9px;letter-spacing:.14em}.detail-date,.detail-note{font-size:14px}.detail-day,.detail-time{font-size:clamp(17px,5vw,22px)}.programme{font-size:14px;padding:14px 6px}.address{font-size:14px}.map-link{font-size:11px;padding:12px 17px}.footer{padding-bottom:6px}}
@@ -75,6 +75,7 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 </div>
 <main class="page">
 <article class="card">
+<div class="music-row"><button class="music-toggle" id="musicToggle" type="button" aria-pressed="false"><span aria-hidden="true">♫</span><span id="musicLabel">Play our wedding song</span></button></div>
 <div class="tiny-animals" aria-label="A bear and a panda">🐻 · 🐼</div>
 <div class="eyebrow">Together with our families<br>joyfully invite you to celebrate</div>
 <section class="hero" aria-label="The wedding of Gautam and Tejasvini">
@@ -107,7 +108,7 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 <p class="closing">Your presence will make our day even more special.</p>
 <div class="signature">With love, Gautam &amp; Tejasvini</div>
 <div class="bottom-decoration" aria-hidden="true"><span>✦</span><span>✿</span><span>✦</span></div>
-<div class="music-row"><button class="music-toggle" id="musicToggle" type="button" aria-pressed="false"><span aria-hidden="true">♫</span><span id="musicLabel">Play our wedding song</span></button></div>
+
 </article>
 <p class="footer">A little celebration of love, family, and forever.<br>We can't wait to celebrate with you.</p>
 </main>
