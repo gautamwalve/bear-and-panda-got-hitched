@@ -72,7 +72,7 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 @keyframes sparkleTwinkle{0%,100%{opacity:.22;transform:scale(.8) rotate(0)}50%{opacity:.9;transform:scale(1.2) rotate(30deg)}}
 .chibi-runner{position:absolute;bottom:13px;width:78px;height:112px;will-change:left,transform;z-index:2}
 .model-stage{position:absolute;left:0;bottom:8px;width:76px;height:102px}
-.model-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;opacity:1;transition:opacity .25s;z-index:0}
+.model-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;opacity:1!important;visibility:visible;display:block;transition:opacity .25s;z-index:1}
 .chibi-runner.dudu{--run-duration:14s;left:3%;animation:chaseDudu var(--run-duration) ease-in-out infinite;animation-delay:var(--run-delay,0s)}
 .chibi-runner.bubu{--run-duration:15.5s;left:calc(100% - 78px);animation:chaseBubu var(--run-duration) ease-in-out infinite;animation-delay:var(--run-delay,-3s)}
 .character-art{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:visible;background:transparent;--poster-color:transparent;filter:drop-shadow(0 3px 2px rgba(80,60,45,.13));animation:mascotHop .42s ease-in-out infinite alternate;transform-origin:center bottom;z-index:1;pointer-events:none}
@@ -176,7 +176,7 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
   <span class="runway-sparkle one">✦</span><span class="runway-sparkle two">✧</span><span class="runway-sparkle three">✦</span>
   <div class="chibi-runner dudu">
     <span class="tease-bubble">Catch me!</span>
-    <div class="model-stage"><img class="model-fallback character-art" src="bride-cutout.webp" alt="Tejasvini, the bride, in a pink saree and green blouse" loading="eager" decoding="async"></div>
+    <div class="model-stage"><img class="model-fallback character-art" src="bride-cutout-final.webp?v=20261029a" alt="Tejasvini, the bride, in a pink saree and green blouse" loading="eager" decoding="async"></div>
     <span class="character-name">Tejasvini</span>
   </div>
   <div class="chibi-runner bubu">
