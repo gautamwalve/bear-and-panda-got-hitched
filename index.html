@@ -220,7 +220,8 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
    if(!didAutoplayAttempt){didAutoplayAttempt=true;tryStartMusic();}
  },{once:true});
  // If autoplay is blocked, start on the first tap, click or key activation anywhere.
- const startOnGesture=async function(){
+ const startOnGesture=async function(event){
+   if(event && (event.target===button || button.contains(event.target))) return;
    if(audio.paused){
      const started=await tryStartMusic();
      if(started){
