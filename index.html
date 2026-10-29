@@ -188,21 +188,55 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 </article>
 <p class="footer">A little celebration of love, family, and forever.<br>We can't wait to celebrate with you.</p>
 </main>
-<audio id="weddingAudio" src="tere%20ass%20pass%20din%20saara.mp3" loop preload="none"></audio>
+<audio id="weddingAudio" src="tere%20ass%20pass%20din%20saara.mp3" loop autoplay preload="auto"></audio>
 <script>
 (function(){
  const audio=document.getElementById('weddingAudio');
  const button=document.getElementById('musicToggle');
  const label=document.getElementById('musicLabel');
+ let didAutoplayAttempt=false;
  function setPlaying(playing){
    label.textContent=playing?'Pause wedding song':'Play our wedding song';
    button.setAttribute('aria-pressed',String(playing));
    button.setAttribute('aria-label',playing?'Pause wedding song':'Play our wedding song');
  }
- button.addEventListener('click',async function(){
+ async function tryStartMusic(){
+   try{
+     await audio.play();
+     setPlaying(true);
+     return true;
+   }catch(error){
+     setPlaying(false);
+     label.textContent='Tap to play wedding song';
+     return false;
+   }
+ }
+ // Attempt audible autoplay immediately; some browsers allow it, but most
+ // mobile browsers require a visitor gesture before playing sound.
+ audio.addEventListener('canplay',function(){
+   if(!didAutoplayAttempt){didAutoplayAttempt=true;tryStartMusic();}
+ },{once:true});
+ window.addEventListener('load',function(){
+   if(!didAutoplayAttempt){didAutoplayAttempt=true;tryStartMusic();}
+ },{once:true});
+ // If autoplay is blocked, start on the first tap, click or key activation anywhere.
+ const startOnGesture=async function(){
+   if(audio.paused){
+     const started=await tryStartMusic();
+     if(started){
+       document.removeEventListener('pointerdown',startOnGesture);
+       document.removeEventListener('keydown',startOnGesture);
+       document.removeEventListener('touchstart',startOnGesture);
+     }
+   }
+ };
+ document.addEventListener('pointerdown',startOnGesture,{passive:true});
+ document.addEventListener('touchstart',startOnGesture,{passive:true});
+ document.addEventListener('keydown',startOnGesture);
+ button.addEventListener('click',async function(event){
+   event.stopPropagation();
    if(!audio.paused){audio.pause();return;}
-   try{await audio.play();setPlaying(true);}
-   catch(error){setPlaying(false);label.textContent='Tap to play wedding song';}
+   await tryStartMusic();
  });
  audio.addEventListener('play',()=>setPlaying(true));
  audio.addEventListener('pause',()=>setPlaying(false));
