@@ -114,6 +114,17 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 @keyframes teaseDudu{0%,17%,43%,100%{opacity:0;transform:translateY(4px)}22%,32%{opacity:1;transform:translateY(0)}}
 @keyframes teaseBubu{0%,23%,50%,100%{opacity:0;transform:translateY(4px)}29%,40%{opacity:1;transform:translateY(0)}}
 .character-name{position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);color:var(--sage-dark);font:8px/1 Arial,sans-serif;letter-spacing:.06em;opacity:.85}
+/* Bride and groom illustration animation */
+.couple-character{position:absolute;bottom:8px;width:clamp(92px,23vw,136px);height:calc(100% - 18px);object-fit:contain;object-position:center bottom;filter:drop-shadow(0 4px 3px rgba(80,60,45,.16));will-change:transform}
+.couple-character.bride-figure{left:calc(50% - clamp(92px,23vw,136px) - 3px);animation:brideSway 3.2s ease-in-out infinite;transform-origin:50% 90%}
+.couple-character.groom-figure{left:calc(50% + 3px);animation:groomSway 3.5s ease-in-out infinite;transform-origin:50% 90%}
+.runway-caption{position:absolute;bottom:7px;z-index:3;color:var(--sage-dark);font:9px/1 Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+.runway-caption.bride-caption{left:calc(50% - clamp(92px,23vw,136px) - 3px);width:clamp(92px,23vw,136px);text-align:center}
+.runway-caption.groom-caption{left:calc(50% + 3px);width:clamp(92px,23vw,136px);text-align:center}
+@keyframes brideSway{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-5px) rotate(2deg)}}
+@keyframes groomSway{0%,100%{transform:translateY(-1px) rotate(2deg)}50%{transform:translateY(-7px) rotate(-2deg)}}
+@media(max-width:440px){.couple-character{width:clamp(78px,24vw,108px);height:calc(100% - 18px)}.couple-character.bride-figure{left:calc(50% - clamp(78px,24vw,108px) - 2px)}.couple-character.groom-figure{left:calc(50% + 2px)}.runway-caption.bride-caption{left:calc(50% - clamp(78px,24vw,108px) - 2px);width:clamp(78px,24vw,108px)}.runway-caption.groom-caption{left:calc(50% + 2px);width:clamp(78px,24vw,108px)}}
+@media(prefers-reduced-motion:reduce){.couple-character{animation:none!important}}
 @media(max-width:440px){.playful-runway{height:145px;margin-top:25px;background-position:center 62%}.chibi-runner{width:66px;height:94px;bottom:12px}.character-art{width:64px;height:88px}.chibi-runner.dudu{--run-duration:12.5s}.chibi-runner.bubu{--run-duration:14s}.character-name{font-size:7px}}
 @media(prefers-reduced-motion:reduce){.chibi-runner,.character-art,.tease-bubble,.runway-sparkle{animation:none!important}.chibi-runner.dudu{left:30%}.chibi-runner.bubu{left:60%}.tease-bubble{opacity:1}}
 
@@ -143,47 +154,11 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 </section>
 <p class="intro">With love and the blessings of our families, we invite you to share in the joy of our wedding and the beginning of our forever.</p>
 <section class="countdown-section" aria-label="Countdown to the wedding">
-  <div class="countdown-heading">Counting down to our big day</div>
-  <div class="countdown" role="timer" aria-live="off">
-    <div class="countdown-unit"><span id="countDays">--</span><small>Days</small></div>
-    <div class="countdown-unit"><span id="countHours">--</span><small>Hours</small></div>
-    <div class="countdown-unit"><span id="countMinutes">--</span><small>Minutes</small></div>
-    <div class="countdown-unit"><span id="countSeconds">--</span><small>Seconds</small></div>
-  </div>
-</section>
-<div class="event-venue-grid">
-  <section class="details" aria-label="Wedding date and time">
-    <div class="detail merged-detail">
-      <div class="detail-label">Wedding ceremony &amp; time</div>
-      <div class="merged-date">Saturday, 12 December 2026</div>
-      <div class="merged-time">12:32 PM</div>
-    </div>
-    <div class="programme">Marriage ceremony followed by lunch &amp; reception</div>
-  </section>
-  <section class="venue" aria-label="Wedding venue">
-    <div class="section-label">The venue</div>
-    <h2>Shri Kshetra Panchayatan Mandir</h2>
-    <div class="address">Nadhal, Navi Mumbai – 410206<br>Maharashtra, India</div>
-    <a class="map-link" href="https://www.google.com/maps?q=18.905137816391697,73.22917755573111" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> Open location in Google Maps</a>
-  </section>
-</div>
-<div class="ornament"><span>✦</span></div>
-<p class="closing">Your presence will make our day even more special.</p>
-<div class="signature">With love, Gautam &amp; Tejasvini</div>
-<div class="bottom-decoration" aria-hidden="true"><span>✦</span><span>✿</span><span>✦</span></div>
-
-<section class="playful-runway" aria-label="Dudu and Bubu playfully chasing and teasing each other" aria-hidden="true">
+  <div class="countdow<section class="playful-runway" aria-label="Animated illustrations of the bride Tejasvini and groom Gautam">
   <span class="runway-sparkle one">✦</span><span class="runway-sparkle two">✧</span><span class="runway-sparkle three">✦</span>
-  <div class="chibi-runner dudu">
-    <span class="tease-bubble">Catch me!</span>
-    <div class="model-stage"><img class="model-fallback" src="dudu.webp" alt="" loading="lazy" decoding="async"><model-viewer class="character-art" src="dudu-3d.glb" alt="3D Dudu the brown bear" loading="eager" reveal="auto" camera-orbit="0deg 75deg 2.9m" camera-target="0m 0.75m 0m" field-of-view="36deg" environment-image="neutral" shadow-intensity="0.55" exposure="1.05" interaction-prompt="none" disable-zoom disable-pan></model-viewer></div>
-    <span class="character-name">Dudu</span>
-  </div>
-  <div class="chibi-runner bubu">
-    <span class="tease-bubble">Wait for me!</span>
-    <div class="model-stage"><img class="model-fallback" src="bubu.webp" alt="" loading="lazy" decoding="async"><model-viewer class="character-art" src="bubu-3d.glb" alt="3D Bubu the white panda" loading="eager" reveal="auto" camera-orbit="0deg 75deg 2.9m" camera-target="0m 0.75m 0m" field-of-view="36deg" environment-image="neutral" shadow-intensity="0.55" exposure="1.05" interaction-prompt="none" disable-zoom disable-pan></model-viewer></div>
-    <span class="character-name">Bubu</span>
-  </div>
+  <img class="couple-character bride-figure" src="bride-cutout.webp" alt="Tejasvini, the bride, in a pink saree and green blouse" loading="lazy" decoding="async">
+  <img class="couple-character groom-figure" src="groom-cutout.webp" alt="Gautam, the groom, in a gold sherwani with maroon and green accents" loading="lazy" decoding="async">
+  <span class="runway-caption bride-caption">Tejasvini</span><span class="runway-caption groom-caption">Gautam</span>
 </section>
 </article>
 <p class="footer">A little celebration of love, family, and forever.<br>We can't wait to celebrate with you.</p>
