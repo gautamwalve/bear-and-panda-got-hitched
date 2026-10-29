@@ -71,52 +71,33 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 .runway-lantern{position:absolute;top:13px;width:22px;height:38px;border:1px solid rgba(194,151,83,.72);border-radius:5px 5px 7px 7px;background:linear-gradient(90deg,rgba(187,137,69,.2),rgba(255,244,203,.72),rgba(187,137,69,.18));box-shadow:0 0 20px rgba(255,209,126,.32),inset 0 0 10px rgba(255,247,214,.45);z-index:1;opacity:.9}.runway-lantern:before{content:"";position:absolute;top:-7px;left:4px;width:12px;height:5px;border:1px solid rgba(194,151,83,.75);border-bottom:0;border-radius:5px 5px 0 0}.runway-lantern:after{content:"";position:absolute;top:5px;bottom:5px;left:4px;right:4px;border-radius:3px;background:linear-gradient(90deg,rgba(255,220,150,.25),rgba(255,251,222,.8),rgba(255,220,150,.25));box-shadow:0 0 12px rgba(255,223,160,.4)}.runway-lantern.left{left:5.5%;transform:scale(.9)}.runway-lantern.right{right:5.5%}.runway-petal{position:absolute;z-index:1;color:#e6a6a8;font-size:14px;opacity:.72;animation:petalFloat 7s ease-in-out infinite;pointer-events:none}.runway-petal.one{left:23%;top:30px}.runway-petal.two{left:76%;top:48px;font-size:11px;animation-delay:-2.5s;color:#d9b77b}.runway-petal.three{left:61%;top:18px;font-size:10px;animation-delay:-4s}@keyframes petalFloat{0%,100%{transform:translate(0,0) rotate(0deg);opacity:.3}45%{transform:translate(10px,12px) rotate(28deg);opacity:.85}75%{transform:translate(-6px,22px) rotate(55deg);opacity:.48}}
 .runway-sparkle.one{left:26%;top:25px}.runway-sparkle.two{left:72%;top:42px;animation-delay:1s}.runway-sparkle.three{left:49%;top:13px;animation-delay:.4s}
 @keyframes sparkleTwinkle{0%,100%{opacity:.22;transform:scale(.8) rotate(0)}50%{opacity:.9;transform:scale(1.2) rotate(30deg)}}
-.chibi-runner{position:absolute;bottom:13px;width:78px;height:112px;will-change:left,transform;z-index:2}
+.chibi-runner{position:absolute;bottom:13px;width:78px;height:112px;will-change:left,transform;z-index:2;--runner-half-width:39px}
 .model-stage{position:absolute;left:0;bottom:8px;width:76px;height:102px}
 .model-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;opacity:1!important;visibility:visible;display:block;transition:opacity .25s;z-index:1}
-.chibi-runner.dudu{--run-duration:14s;left:3%;animation:chaseDudu var(--run-duration) ease-in-out infinite;animation-delay:var(--run-delay,0s)}
-.chibi-runner.bubu{--run-duration:15.5s;left:calc(100% - 78px);animation:chaseBubu var(--run-duration) ease-in-out infinite;animation-delay:var(--run-delay,-3s)}
-.character-art{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:visible;background:transparent;--poster-color:transparent;filter:drop-shadow(0 3px 2px rgba(80,60,45,.13));animation:mascotHop .42s ease-in-out infinite alternate;transform-origin:center bottom;z-index:1;pointer-events:none}
-.body-bob{transform-box:fill-box;transform-origin:center bottom;animation:bodyBounce .34s ease-in-out infinite alternate}
-.leg{transform-box:fill-box;transform-origin:50% 0%;animation:legSwing .22s ease-in-out infinite alternate}
-.arm{transform-box:fill-box;transform-origin:50% 15%;animation:armSwing .3s ease-in-out infinite alternate}
-.chibi-runner.bubu .character-art{animation-duration:.5s;animation-delay:-.15s}
-@keyframes mascotHop{from{transform:translateY(0) rotate(-4deg) scaleX(.98)}to{transform:translateY(-10px) rotate(4deg) scaleX(1.02)}}
-
-
-@keyframes chaseDudu{
-  0%,4%{left:3%;transform:translateY(0) rotate(0deg)}
-  15%{left:calc(30% - 39px);transform:translateY(-2px) rotate(3deg)}
-  27%{left:calc(48% - 39px);transform:translateY(0) rotate(-3deg)}
-  31%{left:calc(50% - 39px);transform:translateY(-6px) rotate(9deg)}
-  39%{left:calc(63% - 39px);transform:translateY(0) rotate(-2deg)}
-  53%{left:calc(100% - 84px);transform:translateY(-3px) rotate(3deg)}
-  60%{left:calc(100% - 84px);transform:translateY(0) rotate(0deg)}
-  73%{left:calc(62% - 39px);transform:translateY(-5px) rotate(-3deg)}
-  82%{left:calc(28% - 39px);transform:translateY(0) rotate(3deg)}
-  91%{left:3%;transform:translateY(-4px) rotate(-3deg)}
-  96%,100%{left:3%;transform:translateY(0) rotate(0deg)}
+.chibi-runner.dudu{left:3%;animation:brideMeet 18s cubic-bezier(.45,0,.35,1) infinite}
+.chibi-runner.bubu{left:calc(100% - 78px);animation:groomMeet 18s cubic-bezier(.45,0,.35,1) infinite}
+.character-art{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:visible;background:transparent;--poster-color:transparent;filter:drop-shadow(0 3px 2px rgba(80,60,45,.13));animation:lovingSway 2.8s ease-in-out infinite alternate;transform-origin:center bottom;z-index:1;pointer-events:none}
+.chibi-runner.bubu .character-art{animation-delay:-1.2s}
+@keyframes lovingSway{from{transform:translateY(0) rotate(-1.5deg)}to{transform:translateY(-3px) rotate(1.5deg)}}
+@keyframes brideMeet{
+  0%,7%{left:3%;transform:translateY(0) rotate(0)}
+  27%{left:calc(44% - var(--runner-half-width));transform:translateY(0) rotate(2deg)}
+  35%,69%{left:calc(44% - var(--runner-half-width));transform:translateY(-2px) rotate(2deg)}
+  91%{left:3%;transform:translateY(0) rotate(0)}
+  100%{left:3%;transform:translateY(0) rotate(0)}
 }
-@keyframes chaseBubu{
-  0%,5%{left:calc(100% - 84px);transform:translateY(0) rotate(0deg)}
-  18%{left:calc(70% - 39px);transform:translateY(-5px) rotate(-4deg)}
-  26%{left:calc(54% - 39px);transform:translateY(0) rotate(3deg)}
-  31%{left:calc(51% - 39px);transform:translateY(-9px) rotate(-8deg)}
-  42%{left:calc(70% - 39px);transform:translateY(0) rotate(4deg)}
-  56%{left:calc(100% - 84px);transform:translateY(-3px) rotate(-3deg)}
-  62%{left:calc(100% - 84px);transform:translateY(0) rotate(0deg)}
-  74%{left:calc(62% - 39px);transform:translateY(-6px) rotate(4deg)}
-  83%{left:calc(43% - 39px);transform:translateY(0) rotate(-4deg)}
-  94%{left:calc(100% - 84px);transform:translateY(-4px) rotate(2deg)}
-  100%{left:calc(100% - 84px);transform:translateY(0) rotate(0deg)}
+@keyframes groomMeet{
+  0%,7%{left:calc(100% - 78px);transform:translateY(0) rotate(0)}
+  27%{left:calc(56% - var(--runner-half-width));transform:translateY(0) rotate(-2deg)}
+  35%,69%{left:calc(56% - var(--runner-half-width));transform:translateY(-2px) rotate(-2deg)}
+  91%{left:calc(100% - 78px);transform:translateY(0) rotate(0)}
+  100%{left:calc(100% - 78px);transform:translateY(0) rotate(0)}
 }
-.tease-bubble{position:absolute;top:-15px;left:34px;z-index:3;padding:4px 7px;border-radius:9px 9px 9px 2px;background:var(--paper);border:1px solid rgba(195,165,108,.7);box-shadow:0 2px 7px rgba(90,65,54,.06);color:var(--rose-dark);font:9px/1.1 Arial,sans-serif;white-space:nowrap;opacity:0;animation:teaseDudu var(--run-duration) ease-in-out infinite;animation-delay:var(--run-delay,0s)}
-.bubu .tease-bubble{left:-34px;top:-10px;color:var(--sage-dark);border-radius:9px 9px 2px 9px;animation-name:teaseBubu}
-@keyframes teaseDudu{0%,17%,43%,100%{opacity:0;transform:translateY(4px)}22%,32%{opacity:1;transform:translateY(0)}}
-@keyframes teaseBubu{0%,23%,50%,100%{opacity:0;transform:translateY(4px)}29%,40%{opacity:1;transform:translateY(0)}}
+.romance-heart{position:absolute;left:50%;top:35%;z-index:2;color:#b96e78;font-family:Georgia,serif;font-size:23px;line-height:1;opacity:0;transform:translate(-50%,8px) scale(.65);animation:heartBetween 18s ease-in-out infinite;filter:drop-shadow(0 2px 6px rgba(185,110,120,.18));pointer-events:none}
+@keyframes heartBetween{0%,24%,73%,100%{opacity:0;transform:translate(-50%,8px) scale(.65)}34%,60%{opacity:.9;transform:translate(-50%,0) scale(1)}48%{opacity:1;transform:translate(-50%,-2px) scale(1.12)}}
 .character-name{position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);color:var(--sage-dark);font:8px/1 Arial,sans-serif;letter-spacing:.06em;opacity:.85}
-@media(max-width:440px){.playful-runway{height:150px;margin-top:25px;background-position:center 62%;border-radius:3px}.runway-lantern{top:8px;transform:scale(.72)}.runway-lantern.left{left:4%}.runway-lantern.right{right:4%}.chibi-runner{width:66px;height:94px;bottom:12px}.character-art{width:64px;height:88px}.chibi-runner.dudu{--run-duration:12.5s}.chibi-runner.bubu{--run-duration:14s}.character-name{font-size:7px}.runway-petal{font-size:11px}}
-@media(prefers-reduced-motion:reduce){.chibi-runner,.character-art,.tease-bubble,.runway-sparkle{animation:none!important}.chibi-runner.dudu{left:30%}.chibi-runner.bubu{left:60%}.tease-bubble{opacity:1}}
+@media(max-width:440px){.playful-runway{height:150px;margin-top:25px;background-position:center 62%;border-radius:3px}.runway-lantern{top:8px;transform:scale(.72)}.runway-lantern.left{left:4%}.runway-lantern.right{right:4%}.chibi-runner{width:66px;height:94px;bottom:12px;--runner-half-width:33px}.model-stage{width:64px;height:88px}.character-art{width:64px;height:88px}.character-name{font-size:7px}.runway-petal{font-size:11px}.romance-heart{font-size:20px;top:33%}}
+@media(prefers-reduced-motion:reduce){.chibi-runner,.character-art,.romance-heart,.runway-sparkle,.runway-petal{animation:none!important}.chibi-runner.dudu{left:calc(44% - var(--runner-half-width))}.chibi-runner.bubu{left:calc(56% - var(--runner-half-width))}.romance-heart{opacity:1;transform:translate(-50%,0) scale(1)}}
 
 .footer{text-align:center;color:#878478;font:11px/1.8 Arial,sans-serif;margin:10px auto 0;padding:0 12px}
 @media(max-width:620px){.event-venue-grid{grid-template-columns:1fr;gap:12px}.event-venue-grid .venue{padding:24px 14px}.event-venue-grid .details{gap:10px}.event-venue-grid .detail{padding:22px 12px}.event-venue-grid .programme{min-height:60px}.countdown-section{margin-top:18px}}
@@ -173,17 +154,16 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 <div class="signature">With love, Gautam &amp; Tejasvini</div>
 <div class="bottom-decoration" aria-hidden="true"><span>✦</span><span>✿</span><span>✦</span></div>
 
-<section class="playful-runway" aria-label="Tejasvini and Gautam playfully chasing each other">
+<section class="playful-runway" aria-label="Tejasvini and Gautam meeting in a romantic garden animation">
   <div class="runway-lantern left" aria-hidden="true"></div><div class="runway-lantern right" aria-hidden="true"></div>
   <span class="runway-petal one" aria-hidden="true">✿</span><span class="runway-petal two" aria-hidden="true">✦</span><span class="runway-petal three" aria-hidden="true">✿</span>
-  <span class="runway-sparkle one">✦</span><span class="runway-sparkle two">✧</span><span class="runway-sparkle three">✦</span>
+  <span class="runway-sparkle one" aria-hidden="true">✦</span><span class="runway-sparkle two" aria-hidden="true">✧</span><span class="runway-sparkle three" aria-hidden="true">✦</span>
+  <span class="romance-heart" aria-hidden="true">♡</span>
   <div class="chibi-runner dudu">
-    <span class="tease-bubble">Catch me!</span>
     <div class="model-stage"><img class="model-fallback character-art" src="bride-cutout-final.webp?v=20261029a" alt="Tejasvini, the bride, in a pink saree and green blouse" loading="eager" decoding="async"></div>
     <span class="character-name">Tejasvini</span>
   </div>
   <div class="chibi-runner bubu">
-    <span class="tease-bubble">Wait for me!</span>
     <div class="model-stage"><img class="model-fallback character-art" src="groom-cutout.webp" alt="Gautam, the groom, in a gold sherwani with maroon and green accents" loading="eager" decoding="async"></div>
     <span class="character-name">Gautam</span>
   </div>
