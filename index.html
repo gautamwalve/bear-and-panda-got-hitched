@@ -855,6 +855,31 @@ html,body{background:#fbf8ef!important}
   .hero .hero-content{padding-left:28px!important;padding-right:28px!important}
 }
 
+
+/* Balance the floral framing: larger, but kept outside the text-safe centre. */
+.hero{overflow:hidden!important}
+.hero .floral-spray{
+  top:50%!important;
+  width:clamp(78px,11vw,138px)!important;
+  max-height:190px!important;
+  height:auto!important;
+  opacity:.82!important;
+  z-index:0!important;
+}
+.hero .floral-spray.left{left:-5px!important;right:auto!important;transform:translateY(-50%) rotate(-3deg)!important}
+.hero .floral-spray.right{right:-5px!important;left:auto!important;transform:translateY(-50%) scaleX(-1) rotate(-3deg)!important}
+.hero .hero-content{position:relative!important;z-index:2!important;padding-left:clamp(44px,8vw,105px)!important;padding-right:clamp(44px,8vw,105px)!important}
+@media(max-width:620px){
+  .hero .floral-spray{width:clamp(62px,16vw,90px)!important;max-height:145px!important;opacity:.76!important}
+  .hero .floral-spray.left{left:-5px!important}
+  .hero .floral-spray.right{right:-5px!important}
+  .hero .hero-content{padding-left:48px!important;padding-right:48px!important}
+}
+@media(max-width:380px){
+  .hero .floral-spray{width:58px!important;max-height:122px!important;opacity:.7!important}
+  .hero .hero-content{padding-left:42px!important;padding-right:42px!important}
+}
+
 </style>
 </head>
 <body>
