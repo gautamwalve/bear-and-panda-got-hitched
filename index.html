@@ -105,6 +105,14 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 @media(max-width:620px){.event-venue-grid{grid-template-columns:1fr;gap:12px}.event-venue-grid .venue{padding:24px 14px}.event-venue-grid .details{gap:10px}.event-venue-grid .detail{padding:22px 12px}.event-venue-grid .programme{min-height:60px}.countdown-section{margin-top:18px}}
 @media(max-width:440px){.page{width:100%;margin:0;padding:6px}.card{min-height:calc(100svh - 12px);padding:24px 12px}.tiny-animals{margin-top:12px}.hero{padding:24px 0 22px}h1{font-size:clamp(27px,8.1vw,36px);gap:5px;letter-spacing:-.06em}.event-venue-grid{margin:20px auto}.details{gap:10px;margin:0}.detail{padding:18px 8px}.merged-date{font-size:clamp(18px,5vw,25px)}.merged-time{font-size:25px}.detail-label,.section-label{font-size:9px;letter-spacing:.14em}.detail-date,.detail-note{font-size:14px}.detail-day,.detail-time{font-size:clamp(17px,5vw,22px)}.programme{font-size:14px;padding:14px 6px}.address{font-size:14px}.map-link{font-size:11px;padding:12px 17px}.footer{padding-bottom:6px}}
 @media(prefers-reduced-motion:reduce){.map-link{transition:none}html{scroll-behavior:auto}}
+
+@media (prefers-color-scheme: dark) {
+  :root, html, body { color-scheme: only light !important; background-color: #fbf8f0 !important; color: #565e56 !important; }
+  body { background: #fbf8f0 !important; color: #565e56 !important; }
+  .page { background: transparent !important; }
+  .card { background: #fffdf8 !important; color: #565e56 !important; }
+  .intro, .detail-date, .address { color: #565e56 !important; }
+}
 </style>
 </head>
 <body>
@@ -162,11 +170,11 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
   <span class="runway-sparkle one" aria-hidden="true">✦</span><span class="runway-sparkle two" aria-hidden="true">✧</span><span class="runway-sparkle three" aria-hidden="true">✦</span>
   <span class="romance-heart" aria-hidden="true">♡</span>
   <div class="chibi-runner dudu">
-    <div class="model-stage"><img class="model-fallback character-art" src="banner-bride-20261030.webp" alt="Tejasvini, the bride, in a pink saree and green blouse" loading="eager" decoding="async"></div>
+    <div class="model-stage"><img class="model-fallback character-art" src="banner-bride-20261030.webp?v=transparent-cutout-20261030" alt="Tejasvini, the bride, in a pink saree and green blouse" loading="eager" decoding="async"></div>
     <span class="character-name">Tejasvini</span>
   </div>
   <div class="chibi-runner bubu">
-    <div class="model-stage"><img class="model-fallback character-art" src="banner-groom-20261030.webp" alt="Gautam, the groom, in a gold sherwani with maroon and green accents" loading="eager" decoding="async"></div>
+    <div class="model-stage"><img class="model-fallback character-art" src="banner-groom-20261030.webp?v=transparent-cutout-20261030" alt="Gautam, the groom, in a gold sherwani with maroon and green accents" loading="eager" decoding="async"></div>
     <span class="character-name">Gautam</span>
   </div>
 </section>
