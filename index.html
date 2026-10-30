@@ -275,6 +275,32 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 .envelope-intro.is-opening .envelope-button{animation:none!important}
 .envelope-intro.is-opening .envelope-flap{transition-duration:.38s!important}
 .envelope-intro.is-gone{opacity:0;visibility:hidden;pointer-events:none}
+
+/* Clean floral name treatment: remove the framed card and date beneath the names. */
+.hero{
+  overflow:visible!important;
+  border:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  padding:clamp(34px,5vw,58px) 18px clamp(30px,4vw,48px)!important;
+}
+.hero .arch{display:none!important}
+.hero:before,.hero:after{
+  content:"✿\\A❀"!important;
+  white-space:pre!important;
+  color:#b8a8cf!important;
+  opacity:.88!important;
+  font:clamp(24px,4vw,38px)/1.35 Georgia,serif!important;
+  letter-spacing:.08em!important;
+}
+.hero:before{top:34%;left:-2px!important;transform:rotate(-14deg)!important}
+.hero:after{right:-2px!important;bottom:24%;transform:rotate(166deg)!important}
+@media(max-width:440px){
+  .hero{padding:30px 8px 28px!important}
+  .hero:before{left:-4px!important}
+  .hero:after{right:-4px!important}
+}
+
 </style>
 </head>
 <body>
@@ -308,7 +334,6 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 <div class="hero-content">
 <p class="overline">A celebration of love</p>
 <h1>Gautam<span class="and">&amp;</span>Tejasvini</h1>
- <p class="hero-date">12.12.2026</p>
  <p class="subtitle">Two hearts · One beautiful beginning</p>
 <div class="ornament"><span>✿</span><span>✦</span><span>✿</span></div>
 </div>
