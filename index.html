@@ -880,11 +880,38 @@ html,body{background:#fbf8ef!important}
   .hero .hero-content{padding-left:42px!important;padding-right:42px!important}
 }
 
+
+/* Full floral entry screen with a celebratory flower burst on opening. */
+.envelope-intro{overflow:hidden!important}
+.entry-floral-field{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.entry-floral-field span{position:absolute;display:block;color:#b88caf;text-shadow:0 2px 5px rgba(130,92,111,.12);opacity:.72;line-height:1;animation:entryFlowerSway var(--sway,5s) ease-in-out infinite alternate;animation-delay:var(--delay,0s)}
+.entry-floral-field span:nth-child(3n){color:#c58c91}
+.entry-floral-field span:nth-child(3n+1){color:#b5a0c7}
+.entry-floral-field span:nth-child(3n+2){color:#b8a77c}
+.envelope-shell{position:relative;z-index:2}
+.envelope-burst{position:fixed;inset:0;z-index:10002;pointer-events:none;overflow:hidden}
+.envelope-burst span{position:absolute;left:50%;top:50%;font-size:var(--size,24px);line-height:1;color:var(--petal,#c58c91);opacity:0;transform:translate(-50%,-50%) scale(.3);animation:flowerThrow 1.18s cubic-bezier(.12,.72,.18,1) forwards;filter:drop-shadow(0 2px 4px rgba(100,70,75,.15))}
+.envelope-intro.is-opening .entry-floral-field span{animation:flowerGather .65s ease-in forwards}
+@keyframes entryFlowerSway{from{transform:translate3d(-3px,0,0) rotate(-9deg) scale(.94)}to{transform:translate3d(4px,-8px,0) rotate(9deg) scale(1.06)}}
+@keyframes flowerGather{to{opacity:0;transform:translate(var(--gx,0),var(--gy,0)) scale(.2) rotate(80deg)}}
+@keyframes flowerThrow{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.18) rotate(0)}
+  12%{opacity:1}
+  100%{opacity:.0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(var(--end-scale,1.7)) rotate(var(--turn,260deg))}
+}
+.envelope-intro.is-opening .envelope-button{animation:envelopePop .72s cubic-bezier(.18,.8,.2,1) forwards!important}
+.envelope-intro.is-opening .envelope-flap{transition:transform .48s cubic-bezier(.2,.72,.2,1)!important}
+.envelope-intro.is-opening{transition:opacity .65s ease .78s,visibility .65s ease .78s!important}
+@keyframes envelopePop{0%{transform:scale(1)}38%{transform:scale(1.09) rotate(-2deg)}100%{transform:scale(.82) translateY(18px);opacity:0}}
+@media(prefers-reduced-motion:reduce){
+ .entry-floral-field span,.envelope-burst span{animation-duration:.01ms!important}
+}
+
 </style>
 </head>
 <body>
 <div class="envelope-intro" id="envelopeIntro" role="dialog" aria-modal="true" aria-label="Open wedding invitation">
-  <div class="envelope-shell">
+  <div class="entry-floral-field" id="entryFloralField" aria-hidden="true"></div>\n  <div class="envelope-shell">
     <button class="envelope-button" id="openInvitation" type="button" aria-label="Open wedding invitation">
       <span class="envelope-back" aria-hidden="true"></span>
       <span class="envelope-inner-letter" aria-hidden="true"></span>
@@ -1010,12 +1037,34 @@ html,body{background:#fbf8ef!important}
    openInvitation.disabled=true;
    envelopeIntro.classList.add('is-opening');
    const invitationPage=document.querySelector('.page');
-   // Reveal the floral invitation directly; no zoom transition.
    invitationPage.classList.add('invitation-reveal');
-   // Fade the cover immediately instead of waiting for the envelope choreography.
-   envelopeIntro.classList.add('is-gone');
-   envelopeIntro.setAttribute('aria-hidden','true');
-   document.body.style.overflow='';
+   // Launch a screen-wide shower of blossoms from the envelope as it opens.
+   const burst=document.createElement('div');
+   burst.className='envelope-burst';
+   burst.setAttribute('aria-hidden','true');
+   const blooms=['✿','✽','❀','✾','❁','❋','🌸'];
+   const shades=['#c58c91','#b5a0c7','#d1b47e','#d9a6a9','#a9b99f'];
+   for(let i=0;i<46;i++){
+     const petal=document.createElement('span');
+     const angle=(Math.PI*2*i/46)+(i%4)*.13;
+     const distance= Math.max(window.innerWidth,window.innerHeight)*(.58+(i%5)*.12);
+     petal.textContent=blooms[i%blooms.length];
+     petal.style.setProperty('--dx',(Math.cos(angle)*distance)+'px');
+     petal.style.setProperty('--dy',(Math.sin(angle)*distance)+'px');
+     petal.style.setProperty('--turn',(180+(i*73)%540)+'deg');
+     petal.style.setProperty('--size',(17+(i%5)*7)+'px');
+     petal.style.setProperty('--end-scale',(1.1+(i%4)*.35));
+     petal.style.setProperty('--petal',shades[i%shades.length]);
+     petal.style.animationDelay=((i%8)*.018)+'s';
+     burst.appendChild(petal);
+   }
+   envelopeIntro.appendChild(burst);
+   // Let the flower burst play, then clear the cover to reveal the invitation.
+   window.setTimeout(function(){
+     envelopeIntro.classList.add('is-gone');
+     envelopeIntro.setAttribute('aria-hidden','true');
+     document.body.style.overflow='';
+   },1050);
 
  });
  function setPlaying(playing){
