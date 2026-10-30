@@ -145,6 +145,14 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 @media(max-width:440px){.envelope-intro{padding:20px 15px}.envelope-bears{margin-bottom:13px}.envelope-kicker{margin-bottom:18px}.envelope-button{width:min(86vw,370px);margin-bottom:28px}.envelope-seal{width:48px;height:48px}.envelope-flower-top{top:-27px;right:-18px}.envelope-flower-bottom{bottom:-28px;left:-20px}}
 @media(prefers-reduced-motion:reduce){.envelope-intro,.envelope-flap,.envelope-inner-letter,.envelope-seal{transition:none!important}}
 
+
+/* The envelope is only a cover: do not slide out an empty white sheet.
+   The invitation page remains visible underneath and is revealed as the cover fades. */
+.envelope-inner-letter{display:none!important}
+.envelope-intro.is-opening .envelope-inner-letter{display:none!important;transform:none!important}
+.page{visibility:visible!important;opacity:1!important}
+.envelope-intro.is-opening{background:radial-gradient(ellipse at 50% 25%,rgba(255,253,248,.96),rgba(251,244,233,.9) 58%,rgba(240,230,216,.84))}
+
 /* Refined envelope choreography: a quiet idle float, tactile seal, and layered opening. */
 .envelope-intro{
   background:
