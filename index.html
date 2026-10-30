@@ -233,7 +233,7 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
   transform:translateY(8px);
   transition:opacity .25s ease,transform .25s ease;
 }
-.envelope-intro.is-gone{transition:opacity .65s ease,visibility .65s ease}
+.envelope-intro.is-gone{transition:opacity .22s ease,visibility .22s ease}
 @keyframes envelopeShellIn{
   from{opacity:0;transform:translateY(15px) scale(.975)}
   to{opacity:1;transform:translateY(-3px) scale(1)}
@@ -270,6 +270,11 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
   .envelope-intro.is-opening .envelope-inner-letter{transform:translateY(-55px)}
 }
 
+
+/* Fast entry: no lift-away delay; reveal the invitation as soon as the envelope is tapped. */
+.envelope-intro.is-opening .envelope-button{animation:none!important}
+.envelope-intro.is-opening .envelope-flap{transition-duration:.38s!important}
+.envelope-intro.is-gone{opacity:0;visibility:hidden;pointer-events:none}
 </style>
 </head>
 <body>
@@ -356,7 +361,7 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 </article>
 
 </main>
-<audio id="weddingAudio" src="tere%20ass%20pass%20din%20saara.mp3" loop autoplay preload="auto"></audio>
+<audio id="weddingAudio" loop preload="auto"><source src="Tumhi%20Dekho%20Naa%20(Sitar%20Lofi).mp3" type="audio/mpeg"><source src="Chand%20Tu%20Nabhatla.mp3" type="audio/mpeg"></audio>
 <script>
 (function(){
  const audio=document.getElementById('weddingAudio');
@@ -381,11 +386,11 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
    const invitationPage=document.querySelector('.page');
    // Reveal the floral invitation directly; no zoom transition.
    invitationPage.classList.add('invitation-reveal');
-   window.setTimeout(function(){
-     envelopeIntro.classList.add('is-gone');
-     envelopeIntro.setAttribute('aria-hidden','true');
-     document.body.style.overflow='';
-   },720);
+   // Fade the cover immediately instead of waiting for the envelope choreography.
+   envelopeIntro.classList.add('is-gone');
+   envelopeIntro.setAttribute('aria-hidden','true');
+   document.body.style.overflow='';
+
  });
  function setPlaying(playing){
    label.textContent=playing?'Pause wedding song':'Play our wedding song';
