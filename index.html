@@ -993,35 +993,37 @@ html,body{background:#fbf8ef!important}
 .envelope-intro.is-opening{background:#fff3e8!important}
 
 
-/* Swan-video invitation entry screen */
-.swan-intro{position:fixed;inset:0;z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(12px,3vh,28px);padding:clamp(18px,4vw,42px);overflow:hidden;background:radial-gradient(ellipse at 50% 42%,#fffdf8 0%,#fbf4e9 68%,#f0e6d8 100%);color:#6b3944;transition:opacity .8s ease,visibility .8s ease}
-.swan-invite-title{position:relative;z-index:2;margin:0;text-align:center;font:clamp(28px,5vw,48px)/1.2 Georgia,serif;font-weight:400;letter-spacing:.035em;color:#783f4c;text-shadow:0 1px 0 #fff}
-.swan-video-stage{position:relative;width:min(100%,980px);max-height:70vh;aspect-ratio:720/408;overflow:hidden;border-radius:clamp(12px,2vw,22px);box-shadow:0 18px 55px rgba(83,55,47,.2);background:#263b3d}
-.swan-video{display:block;width:100%;height:100%;object-fit:cover}
-.swan-heart-button{position:absolute;left:50%;top:63%;transform:translate(-50%,-50%) scale(.65);width:clamp(48px,7vw,72px);height:clamp(48px,7vw,72px);border:1px solid rgba(255,245,226,.9);border-radius:50%;background:linear-gradient(145deg,#d98791,#a94d61);color:#fff8f0;font-size:clamp(25px,4vw,38px);line-height:1;box-shadow:0 5px 22px rgba(69,28,38,.3),inset 0 1px 5px rgba(255,255,255,.4);cursor:pointer;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1),visibility .8s ease;-webkit-tap-highlight-color:transparent}
-.swan-heart-button.is-visible{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
-.swan-heart-button:focus-visible{outline:3px solid #c3a56c;outline-offset:5px}
-.swan-entry-hint{margin:0;color:#88766b;font:italic 15px/1.5 Georgia,serif;letter-spacing:.08em}
-.swan-intro.is-gone{opacity:0;visibility:hidden;pointer-events:none}
-@media(max-width:600px){.swan-intro{gap:20px}.swan-video-stage{width:100%;max-height:62vh;aspect-ratio:720/408}.swan-heart-button{top:63%}}
-@media(prefers-reduced-motion:reduce){.swan-intro,.swan-heart-button{transition:none!important}}
+/* Uploaded swan animation used as the invitation's opening visual after the envelope. */
+.invitation-video-wrap{width:min(100%,900px);margin:0 auto 24px;overflow:hidden;border-radius:18px;box-shadow:0 12px 34px rgba(75,54,49,.16);background:#263b3d}
+.invitation-video{display:block;width:100%;height:auto;max-height:72vh;object-fit:cover}
+@media(max-width:600px){.invitation-video-wrap{width:100%;border-radius:12px;margin-bottom:18px}.invitation-video{max-height:58vh}}
+
 </style>
 </head>
 <body>
-<div class="swan-intro" id="envelopeIntro" role="dialog" aria-modal="true" aria-label="Wedding invitation">
-  <h1 class="swan-invite-title">You Are Invited</h1>
-  <div class="swan-video-stage">
-    <video class="swan-video" id="swanInvitationVideo" autoplay muted loop playsinline preload="auto" aria-label="Two swans together on the water">
-      <source src="./964a23b55ad664401b999b5017b7b166_720w.mp4" type="video/mp4">
-    </video>
-    <button class="swan-heart-button" id="openInvitation" type="button" aria-label="Open wedding invitation">♥</button>
+<div class="envelope-intro" id="envelopeIntro" role="dialog" aria-modal="true" aria-label="Open wedding invitation">
+  <div class="entry-floral-field" id="entryFloralField" aria-hidden="true"></div>
+  <div class="envelope-shell">
+    <button class="envelope-button" id="openInvitation" type="button" aria-label="Open wedding invitation">
+      <span class="envelope-back" aria-hidden="true"></span>
+      <span class="envelope-inner-letter" aria-hidden="true"></span>
+      <span class="envelope-left-fold" aria-hidden="true"></span>
+      <span class="envelope-right-fold" aria-hidden="true"></span>
+      <span class="envelope-bottom-fold" aria-hidden="true"></span>
+      <span class="envelope-flap" aria-hidden="true"></span>
+      <span class="envelope-script">You are invited</span>
+      <span class="envelope-seal" aria-hidden="true">♡</span>
+      <svg class="envelope-flower envelope-flower-top" viewBox="0 0 170 180" aria-hidden="true"><g fill="none" stroke="#92977d" stroke-width="2" stroke-linecap="round"><path d="M94 160Q83 112 111 70M104 122Q72 109 54 82M111 100Q134 83 144 52M92 143Q119 132 139 111"/></g><g fill="#b8a8cf" opacity=".9"><ellipse cx="70" cy="106" rx="12" ry="5" transform="rotate(38 70 106)"/><ellipse cx="129" cy="88" rx="13" ry="5" transform="rotate(-42 129 88)"/><ellipse cx="127" cy="132" rx="13" ry="5" transform="rotate(-26 127 132)"/></g><g fill="#d9c8eb" stroke="#b9a5d2" stroke-width="1"><ellipse cx="115" cy="48" rx="13" ry="30"/><ellipse cx="115" cy="48" rx="13" ry="30" transform="rotate(45 115 48)"/><ellipse cx="115" cy="48" rx="13" ry="30" transform="rotate(90 115 48)"/><ellipse cx="115" cy="48" rx="13" ry="30" transform="rotate(135 115 48)"/><ellipse cx="77" cy="91" rx="9" ry="19"/><ellipse cx="77" cy="91" rx="9" ry="19" transform="rotate(60 77 91)"/><ellipse cx="77" cy="91" rx="9" ry="19" transform="rotate(120 77 91)"/><ellipse cx="145" cy="32" rx="7" ry="15" transform="rotate(25 145 32)"/><ellipse cx="145" cy="32" rx="7" ry="15" transform="rotate(95 145 32)"/></g><g fill="#c6a978"><circle cx="115" cy="48" r="7"/><circle cx="77" cy="91" r="4"/><circle cx="145" cy="32" r="3"/></g></svg>
+      <svg class="envelope-flower envelope-flower-bottom" viewBox="0 0 170 180" aria-hidden="true"><g fill="none" stroke="#92977d" stroke-width="2" stroke-linecap="round"><path d="M94 160Q83 112 111 70M104 122Q72 109 54 82M111 100Q134 83 144 52M92 143Q119 132 139 111"/></g><g fill="#b8a8cf" opacity=".9"><ellipse cx="70" cy="106" rx="12" ry="5" transform="rotate(38 70 106)"/><ellipse cx="129" cy="88" rx="13" ry="5" transform="rotate(-42 129 88)"/><ellipse cx="127" cy="132" rx="13" ry="5" transform="rotate(-26 127 132)"/></g><g fill="#d9c8eb" stroke="#b9a5d2" stroke-width="1"><ellipse cx="115" cy="48" rx="13" ry="30"/><ellipse cx="115" cy="48" rx="13" ry="30" transform="rotate(45 115 48)"/><ellipse cx="115" cy="48" rx="13" ry="30" transform="rotate(90 115 48)"/><ellipse cx="115" cy="48" rx="13" ry="30" transform="rotate(135 115 48)"/><ellipse cx="77" cy="91" rx="9" ry="19"/><ellipse cx="77" cy="91" rx="9" ry="19" transform="rotate(60 77 91)"/><ellipse cx="77" cy="91" rx="9" ry="19" transform="rotate(120 77 91)"/><ellipse cx="145" cy="32" rx="7" ry="15" transform="rotate(25 145 32)"/><ellipse cx="145" cy="32" rx="7" ry="15" transform="rotate(95 145 32)"/></g><g fill="#c6a978"><circle cx="115" cy="48" r="7"/><circle cx="77" cy="91" r="4"/><circle cx="145" cy="32" r="3"/></g></svg>
+    </button>
+    <p class="envelope-hint">Tap here to open</p>
   </div>
-  <p class="swan-entry-hint">A celebration of love</p>
 </div>
 <div class="confetti" aria-hidden="true">
 <span style="left:4%;--duration:19s;--delay:-8s;--rot:25deg"></span><span style="left:11%;--duration:23s;--delay:-14s;--rot:75deg"></span><span style="left:18%;--duration:21s;--delay:-4s;--rot:10deg"></span><span style="left:26%;--duration:25s;--delay:-19s;--rot:30deg"></span><span style="left:34%;--duration:20s;--delay:-12s;--rot:90deg"></span><span style="left:42%;--duration:24s;--delay:-5s;--rot:15deg"></span><span style="left:50%;--duration:22s;--delay:-16s;--rot:55deg"></span><span style="left:58%;--duration:26s;--delay:-10s;--rot:5deg"></span><span style="left:66%;--duration:21s;--delay:-2s;--rot:70deg"></span><span style="left:74%;--duration:24s;--delay:-18s;--rot:15deg"></span><span style="left:82%;--duration:20s;--delay:-7s;--rot:45deg"></span><span style="left:91%;--duration:25s;--delay:-13s;--rot:25deg"></span><span style="left:97%;--duration:22s;--delay:-1s;--rot:80deg"></span><span style="left:8%;--duration:27s;--delay:-20s;--rot:55deg"></span><span style="left:30%;--duration:23s;--delay:-9s;--rot:10deg"></span><span style="left:47%;--duration:24s;--delay:-17s;--rot:65deg"></span><span style="left:71%;--duration:26s;--delay:-3s;--rot:45deg"></span><span style="left:88%;--duration:21s;--delay:-11s;--rot:70deg"></span>
 </div>
 <main class="page" style="opacity:0;visibility:hidden;pointer-events:none">
+<div class="invitation-video-wrap"><video class="invitation-video" id="invitationVideo" muted autoplay loop playsinline preload="auto" aria-label="Wedding invitation animation"><source src="./bbe922e52473e25975c9d38d9ab0ef09_720w.mp4" type="video/mp4"></video></div>
 <article class="card">
 
 
@@ -1140,21 +1142,48 @@ html,body{background:#fbf8ef!important}
  let didAutoplayAttempt=false;
  const envelopeIntro=document.getElementById('envelopeIntro');
  const openInvitation=document.getElementById('openInvitation');
- // Reveal the heart after ten seconds of the swan scene.
- const swanVideo=document.getElementById('swanInvitationVideo');
- const heartDelay=window.setTimeout(function(){openInvitation.classList.add('is-visible');},10000);
  openInvitation.addEventListener('click',function(){
-   window.clearTimeout(heartDelay);
+   // Call play() immediately in this trusted tap handler (before animation/timers).
+   const invitationVideo=document.getElementById('invitationVideo');
+   if(invitationVideo){const videoRequest=invitationVideo.play();if(videoRequest&&typeof videoRequest.catch==='function')videoRequest.catch(function(){});}
    const musicRequest=audio.play();
    if(musicRequest && typeof musicRequest.then==='function'){
-     musicRequest.then(function(){setPlaying(true);}).catch(function(){setPlaying(false);label.textContent='Tap to play wedding song';});
-   }else{setPlaying(true);}
+     musicRequest.then(function(){setPlaying(true);}).catch(function(){
+       setPlaying(false);
+       label.textContent='Tap to play wedding song';
+     });
+   }else{
+     setPlaying(true);
+   }
    openInvitation.disabled=true;
+   envelopeIntro.classList.add('is-opening');
    const invitationPage=document.querySelector('.page');
    invitationPage.classList.add('invitation-reveal');
-   envelopeIntro.classList.add('is-gone');
-   envelopeIntro.setAttribute('aria-hidden','true');
-   document.body.style.overflow='';
+   // Launch a screen-wide shower of blossoms from the envelope as it opens.
+   const burst=document.createElement('div');
+   burst.className='envelope-burst';
+   burst.setAttribute('aria-hidden','true');
+   for(let i=0;i<64;i++){
+     const petal=document.createElement('span');
+     petal.className='thrown-petal';
+     const angle=(Math.PI*2*i/64)+(i%5)*.09;
+     const distance=Math.max(window.innerWidth,window.innerHeight)*(.62+(i%6)*.11);
+     petal.style.setProperty('--dx',(Math.cos(angle)*distance)+'px');
+     petal.style.setProperty('--dy',(Math.sin(angle)*distance)+'px');
+     petal.style.setProperty('--turn',(180+(i*67)%600)+'deg');
+     petal.style.setProperty('--scale',(0.9+(i%5)*.22));
+     petal.style.setProperty('--petal',['#d9a4aa','#c5afd0','#e6c99a','#e8b8ad','#b7c5a8'][i%5]);
+     petal.style.setProperty('--delay',((i%9)*.012)+'s');
+     burst.appendChild(petal);
+   }
+   envelopeIntro.appendChild(burst);
+   // Let the flower burst play, then clear the cover to reveal the invitation.
+   window.setTimeout(function(){
+     envelopeIntro.classList.add('is-gone');
+     envelopeIntro.setAttribute('aria-hidden','true');
+     document.body.style.overflow='';
+   },1050);
+
  });
  function setPlaying(playing){
    label.textContent=playing?'Pause wedding song':'Play our wedding song';
