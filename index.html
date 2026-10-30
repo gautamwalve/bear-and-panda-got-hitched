@@ -144,6 +144,97 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 .envelope-intro.is-gone{opacity:0;visibility:hidden;pointer-events:none}
 @media(max-width:440px){.envelope-intro{padding:20px 15px}.envelope-bears{margin-bottom:13px}.envelope-kicker{margin-bottom:18px}.envelope-button{width:min(86vw,370px);margin-bottom:28px}.envelope-seal{width:48px;height:48px}.envelope-flower-top{top:-27px;right:-18px}.envelope-flower-bottom{bottom:-28px;left:-20px}}
 @media(prefers-reduced-motion:reduce){.envelope-intro,.envelope-flap,.envelope-inner-letter,.envelope-seal{transition:none!important}}
+
+/* Refined envelope choreography: a quiet idle float, tactile seal, and layered opening. */
+.envelope-intro{
+  background:
+    radial-gradient(ellipse at 50% 48%,rgba(255,255,255,.76) 0%,rgba(255,250,241,.28) 36%,transparent 67%),
+    radial-gradient(ellipse at 50% 25%,#fffdf8 0%,#fbf4e9 58%,#f0e6d8 100%);
+}
+.envelope-shell{animation:envelopeShellIn .9s cubic-bezier(.2,.75,.25,1) both}
+.envelope-button{
+  transform-style:preserve-3d;
+  animation:envelopeIdle 4.8s ease-in-out infinite;
+  filter:drop-shadow(0 14px 17px rgba(111,79,59,.08));
+}
+.envelope-back{
+  transition:box-shadow .6s ease,filter .6s ease;
+}
+.envelope-button:active{filter:drop-shadow(0 7px 10px rgba(111,79,59,.12))}
+.envelope-seal{
+  animation:sealBreath 3.2s ease-in-out infinite;
+  transform-origin:50% 50%;
+}
+.envelope-flap{
+  transform-style:preserve-3d;
+  transition:transform 1s cubic-bezier(.22,.72,.18,1);
+}
+.envelope-inner-letter{
+  will-change:transform;
+  transition:transform 1.12s cubic-bezier(.16,.78,.18,1) .16s,box-shadow 1s ease .16s;
+}
+.envelope-hint{animation:hintFloat 2.4s ease-in-out infinite}
+.envelope-intro.is-opening .envelope-button{
+  animation:envelopeLiftAway 1.65s cubic-bezier(.2,.72,.18,1) .28s forwards;
+  pointer-events:none;
+}
+.envelope-intro.is-opening .envelope-back{
+  box-shadow:0 28px 48px rgba(104,76,55,.22),inset 0 0 0 4px rgba(255,245,220,.25);
+}
+.envelope-intro.is-opening .envelope-flap{
+  transform:rotateX(180deg);
+  transition-duration:1s;
+}
+.envelope-intro.is-opening .envelope-inner-letter{
+  transform:translateY(-92px) scale(1.015);
+  box-shadow:0 13px 28px rgba(83,64,42,.16);
+  transition-delay:.18s;
+}
+.envelope-intro.is-opening .envelope-seal{
+  animation:sealRelease .42s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.envelope-intro.is-opening .envelope-hint{
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity .25s ease,transform .25s ease;
+}
+.envelope-intro.is-gone{transition:opacity .65s ease,visibility .65s ease}
+@keyframes envelopeShellIn{
+  from{opacity:0;transform:translateY(15px) scale(.975)}
+  to{opacity:1;transform:translateY(-3px) scale(1)}
+}
+@keyframes envelopeIdle{
+  0%,100%{transform:translateY(0) rotate(0)}
+  50%{transform:translateY(-7px) rotate(.25deg)}
+}
+@keyframes envelopeLiftAway{
+  0%{transform:translateY(0) scale(1)}
+  38%{transform:translateY(-10px) scale(1.025)}
+  100%{transform:translateY(-20px) scale(1.045)}
+}
+@keyframes sealBreath{
+  0%,100%{box-shadow:0 3px 9px rgba(89,53,52,.22),inset 0 0 0 3px rgba(255,240,212,.2)}
+  50%{box-shadow:0 5px 15px rgba(89,53,52,.28),0 0 0 5px rgba(240,217,173,.13),inset 0 0 0 3px rgba(255,240,212,.25)}
+}
+@keyframes sealRelease{
+  0%{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  45%{opacity:1;transform:translate(-50%,-62%) scale(1.16)}
+  100%{opacity:0;transform:translate(-50%,-82%) scale(.45)}
+}
+@keyframes hintFloat{
+  0%,100%{transform:translateY(0);opacity:.86}
+  50%{transform:translateY(-4px);opacity:1}
+}
+@media(max-width:440px){
+  .envelope-intro.is-opening .envelope-inner-letter{transform:translateY(-78px) scale(1.01)}
+  .envelope-intro.is-opening .envelope-button{animation-duration:1.55s}
+}
+@media(prefers-reduced-motion:reduce){
+  .envelope-shell,.envelope-button,.envelope-seal,.envelope-hint{animation:none!important}
+  .envelope-intro.is-opening .envelope-button{animation:none!important}
+  .envelope-intro.is-opening .envelope-inner-letter{transform:translateY(-55px)}
+}
+
 </style>
 </head>
 <body>
@@ -254,7 +345,7 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
      envelopeIntro.classList.add('is-gone');
      envelopeIntro.setAttribute('aria-hidden','true');
      document.body.style.overflow='';
-   },1150);
+   },1850);
  });
  function setPlaying(playing){
    label.textContent=playing?'Pause wedding song':'Play our wedding song';
