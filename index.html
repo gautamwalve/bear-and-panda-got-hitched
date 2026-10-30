@@ -713,6 +713,20 @@ html,body{background:#fbf8ef!important}
  .merged-time{font-size:25px!important}
 }
 
+
+/* Faithful date embellishments based on the user's two zoomed reference details. */
+.merged-detail .date-frame-art{inset:0!important;width:100%!important;height:100%!important}
+.details .programme{margin:10px auto 0!important;padding:12px 4px 4px!important}
+.date-bottom-divider{
+ display:block!important;width:min(78%,760px)!important;height:auto!important;
+ margin:2px auto 10px!important;overflow:visible!important;
+}
+@media(max-width:620px){
+ .merged-detail .date-frame-art{inset:0!important}
+ .date-bottom-divider{width:88%!important;margin:0 auto 8px!important}
+ .details .programme{margin-top:8px!important;padding:10px 2px 2px!important}
+}
+
 </style>
 </head>
 <body>
@@ -768,42 +782,36 @@ html,body{background:#fbf8ef!important}
   <section class="details" aria-label="Wedding date and time">
     <div class="detail merged-detail">
       <svg class="date-frame-art" viewBox="0 0 900 260" preserveAspectRatio="none" aria-hidden="true">
-  <rect x="28" y="22" width="844" height="216" rx="70" fill="none" stroke="#e0d4bd" stroke-width="1.6"/>
-  <g fill="none" stroke="#b88c43" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <!-- Left vertical stem and mirrored right stem -->
-    <path d="M29 72 C23 86 23 101 29 116 L29 144 C23 159 23 174 29 188"/>
-    <path d="M871 72 C877 86 877 101 871 116 L871 144 C877 159 877 174 871 188"/>
-    <!-- upper and lower curling leaves -->
-    <path d="M29 83 C15 72 15 60 28 55 C40 62 39 75 29 83 C21 78 22 69 29 66"/>
-    <path d="M29 177 C15 188 15 200 28 205 C40 198 39 185 29 177 C21 182 22 191 29 194"/>
-    <path d="M871 83 C885 72 885 60 872 55 C860 62 861 75 871 83 C879 78 878 69 871 66"/>
-    <path d="M871 177 C885 188 885 200 872 205 C860 198 861 185 871 177 C879 182 878 191 871 194"/>
-    <!-- little side leaves -->
-    <path d="M29 96 C13 91 10 82 17 75 C29 77 34 86 29 96Z M29 164 C13 169 10 178 17 185 C29 183 34 174 29 164Z"/>
-    <path d="M871 96 C887 91 890 82 883 75 C871 77 866 86 871 96Z M871 164 C887 169 890 178 883 185 C871 183 866 174 871 164Z"/>
-    <!-- central side floral diamonds, with four petal details -->
-    <path d="M29 109 L43 130 L29 151 L15 130Z M871 109 L857 130 L871 151 L885 130Z"/>
-    <path d="M29 115 C19 122 19 138 29 145 C39 138 39 122 29 115Z M871 115 C861 122 861 138 871 145 C881 138 881 122 871 115Z"/>
-    <path d="M17 130 C23 120 35 120 41 130 C35 140 23 140 17 130Z M883 130 C877 120 865 120 859 130 C865 140 877 140 883 130Z"/>
-    <path d="M29 112 L29 98 M29 162 L29 148 M871 112 L871 98 M871 162 L871 148"/>
-    <!-- top centre ornament: floral diamond with delicate side curls -->
-    <path d="M450 8 C444 15 444 22 450 28 C456 22 456 15 450 8Z"/>
-    <path d="M450 13 C438 3 430 8 436 18 C441 24 450 26 450 26 C450 26 459 24 464 18 C470 8 462 3 450 13Z"/>
-    <path d="M433 22 C423 15 414 17 411 25 C421 29 428 28 433 22 M467 22 C477 15 486 17 489 25 C479 29 472 28 467 22"/>
-    <!-- bottom centre ornament -->
-    <path d="M450 252 C444 245 444 238 450 232 C456 238 456 245 450 252Z"/>
-    <path d="M450 247 C438 257 430 252 436 242 C441 236 450 234 450 234 C450 234 459 236 464 242 C470 252 462 257 450 247Z"/>
-    <path d="M433 238 C423 245 414 243 411 235 C421 231 428 232 433 238 M467 238 C477 245 486 243 489 235 C479 231 472 232 467 238"/>
-    <!-- fine lines leading into the centre ornaments -->
-    <path d="M28 22 H405 M495 22 H872 M28 238 H405 M495 238 H872"/>
+  <rect x="26" y="20" width="848" height="220" rx="70" fill="none" stroke="#e4d9c4" stroke-width="1.6"/>
+  <g fill="none" stroke="#c49a52" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- LEFT vertical ornament: bud, curled leaves, central stem, diamond flower, inverted bud -->
+    <path d="M39 52 L39 208"/>
+    <path d="M39 52 C28 42 30 27 39 16 C48 27 50 42 39 52Z"/>
+    <path d="M39 77 C24 63 10 68 12 82 C14 94 27 96 39 108 C51 96 64 94 66 82 C68 68 54 63 39 77Z"/>
+    <path d="M39 75 C39 88 39 96 39 108"/>
+    <path d="M39 108 L39 121"/>
+    <path d="M39 121 L53 139 L39 157 L25 139Z"/>
+    <path d="M39 124 C28 130 28 148 39 154 C50 148 50 130 39 124Z"/>
+    <path d="M39 157 L39 174"/>
+    <path d="M39 174 C28 184 30 199 39 210 C48 199 50 184 39 174Z"/>
+    <path d="M39 174 C24 162 10 167 12 181 C14 193 27 195 39 207 C51 195 64 193 66 181 C68 167 54 162 39 174Z"/>
+    <!-- RIGHT is an exact mirror -->
+    <path d="M861 52 L861 208"/>
+    <path d="M861 52 C850 42 852 27 861 16 C870 27 872 42 861 52Z"/>
+    <path d="M861 77 C846 63 832 68 834 82 C836 94 849 96 861 108 C873 96 886 94 888 82 C890 68 876 63 861 77Z"/>
+    <path d="M861 75 C861 88 861 96 861 108"/>
+    <path d="M861 108 L861 121"/>
+    <path d="M861 121 L875 139 L861 157 L847 139Z"/>
+    <path d="M861 124 C850 130 850 148 861 154 C872 148 872 130 861 124Z"/>
+    <path d="M861 157 L861 174"/>
+    <path d="M861 174 C850 184 852 199 861 210 C870 199 872 184 861 174Z"/>
+    <path d="M861 174 C846 162 832 167 834 181 C836 193 849 195 861 207 C873 195 886 193 888 181 C890 167 876 162 861 174Z"/>
   </g>
-  <g fill="#b88c43">
-    <path d="M29 116 L39 130 L29 144 L19 130Z M871 116 L861 130 L871 144 L881 130Z"/>
-    <path d="M450 7 L455 15 L450 23 L445 15Z M450 237 L455 245 L450 253 L445 245Z"/>
-    <circle cx="29" cy="55" r="2.4"/><circle cx="29" cy="205" r="2.4"/>
-    <circle cx="871" cy="55" r="2.4"/><circle cx="871" cy="205" r="2.4"/>
-    <circle cx="405" cy="22" r="2"/><circle cx="495" cy="22" r="2"/>
-    <circle cx="405" cy="238" r="2"/><circle cx="495" cy="238" r="2"/>
+  <g fill="#c49a52">
+    <path d="M39 118 L53 139 L39 160 L25 139Z"/>
+    <path d="M861 118 L875 139 L861 160 L847 139Z"/>
+    <path d="M39 12 L44 22 L39 31 L34 22Z M861 12 L866 22 L861 31 L856 22Z"/>
+    <path d="M39 204 L44 214 L39 224 L34 214Z M861 204 L866 214 L861 224 L856 214Z"/>
   </g>
 </svg>
       <div class="detail-label">Wedding ceremony &amp; time</div>
@@ -811,6 +819,21 @@ html,body{background:#fbf8ef!important}
       <div class="merged-time">12:32 PM</div>
     </div>
     <div class="programme">Marriage ceremony followed by lunch &amp; reception</div>
+    <svg class="date-bottom-divider" viewBox="0 0 760 54" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <g fill="none" stroke="#c49a52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 27 H310 M450 27 H752"/>
+        <path d="M8 27 l10 -6 v12z M752 27 l-10 -6 v12z"/>
+        <path d="M310 27 l9 -7 l9 7 l-9 7z M432 27 l9 -7 l9 7 l-9 7z"/>
+        <path d="M380 4 C369 16 369 38 380 50 C391 38 391 16 380 4Z"/>
+        <path d="M380 27 C364 11 351 18 359 31 C366 39 380 42 380 42 C380 42 394 39 401 31 C409 18 396 11 380 27Z"/>
+        <path d="M380 7 L380 47 M360 27 H400"/>
+      </g>
+      <g fill="#c49a52">
+        <path d="M380 2 L386 12 L380 22 L374 12Z M380 32 L386 42 L380 52 L374 42Z"/>
+        <circle cx="8" cy="27" r="3"/><circle cx="752" cy="27" r="3"/>
+        <circle cx="319" cy="27" r="2.5"/><circle cx="441" cy="27" r="2.5"/>
+      </g>
+    </svg>
   </section>
   <section class="venue" aria-label="Wedding venue">
     <div class="section-label">The venue</div>
