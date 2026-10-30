@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 440" width="240" height="440">
+<defs>
+ <linearGradient id="stem" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#aab99a"/><stop offset="1" stop-color="#748c72"/></linearGradient>
+ <radialGradient id="lav" cx="38%" cy="28%" r="75%"><stop stop-color="#fffaff"/><stop offset=".45" stop-color="#eadcf1"/><stop offset="1" stop-color="#b89acb"/></radialGradient>
+ <radialGradient id="pink" cx="38%" cy="28%" r="75%"><stop stop-color="#fff9fc"/><stop offset=".5" stop-color="#f0dce9"/><stop offset="1" stop-color="#c49cbd"/></radialGradient>
+ <radialGradient id="gold" cx="35%" cy="30%" r="70%"><stop stop-color="#fff0bd"/><stop offset="1" stop-color="#bd9656"/></radialGradient>
+ <g id="blossom">
+  <g fill="url(#lav)" stroke="#b99fc9" stroke-width="1.2">
+   <ellipse cy="-22" rx="13" ry="27"/><ellipse cy="-22" rx="13" ry="27" transform="rotate(45)"/><ellipse cy="-22" rx="13" ry="27" transform="rotate(90)"/><ellipse cy="-22" rx="13" ry="27" transform="rotate(135)"/><ellipse cy="-22" rx="13" ry="27" transform="rotate(180)"/><ellipse cy="-22" rx="13" ry="27" transform="rotate(225)"/><ellipse cy="-22" rx="13" ry="27" transform="rotate(270)"/><ellipse cy="-22" rx="13" ry="27" transform="rotate(315)"/>
+  </g><circle r="10" fill="url(#gold)"/><circle r="3.5" fill="#fff5d7"/>
+  <g fill="#fff" opacity=".55"><circle cx="-7" cy="-7" r="2"/><circle cx="8" cy="2" r="1.6"/><circle cx="-2" cy="8" r="1.5"/></g>
+ </g>
+ <g id="pinkblossom">
+  <g fill="url(#pink)" stroke="#c6a5c2" stroke-width="1.1">
+   <ellipse cy="-21" rx="12" ry="26"/><ellipse cy="-21" rx="12" ry="26" transform="rotate(45)"/><ellipse cy="-21" rx="12" ry="26" transform="rotate(90)"/><ellipse cy="-21" rx="12" ry="26" transform="rotate(135)"/><ellipse cy="-21" rx="12" ry="26" transform="rotate(180)"/><ellipse cy="-21" rx="12" ry="26" transform="rotate(225)"/><ellipse cy="-21" rx="12" ry="26" transform="rotate(270)"/><ellipse cy="-21" rx="12" ry="26" transform="rotate(315)"/>
+  </g><circle r="9" fill="url(#gold)"/><circle r="3" fill="#fff5d7"/>
+ </g>
+</defs>
+<g fill="none" stroke="url(#stem)" stroke-width="3" stroke-linecap="round">
+ <path d="M10 430 C40 355 62 294 91 232 S155 112 210 10"/>
+ <path d="M40 356 Q2 325 8 278 Q49 296 40 356Z" fill="#b9c7aa" stroke="#879b7c" stroke-width="1.5"/>
+ <path d="M63 302 Q109 303 138 260 Q92 248 63 302Z" fill="#d0d9bd" stroke="#879b7c" stroke-width="1.5"/>
+ <path d="M91 236 Q49 201 61 154 Q105 178 91 236Z" fill="#b9c7aa" stroke="#879b7c" stroke-width="1.5"/>
+ <path d="M126 174 Q171 178 196 132 Q150 120 126 174Z" fill="#d0d9bd" stroke="#879b7c" stroke-width="1.5"/>
+ <path d="M160 105 Q126 72 143 35 Q177 63 160 105Z" fill="#b9c7aa" stroke="#879b7c" stroke-width="1.5"/>
+ <path d="M25 397 Q-5 374 3 340 Q32 359 25 397Z" fill="#c5d0b5" stroke="#879b7c" stroke-width="1.4"/>
+ <path d="M40 356L12 283M63 302L133 266M91 236L64 160M126 174L190 138M160 105L147 42"/>
+</g>
+<use href="#blossom" x="75" y="112"/>
+<use href="#pinkblossom" x="168" y="224" transform="scale(.92) translate(14 18)"/>
+<use href="#blossom" x="35" y="300" transform="scale(.7) translate(15 128)"/>
+<use href="#pinkblossom" x="205" y="58" transform="scale(.48) translate(225 60)"/>
+<g fill="#d7c4e3" opacity=".8"><circle cx="112" cy="42" r="3"/><circle cx="19" cy="225" r="2.5"/><circle cx="205" cy="326" r="3"/><circle cx="110" cy="388" r="2.4"/></g>
+</svg>
