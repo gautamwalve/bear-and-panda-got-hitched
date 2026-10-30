@@ -114,34 +114,36 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
   .intro, .detail-date, .address { color: #565e56 !important; }
 }
 
-/* Opening envelope: the visitor's tap is also the music start gesture. */
-.envelope-intro{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 50% 25%,#fffdf8 0%,#fbf4e9 58%,#f0e6d8 100%);transition:opacity .7s ease,visibility .7s ease;color:#565e56}
-.envelope-shell{width:min(100%,460px);text-align:center}
-.envelope-bears{font-size:25px;letter-spacing:8px;margin:0 0 19px;filter:saturate(.78)}
-.envelope-kicker{font:10px/1.8 Arial,sans-serif;letter-spacing:.21em;text-transform:uppercase;color:#89764f;margin:0 0 10px}
-.envelope-heading{font:normal clamp(27px,6vw,39px)/1.2 Georgia,serif;color:#b56f7d;margin:0 0 8px}
-.envelope-subheading{font:italic 15px/1.6 Georgia,serif;color:#69796d;margin:0 0 22px}
-.envelope-button{position:relative;display:block;width:min(82vw,340px);height:224px;margin:0 auto 16px;padding:0;border:0;background:transparent;cursor:pointer;perspective:1000px;-webkit-tap-highlight-color:transparent}
-.envelope-button:focus-visible{outline:2px solid #b78c4b;outline-offset:8px;border-radius:8px}
-.envelope-back{position:absolute;left:0;right:0;top:16px;bottom:0;border:1px solid #b78c4b;border-radius:5px;background:linear-gradient(135deg,#e9cda7,#c99483 54%,#e6c69d);box-shadow:0 16px 28px rgba(104,76,55,.18),inset 0 0 0 4px rgba(255,245,220,.22);z-index:0}
-.envelope-letter{position:absolute;left:8%;right:8%;top:19px;height:178px;padding:24px 12px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fffdf8;border:1px solid rgba(195,165,108,.78);box-shadow:0 2px 10px rgba(83,64,42,.09);z-index:1;transform:translateY(12px);transition:transform .85s cubic-bezier(.2,.75,.25,1),z-index 0s .3s}
-.envelope-letter-small{font:9px/1.6 Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8a835f}
-.envelope-letter-names{font:normal 25px/1.35 Georgia,serif;color:#b56f7d;margin:5px 0}
-.envelope-letter-amp{font-style:italic;color:#b78c4b}
-.envelope-letter-date{font:10px/1.6 Arial,sans-serif;letter-spacing:.14em;color:#68796b}
-.envelope-pocket{position:absolute;left:0;right:0;top:16px;bottom:0;z-index:3;background:linear-gradient(145deg,#dfb994,#c78c89 55%,#dcb48a);clip-path:polygon(0 0,50% 59%,100% 0,100% 100%,0 100%);border-radius:4px}
-.envelope-pocket:before{content:"";position:absolute;inset:0;background:linear-gradient(35deg,rgba(255,244,220,.17),transparent 52%,rgba(116,69,55,.12))}
-.envelope-flap{position:absolute;left:0;right:0;top:16px;height:59%;z-index:4;transform-origin:50% 0;transform:rotateX(0deg);backface-visibility:hidden;transition:transform .82s cubic-bezier(.2,.72,.25,1);background:linear-gradient(155deg,#f0d7b5 0%,#d7a58f 65%,#bd8581 100%);clip-path:polygon(0 0,100% 0,50% 100%);filter:drop-shadow(0 2px 2px rgba(93,57,45,.12))}
-.envelope-seal{position:absolute;left:50%;top:44%;z-index:5;width:43px;height:43px;display:grid;place-items:center;transform:translate(-50%,-50%);border:1px solid #e8d1a4;border-radius:50%;background:radial-gradient(circle at 35% 30%,#d99aa0,#a95e70);box-shadow:0 3px 9px rgba(89,53,52,.22),inset 0 0 0 3px rgba(255,240,212,.2);color:#fff6e7;font:24px/1 Georgia,serif;transition:opacity .3s ease,transform .3s ease}
-.envelope-hint{font:10px/1.8 Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#89764f;margin:0}
-.envelope-hint:after{content:"";display:block;width:35px;height:1px;background:#c3a56c;margin:10px auto 0;opacity:.7}
+/* Warm floral invitation envelope — keeps the original blush, peach and antique-gold palette. */
+.envelope-intro{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:24px 18px;background:radial-gradient(ellipse at 50% 25%,#fffdf8 0%,#fbf4e9 58%,#f0e6d8 100%);transition:opacity .7s ease,visibility .7s ease;color:#565e56}
+.envelope-shell{width:min(100%,500px);text-align:center;transform:translateY(-3px)}
+.envelope-bears{font-size:21px;letter-spacing:8px;margin:0 0 17px;filter:saturate(.78)}
+.envelope-kicker{font:9px/1.8 Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#89764f;margin:0 0 20px}
+.envelope-button{position:relative;display:block;width:min(84vw,410px);aspect-ratio:1.58;height:auto;margin:0 auto 30px;padding:0;border:0;background:transparent;cursor:pointer;perspective:1000px;-webkit-tap-highlight-color:transparent;isolation:isolate}
+.envelope-button:focus-visible{outline:2px solid #b78c4b;outline-offset:9px;border-radius:5px}
+.envelope-back{position:absolute;inset:0;z-index:0;border:1px solid #b78c4b;border-radius:4px;background:linear-gradient(135deg,#e9cda7,#c99483 54%,#e6c69d);box-shadow:0 17px 29px rgba(104,76,55,.18),inset 0 0 0 4px rgba(255,245,220,.22)}
+.envelope-inner-letter{position:absolute;z-index:1;left:8%;right:8%;top:3%;height:84%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:22px 12px 10px;background:linear-gradient(180deg,#fffdf8,#f7f0e5);border:1px solid rgba(195,165,108,.72);box-shadow:0 2px 10px rgba(83,64,42,.09);color:#687565;transform:translateY(17px);transition:transform .8s cubic-bezier(.2,.75,.25,1)}
+.envelope-inner-small{font:8px/1.7 Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#8a835f}
+.envelope-inner-names{font:normal clamp(17px,4.7vw,23px)/1.45 Georgia,serif;color:#b56f7d;margin:8px 0 3px}
+.envelope-inner-date{font:9px/1.7 Arial,sans-serif;letter-spacing:.15em;color:#89764f}
+.envelope-left-fold{position:absolute;inset:0;z-index:2;background:linear-gradient(105deg,#e5c29d,#ca9686);clip-path:polygon(0 0,50% 54%,0 100%)}
+.envelope-right-fold{position:absolute;inset:0;z-index:2;background:linear-gradient(255deg,#e6c49d,#c78f85);clip-path:polygon(100% 0,50% 54%,100% 100%)}
+.envelope-bottom-fold{position:absolute;inset:0;z-index:3;background:linear-gradient(180deg,#d8aa91,#c18a83);clip-path:polygon(0 100%,50% 49%,100% 100%)}
+.envelope-flap{position:absolute;left:0;right:0;top:0;height:61%;z-index:4;transform-origin:50% 0;transform:rotateX(0deg);backface-visibility:hidden;transition:transform .82s cubic-bezier(.2,.72,.25,1);background:linear-gradient(155deg,#f0d7b5 0%,#d7a58f 65%,#bd8581 100%);clip-path:polygon(0 0,100% 0,50% 100%);filter:drop-shadow(0 2px 2px rgba(93,57,45,.12))}
+.envelope-script{position:absolute;left:5%;right:5%;top:20%;z-index:5;color:#fff9ee;font:italic clamp(26px,7vw,39px)/1.2 "Segoe Script","Brush Script MT","URW Chancery L",cursive;text-shadow:0 1px 2px rgba(103,67,52,.24);transform:rotate(-2deg);pointer-events:none}
+.envelope-front-names{position:absolute;left:5%;right:5%;top:40%;z-index:5;color:#fff1dc;font:8px/1.7 Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;text-shadow:0 1px 2px rgba(103,67,52,.22);pointer-events:none}
+.envelope-seal{position:absolute;left:50%;top:62%;z-index:7;width:53px;height:53px;display:grid;place-items:center;transform:translate(-50%,-50%);border:1px solid #f0d9ad;border-radius:50%;background:radial-gradient(circle at 35% 28%,#d99aa0,#a95e70);box-shadow:0 3px 9px rgba(89,53,52,.22),inset 0 0 0 3px rgba(255,240,212,.2);color:#fff6e7;font:23px/1 Georgia,serif;transition:opacity .3s ease,transform .3s ease}
+.envelope-flower{position:absolute;z-index:8;width:clamp(105px,28vw,145px);height:auto;overflow:visible;pointer-events:none;filter:drop-shadow(0 3px 4px rgba(65,58,48,.12))}
+.envelope-flower-top{top:-34px;right:-23px}
+.envelope-flower-bottom{bottom:-34px;left:-25px;transform:rotate(180deg) scale(.92)}
+.envelope-hint{font:10px/1.8 Georgia,serif;letter-spacing:.2em;text-transform:uppercase;color:#897d68;margin:0}
+.envelope-hint:after{content:"";display:block;width:38px;height:1px;background:#c3a56c;margin:11px auto 0;opacity:.72}
 .envelope-intro.is-opening .envelope-flap{transform:rotateX(180deg)}
-.envelope-intro.is-opening .envelope-letter{transform:translateY(-54px);z-index:5;transition:transform .85s cubic-bezier(.2,.75,.25,1),z-index 0s}
+.envelope-intro.is-opening .envelope-inner-letter{transform:translateY(-39px)}
 .envelope-intro.is-opening .envelope-seal{opacity:0;transform:translate(-50%,-50%) scale(.55)}
 .envelope-intro.is-gone{opacity:0;visibility:hidden;pointer-events:none}
-@media(max-width:440px){.envelope-intro{padding:20px}.envelope-bears{margin-bottom:14px}.envelope-subheading{margin-bottom:18px}.envelope-button{height:208px;width:min(84vw,320px)}.envelope-letter{height:165px}.envelope-letter-names{font-size:23px}}
-@media(prefers-reduced-motion:reduce){.envelope-intro,.envelope-flap,.envelope-letter,.envelope-seal{transition:none!important}}
-
+@media(max-width:440px){.envelope-intro{padding:20px 15px}.envelope-bears{margin-bottom:13px}.envelope-kicker{margin-bottom:18px}.envelope-button{width:min(86vw,370px);margin-bottom:28px}.envelope-seal{width:48px;height:48px}.envelope-flower-top{top:-27px;right:-18px}.envelope-flower-bottom{bottom:-28px;left:-20px}}
+@media(prefers-reduced-motion:reduce){.envelope-intro,.envelope-flap,.envelope-inner-letter,.envelope-seal{transition:none!important}}
 </style>
 </head>
 <body>
@@ -149,20 +151,24 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
   <div class="envelope-shell">
     <div class="envelope-bears" aria-hidden="true">🐻 · 🐼</div>
     <p class="envelope-kicker">Together with our families</p>
-    <h2 class="envelope-heading">A celebration of love</h2>
-    <p class="envelope-subheading">A little note for someone special</p>
     <button class="envelope-button" id="openInvitation" type="button" aria-label="Open Gautam and Tejasvini's wedding invitation">
       <span class="envelope-back" aria-hidden="true"></span>
-      <span class="envelope-letter" aria-hidden="true">
-        <span class="envelope-letter-small">You are invited to celebrate</span>
-        <span class="envelope-letter-names">Gautam <span class="envelope-letter-amp">&amp;</span> Tejasvini</span>
-        <span class="envelope-letter-date">12 · 12 · 2026</span>
+      <span class="envelope-inner-letter" aria-hidden="true">
+        <span class="envelope-inner-small">You are invited to celebrate</span>
+        <span class="envelope-inner-names">Gautam <span style="color:#b78c4b;font-style:italic">&amp;</span> Tejasvini</span>
+        <span class="envelope-inner-date">12 · 12 · 2026</span>
       </span>
-      <span class="envelope-pocket" aria-hidden="true"></span>
+      <span class="envelope-left-fold" aria-hidden="true"></span>
+      <span class="envelope-right-fold" aria-hidden="true"></span>
+      <span class="envelope-bottom-fold" aria-hidden="true"></span>
       <span class="envelope-flap" aria-hidden="true"></span>
+      <span class="envelope-script" aria-hidden="true">You are invited</span>
+      <span class="envelope-front-names" aria-hidden="true">Gautam &amp; Tejasvini</span>
       <span class="envelope-seal" aria-hidden="true">♡</span>
+      <svg class="envelope-flower envelope-flower-top" viewBox="0 0 170 180" aria-hidden="true"><g fill="none" stroke="#92977d" stroke-width="2" stroke-linecap="round"><path d="M94 160Q83 112 111 70M104 122Q72 109 54 82M111 100Q134 83 144 52M92 143Q119 132 139 111"/></g><g fill="#a8a88a" opacity=".85"><ellipse cx="70" cy="106" rx="12" ry="5" transform="rotate(38 70 106)"/><ellipse cx="129" cy="88" rx="13" ry="5" transform="rotate(-42 129 88)"/><ellipse cx="127" cy="132" rx="13" ry="5" transform="rotate(-26 127 132)"/></g><g fill="#fbf8f0" stroke="#e7dfd0" stroke-width="1"><ellipse cx="115" cy="48" rx="13" ry="30"/><ellipse cx="115" cy="48" rx="13" ry="30" transform="rotate(45 115 48)"/><ellipse cx="115" cy="48" rx="13" ry="30" transform="rotate(90 115 48)"/><ellipse cx="115" cy="48" rx="13" ry="30" transform="rotate(135 115 48)"/><ellipse cx="77" cy="91" rx="9" ry="19"/><ellipse cx="77" cy="91" rx="9" ry="19" transform="rotate(60 77 91)"/><ellipse cx="77" cy="91" rx="9" ry="19" transform="rotate(120 77 91)"/><ellipse cx="145" cy="32" rx="7" ry="15" transform="rotate(25 145 32)"/><ellipse cx="145" cy="32" rx="7" ry="15" transform="rotate(95 145 32)"/></g><g fill="#c6a978"><circle cx="115" cy="48" r="7"/><circle cx="77" cy="91" r="4"/><circle cx="145" cy="32" r="3"/></g></svg>
+      <svg class="envelope-flower envelope-flower-bottom" viewBox="0 0 170 180" aria-hidden="true"><g fill="none" stroke="#92977d" stroke-width="2" stroke-linecap="round"><path d="M94 160Q83 112 111 70M104 122Q72 109 54 82M111 100Q134 83 144 52M92 143Q119 132 139 111"/></g><g fill="#a8a88a" opacity=".85"><ellipse cx="70" cy="106" rx="12" ry="5" transform="rotate(38 70 106)"/><ellipse cx="129" cy="88" rx="13" ry="5" transform="rotate(-42 129 88)"/><ellipse cx="127" cy="132" rx="13" ry="5" transform="rotate(-26 127 132)"/></g><g fill="#fbf8f0" stroke="#e7dfd0" stroke-width="1"><ellipse cx="115" cy="48" rx="13" ry="30"/><ellipse cx="115" cy="48" rx="13" ry="30" transform="rotate(45 115 48)"/><ellipse cx="115" cy="48" rx="13" ry="30" transform="rotate(90 115 48)"/><ellipse cx="115" cy="48" rx="13" ry="30" transform="rotate(135 115 48)"/><ellipse cx="77" cy="91" rx="9" ry="19"/><ellipse cx="77" cy="91" rx="9" ry="19" transform="rotate(60 77 91)"/><ellipse cx="77" cy="91" rx="9" ry="19" transform="rotate(120 77 91)"/><ellipse cx="145" cy="32" rx="7" ry="15" transform="rotate(25 145 32)"/><ellipse cx="145" cy="32" rx="7" ry="15" transform="rotate(95 145 32)"/></g><g fill="#c6a978"><circle cx="115" cy="48" r="7"/><circle cx="77" cy="91" r="4"/><circle cx="145" cy="32" r="3"/></g></svg>
     </button>
-    <p class="envelope-hint">Tap the envelope to open</p>
+    <p class="envelope-hint">Tap here to open</p>
   </div>
 </div>
 <div class="confetti" aria-hidden="true">
