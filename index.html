@@ -153,16 +153,29 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 .envelope-intro.is-opening{background:radial-gradient(ellipse at 50% 25%,rgba(255,253,248,.96),rgba(251,244,233,.9) 58%,rgba(240,230,216,.84))}
 
 
-/* Reveal the invitation itself with a clear, centred zoom instead of exposing a blank cover. */
+/* Reveal the invitation early and quickly, so the opening never feels blank. */
 .page{
   opacity:0;
-  transform:scale(.88);
-  transform-origin:50% 18%;
-  transition:transform 1.05s cubic-bezier(.16,.78,.2,1),opacity .72s ease;
+  transform:scale(.96);
+  transform-origin:50% 12%;
+  transition:transform .52s cubic-bezier(.18,.72,.22,1),opacity .28s ease;
   will-change:transform,opacity;
 }
 .page.invitation-reveal{opacity:1;transform:scale(1)}
-@media(prefers-reduced-motion:reduce){.page{opacity:1;transform:none;transition:none}}
+.page.invitation-reveal .intro,
+.page.invitation-reveal .hero,
+.page.invitation-reveal .countdown-section,
+.page.invitation-reveal .event-venue-grid{
+  animation:inviteContentArrive .62s both;
+}
+.page.invitation-reveal .hero{animation-delay:.08s}
+.page.invitation-reveal .countdown-section{animation-delay:.15s}
+.page.invitation-reveal .event-venue-grid{animation-delay:.2s}
+@keyframes inviteContentArrive{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@media(prefers-reduced-motion:reduce){.page{opacity:1;transform:none;transition:none}.page.invitation-reveal .intro,.page.invitation-reveal .hero,.page.invitation-reveal .countdown-section,.page.invitation-reveal .event-venue-grid{animation:none}}
 
 /* Refined envelope choreography: a quiet idle float, tactile seal, and layered opening. */
 .envelope-intro{
@@ -361,15 +374,15 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
    openInvitation.disabled=true;
    envelopeIntro.classList.add('is-opening');
    const invitationPage=document.querySelector('.page');
-   // Begin the invitation zoom while the envelope finishes opening.
+   // Bring the invitation into view almost immediately as the flap opens.
    window.setTimeout(function(){
      invitationPage.classList.add('invitation-reveal');
-   },820);
+   },180);
    window.setTimeout(function(){
      envelopeIntro.classList.add('is-gone');
      envelopeIntro.setAttribute('aria-hidden','true');
      document.body.style.overflow='';
-   },1450);
+   },900);
  });
  function setPlaying(playing){
    label.textContent=playing?'Pause wedding song':'Play our wedding song';
