@@ -899,7 +899,10 @@ html,body{background:#fbf8ef!important}
   12%{opacity:1}
   100%{opacity:.0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(var(--end-scale,1.7)) rotate(var(--turn,260deg))}
 }
-.envelope-intro.is-opening .envelope-button{animation:envelopePop .72s cubic-bezier(.18,.8,.2,1) forwards!important}
+.envelope-intro.is-opening .envelope-button{animation:envelopeOpenScene 1.05s cubic-bezier(.2,.7,.2,1) forwards!important}
+.envelope-intro.is-opening .envelope-flap{transform:rotateX(180deg)!important;transition:transform .72s cubic-bezier(.2,.72,.25,1)!important}
+@keyframes envelopeOpenScene{0%{transform:scale(1)}35%{transform:scale(1.045) translateY(-7px)}68%{transform:scale(1.06) translateY(-12px)}100%{transform:scale(.9) translateY(20px);opacity:0}}
+
 .envelope-intro.is-opening .envelope-flap{transition:transform .48s cubic-bezier(.2,.72,.2,1)!important}
 .envelope-intro.is-opening{transition:opacity .65s ease .78s,visibility .65s ease .78s!important}
 @keyframes envelopePop{0%{transform:scale(1)}38%{transform:scale(1.09) rotate(-2deg)}100%{transform:scale(.82) translateY(18px);opacity:0}}
@@ -947,6 +950,13 @@ html,body{background:#fbf8ef!important}
  background:radial-gradient(ellipse at 50% 50%,rgba(255,250,242,.08),rgba(251,244,233,.02))!important;
 }
 .envelope-shell{width:min(92vw,620px)!important;z-index:5!important}
+.envelope-kicker,.envelope-bears{display:none!important}
+.envelope-hint{color:#986e64!important;letter-spacing:.18em!important;font-size:11px!important}
+.envelope-hint:after{background:#c49b5f!important}
+.envelope-script{top:19%!important;font-family:"Brush Script MT","Segoe Script",cursive!important;font-size:clamp(36px,8vw,58px)!important;letter-spacing:.01em!important}
+.envelope-button{filter:drop-shadow(0 18px 25px rgba(122,75,68,.18))!important}
+.envelope-seal{top:64%!important}
+
 .envelope-button{
  width:min(84vw,570px)!important;
  aspect-ratio:1.58!important;
