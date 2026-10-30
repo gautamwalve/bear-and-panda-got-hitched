@@ -407,6 +407,28 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
  .hero .floral-spray.left{left:-16px!important}
  .hero .floral-spray.right{right:-16px!important}
 }
+
+/* Use a standalone floral image asset to avoid inline SVG/font fallback artifacts. */
+.hero::before,.hero::after{content:none!important;display:none!important}
+.hero .floral-spray{
+ position:absolute!important;display:block!important;top:52%!important;
+ width:clamp(112px,23vw,170px)!important;height:auto!important;
+ max-height:none!important;object-fit:contain!important;
+ z-index:0!important;opacity:1!important;pointer-events:none!important;
+}
+.hero .floral-spray.left{left:-12px!important;right:auto!important;transform:translateY(-50%) rotate(-3deg)!important}
+.hero .floral-spray.right{right:-12px!important;left:auto!important;transform:translateY(-50%) scaleX(-1) rotate(-3deg)!important}
+.hero .hero-content{position:relative!important;z-index:1!important}
+@media(max-width:620px){
+ .hero .floral-spray{width:clamp(100px,25vw,150px)!important;top:52%!important}
+ .hero .floral-spray.left{left:-12px!important}
+ .hero .floral-spray.right{right:-12px!important}
+}
+@media(max-width:380px){
+ .hero .floral-spray{width:94px!important}
+ .hero .floral-spray.left{left:-16px!important}
+ .hero .floral-spray.right{right:-16px!important}
+}
 </style>
 </head>
 <body>
@@ -439,82 +461,8 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 <p class="intro">With love and the blessings of our families, we invite you to share in the joy of our wedding and the beginning of our forever.</p>
 <section class="hero" aria-label="The wedding of Gautam and Tejasvini">
 <div class="arch" aria-hidden="true"></div>
-<svg class="floral-spray left" viewBox="0 0 230 410" aria-hidden="true">
- <defs>
-  <radialGradient id="petalLav" cx="42%" cy="35%" r="70%"><stop offset="0" stop-color="#fff8ff"/><stop offset=".48" stop-color="#e9d9f0"/><stop offset="1" stop-color="#b99bc9"/></radialGradient>
-  <radialGradient id="petalPink" cx="40%" cy="30%" r="75%"><stop offset="0" stop-color="#fff7fb"/><stop offset=".55" stop-color="#efd8e9"/><stop offset="1" stop-color="#c79fbe"/></radialGradient>
-  <linearGradient id="leafWash" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7dfc5"/><stop offset="1" stop-color="#879b7c"/></linearGradient>
- </defs>
- <g fill="none" stroke="#819477" stroke-width="2.5" stroke-linecap="round">
-  <path d="M12 402 C38 334 58 278 85 224 S145 118 194 12"/>
-  <path d="M40 333 Q3 300 8 253 Q48 273 40 333Z" fill="url(#leafWash)" stroke="#91a184" stroke-width="1.5"/>
-  <path d="M64 282 Q105 286 133 247 Q91 233 64 282Z" fill="url(#leafWash)" stroke="#91a184" stroke-width="1.5"/>
-  <path d="M93 218 Q53 186 62 142 Q105 167 93 218Z" fill="url(#leafWash)" stroke="#91a184" stroke-width="1.5"/>
-  <path d="M124 165 Q164 167 188 126 Q146 115 124 165Z" fill="url(#leafWash)" stroke="#91a184" stroke-width="1.5"/>
-  <path d="M151 104 Q119 75 132 39 Q166 61 151 104Z" fill="url(#leafWash)" stroke="#91a184" stroke-width="1.5"/>
-  <path d="M30 365 Q-1 350 1 318 Q31 330 30 365Z" fill="#bdc9ae" stroke="#91a184" stroke-width="1.3"/>
-  <path d="M83 242 Q120 222 145 189" stroke="#a1ae91" stroke-width="1.2"/>
-  <path d="M92 215L65 149M124 165L183 130M151 104L137 45M40 333L11 258"/>
- </g>
- <g transform="translate(76 105)">
-  <g fill="url(#petalLav)" stroke="#b69bc8" stroke-width="1.1">
-   <ellipse cy="-24" rx="13" ry="27"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(45)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(90)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(135)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(180)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(225)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(270)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(315)"/>
-  </g><circle r="11" fill="#d4b56f"/><circle r="6" fill="#f8e9b9"/><circle r="2.2" fill="#9c8050"/>
-  <g fill="#fff8e6" opacity=".75"><circle cx="-7" cy="-7" r="2"/><circle cx="7" cy="5" r="1.8"/><circle cx="1" cy="-10" r="1.5"/></g>
- </g>
- <g transform="translate(164 207) scale(.76)">
-  <g fill="url(#petalPink)" stroke="#c6a4c1" stroke-width="1.1">
-   <ellipse cy="-24" rx="13" ry="27"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(45)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(90)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(135)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(180)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(225)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(270)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(315)"/>
-  </g><circle r="10" fill="#d1b16e"/><circle r="5" fill="#fbefc8"/>
- </g>
- <g transform="translate(34 290) scale(.68)">
-  <g fill="url(#petalLav)" stroke="#b69bc8" stroke-width="1.1">
-   <ellipse cy="-24" rx="13" ry="27"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(45)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(90)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(135)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(180)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(225)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(270)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(315)"/>
-  </g><circle r="10" fill="#d1b16e"/><circle r="5" fill="#fbefc8"/>
- </g>
- <g transform="translate(193 52) scale(.46)">
-  <g fill="url(#petalPink)" stroke="#c6a4c1" stroke-width="1.3"><ellipse cy="-24" rx="13" ry="27"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(60)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(120)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(180)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(240)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(300)"/></g><circle r="9" fill="#d1b16e"/>
- </g>
- <g fill="#cbb5d8" opacity=".8"><circle cx="115" cy="30" r="3"/><circle cx="14" cy="214" r="3"/><circle cx="202" cy="260" r="2.5"/><circle cx="112" cy="350" r="2.5"/></g>
-</svg>
-<svg class="floral-spray right" viewBox="0 0 230 410" aria-hidden="true">
- <defs>
-  <radialGradient id="petalLav" cx="42%" cy="35%" r="70%"><stop offset="0" stop-color="#fff8ff"/><stop offset=".48" stop-color="#e9d9f0"/><stop offset="1" stop-color="#b99bc9"/></radialGradient>
-  <radialGradient id="petalPink" cx="40%" cy="30%" r="75%"><stop offset="0" stop-color="#fff7fb"/><stop offset=".55" stop-color="#efd8e9"/><stop offset="1" stop-color="#c79fbe"/></radialGradient>
-  <linearGradient id="leafWash" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7dfc5"/><stop offset="1" stop-color="#879b7c"/></linearGradient>
- </defs>
- <g fill="none" stroke="#819477" stroke-width="2.5" stroke-linecap="round">
-  <path d="M12 402 C38 334 58 278 85 224 S145 118 194 12"/>
-  <path d="M40 333 Q3 300 8 253 Q48 273 40 333Z" fill="url(#leafWash)" stroke="#91a184" stroke-width="1.5"/>
-  <path d="M64 282 Q105 286 133 247 Q91 233 64 282Z" fill="url(#leafWash)" stroke="#91a184" stroke-width="1.5"/>
-  <path d="M93 218 Q53 186 62 142 Q105 167 93 218Z" fill="url(#leafWash)" stroke="#91a184" stroke-width="1.5"/>
-  <path d="M124 165 Q164 167 188 126 Q146 115 124 165Z" fill="url(#leafWash)" stroke="#91a184" stroke-width="1.5"/>
-  <path d="M151 104 Q119 75 132 39 Q166 61 151 104Z" fill="url(#leafWash)" stroke="#91a184" stroke-width="1.5"/>
-  <path d="M30 365 Q-1 350 1 318 Q31 330 30 365Z" fill="#bdc9ae" stroke="#91a184" stroke-width="1.3"/>
-  <path d="M83 242 Q120 222 145 189" stroke="#a1ae91" stroke-width="1.2"/>
-  <path d="M92 215L65 149M124 165L183 130M151 104L137 45M40 333L11 258"/>
- </g>
- <g transform="translate(76 105)">
-  <g fill="url(#petalLav)" stroke="#b69bc8" stroke-width="1.1">
-   <ellipse cy="-24" rx="13" ry="27"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(45)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(90)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(135)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(180)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(225)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(270)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(315)"/>
-  </g><circle r="11" fill="#d4b56f"/><circle r="6" fill="#f8e9b9"/><circle r="2.2" fill="#9c8050"/>
-  <g fill="#fff8e6" opacity=".75"><circle cx="-7" cy="-7" r="2"/><circle cx="7" cy="5" r="1.8"/><circle cx="1" cy="-10" r="1.5"/></g>
- </g>
- <g transform="translate(164 207) scale(.76)">
-  <g fill="url(#petalPink)" stroke="#c6a4c1" stroke-width="1.1">
-   <ellipse cy="-24" rx="13" ry="27"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(45)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(90)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(135)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(180)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(225)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(270)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(315)"/>
-  </g><circle r="10" fill="#d1b16e"/><circle r="5" fill="#fbefc8"/>
- </g>
- <g transform="translate(34 290) scale(.68)">
-  <g fill="url(#petalLav)" stroke="#b69bc8" stroke-width="1.1">
-   <ellipse cy="-24" rx="13" ry="27"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(45)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(90)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(135)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(180)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(225)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(270)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(315)"/>
-  </g><circle r="10" fill="#d1b16e"/><circle r="5" fill="#fbefc8"/>
- </g>
- <g transform="translate(193 52) scale(.46)">
-  <g fill="url(#petalPink)" stroke="#c6a4c1" stroke-width="1.3"><ellipse cy="-24" rx="13" ry="27"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(60)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(120)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(180)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(240)"/><ellipse cy="-24" rx="13" ry="27" transform="rotate(300)"/></g><circle r="9" fill="#d1b16e"/>
- </g>
- <g fill="#cbb5d8" opacity=".8"><circle cx="115" cy="30" r="3"/><circle cx="14" cy="214" r="3"/><circle cx="202" cy="260" r="2.5"/><circle cx="112" cy="350" r="2.5"/></g>
-</svg>
+<img class="floral-spray left" src="./floral-spray.svg?v=2" alt="" aria-hidden="true">
+<img class="floral-spray right" src="./floral-spray.svg?v=2" alt="" aria-hidden="true">
 <div class="hero-content">
 <p class="overline">A celebration of love</p>
 <h1>Gautam<span class="and">&amp;</span>Tejasvini</h1>
