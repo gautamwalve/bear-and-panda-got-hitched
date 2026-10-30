@@ -1140,6 +1140,39 @@ html,body{background:#fbf8ef!important}
  .character-name{font-size:11px!important}
 }
 
+
+/* Desktop/tablet browser scaling correction: prevent the invitation looking miniature. */
+@media (min-width:621px) and (max-width:1100px){
+ .page{padding:14px!important}
+ .card{width:100%!important;max-width:1100px!important;padding:clamp(22px,3vw,36px)!important}
+ .music-row{margin-bottom:8px!important}
+ .tiny-animals{font-size:24px!important;margin:12px 0 8px!important}
+ .intro{font-size:clamp(19px,2.1vw,24px)!important;line-height:1.55!important;max-width:1000px!important}
+ .hero{padding:clamp(28px,4vw,42px) 10px 28px!important}
+ .hero .hero-content{padding-left:clamp(70px,9vw,110px)!important;padding-right:clamp(70px,9vw,110px)!important}
+ .hero h1{font-size:clamp(62px,7.4vw,82px)!important}
+ .subtitle{font-size:clamp(23px,2.6vw,29px)!important}
+ .countdown-section{max-width:100%!important;margin-top:18px!important;padding:18px 12px!important}
+ .countdown-heading{font-size:13px!important}
+ .countdown{max-width:100%!important;gap:12px!important}
+ .countdown-unit{padding:15px 6px!important}
+ .countdown-unit span{font-size:clamp(36px,4.2vw,46px)!important}
+ .event-venue-grid{width:100%!important;gap:22px!important;margin:24px auto!important}
+ .event-venue-grid .detail{padding:22px 12px!important}
+ .detail-label,.section-label{font-size:11px!important;letter-spacing:.16em!important}
+ .merged-date{font-size:clamp(24px,2.8vw,30px)!important}
+ .merged-time{font-size:clamp(28px,3vw,34px)!important}
+ .details .programme{font-size:clamp(16px,1.8vw,19px)!important}
+ .venue{padding:24px 14px!important}
+ .venue h2{font-size:clamp(28px,3.2vw,36px)!important}
+ .address{font-size:17px!important}
+ .map-link{font-size:12px!important}
+ .closing{font-size:clamp(24px,2.8vw,30px)!important}
+ .playful-runway{height:220px!important;max-width:100%!important;margin-top:16px!important}
+ .chibi-runner{width:210px!important;height:220px!important;--runner-width:210px!important;--runner-half-width:105px!important}
+ .model-stage,.character-art{width:204px!important;height:210px!important}
+}
+
 </style>
 </head>
 <body>
