@@ -565,6 +565,50 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
  .hero .floral-spray{width:124px!important}
 }
 
+
+/* Wedding date and time panel, styled to match the uploaded invitation. */
+.merged-detail{
+ position:relative!important;
+ min-height:180px!important;
+ padding:28px 42px!important;
+ border:1px solid rgba(195,165,108,.62)!important;
+ border-radius:58px!important;
+ background:rgba(255,253,248,.35)!important;
+ box-shadow:inset 0 0 0 1px rgba(195,165,108,.12)!important;
+ overflow:visible!important;
+}
+.merged-detail:before,.merged-detail:after{
+ position:absolute!important;top:50%!important;
+ display:block!important;color:#bd914c!important;
+ font:26px/1.5 Georgia,serif!important;
+ content:"✦"!important;
+ transform:translateY(-50%)!important;
+}
+.merged-detail:before{left:-13px!important}
+.merged-detail:after{right:-13px!important}
+.merged-detail .detail-label{margin-bottom:9px!important;letter-spacing:.19em!important}
+.merged-date{margin-top:0!important;font-size:clamp(23px,4.2vw,42px)!important;line-height:1.3!important}
+.merged-time{margin-top:8px!important;font-size:clamp(25px,4.2vw,42px)!important;line-height:1.2!important}
+.details .programme{
+ border:0!important;padding:9px 8px!important;
+ font-size:clamp(15px,2vw,21px)!important;line-height:1.5!important;
+}
+@media(max-width:620px){
+ .merged-detail{min-height:164px!important;padding:25px 32px!important;border-radius:48px!important}
+ .merged-detail:before,.merged-detail:after{font-size:21px!important}
+ .merged-detail:before{left:-10px!important}
+ .merged-detail:after{right:-10px!important}
+ .merged-detail .detail-label{font-size:9px!important;letter-spacing:.15em!important;margin-bottom:8px!important}
+ .merged-date{font-size:clamp(20px,5.4vw,28px)!important}
+ .merged-time{font-size:clamp(23px,6vw,31px)!important;margin-top:7px!important}
+ .details .programme{font-size:15px!important;padding:8px 5px!important}
+}
+@media(max-width:380px){
+ .merged-detail{min-height:156px!important;padding:23px 28px!important}
+ .merged-date{font-size:20px!important}
+ .merged-time{font-size:23px!important}
+}
+
 </style>
 </head>
 <body>
