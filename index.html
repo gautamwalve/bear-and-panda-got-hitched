@@ -410,4 +410,25 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
  .hero .floral-spray.left{left:-24px!important}
  .hero .floral-spray.right{right:-24px!important}
 }
+
+/* Match the reference: open, edge-framing watercolor florals, no arch/card. */
+.hero{position:relative!important;isolation:isolate!important;overflow:visible!important}
+.hero .arch{display:none!important}
+.hero .floral-spray{
+ position:absolute!important;display:block!important;top:50%!important;
+ width:clamp(126px,22vw,205px)!important;height:auto!important;
+ max-height:none!important;object-fit:contain!important;z-index:0!important;
+ opacity:1!important;pointer-events:none!important;filter:none!important;
+}
+.hero .floral-spray.left{left:-24px!important;right:auto!important;transform:translateY(-50%)!important}
+.hero .floral-spray.right{right:-24px!important;left:auto!important;transform:translateY(-50%) scaleX(-1)!important}
+.hero .hero-content{position:relative!important;z-index:1!important}
+@media(max-width:620px){
+ .hero .floral-spray{width:clamp(118px,25vw,168px)!important}
+ .hero .floral-spray.left{left:-22px!important}
+ .hero .floral-spray.right{right:-22px!important}
+}
+@media(max-width:380px){
+ .hero .floral-spray{width:118px!important}
+}
 </style>
