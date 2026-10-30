@@ -153,29 +153,32 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 .envelope-intro.is-opening{background:radial-gradient(ellipse at 50% 25%,rgba(255,253,248,.96),rgba(251,244,233,.9) 58%,rgba(240,230,216,.84))}
 
 
-/* Reveal the invitation early and quickly, so the opening never feels blank. */
-.page{
-  opacity:0;
-  transform:scale(.96);
-  transform-origin:50% 12%;
-  transition:transform .52s cubic-bezier(.18,.72,.22,1),opacity .28s ease;
-  will-change:transform,opacity;
+/* The floral invitation is revealed at natural size — no zoom or blank transition. */
+.page{opacity:1;transform:none;transition:none}
+.hero{
+  overflow:hidden;
+  padding:clamp(38px,6vw,72px) 16px clamp(34px,5vw,60px);
+  border:1px solid rgba(195,165,108,.48);
+  background:
+    radial-gradient(ellipse at 50% 48%,rgba(255,255,255,.92),rgba(255,250,241,.7) 62%,rgba(243,232,218,.5)),
+    linear-gradient(135deg,#fffaf1,#fbf4e9);
+  box-shadow:inset 0 0 0 6px rgba(255,255,255,.35);
 }
-.page.invitation-reveal{opacity:1;transform:scale(1)}
-.page.invitation-reveal .intro,
-.page.invitation-reveal .hero,
-.page.invitation-reveal .countdown-section,
-.page.invitation-reveal .event-venue-grid{
-  animation:inviteContentArrive .62s both;
+.hero:before,.hero:after{
+  content:"✿  ❀  ✿";
+  position:absolute;
+  color:#a7a98d;
+  opacity:.72;
+  font:clamp(17px,3vw,26px)/1 Georgia,serif;
+  letter-spacing:.28em;
+  pointer-events:none;
 }
-.page.invitation-reveal .hero{animation-delay:.08s}
-.page.invitation-reveal .countdown-section{animation-delay:.15s}
-.page.invitation-reveal .event-venue-grid{animation-delay:.2s}
-@keyframes inviteContentArrive{
-  from{opacity:0;transform:translateY(12px)}
-  to{opacity:1;transform:translateY(0)}
-}
-@media(prefers-reduced-motion:reduce){.page{opacity:1;transform:none;transition:none}.page.invitation-reveal .intro,.page.invitation-reveal .hero,.page.invitation-reveal .countdown-section,.page.invitation-reveal .event-venue-grid{animation:none}}
+.hero:before{top:14px;left:12px;transform:rotate(-18deg)}
+.hero:after{right:12px;bottom:14px;transform:rotate(162deg)}
+.hero .arch{inset:12px 8% 10px;border-color:rgba(195,165,108,.48)}
+.hero .arch:after{inset:9px;border-color:rgba(195,165,108,.22)}
+.hero-date{margin:19px 0 0;color:#9c7950;font:11px/1.7 Arial,sans-serif;letter-spacing:.28em}
+.envelope-intro.is-opening{background:rgba(251,244,233,.72)}
 
 /* Refined envelope choreography: a quiet idle float, tactile seal, and layered opening. */
 .envelope-intro{
@@ -299,7 +302,8 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 <div class="hero-content">
 <p class="overline">A celebration of love</p>
 <h1>Gautam<span class="and">&amp;</span>Tejasvini</h1>
-<p class="subtitle">Two hearts · One beautiful beginning</p>
+ <p class="hero-date">12.12.2026</p>
+ <p class="subtitle">Two hearts · One beautiful beginning</p>
 <div class="ornament"><span>✿</span><span>✦</span><span>✿</span></div>
 </div>
 </section>
@@ -374,15 +378,13 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
    openInvitation.disabled=true;
    envelopeIntro.classList.add('is-opening');
    const invitationPage=document.querySelector('.page');
-   // Bring the invitation into view almost immediately as the flap opens.
-   window.setTimeout(function(){
-     invitationPage.classList.add('invitation-reveal');
-   },180);
+   // Reveal the floral invitation directly; no zoom transition.
+   invitationPage.classList.add('invitation-reveal');
    window.setTimeout(function(){
      envelopeIntro.classList.add('is-gone');
      envelopeIntro.setAttribute('aria-hidden','true');
      document.body.style.overflow='';
-   },900);
+   },720);
  });
  function setPlaying(playing){
    label.textContent=playing?'Pause wedding song':'Play our wedding song';
