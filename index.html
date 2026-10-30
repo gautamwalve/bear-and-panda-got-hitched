@@ -1257,6 +1257,23 @@ body{background-color:#fbf8ef!important}
  .page .intro,.page .address,.page .closing,.page .signature,.page .detail-label,.page .section-label{color:inherit}
 }
 
+
+/* Side-by-side website and downloadable digital invitation */
+.experience-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,390px);gap:clamp(16px,2vw,30px);align-items:start;width:min(100%,1720px);margin:0 auto;padding:14px}
+.experience-layout>.page{min-width:0;padding:0}
+.experience-layout>.page>.card{min-height:calc(100svh - 28px);padding:clamp(22px,3vw,48px)}
+.digital-invite-panel{position:sticky;top:14px;align-self:start;text-align:center;padding:14px;background:#fffdf8;border:1px solid rgba(195,165,108,.62);box-shadow:0 12px 34px rgba(91,81,62,.09);border-radius:4px}
+.digital-invite-title{font:10px/1.6 Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#617b6e;margin:3px 0 12px}
+.digital-invite-download{display:block;text-decoration:none;color:inherit}
+.digital-invite-image{display:block;width:100%;height:auto;max-height:calc(100svh - 125px);object-fit:contain;object-position:top center;border:1px solid rgba(195,165,108,.38);background:#fbf4e9}
+.digital-invite-hint{font:11px/1.6 Arial,sans-serif;color:#777970;margin:9px 0 5px}
+.digital-invite-site{display:inline-block;color:#ac5f70;font:12px/1.6 Arial,sans-serif;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.venue-map-qr{display:flex;align-items:center;justify-content:center;gap:14px;margin:18px auto 0;max-width:390px;padding:10px 14px;border:1px solid rgba(135,155,139,.55);border-radius:8px;background:#f8f7ef;text-decoration:none;color:#617b6e}
+.venue-map-qr img{width:104px;height:104px;object-fit:contain;background:#fff;padding:4px;border:1px solid #e3dccb}
+.venue-map-qr span{font:600 11px/1.55 Arial,sans-serif;letter-spacing:.04em;text-align:left}
+@media(max-width:900px){.experience-layout{grid-template-columns:minmax(0,1fr);max-width:760px;padding:8px}.experience-layout>.page{order:1}.digital-invite-panel{position:static;order:2;width:min(100%,460px);margin:0 auto 12px}.digital-invite-image{max-height:none;width:min(100%,390px);margin:0 auto}}
+@media(max-width:620px){.experience-layout{padding:6px;gap:12px}.experience-layout>.page>.card{min-height:calc(100svh - 12px)}.venue-map-qr{gap:10px}.venue-map-qr img{width:88px;height:88px}}
+
 </style>
 </head>
 <body>
@@ -1282,6 +1299,7 @@ body{background-color:#fbf8ef!important}
 <div class="confetti" aria-hidden="true">
 <span style="left:4%;--duration:19s;--delay:-8s;--rot:25deg"></span><span style="left:11%;--duration:23s;--delay:-14s;--rot:75deg"></span><span style="left:18%;--duration:21s;--delay:-4s;--rot:10deg"></span><span style="left:26%;--duration:25s;--delay:-19s;--rot:30deg"></span><span style="left:34%;--duration:20s;--delay:-12s;--rot:90deg"></span><span style="left:42%;--duration:24s;--delay:-5s;--rot:15deg"></span><span style="left:50%;--duration:22s;--delay:-16s;--rot:55deg"></span><span style="left:58%;--duration:26s;--delay:-10s;--rot:5deg"></span><span style="left:66%;--duration:21s;--delay:-2s;--rot:70deg"></span><span style="left:74%;--duration:24s;--delay:-18s;--rot:15deg"></span><span style="left:82%;--duration:20s;--delay:-7s;--rot:45deg"></span><span style="left:91%;--duration:25s;--delay:-13s;--rot:25deg"></span><span style="left:97%;--duration:22s;--delay:-1s;--rot:80deg"></span><span style="left:8%;--duration:27s;--delay:-20s;--rot:55deg"></span><span style="left:30%;--duration:23s;--delay:-9s;--rot:10deg"></span><span style="left:47%;--duration:24s;--delay:-17s;--rot:65deg"></span><span style="left:71%;--duration:26s;--delay:-3s;--rot:45deg"></span><span style="left:88%;--duration:21s;--delay:-11s;--rot:70deg"></span>
 </div>
+<div class="experience-layout">
 <main class="page" style="opacity:0;visibility:hidden;pointer-events:none">
 <article class="card">
 
@@ -1341,7 +1359,10 @@ body{background-color:#fbf8ef!important}
     <div class="section-label">The venue</div>
     <h2>Shri Kshetra Panchayatan Mandir</h2>
     <div class="address">Nadhal, Navi Mumbai – 410206<br>Maharashtra, India</div>
-    <a class="map-link" href="https://www.google.com/maps?q=18.905137816391697,73.22917755573111" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> Open location in Google Maps</a>
+    <a class="venue-map-qr" href="https://www.google.com/maps?q=18.905137816391697,73.22917755573111" target="_blank" rel="noopener noreferrer" aria-label="Scan or tap to open wedding venue directions in Google Maps">
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&amp;data=https%3A%2F%2Fwww.google.com%2Fmaps%3Fq%3D18.905137816391697%2C73.22917755573111" alt="QR code for directions to Shri Kshetra Panchayatan Mandir">
+  <span>Scan for Google Maps directions<br>or tap here to open</span>
+</a>
   </section>
 </div>
 <div class="ornament"><span>✦</span></div>
@@ -1366,6 +1387,15 @@ body{background-color:#fbf8ef!important}
 </article>
 
 </main>
+<aside class="digital-invite-panel" aria-label="Downloadable digital wedding invitation">
+  <div class="digital-invite-title">Digital wedding invitation</div>
+  <a class="digital-invite-download" href="./digital-invitation.jpeg" download="Gautam-and-Tejasvini-Wedding-Invitation.jpeg" aria-label="Download the digital wedding invitation">
+    <img class="digital-invite-image" src="./digital-invitation.jpeg" alt="Gautam and Tejasvini wedding invitation. Click to download." loading="lazy">
+  </a>
+  <p class="digital-invite-hint">Tap the invitation to download it</p>
+  <a class="digital-invite-site" href="https://gautamwalve.github.io/bear-and-panda-got-hitched/" target="_blank" rel="noopener noreferrer">Open our wedding website</a>
+</aside>
+</div>
 <audio id="weddingAudio" loop preload="auto"><source src="Tumhi%20Dekho%20Naa%20(Sitar%20Lofi).mp3" type="audio/mpeg"><source src="Chand%20Tu%20Nabhatla.mp3" type="audio/mpeg"></audio>
 <script>
 
