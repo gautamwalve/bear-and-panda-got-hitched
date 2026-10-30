@@ -830,6 +830,31 @@ html,body{background:#fbf8ef!important}
 }
 .venue .venue-frame-art{display:none!important}
 
+
+/* Keep the floral sprays at the outer edges so they never sit over invitation text. */
+.hero{overflow:hidden!important}
+.hero .floral-spray{
+  top:50%!important;
+  width:clamp(48px,7vw,92px)!important;
+  max-height:132px!important;
+  height:auto!important;
+  opacity:.72!important;
+  z-index:0!important;
+}
+.hero .floral-spray.left{left:0!important;right:auto!important;transform:translateY(-50%) rotate(-3deg)!important}
+.hero .floral-spray.right{right:0!important;left:auto!important;transform:translateY(-50%) scaleX(-1) rotate(-3deg)!important}
+.hero .hero-content{position:relative!important;z-index:2!important;padding-left:clamp(28px,6vw,76px)!important;padding-right:clamp(28px,6vw,76px)!important}
+@media(max-width:620px){
+  .hero .floral-spray{width:44px!important;max-height:105px!important;opacity:.62!important}
+  .hero .floral-spray.left{left:0!important}
+  .hero .floral-spray.right{right:0!important}
+  .hero .hero-content{padding-left:34px!important;padding-right:34px!important}
+}
+@media(max-width:380px){
+  .hero .floral-spray{width:36px!important;max-height:88px!important;opacity:.55!important}
+  .hero .hero-content{padding-left:28px!important;padding-right:28px!important}
+}
+
 </style>
 </head>
 <body>
