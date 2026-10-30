@@ -150,8 +150,19 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
    The invitation page remains visible underneath and is revealed as the cover fades. */
 .envelope-inner-letter{display:none!important}
 .envelope-intro.is-opening .envelope-inner-letter{display:none!important;transform:none!important}
-.page{visibility:visible!important;opacity:1!important}
 .envelope-intro.is-opening{background:radial-gradient(ellipse at 50% 25%,rgba(255,253,248,.96),rgba(251,244,233,.9) 58%,rgba(240,230,216,.84))}
+
+
+/* Reveal the invitation itself with a clear, centred zoom instead of exposing a blank cover. */
+.page{
+  opacity:0;
+  transform:scale(.88);
+  transform-origin:50% 18%;
+  transition:transform 1.05s cubic-bezier(.16,.78,.2,1),opacity .72s ease;
+  will-change:transform,opacity;
+}
+.page.invitation-reveal{opacity:1;transform:scale(1)}
+@media(prefers-reduced-motion:reduce){.page{opacity:1;transform:none;transition:none}}
 
 /* Refined envelope choreography: a quiet idle float, tactile seal, and layered opening. */
 .envelope-intro{
@@ -349,11 +360,16 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
    }
    openInvitation.disabled=true;
    envelopeIntro.classList.add('is-opening');
+   const invitationPage=document.querySelector('.page');
+   // Begin the invitation zoom while the envelope finishes opening.
+   window.setTimeout(function(){
+     invitationPage.classList.add('invitation-reveal');
+   },820);
    window.setTimeout(function(){
      envelopeIntro.classList.add('is-gone');
      envelopeIntro.setAttribute('aria-hidden','true');
      document.body.style.overflow='';
-   },1850);
+   },1450);
  });
  function setPlaying(playing){
    label.textContent=playing?'Pause wedding song':'Play our wedding song';
