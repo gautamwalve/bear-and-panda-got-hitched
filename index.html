@@ -814,6 +814,22 @@ html,body{background:#fbf8ef!important}
  .venue .address{font-size:13px!important}
 }
 
+
+/* User requested clean date and venue cards: retain only a simple gold border. */
+.merged-detail{
+ border:1.4px solid #c49a52!important;border-radius:42px!important;
+ background:rgba(255,253,248,.28)!important;
+ box-shadow:none!important;position:relative!important;
+}
+.merged-detail .date-frame-art{display:none!important}
+.merged-detail:before,.merged-detail:after{display:none!important;content:none!important}
+.venue{
+ border:1.4px solid #c49a52!important;border-radius:42px!important;
+ background:rgba(255,253,248,.28)!important;
+ box-shadow:none!important;position:relative!important;
+}
+.venue .venue-frame-art{display:none!important}
+
 </style>
 </head>
 <body>
@@ -868,50 +884,7 @@ html,body{background:#fbf8ef!important}
 <div class="event-venue-grid">
   <section class="details" aria-label="Wedding date and time">
     <div class="detail merged-detail">
-      <svg class="date-frame-art" viewBox="0 0 900 300" preserveAspectRatio="none" aria-hidden="true">
-  <rect x="27" y="23" width="846" height="254" rx="62" fill="#fffdf8" fill-opacity=".28" stroke="#e2d5bd" stroke-width="1.6"/>
-  <g fill="none" stroke="#bd914d" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
-    <!-- top and bottom fine rules with central breaks -->
-    <path d="M88 23 H397 M503 23 H812 M88 277 H397 M503 277 H812"/>
-    <path d="M88 23 l-8 -5 v10z M812 23 l8 -5 v10z M88 277 l-8 -5 v10z M812 277 l8 -5 v10z"/>
-    <!-- left vertical ornamental stem -->
-    <path d="M39 55 V245"/>
-    <path d="M39 57 C27 45 29 30 39 18 C49 30 51 45 39 57Z"/>
-    <path d="M39 77 C23 62 8 68 12 84 C15 97 28 101 39 115 C50 101 63 97 66 84 C70 68 55 62 39 77Z"/>
-    <path d="M39 77 V115"/>
-    <path d="M39 115 L39 130"/>
-    <!-- four-petal centre rosette -->
-    <path d="M39 119 C30 108 21 113 25 126 C28 132 34 136 39 139 C44 136 50 132 53 126 C57 113 48 108 39 119Z"/>
-    <path d="M39 139 C28 130 23 139 29 151 C32 156 36 160 39 162 C42 160 46 156 49 151 C55 139 50 130 39 139Z"/>
-    <path d="M25 139 C14 130 9 139 16 149 C21 155 29 158 39 162 C36 151 32 145 25 139Z"/>
-    <path d="M53 139 C64 130 69 139 62 149 C57 155 49 158 39 162 C42 151 46 145 53 139Z"/>
-    <path d="M39 162 V184"/>
-    <path d="M39 184 C25 195 29 218 39 231 C49 218 53 195 39 184Z"/>
-    <path d="M39 184 C24 172 10 178 13 192 C16 204 29 210 39 221 C49 210 62 204 65 192 C68 178 54 172 39 184Z"/>
-    <!-- mirrored right vertical ornamental stem -->
-    <path d="M861 55 V245"/>
-    <path d="M861 57 C849 45 851 30 861 18 C871 30 873 45 861 57Z"/>
-    <path d="M861 77 C845 62 830 68 834 84 C837 97 850 101 861 115 C872 101 885 97 888 84 C892 68 877 62 861 77Z"/>
-    <path d="M861 77 V115"/>
-    <path d="M861 115 L861 130"/>
-    <path d="M861 119 C852 108 843 113 847 126 C850 132 856 136 861 139 C866 136 872 132 875 126 C879 113 870 108 861 119Z"/>
-    <path d="M861 139 C850 130 845 139 851 151 C854 156 858 160 861 162 C864 160 868 156 871 151 C877 139 872 130 861 139Z"/>
-    <path d="M847 139 C836 130 831 139 838 149 C843 155 851 158 861 162 C858 151 854 145 847 139Z"/>
-    <path d="M875 139 C886 130 891 139 884 149 C879 155 871 158 861 162 C864 151 868 145 875 139Z"/>
-    <path d="M861 162 V184"/>
-    <path d="M861 184 C847 195 851 218 861 231 C871 218 875 195 861 184Z"/>
-    <path d="M861 184 C846 172 832 178 835 192 C838 204 851 210 861 221 C871 210 884 204 887 192 C890 178 876 172 861 184Z"/>
-  </g>
-  <g fill="#bd914d">
-    <path d="M39 113 L53 139 L39 165 L25 139Z M861 113 L875 139 L861 165 L847 139Z"/>
-    <path d="M39 12 L45 23 L39 34 L33 23Z M861 12 L867 23 L861 34 L855 23Z"/>
-    <path d="M39 224 L45 235 L39 246 L33 235Z M861 224 L867 235 L861 246 L855 235Z"/>
-    <path d="M450 5 L460 23 L450 41 L440 23Z M450 259 L460 277 L450 295 L440 277Z"/>
-    <path d="M430 23 L440 18 L445 23 L440 28Z M470 23 L460 18 L455 23 L460 28Z M430 277 L440 272 L445 277 L440 282Z M470 277 L460 272 L455 277 L460 282Z"/>
-    <circle cx="39" cy="57" r="2.6"/><circle cx="39" cy="184" r="2.6"/>
-    <circle cx="861" cy="57" r="2.6"/><circle cx="861" cy="184" r="2.6"/>
-  </g>
-</svg>
+      
       <div class="detail-label">Wedding ceremony &amp; time</div>
       <div class="merged-date">Saturday, 12 December 2026</div>
       <div class="merged-time">12:32 PM</div>
@@ -935,29 +908,7 @@ html,body{background:#fbf8ef!important}
 </svg>
   </section>
   <section class="venue" aria-label="Wedding venue">
-    <svg class="venue-frame-art" viewBox="0 0 900 340" preserveAspectRatio="none" aria-hidden="true">
-      <rect x="26" y="22" width="848" height="296" rx="58" fill="#fffdf8" fill-opacity=".24" stroke="#e2d5bd" stroke-width="1.6"/>
-      <g fill="none" stroke="#bd914d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M39 96 V244 M861 96 V244"/>
-        <path d="M39 104 C25 90 28 76 39 66 C50 76 53 90 39 104Z M861 104 C875 90 872 76 861 66 C850 76 847 90 861 104Z"/>
-        <path d="M39 112 C22 98 10 108 17 122 C22 132 32 135 39 146 C46 135 56 132 61 122 C68 108 56 98 39 112Z"/>
-        <path d="M861 112 C878 98 890 108 883 122 C878 132 868 135 861 146 C854 135 844 132 839 122 C832 108 844 98 861 112Z"/>
-        <path d="M39 146 L39 170 M861 146 L861 170"/>
-        <path d="M39 166 L54 188 L39 210 L24 188Z M861 166 L876 188 L861 210 L846 188Z"/>
-        <path d="M39 210 V232 M861 210 V232"/>
-        <path d="M39 232 C27 244 29 260 39 271 C49 260 51 244 39 232Z M861 232 C849 244 851 260 861 271 C871 260 873 244 861 232Z"/>
-        <path d="M39 232 C24 220 11 227 15 241 C19 252 30 258 39 267 C48 258 59 252 63 241 C67 227 54 220 39 232Z"/>
-        <path d="M861 232 C876 220 889 227 885 241 C881 252 870 258 861 267 C852 258 841 252 837 241 C833 227 846 220 861 232Z"/>
-        <path d="M450 22 C438 34 438 48 450 57 C462 48 462 34 450 22Z M450 318 C438 306 438 292 450 283 C462 292 462 306 450 318Z"/>
-        <path d="M450 22 C435 9 423 17 431 31 C437 40 450 45 450 45 C450 45 463 40 469 31 C477 17 465 9 450 22Z"/>
-        <path d="M450 318 C435 331 423 323 431 309 C437 300 450 295 450 295 C450 295 463 300 469 309 C477 323 465 331 450 318Z"/>
-      </g>
-      <g fill="#bd914d">
-        <path d="M39 174 L53 188 L39 202 L25 188Z M861 174 L875 188 L861 202 L847 188Z"/>
-        <path d="M450 17 L456 28 L450 39 L444 28Z M450 301 L456 312 L450 323 L444 312Z"/>
-        <circle cx="39" cy="66" r="2.5"/><circle cx="861" cy="66" r="2.5"/>
-      </g>
-    </svg>
+    
     <div class="section-label">The venue</div>
     <h2>Shri Kshetra Panchayatan Mandir</h2>
     <div class="address">Nadhal, Navi Mumbai – 410206<br>Maharashtra, India</div>
