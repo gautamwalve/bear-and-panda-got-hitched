@@ -931,6 +931,45 @@ html,body{background:#fbf8ef!important}
  .entry-floral-field .b8{right:14%;bottom:-110px}
 }
 
+
+/* Gentle breeze and romantic envelope opening, tuned to the supplied reference. */
+.entry-floral-field{
+ transform-origin:50% 50%;
+ animation:floralBreeze 8s ease-in-out infinite alternate;
+ will-change:transform,background-position;
+}
+@keyframes floralBreeze{
+ 0%{transform:scale(1.015) translate3d(-3px,0,0);background-position:49.5% 50%}
+ 50%{transform:scale(1.035) translate3d(2px,-3px,0);background-position:50.5% 49.5%}
+ 100%{transform:scale(1.02) translate3d(0,2px,0);background-position:50% 50.5%}
+}
+.envelope-intro{
+ background:radial-gradient(ellipse at 50% 50%,rgba(255,250,242,.08),rgba(251,244,233,.02))!important;
+}
+.envelope-shell{width:min(92vw,620px)!important;z-index:5!important}
+.envelope-button{
+ width:min(84vw,570px)!important;
+ aspect-ratio:1.58!important;
+ margin:0 auto 18px!important;
+}
+.envelope-back{
+ background:linear-gradient(135deg,#f4d8c9 0%,#e9bcae 52%,#dca99d 100%)!important;
+ border:1px solid #c49b5f!important;
+ box-shadow:0 20px 38px rgba(104,76,55,.2),inset 0 0 0 4px rgba(255,248,230,.35)!important;
+}
+.envelope-left-fold{background:linear-gradient(105deg,#f0d0c0,#dba99b)!important}
+.envelope-right-fold{background:linear-gradient(255deg,#f1d2c1,#d9a396)!important}
+.envelope-bottom-fold{background:linear-gradient(180deg,#e9bcae,#d49b91)!important}
+.envelope-flap{background:linear-gradient(155deg,#f8e0d1 0%,#edc8b8 65%,#dba79c 100%)!important;border-top:1px solid rgba(190,151,91,.8)}
+.envelope-script{color:#9c4e4d!important;text-shadow:none!important;font-size:clamp(28px,7vw,45px)!important}
+.envelope-seal{width:66px!important;height:66px!important;background:radial-gradient(circle at 35% 28%,#e99aa6,#b85f78)!important;border:2px solid #f4d5c2!important;box-shadow:0 4px 12px rgba(89,53,52,.24),inset 0 0 0 3px rgba(255,240,212,.24)!important}
+@media(max-width:620px){
+ .envelope-button{width:min(88vw,420px)!important}
+ .envelope-shell{width:96vw!important}
+ .envelope-seal{width:54px!important;height:54px!important}
+}
+@media(prefers-reduced-motion:reduce){.entry-floral-field{animation:none!important}}
+
 </style>
 </head>
 <body>
