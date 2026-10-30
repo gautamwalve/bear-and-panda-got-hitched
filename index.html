@@ -431,6 +431,27 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 @media(max-width:380px){
  .hero .floral-spray{width:118px!important}
 }
+
+/* Clean floral artwork: real transparent watercolor, no arch or image placeholders. */
+.hero{position:relative!important;isolation:isolate!important;overflow:visible!important}
+.hero .arch{display:none!important}
+.hero .floral-spray{
+ position:absolute!important;display:block!important;top:50%!important;
+ width:clamp(104px,19vw,150px)!important;height:auto!important;
+ max-height:300px!important;object-fit:contain!important;
+ z-index:0!important;opacity:1!important;pointer-events:none!important;
+ filter:none!important;background:transparent!important;
+}
+.hero .floral-spray.left{left:-12px!important;right:auto!important;transform:translateY(-50%)!important}
+.hero .floral-spray.right{right:-12px!important;left:auto!important;transform:translateY(-50%) scaleX(-1)!important}
+.hero .hero-content{position:relative!important;z-index:1!important}
+@media(max-width:620px){
+ .hero .floral-spray{width:clamp(100px,21vw,140px)!important;max-height:270px!important}
+ .hero .floral-spray.left{left:-12px!important}
+ .hero .floral-spray.right{right:-12px!important}
+}
+@media(max-width:380px){.hero .floral-spray{width:96px!important;max-height:250px!important}}
+
 </style>
 </head>
 <body>
@@ -463,8 +484,8 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 <p class="intro">With love and the blessings of our families, we invite you to share in the joy of our wedding and the beginning of our forever.</p>
 <section class="hero" aria-label="The wedding of Gautam and Tejasvini">
 <div class="arch" aria-hidden="true"></div>
-<img class="floral-spray left" src="./floral-spray.svg?v=3" alt="" aria-hidden="true">
-<img class="floral-spray right" src="./floral-spray.svg?v=3" alt="" aria-hidden="true">
+<img class="floral-spray left" src="./floral-spray.svg?v=4" alt="" aria-hidden="true">
+<img class="floral-spray right" src="./floral-spray.svg?v=4" alt="" aria-hidden="true">
 <div class="hero-content">
 <p class="overline">A celebration of love</p>
 <h1>Gautam<span class="and">&amp;</span>Tejasvini</h1>
