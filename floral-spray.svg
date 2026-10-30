@@ -1,34 +1,57 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 440" width="240" height="440">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 560" width="300" height="560">
 <defs>
- <linearGradient id="stem" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#aab99a"/><stop offset="1" stop-color="#748c72"/></linearGradient>
- <radialGradient id="lav" cx="38%" cy="28%" r="75%"><stop stop-color="#fffaff"/><stop offset=".45" stop-color="#eadcf1"/><stop offset="1" stop-color="#b89acb"/></radialGradient>
- <radialGradient id="pink" cx="38%" cy="28%" r="75%"><stop stop-color="#fff9fc"/><stop offset=".5" stop-color="#f0dce9"/><stop offset="1" stop-color="#c49cbd"/></radialGradient>
- <radialGradient id="gold" cx="35%" cy="30%" r="70%"><stop stop-color="#fff0bd"/><stop offset="1" stop-color="#bd9656"/></radialGradient>
- <g id="blossom">
-  <g fill="url(#lav)" stroke="#b99fc9" stroke-width="1.2">
-   <ellipse cy="-22" rx="13" ry="27"/><ellipse cy="-22" rx="13" ry="27" transform="rotate(45)"/><ellipse cy="-22" rx="13" ry="27" transform="rotate(90)"/><ellipse cy="-22" rx="13" ry="27" transform="rotate(135)"/><ellipse cy="-22" rx="13" ry="27" transform="rotate(180)"/><ellipse cy="-22" rx="13" ry="27" transform="rotate(225)"/><ellipse cy="-22" rx="13" ry="27" transform="rotate(270)"/><ellipse cy="-22" rx="13" ry="27" transform="rotate(315)"/>
-  </g><circle r="10" fill="url(#gold)"/><circle r="3.5" fill="#fff5d7"/>
-  <g fill="#fff" opacity=".55"><circle cx="-7" cy="-7" r="2"/><circle cx="8" cy="2" r="1.6"/><circle cx="-2" cy="8" r="1.5"/></g>
+ <linearGradient id="stem" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#788d70"/><stop offset=".55" stop-color="#a8b99a"/><stop offset="1" stop-color="#d2d8b9"/></linearGradient>
+ <radialGradient id="leaf" cx=".28" cy=".22" r=".9"><stop stop-color="#e4e8ce"/><stop offset=".48" stop-color="#b9c8a7"/><stop offset="1" stop-color="#7d9677"/></radialGradient>
+ <radialGradient id="lavender" cx=".35" cy=".25" r=".8"><stop stop-color="#fffdfd"/><stop offset=".32" stop-color="#f3e8f5"/><stop offset=".72" stop-color="#d7c2e4"/><stop offset="1" stop-color="#a98cbd"/></radialGradient>
+ <radialGradient id="pink" cx=".32" cy=".22" r=".85"><stop stop-color="#fffafa"/><stop offset=".38" stop-color="#f7e5ec"/><stop offset=".78" stop-color="#dfb9ce"/><stop offset="1" stop-color="#bd91b2"/></radialGradient>
+ <radialGradient id="center" cx=".35" cy=".25" r=".8"><stop stop-color="#fff3c7"/><stop offset=".55" stop-color="#e5c16e"/><stop offset="1" stop-color="#aa7a3c"/></radialGradient>
+ <filter id="soft"><feGaussianBlur stdDeviation="1.2"/></filter>
+ <g id="petalflower">
+  <g fill="url(#lavender)" stroke="#b99ecb" stroke-width="1.1" stroke-opacity=".72">
+   <ellipse cy="-26" rx="15" ry="31"/><ellipse cy="-26" rx="15" ry="31" transform="rotate(40)"/><ellipse cy="-26" rx="15" ry="31" transform="rotate(80)"/><ellipse cy="-26" rx="15" ry="31" transform="rotate(120)"/><ellipse cy="-26" rx="15" ry="31" transform="rotate(160)"/><ellipse cy="-26" rx="15" ry="31" transform="rotate(200)"/><ellipse cy="-26" rx="15" ry="31" transform="rotate(240)"/><ellipse cy="-26" rx="15" ry="31" transform="rotate(280)"/><ellipse cy="-26" rx="15" ry="31" transform="rotate(320)"/>
+  </g>
+  <g fill="none" stroke="#fff" stroke-width="1.3" opacity=".55"><path d="M0-49Q-8-31-3-10M18-37Q8-20 5-7M-18-37Q-8-20-5-7"/></g>
+  <circle r="11" fill="url(#center)"/><circle r="4" fill="#fff3cb"/>
+  <g fill="#fff8dd" opacity=".9"><circle cx="-7" cy="-5" r="1.8"/><circle cx="7" cy="-3" r="1.6"/><circle cx="1" cy="7" r="1.5"/><circle cx="-4" cy="5" r="1.2"/></g>
  </g>
- <g id="pinkblossom">
-  <g fill="url(#pink)" stroke="#c6a5c2" stroke-width="1.1">
-   <ellipse cy="-21" rx="12" ry="26"/><ellipse cy="-21" rx="12" ry="26" transform="rotate(45)"/><ellipse cy="-21" rx="12" ry="26" transform="rotate(90)"/><ellipse cy="-21" rx="12" ry="26" transform="rotate(135)"/><ellipse cy="-21" rx="12" ry="26" transform="rotate(180)"/><ellipse cy="-21" rx="12" ry="26" transform="rotate(225)"/><ellipse cy="-21" rx="12" ry="26" transform="rotate(270)"/><ellipse cy="-21" rx="12" ry="26" transform="rotate(315)"/>
-  </g><circle r="9" fill="url(#gold)"/><circle r="3" fill="#fff5d7"/>
+ <g id="pinkflower">
+  <g fill="url(#pink)" stroke="#c79eb9" stroke-width="1" stroke-opacity=".7">
+   <ellipse cy="-23" rx="13" ry="28"/><ellipse cy="-23" rx="13" ry="28" transform="rotate(45)"/><ellipse cy="-23" rx="13" ry="28" transform="rotate(90)"/><ellipse cy="-23" rx="13" ry="28" transform="rotate(135)"/><ellipse cy="-23" rx="13" ry="28" transform="rotate(180)"/><ellipse cy="-23" rx="13" ry="28" transform="rotate(225)"/><ellipse cy="-23" rx="13" ry="28" transform="rotate(270)"/><ellipse cy="-23" rx="13" ry="28" transform="rotate(315)"/>
+  </g><circle r="9" fill="url(#center)"/><circle r="3" fill="#fff1ca"/>
  </g>
 </defs>
-<g fill="none" stroke="url(#stem)" stroke-width="3" stroke-linecap="round">
- <path d="M10 430 C40 355 62 294 91 232 S155 112 210 10"/>
- <path d="M40 356 Q2 325 8 278 Q49 296 40 356Z" fill="#b9c7aa" stroke="#879b7c" stroke-width="1.5"/>
- <path d="M63 302 Q109 303 138 260 Q92 248 63 302Z" fill="#d0d9bd" stroke="#879b7c" stroke-width="1.5"/>
- <path d="M91 236 Q49 201 61 154 Q105 178 91 236Z" fill="#b9c7aa" stroke="#879b7c" stroke-width="1.5"/>
- <path d="M126 174 Q171 178 196 132 Q150 120 126 174Z" fill="#d0d9bd" stroke="#879b7c" stroke-width="1.5"/>
- <path d="M160 105 Q126 72 143 35 Q177 63 160 105Z" fill="#b9c7aa" stroke="#879b7c" stroke-width="1.5"/>
- <path d="M25 397 Q-5 374 3 340 Q32 359 25 397Z" fill="#c5d0b5" stroke="#879b7c" stroke-width="1.4"/>
- <path d="M40 356L12 283M63 302L133 266M91 236L64 160M126 174L190 138M160 105L147 42"/>
+<!-- delicate branching stems -->
+<g fill="none" stroke="url(#stem)" stroke-width="3.2" stroke-linecap="round">
+ <path d="M18 548C48 472 57 401 91 337S161 199 277 16"/>
+ <path d="M50 456C13 421 8 372 20 339M74 390C115 391 149 365 164 328M98 319C58 290 48 250 61 215M139 244C183 250 216 223 229 185M185 163C157 128 160 91 180 63"/>
+ <path d="M31 502C5 478 0 448 10 420M116 286C130 258 133 229 127 203M211 117C238 105 254 81 255 54"/>
 </g>
-<use href="#blossom" x="75" y="112"/>
-<use href="#pinkblossom" x="168" y="224" transform="scale(.92) translate(14 18)"/>
-<use href="#blossom" x="35" y="300" transform="scale(.7) translate(15 128)"/>
-<use href="#pinkblossom" x="205" y="58" transform="scale(.48) translate(225 60)"/>
-<g fill="#d7c4e3" opacity=".8"><circle cx="112" cy="42" r="3"/><circle cx="19" cy="225" r="2.5"/><circle cx="205" cy="326" r="3"/><circle cx="110" cy="388" r="2.4"/></g>
+<!-- layered leaves -->
+<g fill="url(#leaf)" stroke="#829778" stroke-width="1.25" stroke-linejoin="round">
+ <path d="M48 460C8 458 2 426 8 393C40 408 56 431 48 460Z"/><path d="M49 460L13 403" fill="none"/>
+ <path d="M72 404C29 395 19 363 31 332C63 352 79 377 72 404Z"/><path d="M72 404L36 343" fill="none"/>
+ <path d="M81 370C112 330 145 334 169 353C137 378 107 386 81 370Z"/><path d="M81 370L157 354" fill="none"/>
+ <path d="M88 323C47 307 37 276 52 245C82 268 97 294 88 323Z"/><path d="M88 323L57 255" fill="none"/>
+ <path d="M119 278C151 239 185 244 207 264C177 291 147 298 119 278Z"/><path d="M119 278L194 265" fill="none"/>
+ <path d="M142 229C108 202 108 168 129 142C152 174 159 204 142 229Z"/><path d="M142 229L132 153" fill="none"/>
+ <path d="M181 176C214 142 246 149 263 171C232 194 203 199 181 176Z"/><path d="M181 176L250 173" fill="none"/>
+ <path d="M207 112C184 78 194 48 220 28C237 65 233 92 207 112Z"/><path d="M207 112L219 38" fill="none"/>
+ <path d="M29 500C-2 490 -8 463 2 440C27 459 38 479 29 500Z"/>
+</g>
+<!-- small buds and flower heads -->
+<g fill="url(#pink)" stroke="#c69ab6" stroke-width="1.2">
+ <path d="M252 35C237 19 243 2 256 0C269 14 267 28 252 35Z"/><path d="M252 35L256 5" fill="none"/>
+ <path d="M225 212C208 194 215 177 229 176C242 191 240 204 225 212Z"/>
+ <path d="M61 205C44 187 50 170 64 169C78 184 76 197 61 205Z"/>
+ <path d="M167 325C150 309 156 292 170 291C183 306 181 319 167 325Z"/>
+</g>
+<g stroke="#a78ab8" stroke-width="1" fill="none" opacity=".7"><path d="M252 35Q260 20 256 5M225 212Q234 195 229 181M61 205Q69 188 64 174"/></g>
+<!-- open watercolor blooms -->
+<g transform="translate(87 337) scale(1.05)"><use href="#petalflower"/></g>
+<g transform="translate(181 246) scale(.72)"><use href="#pinkflower"/></g>
+<g transform="translate(48 438) scale(.58)"><use href="#pinkflower"/></g>
+<g transform="translate(222 110) scale(.56)"><use href="#petalflower"/></g>
+<g transform="translate(151 414) scale(.48)"><use href="#petalflower"/></g>
+<!-- soft pigment wash behind petals -->
+<g fill="#d9c5e3" opacity=".18" filter="url(#soft)"><circle cx="87" cy="337" r="48"/><circle cx="181" cy="246" r="35"/><circle cx="48" cy="438" r="28"/></g>
 </svg>
