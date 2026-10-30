@@ -982,6 +982,16 @@ html,body{background:#fbf8ef!important}
 }
 @media(prefers-reduced-motion:reduce){.entry-floral-field{animation:none!important}}
 
+
+/* Opening cover must completely hide the invitation until the visitor taps. */
+.page{opacity:0!important;visibility:hidden!important;pointer-events:none!important;transition:opacity .65s ease,visibility .65s ease!important}
+.page.invitation-reveal{opacity:1!important;visibility:visible!important;pointer-events:auto!important;transition:opacity .65s ease!important}
+.envelope-intro{background:#fff3e8!important;isolation:isolate}
+.entry-floral-field{z-index:0!important;background-image:url('./flower-only-field.svg?v=1')!important;background-size:cover!important;background-position:center!important}
+.envelope-shell{position:relative!important;z-index:5!important}
+.envelope-flower{display:none!important}
+.envelope-intro.is-opening{background:#fff3e8!important}
+
 </style>
 </head>
 <body>
