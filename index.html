@@ -1057,6 +1057,51 @@ html,body{background:#fbf8ef!important}
  .character-name{bottom:-1px!important}
 }
 
+
+/* Final responsive layout tune: balanced desktop spacing and two-column mobile details. */
+@media(min-width:621px){
+ .page{padding:18px!important}
+ .card{max-width:1440px!important;margin:0 auto!important;padding:clamp(24px,3vw,44px)!important}
+ .music-row{margin-bottom:8px!important}
+ .tiny-animals{margin:8px 0 4px!important}
+ .intro{max-width:980px!important;margin:0 auto 6px!important;line-height:1.55!important}
+ .hero{min-height:0!important;padding:24px 12px 22px!important;margin:0 auto!important}
+ .countdown-section{margin:14px auto 0!important;padding:14px 16px!important}
+ .event-venue-grid{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;align-items:stretch!important;gap:clamp(18px,3vw,38px)!important;margin:18px auto!important}
+ .details{justify-content:center!important;gap:10px!important}
+ .event-venue-grid .detail{padding:clamp(16px,2vw,26px)!important}
+ .details .programme{margin:5px auto 0!important;padding:10px 6px!important}
+ .date-bottom-divider{max-height:38px!important}
+ .venue{min-height:0!important;display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;margin:0!important;padding:clamp(18px,2.5vw,32px)!important}
+ .venue h2{max-width:520px!important}
+ .closing{margin:14px auto 0!important}
+ .playful-runway{height:145px!important;margin:12px 0 0!important}
+}
+@media(max-width:620px){
+ .event-venue-grid{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;align-items:stretch!important;gap:8px!important;width:100%!important;margin:10px auto!important}
+ .details{min-width:0!important;justify-content:center!important;gap:6px!important}
+ .event-venue-grid .detail{min-width:0!important;padding:10px 6px!important}
+ .merged-detail{gap:4px!important}
+ .merged-detail .detail-label,.venue .section-label{font-size:8px!important;letter-spacing:.09em!important;text-align:center!important}
+ .merged-date{font-size:clamp(14px,4vw,18px)!important;line-height:1.25!important;overflow-wrap:anywhere!important}
+ .merged-time{font-size:clamp(17px,4.5vw,21px)!important}
+ .details .programme{font-size:clamp(10px,2.8vw,13px)!important;line-height:1.3!important;padding:7px 3px!important;margin:2px auto 0!important}
+ .date-bottom-divider{display:none!important}
+ .venue{min-width:0!important;min-height:0!important;margin:0!important;padding:10px 6px!important;display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important}
+ .venue h2{font-size:clamp(14px,3.8vw,18px)!important;line-height:1.22!important;margin:6px auto!important;overflow-wrap:anywhere!important}
+ .address{font-size:clamp(10px,2.7vw,12px)!important;line-height:1.35!important;overflow-wrap:anywhere!important}
+ .map-link{font-size:9px!important;line-height:1.2!important;letter-spacing:0!important;padding:7px 5px!important;margin-top:8px!important;gap:3px!important;max-width:100%!important;text-align:center!important}
+ .map-link span{display:none!important}
+}
+@media(max-width:380px){
+ .event-venue-grid{gap:5px!important}
+ .event-venue-grid .detail{padding:8px 4px!important}
+ .venue{padding:8px 4px!important}
+ .merged-date{font-size:14px!important}
+ .venue h2{font-size:14px!important}
+ .map-link{font-size:8px!important}
+}
+
 </style>
 </head>
 <body>
