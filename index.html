@@ -907,6 +907,38 @@ html,body{background:#fbf8ef!important}
  .entry-floral-field span,.envelope-burst span{animation-duration:.01ms!important}
 }
 
+
+/* Refined full-screen botanical entry: use the site's real watercolor flower artwork. */
+.entry-floral-field{position:absolute!important;inset:0!important;z-index:1!important;overflow:hidden!important;pointer-events:none!important}
+.entry-floral-field .entry-bouquet{position:absolute;display:block;width:clamp(145px,25vw,300px);height:auto;opacity:.94;filter:drop-shadow(0 5px 12px rgba(102,75,78,.12));}
+.entry-floral-field .b1{left:-42px;top:-55px;transform:rotate(-22deg)}
+.entry-floral-field .b2{right:-42px;top:-55px;transform:scaleX(-1) rotate(-22deg)}
+.entry-floral-field .b3{left:-65px;top:34%;transform:rotate(-8deg) scale(.9)}
+.entry-floral-field .b4{right:-65px;top:34%;transform:scaleX(-1) rotate(-8deg) scale(.9)}
+.entry-floral-field .b5{left:-38px;bottom:-72px;transform:rotate(18deg) scaleX(-1)}
+.entry-floral-field .b6{right:-38px;bottom:-72px;transform:rotate(-18deg)}
+.entry-floral-field .b7{left:27%;top:-128px;transform:rotate(90deg) scale(.7);opacity:.58}
+.entry-floral-field .b8{right:25%;bottom:-140px;transform:rotate(-90deg) scale(.72);opacity:.58}
+.envelope-shell{z-index:3!important}
+.envelope-burst{z-index:10002!important}
+.envelope-burst .thrown-petal{position:absolute;left:50%;top:50%;width:clamp(10px,1.5vw,18px);height:clamp(17px,2.5vw,29px);border-radius:80% 18% 75% 22%;opacity:0;transform:translate(-50%,-50%) scale(.2) rotate(0);background:radial-gradient(ellipse at 35% 28%,#fff1e8 0%,var(--petal) 42%,#a96d83 100%);box-shadow:0 2px 5px rgba(95,63,78,.14);animation:petalThrow 1.35s cubic-bezier(.12,.7,.16,1) forwards;animation-delay:var(--delay,0s)}
+@keyframes petalThrow{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.2) rotate(0)}
+  12%{opacity:.98}
+  100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(var(--scale,1.2)) rotate(var(--turn,300deg))}
+}
+@media(max-width:620px){
+ .entry-floral-field .entry-bouquet{width:clamp(138px,39vw,205px)}
+ .entry-floral-field .b1{left:-55px;top:-35px}
+ .entry-floral-field .b2{right:-55px;top:-35px}
+ .entry-floral-field .b3{left:-76px;top:35%}
+ .entry-floral-field .b4{right:-76px;top:35%}
+ .entry-floral-field .b5{left:-55px;bottom:-48px}
+ .entry-floral-field .b6{right:-55px;bottom:-48px}
+ .entry-floral-field .b7{left:16%;top:-100px}
+ .entry-floral-field .b8{right:14%;bottom:-110px}
+}
+
 </style>
 </head>
 <body>
@@ -1016,6 +1048,21 @@ html,body{background:#fbf8ef!important}
 </main>
 <audio id="weddingAudio" loop preload="auto"><source src="Tumhi%20Dekho%20Naa%20(Sitar%20Lofi).mp3" type="audio/mpeg"><source src="Chand%20Tu%20Nabhatla.mp3" type="audio/mpeg"></audio>
 <script>
+
+(function(){
+ const field=document.getElementById('entryFloralField');
+ if(field && !field.children.length){
+   ['b1','b2','b3','b4','b5','b6','b7','b8'].forEach(function(cls){
+     const img=document.createElement('img');
+     img.className='entry-bouquet '+cls;
+     img.src='./floral-spray.svg?v=4';
+     img.alt='';
+     img.setAttribute('aria-hidden','true');
+     field.appendChild(img);
+   });
+ }
+})();
+
 (function(){
  const audio=document.getElementById('weddingAudio');
  const button=document.getElementById('musicToggle');
@@ -1042,20 +1089,17 @@ html,body{background:#fbf8ef!important}
    const burst=document.createElement('div');
    burst.className='envelope-burst';
    burst.setAttribute('aria-hidden','true');
-   const blooms=['✿','✽','❀','✾','❁','❋','🌸'];
-   const shades=['#c58c91','#b5a0c7','#d1b47e','#d9a6a9','#a9b99f'];
-   for(let i=0;i<46;i++){
+   for(let i=0;i<64;i++){
      const petal=document.createElement('span');
-     const angle=(Math.PI*2*i/46)+(i%4)*.13;
-     const distance= Math.max(window.innerWidth,window.innerHeight)*(.58+(i%5)*.12);
-     petal.textContent=blooms[i%blooms.length];
+     petal.className='thrown-petal';
+     const angle=(Math.PI*2*i/64)+(i%5)*.09;
+     const distance=Math.max(window.innerWidth,window.innerHeight)*(.62+(i%6)*.11);
      petal.style.setProperty('--dx',(Math.cos(angle)*distance)+'px');
      petal.style.setProperty('--dy',(Math.sin(angle)*distance)+'px');
-     petal.style.setProperty('--turn',(180+(i*73)%540)+'deg');
-     petal.style.setProperty('--size',(17+(i%5)*7)+'px');
-     petal.style.setProperty('--end-scale',(1.1+(i%4)*.35));
-     petal.style.setProperty('--petal',shades[i%shades.length]);
-     petal.style.animationDelay=((i%8)*.018)+'s';
+     petal.style.setProperty('--turn',(180+(i*67)%600)+'deg');
+     petal.style.setProperty('--scale',(0.9+(i%5)*.22));
+     petal.style.setProperty('--petal',['#d9a4aa','#c5afd0','#e6c99a','#e8b8ad','#b7c5a8'][i%5]);
+     petal.style.setProperty('--delay',((i%9)*.012)+'s');
      burst.appendChild(petal);
    }
    envelopeIntro.appendChild(burst);
