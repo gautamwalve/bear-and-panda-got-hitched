@@ -433,181 +433,150 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 }
 
 
-/* Single, responsive hero layout tuned to the approved floral reference. */
+
+/* Approved invitation reference — final unified desktop/mobile styling */
 .hero{
  position:relative!important;isolation:isolate!important;overflow:visible!important;
  display:flex!important;align-items:center!important;justify-content:center!important;
- width:calc(100% + clamp(24px,8.4vw,128px))!important;
- max-width:none!important;min-height:clamp(430px,48vw,540px)!important;
- margin:0 0 0 calc(-1 * clamp(12px,4.2vw,64px))!important;
- padding:105px 12px 34px!important;
- border:0!important;outline:0!important;border-radius:0!important;
- background:transparent!important;box-shadow:none!important;
+ width:calc(100% + 24px)!important;max-width:none!important;
+ min-height:520px!important;margin:0 -12px!important;
+ padding:110px 12px 38px!important;
+ border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;
 }
 .hero .arch{
- display:block!important;position:absolute!important;
- top:12px!important;left:12%!important;right:12%!important;
- height:clamp(118px,15vw,150px)!important;bottom:auto!important;
- border:0!important;border-top:1.4px solid rgba(190,145,68,.9)!important;
- border-radius:50% 50% 0 0 / 100% 100% 0 0!important;
- background:transparent!important;pointer-events:none!important;z-index:0!important;
+ display:block!important;position:absolute!important;z-index:0!important;
+ top:18px!important;left:13%!important;right:13%!important;height:150px!important;
+ border:0!important;border-top:1.5px solid rgba(190,145,68,.95)!important;
+ border-radius:50% 50% 0 0 / 100% 100% 0 0!important;background:transparent!important;
 }
 .hero .arch:after{
- content:"♡♡"!important;position:absolute!important;
- top:-24px!important;left:50%!important;right:auto!important;bottom:auto!important;
- transform:translateX(-50%)!important;
- width:62px!important;height:42px!important;
+ content:"♡♡"!important;position:absolute!important;top:-28px!important;left:50%!important;
+ transform:translateX(-50%)!important;width:70px!important;height:48px!important;
  display:flex!important;align-items:center!important;justify-content:center!important;
  color:#bd914c!important;background:#fffdf8!important;border:0!important;
- border-radius:0!important;font:39px/1 Georgia,serif!important;letter-spacing:-17px!important;
- padding-right:15px!important;
+ font:48px/1 Georgia,serif!important;letter-spacing:-20px!important;padding-right:18px!important;
 }
-.hero .hero-content{
- position:relative!important;z-index:2!important;
- width:100%!important;max-width:760px!important;margin:0 auto!important;
-}
-.hero .overline{
- position:relative!important;z-index:2!important;
- margin:0 0 26px!important;font-size:clamp(10px,1.5vw,14px)!important;
- letter-spacing:.24em!important;line-height:1.5!important;
-}
+.hero .hero-content{position:relative!important;z-index:2!important;width:100%!important;max-width:780px!important;margin:auto!important}
+.hero .overline{font-size:clamp(11px,1.6vw,15px)!important;letter-spacing:.24em!important;margin:0 0 34px!important}
 .hero h1{
- position:relative!important;z-index:2!important;
- display:flex!important;align-items:baseline!important;justify-content:center!important;
+ display:flex!important;justify-content:center!important;align-items:baseline!important;
  flex-wrap:nowrap!important;white-space:nowrap!important;
- font-size:clamp(31px,7.2vw,76px)!important;line-height:1.12!important;
- gap:clamp(4px,1vw,12px)!important;letter-spacing:-.055em!important;
+ font-size:clamp(40px,7.8vw,78px)!important;line-height:1.12!important;
+ gap:clamp(5px,1vw,12px)!important;letter-spacing:-.05em!important;
 }
 .hero .subtitle{
- position:relative!important;z-index:2!important;
- font-size:clamp(15px,3.2vw,30px)!important;line-height:1.35!important;
- white-space:normal!important;max-width:90%!important;
- margin:clamp(18px,2.6vw,28px) auto 0!important;
+ font-size:clamp(19px,3.2vw,31px)!important;line-height:1.4!important;
+ max-width:92%!important;white-space:normal!important;margin:30px auto 0!important;
 }
 .hero .ornament{
- position:relative!important;z-index:2!important;
  display:flex!important;align-items:center!important;justify-content:center!important;
- gap:13px!important;margin:clamp(18px,2.8vw,28px) auto 0!important;
- color:#bd914c!important;
+ gap:13px!important;margin:28px auto 0!important;color:#bd914c!important;
 }
 .hero .ornament:before,.hero .ornament:after{
- content:""!important;display:block!important;height:1px!important;
- width:min(22%,170px)!important;background:#c9a15f!important;
+ content:""!important;display:block!important;width:min(24%,180px)!important;
+ height:1px!important;background:#c9a15f!important;
 }
-.hero .ornament span{font-size:18px!important}
+.hero .ornament span{font-size:20px!important}
 .hero .floral-spray{
- position:absolute!important;display:block!important;
- top:53%!important;width:clamp(145px,27vw,258px)!important;
- height:auto!important;max-height:none!important;object-fit:contain!important;
- z-index:1!important;opacity:1!important;pointer-events:none!important;
- filter:none!important;background:transparent!important;
+ display:block!important;position:absolute!important;z-index:1!important;
+ top:53%!important;width:clamp(170px,25vw,250px)!important;height:auto!important;
+ max-height:none!important;object-fit:contain!important;opacity:1!important;
+ filter:none!important;background:transparent!important;pointer-events:none!important;
 }
-.hero .floral-spray.left{
- left:-16px!important;right:auto!important;
- transform:translateY(-50%) rotate(-2deg)!important;
-}
-.hero .floral-spray.right{
- right:-16px!important;left:auto!important;
- transform:translateY(-50%) scaleX(-1) rotate(-2deg)!important;
-}
+.hero .floral-spray.left{left:-20px!important;right:auto!important;transform:translateY(-50%) rotate(-2deg)!important}
+.hero .floral-spray.right{right:-20px!important;left:auto!important;transform:translateY(-50%) scaleX(-1) rotate(-2deg)!important}
 .countdown-section{
- border-top:1px solid rgba(195,165,108,.52)!important;
- border-bottom:1px solid rgba(195,165,108,.52)!important;
+ width:100%!important;max-width:1160px!important;margin:24px auto 0!important;
+ padding:22px 12px!important;border-top:1px solid rgba(195,165,108,.65)!important;
+ border-bottom:1px solid rgba(195,165,108,.65)!important;
 }
-@media(max-width:620px){
- .card{padding:14px 18px 24px!important}
- .intro{font-size:clamp(16px,4.1vw,19px)!important;line-height:1.55!important;margin-bottom:8px!important}
- .hero{
-  width:calc(100% + 36px)!important;margin-left:-18px!important;
-  min-height:410px!important;padding:100px 8px 30px!important;
- }
- .hero .arch{top:12px!important;left:11%!important;right:11%!important;height:116px!important}
- .hero .arch:after{top:-21px!important;width:54px!important;height:36px!important;font-size:34px!important;letter-spacing:-15px!important}
- .hero .overline{font-size:10px!important;letter-spacing:.2em!important;margin-bottom:24px!important}
- .hero h1{font-size:clamp(28px,7.8vw,42px)!important;gap:3px!important}
- .hero .subtitle{font-size:clamp(14px,3.65vw,18px)!important;line-height:1.35!important;max-width:82%!important;margin-top:18px!important}
- .hero .ornament{margin-top:18px!important;gap:9px!important}
- .hero .ornament span{font-size:16px!important}
- .hero .floral-spray{top:53%!important;width:clamp(138px,37vw,174px)!important}
- .hero .floral-spray.left{left:-18px!important}
- .hero .floral-spray.right{right:-18px!important}
- .countdown-section{margin-top:14px!important;padding:16px 0!important}
- .countdown-heading{font-size:9px!important;letter-spacing:.17em!important}
- .countdown{gap:6px!important}
- .countdown-unit{padding:11px 2px!important}
- .countdown-unit span{font-size:clamp(22px,6.5vw,31px)!important}
- .countdown-unit small{font-size:8px!important;letter-spacing:.08em!important}
- .event-venue-grid{grid-template-columns:1fr!important;gap:12px!important;margin:20px auto!important}
-}
-@media(max-width:440px){
- .page{padding:6px!important}
- .card{padding:24px 12px!important}
- .hero{width:calc(100% + 24px)!important;margin-left:-12px!important;min-height:390px!important;padding:94px 6px 26px!important}
- .hero .arch{top:10px!important;left:10%!important;right:10%!important;height:108px!important}
- .hero .arch:after{top:-19px!important;font-size:31px!important}
- .hero .overline{font-size:9px!important;letter-spacing:.18em!important;margin-bottom:23px!important}
- .hero h1{font-size:clamp(26px,7.55vw,33px)!important;gap:2px!important}
- .hero .subtitle{font-size:clamp(13px,3.75vw,15px)!important;max-width:78%!important;margin-top:17px!important}
- .hero .ornament{margin-top:17px!important}
- .hero .floral-spray{width:clamp(126px,36vw,150px)!important;top:53%!important}
- .hero .floral-spray.left{left:-15px!important}
- .hero .floral-spray.right{right:-15px!important}
- .countdown{gap:5px!important}
- .countdown-unit{padding:10px 1px!important}
- .countdown-unit small{font-size:7px!important;letter-spacing:.06em!important}
- .merged-date{font-size:clamp(18px,5vw,24px)!important}
- .merged-time{font-size:24px!important}
-}
-@media(max-width:360px){
- .hero{min-height:380px!important}
- .hero h1{font-size:25px!important}
- .hero .subtitle{font-size:13px!important;max-width:76%!important}
- .hero .floral-spray{width:124px!important}
-}
+.countdown-heading{font-size:clamp(12px,1.8vw,16px)!important;letter-spacing:.2em!important;margin-bottom:20px!important}
+.countdown{max-width:1000px!important;gap:clamp(8px,1.5vw,16px)!important}
+.countdown-unit{border-radius:8px!important;padding:18px 5px!important}
+.countdown-unit span{font-size:clamp(30px,5vw,48px)!important}
+.countdown-unit small{font-size:11px!important;letter-spacing:.14em!important;margin-top:9px!important}
 
-
-/* Wedding date and time panel, styled to match the uploaded invitation. */
+/* Ornamental date frame: gold outline, vertical side flourishes and centre details */
 .merged-detail{
- position:relative!important;
- min-height:180px!important;
- padding:28px 42px!important;
- border:1px solid rgba(195,165,108,.62)!important;
- border-radius:58px!important;
- background:rgba(255,253,248,.35)!important;
+ position:relative!important;isolation:isolate!important;overflow:visible!important;
+ min-height:210px!important;padding:32px 54px!important;gap:8px!important;
+ border:1px solid rgba(195,165,108,.62)!important;border-radius:66px!important;
+ background:rgba(255,253,248,.32)!important;
  box-shadow:inset 0 0 0 1px rgba(195,165,108,.12)!important;
- overflow:visible!important;
 }
 .merged-detail:before,.merged-detail:after{
- position:absolute!important;top:50%!important;
- display:block!important;color:#bd914c!important;
- font:26px/1.5 Georgia,serif!important;
- content:"✦"!important;
- transform:translateY(-50%)!important;
+ position:absolute!important;top:50%!important;transform:translateY(-50%)!important;
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ width:28px!important;height:116px!important;color:#bd914c!important;
+ font:24px/1.6 Georgia,serif!important;white-space:pre!important;
+ content:"❧\A✦\A❧"!important;text-align:center!important;
 }
-.merged-detail:before{left:-13px!important}
-.merged-detail:after{right:-13px!important}
-.merged-detail .detail-label{margin-bottom:9px!important;letter-spacing:.19em!important}
-.merged-date{margin-top:0!important;font-size:clamp(23px,4.2vw,42px)!important;line-height:1.3!important}
-.merged-time{margin-top:8px!important;font-size:clamp(25px,4.2vw,42px)!important;line-height:1.2!important}
+.merged-detail:before{left:-12px!important}
+.merged-detail:after{right:-12px!important;transform:translateY(-50%) scaleX(-1)!important}
+.merged-detail .detail-label{font-size:clamp(11px,1.5vw,14px)!important;letter-spacing:.2em!important;margin-bottom:8px!important}
+.merged-date{font-size:clamp(27px,4.2vw,42px)!important;line-height:1.3!important;margin:0!important}
+.merged-time{font-size:clamp(29px,4.2vw,42px)!important;line-height:1.2!important;margin-top:4px!important}
 .details .programme{
- border:0!important;padding:9px 8px!important;
- font-size:clamp(15px,2vw,21px)!important;line-height:1.5!important;
+ position:relative!important;border:0!important;padding:12px 8px!important;
+ font-size:clamp(17px,2vw,22px)!important;line-height:1.5!important;
+}
+.details .programme:before,.details .programme:after{
+ content:"✧"!important;color:#bd914c!important;margin:0 14px!important;font-style:normal!important;
 }
 @media(max-width:620px){
- .merged-detail{min-height:164px!important;padding:25px 32px!important;border-radius:48px!important}
- .merged-detail:before,.merged-detail:after{font-size:21px!important}
- .merged-detail:before{left:-10px!important}
- .merged-detail:after{right:-10px!important}
- .merged-detail .detail-label{font-size:9px!important;letter-spacing:.15em!important;margin-bottom:8px!important}
- .merged-date{font-size:clamp(20px,5.4vw,28px)!important}
- .merged-time{font-size:clamp(23px,6vw,31px)!important;margin-top:7px!important}
- .details .programme{font-size:15px!important;padding:8px 5px!important}
+ .hero{width:calc(100% + 24px)!important;margin:0 -12px!important;min-height:480px!important;padding:102px 8px 32px!important}
+ .hero .arch{top:14px!important;left:11%!important;right:11%!important;height:132px!important}
+ .hero .arch:after{top:-24px!important;width:60px!important;height:42px!important;font-size:42px!important}
+ .hero .overline{font-size:10px!important;letter-spacing:.21em!important;margin-bottom:29px!important}
+ .hero h1{font-size:clamp(34px,8.6vw,43px)!important;gap:3px!important}
+ .hero .subtitle{font-size:clamp(16px,4.2vw,19px)!important;max-width:83%!important;margin-top:24px!important}
+ .hero .ornament{margin-top:23px!important;gap:10px!important}
+ .hero .ornament span{font-size:18px!important}
+ .hero .floral-spray{top:53%!important;width:clamp(150px,39vw,184px)!important}
+ .hero .floral-spray.left{left:-19px!important}
+ .hero .floral-spray.right{right:-19px!important}
+ .countdown-section{margin-top:18px!important;padding:18px 0!important}
+ .countdown-heading{font-size:10px!important;letter-spacing:.16em!important;margin-bottom:15px!important}
+ .countdown{gap:6px!important}
+ .countdown-unit{padding:13px 2px!important;border-radius:7px!important}
+ .countdown-unit span{font-size:clamp(25px,7vw,34px)!important}
+ .countdown-unit small{font-size:8px!important;letter-spacing:.08em!important}
+ .merged-detail{min-height:184px!important;padding:27px 35px!important;border-radius:52px!important}
+ .merged-detail:before,.merged-detail:after{font-size:19px!important;width:24px!important;height:100px!important}
+ .merged-detail:before{left:-10px!important}.merged-detail:after{right:-10px!important}
+ .merged-detail .detail-label{font-size:9px!important;letter-spacing:.15em!important}
+ .merged-date{font-size:clamp(22px,5.8vw,29px)!important}
+ .merged-time{font-size:clamp(25px,6.3vw,32px)!important}
+ .details .programme{font-size:15px!important;padding:10px 3px!important}
+ .details .programme:before,.details .programme:after{margin:0 6px!important}
 }
-@media(max-width:380px){
- .merged-detail{min-height:156px!important;padding:23px 28px!important}
- .merged-date{font-size:20px!important}
+@media(max-width:440px){
+ .hero{min-height:460px!important;padding:96px 6px 28px!important}
+ .hero .arch{top:12px!important;left:10%!important;right:10%!important;height:124px!important}
+ .hero .arch:after{top:-22px!important;font-size:38px!important}
+ .hero .overline{font-size:9px!important;letter-spacing:.18em!important;margin-bottom:27px!important}
+ .hero h1{font-size:clamp(31px,8.1vw,36px)!important;gap:2px!important}
+ .hero .subtitle{font-size:clamp(15px,4vw,17px)!important;max-width:81%!important;margin-top:22px!important}
+ .hero .floral-spray{width:clamp(140px,38vw,162px)!important;top:53%!important}
+ .hero .floral-spray.left{left:-17px!important}.hero .floral-spray.right{right:-17px!important}
+ .merged-detail{min-height:174px!important;padding:25px 30px!important}
+ .merged-date{font-size:clamp(20px,5.7vw,25px)!important}
+ .merged-time{font-size:25px!important}
+}
+@media(max-width:360px){
+ .hero{min-height:445px!important}
+ .hero h1{font-size:29px!important}
+ .hero .subtitle{font-size:14px!important;max-width:78%!important}
+ .hero .floral-spray{width:134px!important}
+ .merged-detail{padding:24px 27px!important}
+ .merged-date{font-size:19px!important}
  .merged-time{font-size:23px!important}
 }
+
+
+.merged-detail .frame-flourish{position:absolute;left:50%;z-index:2;transform:translateX(-50%);color:#bd914c;background:#fffdf8;padding:0 8px;font:20px/1 Georgia,serif}
+.merged-detail .frame-flourish.top{top:-10px}.merged-detail .frame-flourish.bottom{bottom:-10px}
+@media(max-width:620px){.merged-detail .frame-flourish{font-size:17px}.merged-detail .frame-flourish.top{top:-9px}.merged-detail .frame-flourish.bottom{bottom:-9px}}
 
 </style>
 </head>
@@ -662,7 +631,7 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 </section>
 <div class="event-venue-grid">
   <section class="details" aria-label="Wedding date and time">
-    <div class="detail merged-detail">
+    <div class="detail merged-detail"><span class="frame-flourish top" aria-hidden="true">✧</span><span class="frame-flourish bottom" aria-hidden="true">✧</span>
       <div class="detail-label">Wedding ceremony &amp; time</div>
       <div class="merged-date">Saturday, 12 December 2026</div>
       <div class="merged-time">12:32 PM</div>
