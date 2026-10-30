@@ -113,9 +113,58 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
   .card { background: #fffdf8 !important; color: #565e56 !important; }
   .intro, .detail-date, .address { color: #565e56 !important; }
 }
+
+/* Opening envelope: the visitor's tap is also the music start gesture. */
+.envelope-intro{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 50% 25%,#fffdf8 0%,#fbf4e9 58%,#f0e6d8 100%);transition:opacity .7s ease,visibility .7s ease;color:#565e56}
+.envelope-shell{width:min(100%,460px);text-align:center}
+.envelope-bears{font-size:25px;letter-spacing:8px;margin:0 0 19px;filter:saturate(.78)}
+.envelope-kicker{font:10px/1.8 Arial,sans-serif;letter-spacing:.21em;text-transform:uppercase;color:#89764f;margin:0 0 10px}
+.envelope-heading{font:normal clamp(27px,6vw,39px)/1.2 Georgia,serif;color:#b56f7d;margin:0 0 8px}
+.envelope-subheading{font:italic 15px/1.6 Georgia,serif;color:#69796d;margin:0 0 22px}
+.envelope-button{position:relative;display:block;width:min(82vw,340px);height:224px;margin:0 auto 16px;padding:0;border:0;background:transparent;cursor:pointer;perspective:1000px;-webkit-tap-highlight-color:transparent}
+.envelope-button:focus-visible{outline:2px solid #b78c4b;outline-offset:8px;border-radius:8px}
+.envelope-back{position:absolute;left:0;right:0;top:16px;bottom:0;border:1px solid #b78c4b;border-radius:5px;background:linear-gradient(135deg,#e9cda7,#c99483 54%,#e6c69d);box-shadow:0 16px 28px rgba(104,76,55,.18),inset 0 0 0 4px rgba(255,245,220,.22);z-index:0}
+.envelope-letter{position:absolute;left:8%;right:8%;top:19px;height:178px;padding:24px 12px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fffdf8;border:1px solid rgba(195,165,108,.78);box-shadow:0 2px 10px rgba(83,64,42,.09);z-index:1;transform:translateY(12px);transition:transform .85s cubic-bezier(.2,.75,.25,1),z-index 0s .3s}
+.envelope-letter-small{font:9px/1.6 Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8a835f}
+.envelope-letter-names{font:normal 25px/1.35 Georgia,serif;color:#b56f7d;margin:5px 0}
+.envelope-letter-amp{font-style:italic;color:#b78c4b}
+.envelope-letter-date{font:10px/1.6 Arial,sans-serif;letter-spacing:.14em;color:#68796b}
+.envelope-pocket{position:absolute;left:0;right:0;top:16px;bottom:0;z-index:3;background:linear-gradient(145deg,#dfb994,#c78c89 55%,#dcb48a);clip-path:polygon(0 0,50% 59%,100% 0,100% 100%,0 100%);border-radius:4px}
+.envelope-pocket:before{content:"";position:absolute;inset:0;background:linear-gradient(35deg,rgba(255,244,220,.17),transparent 52%,rgba(116,69,55,.12))}
+.envelope-flap{position:absolute;left:0;right:0;top:16px;height:59%;z-index:4;transform-origin:50% 0;transform:rotateX(0deg);backface-visibility:hidden;transition:transform .82s cubic-bezier(.2,.72,.25,1);background:linear-gradient(155deg,#f0d7b5 0%,#d7a58f 65%,#bd8581 100%);clip-path:polygon(0 0,100% 0,50% 100%);filter:drop-shadow(0 2px 2px rgba(93,57,45,.12))}
+.envelope-seal{position:absolute;left:50%;top:44%;z-index:5;width:43px;height:43px;display:grid;place-items:center;transform:translate(-50%,-50%);border:1px solid #e8d1a4;border-radius:50%;background:radial-gradient(circle at 35% 30%,#d99aa0,#a95e70);box-shadow:0 3px 9px rgba(89,53,52,.22),inset 0 0 0 3px rgba(255,240,212,.2);color:#fff6e7;font:24px/1 Georgia,serif;transition:opacity .3s ease,transform .3s ease}
+.envelope-hint{font:10px/1.8 Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#89764f;margin:0}
+.envelope-hint:after{content:"";display:block;width:35px;height:1px;background:#c3a56c;margin:10px auto 0;opacity:.7}
+.envelope-intro.is-opening .envelope-flap{transform:rotateX(180deg)}
+.envelope-intro.is-opening .envelope-letter{transform:translateY(-54px);z-index:5;transition:transform .85s cubic-bezier(.2,.75,.25,1),z-index 0s}
+.envelope-intro.is-opening .envelope-seal{opacity:0;transform:translate(-50%,-50%) scale(.55)}
+.envelope-intro.is-gone{opacity:0;visibility:hidden;pointer-events:none}
+@media(max-width:440px){.envelope-intro{padding:20px}.envelope-bears{margin-bottom:14px}.envelope-subheading{margin-bottom:18px}.envelope-button{height:208px;width:min(84vw,320px)}.envelope-letter{height:165px}.envelope-letter-names{font-size:23px}}
+@media(prefers-reduced-motion:reduce){.envelope-intro,.envelope-flap,.envelope-letter,.envelope-seal{transition:none!important}}
+
 </style>
 </head>
 <body>
+<div class="envelope-intro" id="envelopeIntro" role="dialog" aria-modal="true" aria-label="Open wedding invitation">
+  <div class="envelope-shell">
+    <div class="envelope-bears" aria-hidden="true">🐻 · 🐼</div>
+    <p class="envelope-kicker">Together with our families</p>
+    <h2 class="envelope-heading">A celebration of love</h2>
+    <p class="envelope-subheading">A little note for someone special</p>
+    <button class="envelope-button" id="openInvitation" type="button" aria-label="Open Gautam and Tejasvini's wedding invitation">
+      <span class="envelope-back" aria-hidden="true"></span>
+      <span class="envelope-letter" aria-hidden="true">
+        <span class="envelope-letter-small">You are invited to celebrate</span>
+        <span class="envelope-letter-names">Gautam <span class="envelope-letter-amp">&amp;</span> Tejasvini</span>
+        <span class="envelope-letter-date">12 · 12 · 2026</span>
+      </span>
+      <span class="envelope-pocket" aria-hidden="true"></span>
+      <span class="envelope-flap" aria-hidden="true"></span>
+      <span class="envelope-seal" aria-hidden="true">♡</span>
+    </button>
+    <p class="envelope-hint">Tap the envelope to open</p>
+  </div>
+</div>
 <div class="confetti" aria-hidden="true">
 <span style="left:4%;--duration:19s;--delay:-8s;--rot:25deg"></span><span style="left:11%;--duration:23s;--delay:-14s;--rot:75deg"></span><span style="left:18%;--duration:21s;--delay:-4s;--rot:10deg"></span><span style="left:26%;--duration:25s;--delay:-19s;--rot:30deg"></span><span style="left:34%;--duration:20s;--delay:-12s;--rot:90deg"></span><span style="left:42%;--duration:24s;--delay:-5s;--rot:15deg"></span><span style="left:50%;--duration:22s;--delay:-16s;--rot:55deg"></span><span style="left:58%;--duration:26s;--delay:-10s;--rot:5deg"></span><span style="left:66%;--duration:21s;--delay:-2s;--rot:70deg"></span><span style="left:74%;--duration:24s;--delay:-18s;--rot:15deg"></span><span style="left:82%;--duration:20s;--delay:-7s;--rot:45deg"></span><span style="left:91%;--duration:25s;--delay:-13s;--rot:25deg"></span><span style="left:97%;--duration:22s;--delay:-1s;--rot:80deg"></span><span style="left:8%;--duration:27s;--delay:-20s;--rot:55deg"></span><span style="left:30%;--duration:23s;--delay:-9s;--rot:10deg"></span><span style="left:47%;--duration:24s;--delay:-17s;--rot:65deg"></span><span style="left:71%;--duration:26s;--delay:-3s;--rot:45deg"></span><span style="left:88%;--duration:21s;--delay:-11s;--rot:70deg"></span>
 </div>
@@ -188,6 +237,27 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
  const button=document.getElementById('musicToggle');
  const label=document.getElementById('musicLabel');
  let didAutoplayAttempt=false;
+ const envelopeIntro=document.getElementById('envelopeIntro');
+ const openInvitation=document.getElementById('openInvitation');
+ openInvitation.addEventListener('click',function(){
+   // Call play() immediately in this trusted tap handler (before animation/timers).
+   const musicRequest=audio.play();
+   if(musicRequest && typeof musicRequest.then==='function'){
+     musicRequest.then(function(){setPlaying(true);}).catch(function(){
+       setPlaying(false);
+       label.textContent='Tap to play wedding song';
+     });
+   }else{
+     setPlaying(true);
+   }
+   openInvitation.disabled=true;
+   envelopeIntro.classList.add('is-opening');
+   window.setTimeout(function(){
+     envelopeIntro.classList.add('is-gone');
+     envelopeIntro.setAttribute('aria-hidden','true');
+     document.body.style.overflow='';
+   },1150);
+ });
  function setPlaying(playing){
    label.textContent=playing?'Pause wedding song':'Play our wedding song';
    button.setAttribute('aria-pressed',String(playing));
