@@ -1173,6 +1173,52 @@ html,body{background:#fbf8ef!important}
  .model-stage,.character-art{width:204px!important;height:210px!important}
 }
 
+
+/* Phone-sized and narrow-tablet layout: screenshots show 705px viewport, so extend breakpoint. */
+@media(max-width:800px){
+ .page{padding:0!important}
+ .card{width:100%!important;max-width:none!important;min-height:100svh!important;padding:clamp(12px,2.5vw,20px)!important}
+ .music-row{margin:0 0 4px!important;min-height:26px!important}
+ .tiny-animals{margin:6px 0 2px!important;font-size:20px!important}
+ .intro{font-size:clamp(14px,2.5vw,18px)!important;line-height:1.42!important;margin:0 auto 4px!important;max-width:680px!important}
+ .hero{padding:14px 4px 12px!important;min-height:0!important}
+ .hero .hero-content{padding-left:clamp(48px,8vw,70px)!important;padding-right:clamp(48px,8vw,70px)!important}
+ .hero h1{font-size:clamp(34px,7.5vw,54px)!important}
+ .subtitle{font-size:clamp(18px,3.4vw,24px)!important;margin-top:10px!important}
+ .ornament{margin:9px auto!important}
+ .countdown-section{width:100%!important;max-width:none!important;margin:10px auto 0!important;padding:9px 0!important}
+ .countdown-heading{font-size:10px!important;letter-spacing:.16em!important;margin-bottom:7px!important}
+ .countdown{width:100%!important;max-width:none!important;gap:6px!important}
+ .countdown-unit{padding:8px 3px!important}
+ .countdown-unit span{font-size:clamp(23px,4.7vw,34px)!important}
+ .countdown-unit small{font-size:8px!important;margin-top:3px!important}
+ .event-venue-grid{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:clamp(8px,2vw,14px)!important;width:100%!important;max-width:none!important;margin:12px auto 0!important;align-items:start!important}
+ .event-venue-grid .details{min-width:0!important;width:100%!important;gap:8px!important;margin:0!important}
+ .event-venue-grid .detail{min-width:0!important;padding:10px 5px!important;background:transparent!important;border:0!important}
+ .detail-label,.section-label{font-size:9px!important;letter-spacing:.12em!important;line-height:1.4!important}
+ .merged-detail{gap:3px!important}
+ .merged-date{font-size:clamp(16px,3.1vw,22px)!important;line-height:1.3!important;margin-top:3px!important}
+ .merged-time{font-size:clamp(20px,3.6vw,26px)!important;margin-top:0!important}
+ .event-venue-grid .programme{min-height:0!important;margin:4px auto 0!important;padding:8px 2px!important;font-size:clamp(11px,2.1vw,14px)!important;line-height:1.35!important;border-top:0!important;border-bottom:0!important}
+ .date-bottom-divider{display:none!important}
+ .event-venue-grid .venue{min-width:0!important;min-height:0!important;margin:0!important;padding:10px 5px!important;background:transparent!important;border:0!important}
+ .venue h2{font-size:clamp(16px,3.2vw,23px)!important;line-height:1.22!important;margin:6px auto!important;overflow-wrap:anywhere!important}
+ .address{font-size:clamp(11px,2.1vw,14px)!important;line-height:1.4!important}
+ .map-link{font-size:clamp(9px,1.7vw,12px)!important;line-height:1.25!important;padding:8px 6px!important;margin-top:8px!important;max-width:100%!important}
+ .closing{font-size:clamp(16px,2.8vw,22px)!important;line-height:1.3!important;margin:14px auto 4px!important}
+ .bottom-decoration{margin-top:8px!important;font-size:16px!important}
+ .playful-runway{height:clamp(105px,21vw,155px)!important;margin:8px auto 0!important}
+ .chibi-runner{height:clamp(100px,20vw,150px)!important}
+ .model-stage,.character-art{height:clamp(96px,19vw,145px)!important}
+ .character-name{font-size:9px!important}
+}
+@media(max-width:380px){
+ .event-venue-grid{gap:4px!important}
+ .merged-date{font-size:15px!important}
+ .venue h2{font-size:15px!important}
+ .map-link{font-size:8px!important}
+}
+
 </style>
 </head>
 <body>
