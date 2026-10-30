@@ -1236,6 +1236,27 @@ html,body{background:#fbf8ef!important}
 .envelope-intro .envelope-burst{display:none!important}
 .envelope-intro.is-opening .entry-floral-field span{display:none!important}
 
+
+/* Cross-device colour lock: the invitation is intentionally light on every OS/browser theme. */
+:root{color-scheme:light!important;forced-color-adjust:none}
+html,body{color-scheme:light!important;background:#fbf8ef!important;color:#565e56!important}
+body{background-color:#fbf8ef!important}
+.page{background:#fbf8ef!important;color:#565e56!important}
+.page .card{background:#fbf8ef!important;color:#565e56!important}
+.page .detail,.page .venue,.page .countdown-unit{color:#565e56!important}
+.page .detail{background:rgba(251,248,240,.76)!important}
+.page .venue{background:rgba(251,248,240,.76)!important}
+.page .countdown-unit{background:rgba(251,248,240,.7)!important}
+.page input,.page button,.page select,.page textarea{color-scheme:light!important}
+@media(prefers-color-scheme:dark){
+ :root,html,body,.page,.page .card{color-scheme:light!important;background-color:#fbf8ef!important;color:#565e56!important}
+ body{background:#fbf8ef!important}
+ .page .card{background:#fbf8ef!important}
+ .page .detail,.page .venue{background:rgba(251,248,240,.76)!important;color:#565e56!important}
+ .page .countdown-unit{background:rgba(251,248,240,.7)!important;color:#565e56!important}
+ .page .intro,.page .address,.page .closing,.page .signature,.page .detail-label,.page .section-label{color:inherit}
+}
+
 </style>
 </head>
 <body>
