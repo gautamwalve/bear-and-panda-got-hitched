@@ -108,7 +108,11 @@ for (const [engineName, configs] of Object.entries(profiles)) {
       check(result, "light theme initially selected", before.theme === "light", before.theme);
       check(result, "no horizontal overflow before opening", before.scrollWidth <= before.viewportWidth, `${before.scrollWidth} > ${before.viewportWidth}`);
 
-      await page.locator("#openInvitation").click({ timeout: 15000 });
+      const openRect = await page.locator("#openInvitation").boundingBox();
+      if (!openRect) throw new Error("Envelope button has no visible bounding box");
+      // Use a direct trusted pointer tap. Playwright locator.click waits for
+      // animation stability, while the envelope intentionally floats forever.
+      await page.mouse.click(openRect.x + openRect.width / 2, openRect.y + openRect.height / 2);
       await page.waitForTimeout(700);
       const during = await page.evaluate(() => {
         const letter = document.querySelector(".envelope-inner-letter");
