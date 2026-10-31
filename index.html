@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#fbf8f0">
-<meta name="color-scheme" content="light only">
+<meta name="color-scheme" content="only light">
 <meta name="description" content="Gautam and Tejasvini's wedding invitation — Saturday, 12 December 2026, at Shri Kshetra Panchayatan Mandir, Nadhal.">
 <title>Gautam &amp; Tejasvini | Wedding Invitation</title>
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
@@ -1430,6 +1430,33 @@ h1{max-width:100%;white-space:normal;flex-wrap:wrap;line-height:1.12;font-size:c
  }
 }
 
+
+/* Do not let browser auto-darkening repaint either user-selected theme.
+   "only" is important here: plain light/dark still permits UA overrides. */
+:root[data-theme="light"],
+:root[data-theme="light"] body,
+:root[data-theme="light"] .page,
+:root[data-theme="light"] .card,
+:root[data-theme="light"] button,
+:root[data-theme="light"] a{
+  color-scheme:only light!important;
+}
+:root[data-theme="light"],
+:root[data-theme="light"] html,
+:root[data-theme="light"] body{
+  background-color:#fbf8f0!important;
+  color:#565e56!important;
+  forced-color-adjust:none!important;
+}
+:root[data-theme="dark"],
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] .page,
+:root[data-theme="dark"] .card,
+:root[data-theme="dark"] button,
+:root[data-theme="dark"] a{
+  color-scheme:only dark!important;
+}
+
 </style>
 </head>
 <body>
@@ -1728,6 +1755,8 @@ h1{max-width:100%;white-space:normal;flex-wrap:wrap;line-height:1.12;font-size:c
    if(icon)icon.textContent=dark?'☀':'☾';
    const meta=document.querySelector('meta[name="theme-color"]');
    if(meta)meta.setAttribute('content',dark?'#171a24':'#fbf8f0');
+   const schemeMeta=document.querySelector('meta[name="color-scheme"]');
+   if(schemeMeta)schemeMeta.setAttribute('content',dark?'dark':'only light');
  }
  applyTheme('light');
  toggle.addEventListener('click',function(){
