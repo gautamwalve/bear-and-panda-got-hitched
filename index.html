@@ -2083,6 +2083,42 @@ body:before { background:none !important; }
 :root[data-theme="dark"] .merged-detail .merged-time{color:#f09aaa!important}
 :root[data-theme="dark"] .merged-detail .detail-label{color:#e8d9bd!important}
 @media(max-width:620px){.card-emblem{margin-bottom:8px}.card-emblem svg{width:32px;height:32px}}
+
+/* Theme parity: date card, venue card and text use one coordinated palette per mode. */
+:root[data-theme="light"] .event-venue-grid>.details{
+ background:rgba(251,248,240,.92)!important;
+ border-color:rgba(195,165,108,.55)!important;
+}
+:root[data-theme="light"] .event-venue-grid .merged-detail{
+ background:transparent!important;border:0!important;box-shadow:none!important;
+}
+:root[data-theme="light"] .event-venue-grid .programme{
+ color:#617b6e!important;
+}
+:root[data-theme="light"] .merged-detail .merged-date,
+:root[data-theme="light"] .merged-detail .merged-time{
+ color:#ac5f70!important;
+}
+:root[data-theme="light"] .event-venue-grid .detail-label{
+ color:#617b6e!important;
+}
+:root[data-theme="dark"] .event-venue-grid>.details{
+ background:rgba(43,48,54,.78)!important;
+ border-color:rgba(215,183,125,.38)!important;
+}
+:root[data-theme="dark"] .event-venue-grid .merged-detail{
+ background:transparent!important;border:0!important;box-shadow:none!important;
+}
+:root[data-theme="dark"] .event-venue-grid .programme{
+ color:#d9d0c2!important;
+}
+:root[data-theme="dark"] .merged-detail .merged-date,
+:root[data-theme="dark"] .merged-detail .merged-time{
+ color:#f09aaa!important;
+}
+:root[data-theme="dark"] .event-venue-grid .detail-label{
+ color:#bdcbbb!important;
+}
 </style>
 </head>
 <body>
