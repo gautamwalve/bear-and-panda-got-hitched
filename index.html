@@ -2071,6 +2071,18 @@ body:before { background:none !important; }
  .pickup-contacts{gap:8px 12px}
 }
 
+
+/* Decorative gold emblems and consistent blush date typography in dark mode. */
+.card-emblem{display:flex;align-items:center;justify-content:center;gap:12px;width:min(100%,300px);margin:0 auto 10px;color:#d8ad62}
+.card-emblem svg{width:38px;height:38px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto;filter:drop-shadow(0 1px 3px rgba(216,173,98,.18))}
+.card-emblem .emblem-line{height:1.5px;flex:1;background:linear-gradient(90deg,transparent,#d8ad62)}
+.card-emblem .emblem-line:last-child{background:linear-gradient(90deg,#d8ad62,transparent)}
+.pickup-contacts a{display:inline-flex;align-items:center;gap:7px}
+.pickup-contacts a svg{width:15px;height:15px;fill:currentColor;stroke:none;flex:0 0 auto}
+:root[data-theme="dark"] .merged-detail .merged-date,
+:root[data-theme="dark"] .merged-detail .merged-time{color:#f09aaa!important}
+:root[data-theme="dark"] .merged-detail .detail-label{color:#e8d9bd!important}
+@media(max-width:620px){.card-emblem{margin-bottom:8px}.card-emblem svg{width:32px;height:32px}}
 </style>
 </head>
 <body>
@@ -2128,7 +2140,7 @@ body:before { background:none !important; }
   <section class="details" aria-label="Wedding date and time">
     <div class="detail merged-detail">
       
-      <div class="detail-label">Wedding ceremony &amp; time</div>
+      <div class="card-emblem" aria-hidden="true"><span class="emblem-line"></span><svg viewBox="0 0 48 40"><path d="M24 34C10 29 9 17 24 5c15 12 14 24 0 29Z"/><path d="M24 34C5 31 2 21 9 16c8 0 13 8 15 18ZM24 34c19-3 22-13 15-18-8 0-13 8-15 18ZM24 34V8"/></svg><span class="emblem-line"></span></div><div class="detail-label">Wedding ceremony &amp; time</div>
       <div class="merged-date">Saturday, 12 December 2026</div>
       <div class="merged-time">12:32 PM</div>
       <svg class="date-bottom-divider" viewBox="0 0 760 68" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
@@ -2153,17 +2165,17 @@ body:before { background:none !important; }
   </section>
   <div class="venue-stack">
     <section class="venue" aria-label="Wedding venue">
-      <div class="section-label">The venue</div>
+      <div class="card-emblem" aria-hidden="true"><span class="emblem-line"></span><svg viewBox="0 0 32 40"><path d="M16 37S4 22 4 14a12 12 0 1 1 24 0c0 8-12 23-12 23Z"/><circle cx="16" cy="14" r="4"/></svg><span class="emblem-line"></span></div><div class="section-label">The venue</div>
       <h2>Shri Kshetra Panchayatan Mandir</h2>
       <div class="address">Nadhal, Navi Mumbai – 410206<br>Maharashtra, India</div>
       <a class="map-link" href="https://www.google.com/maps?q=18.905137816391697,73.22917755573111" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> Open location in Google Maps</a>
     </section>
     <section class="venue pickup-venue" aria-label="Pick up services">
-      <div class="section-label">Pick up services</div>
+      <div class="card-emblem" aria-hidden="true"><span class="emblem-line"></span><svg viewBox="0 0 48 40"><path d="M7 9h34v22H7zM11 5h26v4H11zM12 31v4m24-4v4M12 14h24v10H12z"/><circle cx="14" cy="29" r="3"/><circle cx="34" cy="29" r="3"/></svg><span class="emblem-line"></span></div><div class="section-label">Pick up services</div>
       <h2>Khandeshwar Railway Station</h2>
       <div class="address">Ticket Booking Window</div>
       <a class="map-link" href="https://maps.app.goo.gl/awHMZsC6ubjYDGB5A" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> Open location in Google Maps</a>
-      <div class="pickup-contacts"><span>For assistance</span><a href="tel:7208351491">7208351491</a><a href="tel:8378878050">8378878050</a><a href="tel:8928044486">8928044486</a></div>
+      <div class="pickup-contacts"><span>For assistance</span><a href="tel:7208351491"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 2.8 10 7.2 7.8 9.4c1.2 2.5 3.2 4.5 5.7 5.7l2.2-2.2 4.4 3.4-.9 3.1c-.3 1-1.3 1.6-2.3 1.4C8.8 19.2 4.8 15.2 3.2 7.1c-.2-1 .4-2 1.4-2.3l2-.9Z"/></svg>7208351491</a><a href="tel:8378878050"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 2.8 10 7.2 7.8 9.4c1.2 2.5 3.2 4.5 5.7 5.7l2.2-2.2 4.4 3.4-.9 3.1c-.3 1-1.3 1.6-2.3 1.4C8.8 19.2 4.8 15.2 3.2 7.1c-.2-1 .4-2 1.4-2.3l2-.9Z"/></svg>8378878050</a><a href="tel:8928044486"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 2.8 10 7.2 7.8 9.4c1.2 2.5 3.2 4.5 5.7 5.7l2.2-2.2 4.4 3.4-.9 3.1c-.3 1-1.3 1.6-2.3 1.4C8.8 19.2 4.8 15.2 3.2 7.1c-.2-1 .4-2 1.4-2.3l2-.9Z"/></svg>8928044486</a></div>
     </section>
   </div>
 </div>
