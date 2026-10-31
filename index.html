@@ -1968,6 +1968,43 @@ body:before { background:none !important; }
 }
 :root[data-theme="dark"] .calendar-button:hover{background:rgba(215,183,125,.22)!important}
 
+
+/* Harmonise the date/time and venue typography as one invitation system. */
+.event-venue-grid{align-items:stretch!important}
+.event-venue-grid>.details,
+.event-venue-grid>.venue{align-self:stretch!important;justify-content:center!important}
+.merged-detail .merged-date,
+.merged-detail .merged-time,
+.event-venue-grid .venue h2{
+ font-family:Georgia,"Times New Roman",serif!important;
+ font-weight:400!important;
+ font-size:clamp(22px,2.65vw,34px)!important;
+ line-height:1.28!important;
+ letter-spacing:-.015em!important;
+ color:var(--rose-dark)!important;
+}
+.merged-detail .merged-date{margin-top:3px!important}
+.merged-detail .merged-time{margin-top:5px!important}
+.event-venue-grid .venue h2{max-width:620px!important;margin:10px auto 12px!important}
+.event-venue-grid .venue .address{
+ font-family:Georgia,"Times New Roman",serif!important;
+ font-size:clamp(14px,1.35vw,17px)!important;
+ line-height:1.6!important;
+}
+.event-venue-grid .detail-label,
+.event-venue-grid .section-label{
+ font-family:Arial,sans-serif!important;
+ font-size:clamp(10px,.9vw,12px)!important;
+ line-height:1.5!important;
+ letter-spacing:.18em!important;
+}
+@media(max-width:620px){
+ .merged-detail .merged-date,
+ .merged-detail .merged-time,
+ .event-venue-grid .venue h2{font-size:clamp(21px,5.4vw,27px)!important}
+ .event-venue-grid .venue .address{font-size:14px!important}
+}
+
 </style>
 </head>
 <body>
