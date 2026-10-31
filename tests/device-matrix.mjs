@@ -31,6 +31,7 @@ const profiles = {
 const engines = { chromium, webkit, firefox };
 const results = [];
 const failures = [];
+fs.mkdirSync("device-test-artifacts", { recursive: true });
 
 function check(result, label, condition, detail = "") {
   result.checks.push({ label, passed: Boolean(condition), detail });
@@ -128,7 +129,7 @@ for (const [engineName, configs] of Object.entries(profiles)) {
       check(result, "letter moves visibly upward", during.letterDisplay !== "none" && during.letterTop < before.letterTop - 35, `before=${before.letterTop}, after=${during.letterTop}`);
       check(result, "envelope flap rotates", during.flapTransform !== "none" && during.flapTransform !== "matrix(1, 0, 0, 1, 0, 0)", during.flapTransform);
 
-      await page.waitForFunction(() => getComputedStyle(document.querySelector("#envelopeIntro")).visibility === "hidden", { timeout: 8000 });
+      await page.waitForFunction(() => getComputedStyle(document.querySelector("#envelopeIntro")).visibility === "hidden", null, { timeout: 8000 });
       await page.waitForTimeout(250);
       const after = await page.evaluate(() => {
         const audio = document.querySelector("#weddingAudio");
@@ -223,7 +224,6 @@ for (const [engineName, configs] of Object.entries(profiles)) {
   await browser.close();
 }
 
-fs.mkdirSync("device-test-artifacts", { recursive: true });
 fs.writeFileSync(OUTPUT, JSON.stringify({ baseUrl: BASE_URL, results, failures }, null, 2));
 console.log(`Tested ${results.length} emulated device/browser profiles.`);
 for (const result of results) {
