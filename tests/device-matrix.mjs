@@ -86,22 +86,15 @@ for (const [engineName, configs] of Object.entries(profiles)) {
       await page.waitForTimeout(350);
 
       const before = await page.evaluate(() => {
-        const letter = document.querySelector(".envelope-inner-letter");
-        const rect = letter.getBoundingClientRect();
         const video = document.querySelector("#envelopeEntryVideo");
         return {
+          popupCardCount: document.querySelectorAll(".envelope-inner-letter").length,
           title: document.title,
           envelopeBounds: (() => {
             const r = document.querySelector("#openInvitation").getBoundingClientRect();
             return { left:r.left, top:r.top, right:r.right, bottom:r.bottom, width:r.width, height:r.height };
           })(),
           theme: document.documentElement.getAttribute("data-theme"),
-          letterDisplay: getComputedStyle(letter).display,
-          letterText: letter.innerText,
-          letterTop: rect.top,
-          letterTopStyle: getComputedStyle(letter).top,
-          letterTransform: getComputedStyle(letter).transform,
-          letterTransition: getComputedStyle(letter).transition,
           flapTransform: getComputedStyle(document.querySelector(".envelope-flap")).transform,
           flapTransition: getComputedStyle(document.querySelector(".envelope-flap")).transition,
           reducedMotion: matchMedia("(prefers-reduced-motion: reduce)").matches,
@@ -127,8 +120,7 @@ for (const [engineName, configs] of Object.entries(profiles)) {
         before.envelopeBounds.right >= before.viewportWidth - 1 &&
         before.envelopeBounds.bottom >= before.viewportHeight - 1,
         JSON.stringify(before.envelopeBounds));
-      check(result, "printed letter is rendered (not display:none)", before.letterDisplay !== "none", before.letterDisplay);
-      check(result, "letter contains both names", /Gautam/.test(before.letterText) && /Tejasvini/.test(before.letterText), before.letterText);
+      check(result, "there is no pop-up invitation card", before.popupCardCount === 0, String(before.popupCardCount));
       check(result, "invitation is hidden before envelope tap", before.pageVisibility === "hidden", before.pageVisibility);
       check(result, "light theme initially selected", before.theme === "light", before.theme);
       check(result, "no horizontal overflow before opening", before.scrollWidth <= before.viewportWidth, `${before.scrollWidth} > ${before.viewportWidth}`);
@@ -146,17 +138,16 @@ for (const [engineName, configs] of Object.entries(profiles)) {
       }
       await page.waitForTimeout(700);
       const during = await page.evaluate(() => {
-        const letter = document.querySelector(".envelope-inner-letter");
-        const rect = letter.getBoundingClientRect();
         const flap = getComputedStyle(document.querySelector(".envelope-flap"));
+        const leftFold = getComputedStyle(document.querySelector(".envelope-left-fold"));
+        const rightFold = getComputedStyle(document.querySelector(".envelope-right-fold"));
+        const bottomFold = getComputedStyle(document.querySelector(".envelope-bottom-fold"));
         return {
           overlayClass: document.querySelector("#envelopeIntro").className,
-          letterDisplay: getComputedStyle(letter).display,
-          letterTop: rect.top,
-          letterTopStyle: getComputedStyle(letter).top,
-          letterTransform: getComputedStyle(letter).transform,
-          letterTransition: getComputedStyle(letter).transition,
-          letterOpacity: getComputedStyle(letter).opacity,
+          popupCardCount: document.querySelectorAll(".envelope-inner-letter").length,
+          leftFoldTransform: leftFold.transform,
+          rightFoldTransform: rightFold.transform,
+          bottomFoldTransform: bottomFold.transform,
           flapTransform: flap.transform,
           flapTransition: flap.transition,
           reducedMotion: matchMedia("(prefers-reduced-motion: reduce)").matches,
@@ -170,7 +161,10 @@ for (const [engineName, configs] of Object.entries(profiles)) {
       });
       result.duringOpen = during;
       check(result, "envelope enters opening state", during.overlayClass.includes("is-opening"), during.overlayClass);
-      check(result, "letter moves visibly upward", during.letterDisplay !== "none" && during.letterTop < before.letterTop - 35, `before=${before.letterTop}, after=${during.letterTop}`);
+      check(result, "no pop-up card appears during opening", during.popupCardCount === 0, String(during.popupCardCount));
+      const foldTransforms = [during.leftFoldTransform, during.rightFoldTransform, during.bottomFoldTransform];
+      const foldsMove = foldTransforms.some(value => value !== "none" && value !== "matrix(1, 0, 0, 1, 0, 0)");
+      check(result, "envelope side and lower folds sweep away", foldsMove, JSON.stringify(foldTransforms));
       const flapRotated = during.flapTransform !== "none" && during.flapTransform !== "matrix(1, 0, 0, 1, 0, 0)";
       const flapRetracted = Number.parseFloat(during.flapHeight) < Number.parseFloat(before.flapHeight) * 0.25 && Number(during.flapOpacity) < 0.2;
       check(result, "envelope flap opens (rotate or retract)", flapRotated || flapRetracted, JSON.stringify({transform:during.flapTransform,heightBefore:before.flapHeight,heightDuring:during.flapHeight,opacity:during.flapOpacity,dpr:during.devicePixelRatio,appleDpr2Fallback:during.appleDpr2Fallback}));
