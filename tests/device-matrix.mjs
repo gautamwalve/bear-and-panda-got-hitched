@@ -105,6 +105,8 @@ for (const [engineName, configs] of Object.entries(profiles)) {
           flapOpacity: getComputedStyle(document.querySelector(".envelope-flap")).opacity,
           pageVisibility: getComputedStyle(document.querySelector(".page")).visibility,
           bodyBackground: getComputedStyle(document.body).backgroundColor,
+          pageBackground: getComputedStyle(document.querySelector(".page")).backgroundColor,
+          cardBackground: getComputedStyle(document.querySelector(".page .card")).backgroundColor,
           viewportWidth: innerWidth,
           viewportHeight: innerHeight,
           scrollWidth: document.documentElement.scrollWidth,
@@ -198,6 +200,10 @@ for (const [engineName, configs] of Object.entries(profiles)) {
       check(result, "cover transitions away", after.overlayVisibility === "hidden" || after.overlayVisibility === "removed", after.overlayVisibility);
       check(result, "invitation reveal completes within 2 seconds", after.revealElapsedMs < 2000, `${after.revealElapsedMs} ms`);
       check(result, "invitation page becomes visible", after.pageVisibility === "visible" && Number(after.pageOpacity) > 0.9, `${after.pageVisibility}, opacity=${after.pageOpacity}`);
+      check(result, "background colour is uniform across page and card",
+        after.bodyBackground === after.pageBackground &&
+        after.pageBackground === after.cardBackground,
+        JSON.stringify({body:after.bodyBackground,page:after.pageBackground,card:after.cardBackground}));
       check(result, "countdown is populated", after.countdown && after.countdown !== "--", String(after.countdown));
       check(result, "no horizontal overflow after opening", after.scrollWidth <= after.clientWidth, `${after.scrollWidth} > ${after.clientWidth}`);
 
