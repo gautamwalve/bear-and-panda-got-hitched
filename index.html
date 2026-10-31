@@ -7,6 +7,7 @@
 <meta name="color-scheme" content="only light">
 <meta name="description" content="Gautam and Tejasvini's wedding invitation — Saturday, 12 December 2026, at Shri Kshetra Panchayatan Mandir, Nadhal.">
 <title>Gautam &amp; Tejasvini | Wedding Invitation</title>
+<link rel="icon" type="image/svg+xml" href="./favicon.svg?v=1">
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 <style>
 :root{
@@ -146,10 +147,6 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 @media(prefers-reduced-motion:reduce){.envelope-intro,.envelope-flap,.envelope-inner-letter,.envelope-seal{transition:none!important}}
 
 
-/* The envelope is only a cover: do not slide out an empty white sheet.
-   The invitation page remains visible underneath and is revealed as the cover fades. */
-.envelope-inner-letter{display:none!important}
-.envelope-intro.is-opening .envelope-inner-letter{display:none!important;transform:none!important}
 .envelope-intro.is-opening{background:radial-gradient(ellipse at 50% 25%,rgba(255,253,248,.96),rgba(251,244,233,.9) 58%,rgba(240,230,216,.84))}
 
 
@@ -1457,6 +1454,66 @@ h1{max-width:100%;white-space:normal;flex-wrap:wrap;line-height:1.12;font-size:c
   color-scheme:only dark!important;
 }
 
+
+/* Final envelope sequence: open flap, lift a printed invitation card, then reveal the page. */
+.envelope-inner-letter{
+  display:flex!important;
+  position:absolute!important;
+  z-index:1!important;
+  left:8%!important;right:8%!important;top:3%!important;height:84%!important;
+  opacity:.98!important;
+  transform:translateY(17px) scale(.985)!important;
+  align-items:center!important;justify-content:center!important;
+  gap:8px!important;text-align:center!important;
+  padding:18px 12px 14px!important;
+  background:linear-gradient(180deg,#fffdf8 0%,#f8f0e5 100%)!important;
+  border:1px solid rgba(195,165,108,.76)!important;
+  box-shadow:0 3px 12px rgba(83,64,42,.12)!important;
+  color:#687565!important;
+  transition:transform .78s cubic-bezier(.16,.78,.18,1) .12s,opacity .5s ease .12s,box-shadow .7s ease .12s!important;
+  will-change:transform,opacity;
+}
+.envelope-inner-small{font:clamp(7px,1.4vw,9px)/1.6 Arial,sans-serif!important;letter-spacing:.13em!important;text-transform:uppercase!important;color:#8a835f!important}
+.envelope-inner-names{font:normal clamp(17px,4.2vw,27px)/1.25 Georgia,serif!important;color:#b56f7d!important;margin:2px 0!important}
+.envelope-inner-date{font:clamp(8px,1.5vw,10px)/1.6 Arial,sans-serif!important;letter-spacing:.12em!important;color:#89764f!important}
+.envelope-letter-line{font:italic clamp(12px,2.4vw,16px)/1.4 Georgia,serif!important;color:#9b6d72!important;margin-top:3px!important}
+.envelope-intro.is-opening{transition:none!important}
+.envelope-intro.is-opening .envelope-button{
+  animation:none!important;
+  transform:none!important;
+}
+.envelope-intro.is-opening .envelope-flap{
+  transform:rotateX(180deg)!important;
+  transition:transform .62s cubic-bezier(.2,.72,.2,1)!important;
+}
+.envelope-intro.is-opening .envelope-inner-letter{
+  display:flex!important;
+  z-index:8!important;
+  opacity:1!important;
+  transform:translateY(-82px) scale(1.025)!important;
+  box-shadow:0 15px 30px rgba(83,64,42,.2)!important;
+  transition:transform .78s cubic-bezier(.16,.78,.18,1) .1s,opacity .45s ease .1s,box-shadow .7s ease .1s!important;
+}
+.envelope-intro.is-opening .envelope-seal{
+  animation:sealRelease .38s cubic-bezier(.2,.8,.2,1) forwards!important;
+}
+.envelope-intro.is-opening .envelope-hint{
+  opacity:0!important;transform:translateY(7px)!important;
+  transition:opacity .2s ease,transform .2s ease!important;
+}
+.envelope-intro.is-gone{
+  opacity:0!important;visibility:hidden!important;pointer-events:none!important;
+  transition:opacity .44s ease,visibility 0s linear .44s!important;
+}
+@media(max-width:620px){
+  .envelope-intro.is-opening .envelope-inner-letter{transform:translateY(-68px) scale(1.02)!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .envelope-intro.is-opening .envelope-flap,
+  .envelope-intro.is-opening .envelope-inner-letter,
+  .envelope-intro.is-gone{transition-duration:.01ms!important}
+}
+
 </style>
 </head>
 <body>
@@ -1466,7 +1523,12 @@ h1{max-width:100%;white-space:normal;flex-wrap:wrap;line-height:1.12;font-size:c
   <div class="envelope-shell">
     <button class="envelope-button" id="openInvitation" type="button" aria-label="Open wedding invitation">
       <span class="envelope-back" aria-hidden="true"></span>
-      <span class="envelope-inner-letter" aria-hidden="true"></span>
+      <span class="envelope-inner-letter" aria-hidden="true">
+        <span class="envelope-inner-small">With love and the blessings of our families</span>
+        <span class="envelope-inner-names">Gautam <span aria-hidden="true">&amp;</span> Tejasvini</span>
+        <span class="envelope-inner-date">12 DECEMBER 2026 · 12:32 PM</span>
+        <span class="envelope-letter-line">You are invited</span>
+      </span>
       <span class="envelope-left-fold" aria-hidden="true"></span>
       <span class="envelope-right-fold" aria-hidden="true"></span>
       <span class="envelope-bottom-fold" aria-hidden="true"></span>
@@ -1567,7 +1629,7 @@ h1{max-width:100%;white-space:normal;flex-wrap:wrap;line-height:1.12;font-size:c
 </article>
 
 </main>
-<audio id="weddingAudio" loop preload="auto"><source src="Tumhi%20Dekho%20Naa%20(Sitar%20Lofi).mp3" type="audio/mpeg"><source src="Chand%20Tu%20Nabhatla.mp3" type="audio/mpeg"></audio>
+<audio id="weddingAudio" loop preload="auto" playsinline><source src="Tumhi%20Dekho%20Naa%20(Sitar%20Lofi).mp3" type="audio/mpeg"><source src="Chand%20Tu%20Nabhatla.mp3" type="audio/mpeg"></audio>
 <script>
 
 (function(){
@@ -1599,100 +1661,95 @@ h1{max-width:100%;white-space:normal;flex-wrap:wrap;line-height:1.12;font-size:c
  const audio=document.getElementById('weddingAudio');
  const button=document.getElementById('musicToggle');
  const label=document.getElementById('musicLabel');
- let didAutoplayAttempt=false;
  const envelopeIntro=document.getElementById('envelopeIntro');
  const openInvitation=document.getElementById('openInvitation');
- openInvitation.addEventListener('click',function(){
-   // Call play() immediately in this trusted tap handler (before animation/timers).
-   const entryVideo=document.getElementById('envelopeEntryVideo');
-   if(entryVideo){const videoRequest=entryVideo.play();if(videoRequest&&typeof videoRequest.catch==='function')videoRequest.catch(function(){});}
-   const musicRequest=audio.play();
-   if(musicRequest && typeof musicRequest.then==='function'){
-     musicRequest.then(function(){setPlaying(true);}).catch(function(){
-       setPlaying(false);
-       label.textContent='Tap to play wedding song';
-     });
-   }else{
-     setPlaying(true);
-   }
-   openInvitation.disabled=true;
-   envelopeIntro.classList.add('is-opening');
-   const invitationPage=document.querySelector('.page');
-   invitationPage.classList.add('invitation-reveal');
-   // Launch a screen-wide shower of blossoms from the envelope as it opens.
-   const burst=document.createElement('div');
-   burst.className='envelope-burst';
-   burst.setAttribute('aria-hidden','true');
-   for(let i=0;i<64;i++){
-     const petal=document.createElement('span');
-     petal.className='thrown-petal';
-     const angle=(Math.PI*2*i/64)+(i%5)*.09;
-     const distance=Math.max(window.innerWidth,window.innerHeight)*(.62+(i%6)*.11);
-     petal.style.setProperty('--dx',(Math.cos(angle)*distance)+'px');
-     petal.style.setProperty('--dy',(Math.sin(angle)*distance)+'px');
-     petal.style.setProperty('--turn',(180+(i*67)%600)+'deg');
-     petal.style.setProperty('--scale',(0.9+(i%5)*.22));
-     petal.style.setProperty('--petal',['#d9a4aa','#c5afd0','#e6c99a','#e8b8ad','#b7c5a8'][i%5]);
-     petal.style.setProperty('--delay',((i%9)*.012)+'s');
-     burst.appendChild(petal);
-   }
-   envelopeIntro.appendChild(burst);
-   // Let the flower burst play, then clear the cover to reveal the invitation.
-   window.setTimeout(function(){
-     envelopeIntro.classList.add('is-gone');
-     envelopeIntro.setAttribute('aria-hidden','true');
-     document.body.style.overflow='';
-   },1050);
+ const invitationPage=document.querySelector('.page');
+ let openingStarted=false;
 
- });
  function setPlaying(playing){
+   if(!button || !label)return;
    label.textContent=playing?'Pause wedding song':'Play our wedding song';
    button.setAttribute('aria-pressed',String(playing));
    button.setAttribute('aria-label',playing?'Pause wedding song':'Play our wedding song');
  }
- async function tryStartMusic(){
+
+ // This is called directly from a real button click. No load-time autoplay or
+ // document-wide gesture listeners: those caused competing play() attempts.
+ function startMusicFromGesture(){
+   if(!audio)return;
+   audio.muted=false;
+   audio.volume=0.88;
+   let playRequest;
    try{
-     await audio.play();
-     setPlaying(true);
-     return true;
+     playRequest=audio.play();
    }catch(error){
      setPlaying(false);
      label.textContent='Tap to play wedding song';
-     return false;
+     return;
+   }
+   if(playRequest && typeof playRequest.then==='function'){
+     playRequest.then(function(){
+       setPlaying(true);
+     }).catch(function(error){
+       setPlaying(false);
+       label.textContent='Tap to play wedding song';
+     });
+   }else{
+     setPlaying(!audio.paused);
    }
  }
- // Attempt audible autoplay immediately; some browsers allow it, but most
- // mobile browsers require a visitor gesture before playing sound.
- audio.addEventListener('canplay',function(){
-   if(!didAutoplayAttempt){didAutoplayAttempt=true;tryStartMusic();}
- },{once:true});
- window.addEventListener('load',function(){
-   if(!didAutoplayAttempt){didAutoplayAttempt=true;tryStartMusic();}
- },{once:true});
- // If autoplay is blocked, start on the first tap, click or key activation anywhere.
- const startOnGesture=async function(event){
-   if(event && (event.target===button || button.contains(event.target))) return;
-   if(audio.paused){
-     const started=await tryStartMusic();
-     if(started){
-       document.removeEventListener('pointerdown',startOnGesture);
-       document.removeEventListener('keydown',startOnGesture);
-       document.removeEventListener('touchstart',startOnGesture);
+
+ openInvitation.addEventListener('click',function(){
+   if(openingStarted)return;
+   openingStarted=true;
+
+   // Request music first, within the trusted envelope tap. Browsers that reject
+   // it leave the visible music button available for a separate tap.
+   startMusicFromGesture();
+
+   const entryVideo=document.getElementById('envelopeEntryVideo');
+   if(entryVideo){
+     entryVideo.muted=true;
+     const videoRequest=entryVideo.play();
+     if(videoRequest && typeof videoRequest.catch==='function'){
+       videoRequest.catch(function(){});
      }
    }
- };
- document.addEventListener('pointerdown',startOnGesture,{passive:true});
- document.addEventListener('touchstart',startOnGesture,{passive:true});
- document.addEventListener('keydown',startOnGesture);
- button.addEventListener('click',async function(event){
-   event.stopPropagation();
-   if(!audio.paused){audio.pause();return;}
-   await tryStartMusic();
- });
- audio.addEventListener('play',()=>setPlaying(true));
- audio.addEventListener('pause',()=>setPlaying(false));
-})();
 
+   openInvitation.disabled=true;
+   envelopeIntro.classList.add('is-opening');
+
+   const reducedMotion=window.matchMedia &&
+     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+   const revealDelay=reducedMotion?350:1420;
+
+   // Let the envelope flap open and the printed letter rise into view first.
+   window.setTimeout(function(){
+     invitationPage.classList.add('invitation-reveal');
+     envelopeIntro.classList.add('is-gone');
+     envelopeIntro.setAttribute('aria-hidden','true');
+     document.body.style.overflow='';
+   },revealDelay);
+ });
+
+ function toggleMusic(){
+   if(audio.paused){
+     startMusicFromGesture();
+   }else{
+     audio.pause();
+   }
+ }
+ button.addEventListener('click',function(event){
+   event.stopPropagation();
+   toggleMusic();
+ });
+ audio.addEventListener('play',function(){setPlaying(true);});
+ audio.addEventListener('pause',function(){setPlaying(false);});
+ audio.addEventListener('error',function(){
+   setPlaying(false);
+   label.textContent='Music unavailable — tap to retry';
+ });
+})();
 (function(){
  const target = new Date('2026-12-12T12:32:00+05:30').getTime();
  const $ = id => document.getElementById(id);
