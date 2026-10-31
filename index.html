@@ -1542,6 +1542,16 @@ html.safari-dpr2 .envelope-intro.is-opening .envelope-inner-letter{
    top:calc(3% - 82px)!important;
  }
 }
+
+/* Whole envelope entry surface responds to a tap; hint text never intercepts it. */
+.envelope-intro{
+  cursor:pointer;
+  touch-action:manipulation;
+}
+.envelope-intro .envelope-hint{
+  pointer-events:none;
+}
+
 </style>
 </head>
 <body>
@@ -1686,98 +1696,115 @@ html.safari-dpr2 .envelope-intro.is-opening .envelope-inner-letter{
 })();
 
 (function(){
- const audio=document.getElementById('weddingAudio');
- const button=document.getElementById('musicToggle');
- const label=document.getElementById('musicLabel');
- const envelopeIntro=document.getElementById('envelopeIntro');
- const openInvitation=document.getElementById('openInvitation');
- const invitationPage=document.querySelector('.page');
- let openingStarted=false;
+  const audio = document.getElementById('weddingAudio');
+  const button = document.getElementById('musicToggle');
+  const label = document.getElementById('musicLabel');
+  const envelopeIntro = document.getElementById('envelopeIntro');
+  const openInvitation = document.getElementById('openInvitation');
+  const invitationPage = document.querySelector('.page');
+  let openingStarted = false;
 
- function setPlaying(playing){
-   if(!button || !label)return;
-   label.textContent=playing?'Pause wedding song':'Play our wedding song';
-   button.setAttribute('aria-pressed',String(playing));
-   button.setAttribute('aria-label',playing?'Pause wedding song':'Play our wedding song');
- }
+  function setPlaying(playing){
+    if(!button || !label) return;
+    label.textContent = playing ? 'Pause wedding song' : 'Play our wedding song';
+    button.setAttribute('aria-pressed', String(playing));
+    button.setAttribute('aria-label', playing ? 'Pause wedding song' : 'Play our wedding song');
+  }
 
- // This is called directly from a real button click. No load-time autoplay or
- // document-wide gesture listeners: those caused competing play() attempts.
- function startMusicFromGesture(){
-   if(!audio)return;
-   audio.muted=false;
-   audio.volume=0.88;
-   let playRequest;
-   try{
-     playRequest=audio.play();
-   }catch(error){
-     setPlaying(false);
-     label.textContent='Tap to play wedding song';
-     return;
-   }
-   if(playRequest && typeof playRequest.then==='function'){
-     playRequest.then(function(){
-       setPlaying(true);
-     }).catch(function(error){
-       setPlaying(false);
-       label.textContent='Tap to play wedding song';
-     });
-   }else{
-     setPlaying(!audio.paused);
-   }
- }
+  function showMusicError(message){
+    setPlaying(false);
+    if(label) label.textContent = message;
+  }
 
- openInvitation.addEventListener('click',function(){
-   if(openingStarted)return;
-   openingStarted=true;
+  function startMusicFromGesture(){
+    if(!audio) return;
+    audio.muted = false;
+    audio.volume = 0.88;
 
-   // Request music first, within the trusted envelope tap. Browsers that reject
-   // it leave the visible music button available for a separate tap.
-   startMusicFromGesture();
+    let playRequest;
+    try{
+      playRequest = audio.play();
+    }catch(error){
+      showMusicError('Tap to play wedding song');
+      return;
+    }
 
-   const entryVideo=document.getElementById('envelopeEntryVideo');
-   if(entryVideo){
-     entryVideo.muted=true;
-     const videoRequest=entryVideo.play();
-     if(videoRequest && typeof videoRequest.catch==='function'){
-       videoRequest.catch(function(){});
-     }
-   }
+    if(playRequest && typeof playRequest.then === 'function'){
+      playRequest.then(() => setPlaying(true)).catch(() => {
+        showMusicError('Tap to play wedding song');
+      });
+    }else{
+      setPlaying(!audio.paused);
+    }
+  }
 
-   openInvitation.disabled=true;
-   envelopeIntro.classList.add('is-opening');
+  function openEverything(){
+    if(openingStarted || !envelopeIntro || !invitationPage) return;
+    openingStarted = true;
 
-   const reducedMotion=window.matchMedia &&
-     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-   const revealDelay=reducedMotion?350:1420;
+    // Start audio immediately inside the visitor's tap gesture.
+    startMusicFromGesture();
 
-   // Let the envelope flap open and the printed letter rise into view first.
-   window.setTimeout(function(){
-     invitationPage.classList.add('invitation-reveal');
-     envelopeIntro.classList.add('is-gone');
-     envelopeIntro.setAttribute('aria-hidden','true');
-     document.body.style.overflow='';
-   },revealDelay);
- });
+    // The entry video is decorative; audio is deliberately muted.
+    const entryVideo = document.getElementById('envelopeEntryVideo');
+    if(entryVideo){
+      entryVideo.muted = true;
+      const videoRequest = entryVideo.play();
+      if(videoRequest && typeof videoRequest.catch === 'function'){
+        videoRequest.catch(() => {});
+      }
+    }
 
- function toggleMusic(){
-   if(audio.paused){
-     startMusicFromGesture();
-   }else{
-     audio.pause();
-   }
- }
- button.addEventListener('click',function(event){
-   event.stopPropagation();
-   toggleMusic();
- });
- audio.addEventListener('play',function(){setPlaying(true);});
- audio.addEventListener('pause',function(){setPlaying(false);});
- audio.addEventListener('error',function(){
-   setPlaying(false);
-   label.textContent='Music unavailable — tap to retry';
- });
-})();
+    if(openInvitation) openInvitation.disabled = true;
+    envelopeIntro.classList.add('is-opening');
+
+    const reducedMotion = window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const revealDelay = reducedMotion ? 350 : 1420;
+
+    window.setTimeout(function(){
+      invitationPage.classList.add('invitation-reveal');
+      envelopeIntro.classList.add('is-gone');
+      envelopeIntro.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+
+      // Remove the entry layer after its fade-out, leaving no invisible overlay.
+      window.setTimeout(function(){
+        if(envelopeIntro.parentNode) envelopeIntro.remove();
+      }, 800);
+    }, revealDelay);
+  }
+
+  // A single delegated listener makes the whole envelope layer tappable.
+  // The open button is inside this layer, so its click also opens the invite.
+  if(envelopeIntro){
+    envelopeIntro.addEventListener('click', openEverything);
+  }
+
+  function toggleMusic(){
+    if(!audio) return;
+    if(audio.paused){
+      startMusicFromGesture();
+    }else{
+      audio.pause();
+    }
+  }
+
+  if(button){
+    button.addEventListener('click', function(event){
+      event.stopPropagation();
+      toggleMusic();
+    });
+  }
+
+  if(audio){
+    audio.addEventListener('play', () => setPlaying(true));
+    audio.addEventListener('pause', () => setPlaying(false));
+    audio.addEventListener('error', () => {
+      showMusicError('Music unavailable — tap to retry');
+    });
+  }
+})();;
 (function(){
  const target = new Date('2026-12-12T12:32:00+05:30').getTime();
  const $ = id => document.getElementById(id);
