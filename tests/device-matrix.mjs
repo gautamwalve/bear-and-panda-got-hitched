@@ -16,8 +16,10 @@ const profiles = {
     { name: "Narrow phone / high zoom 320x740", viewport: { width: 320, height: 740 }, dpr: 3, mobile: true, touch: true, ua: "Mozilla/5.0 (Linux; Android 14; Mobile) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36" }
   ],
   webkit: [
-    { name: "Safari-engine iPhone SE size 375x667", viewport: { width: 375, height: 667 }, dpr: 2, touch: true, ua: "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1" },
-    { name: "Safari-engine iPhone 13 size 390x844", viewport: { width: 390, height: 844 }, dpr: 3, touch: true, ua: "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1" },
+    { name: "Safari-engine iPhone SE size 375x667 DPR2", viewport: { width: 375, height: 667 }, dpr: 2, touch: true, ua: "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1" },
+    { name: "Safari-engine iPhone SE size 375x667 DPR3", viewport: { width: 375, height: 667 }, dpr: 3, touch: true, ua: "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1" },
+    { name: "Safari-engine iPhone 13 size 390x844 DPR3", viewport: { width: 390, height: 844 }, dpr: 3, touch: true, ua: "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1" },
+    { name: "Safari-engine iPhone 13 size 390x844 DPR2", viewport: { width: 390, height: 844 }, dpr: 2, touch: true, ua: "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1" },
     { name: "Safari-engine iPhone Pro Max size 430x932", viewport: { width: 430, height: 932 }, dpr: 3, touch: true, ua: "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1" },
     { name: "Safari-engine iPad size 768x1024", viewport: { width: 768, height: 1024 }, dpr: 2, touch: true, ua: "Mozilla/5.0 (iPad; CPU OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1" }
   ],
@@ -91,6 +93,12 @@ for (const [engineName, configs] of Object.entries(profiles)) {
           letterDisplay: getComputedStyle(letter).display,
           letterText: letter.innerText,
           letterTop: rect.top,
+          letterTopStyle: getComputedStyle(letter).top,
+          letterTransform: getComputedStyle(letter).transform,
+          letterTransition: getComputedStyle(letter).transition,
+          flapTransform: getComputedStyle(document.querySelector(".envelope-flap")).transform,
+          flapTransition: getComputedStyle(document.querySelector(".envelope-flap")).transition,
+          reducedMotion: matchMedia("(prefers-reduced-motion: reduce)").matches,
           pageVisibility: getComputedStyle(document.querySelector(".page")).visibility,
           bodyBackground: getComputedStyle(document.body).backgroundColor,
           viewportWidth: innerWidth,
@@ -122,8 +130,13 @@ for (const [engineName, configs] of Object.entries(profiles)) {
           overlayClass: document.querySelector("#envelopeIntro").className,
           letterDisplay: getComputedStyle(letter).display,
           letterTop: rect.top,
+          letterTopStyle: getComputedStyle(letter).top,
+          letterTransform: getComputedStyle(letter).transform,
+          letterTransition: getComputedStyle(letter).transition,
           letterOpacity: getComputedStyle(letter).opacity,
           flapTransform: flap.transform,
+          flapTransition: flap.transition,
+          reducedMotion: matchMedia("(prefers-reduced-motion: reduce)").matches,
           audioPaused: document.querySelector("#weddingAudio").paused,
           audioError: document.querySelector("#weddingAudio").error?.code ?? null
         };
