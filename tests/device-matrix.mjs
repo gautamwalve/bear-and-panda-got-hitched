@@ -91,6 +91,10 @@ for (const [engineName, configs] of Object.entries(profiles)) {
         const video = document.querySelector("#envelopeEntryVideo");
         return {
           title: document.title,
+          envelopeBounds: (() => {
+            const r = document.querySelector("#openInvitation").getBoundingClientRect();
+            return { left:r.left, top:r.top, right:r.right, bottom:r.bottom, width:r.width, height:r.height };
+          })(),
           theme: document.documentElement.getAttribute("data-theme"),
           letterDisplay: getComputedStyle(letter).display,
           letterText: letter.innerText,
@@ -117,6 +121,11 @@ for (const [engineName, configs] of Object.entries(profiles)) {
       });
       result.beforeOpen = before;
       check(result, "envelope cover is present", await page.locator("#envelopeIntro").count() === 1);
+      check(result, "envelope itself covers the entire viewport",
+        before.envelopeBounds.left <= 1 && before.envelopeBounds.top <= 1 &&
+        before.envelopeBounds.right >= before.viewportWidth - 1 &&
+        before.envelopeBounds.bottom >= innerHeight - 1,
+        JSON.stringify(before.envelopeBounds));
       check(result, "printed letter is rendered (not display:none)", before.letterDisplay !== "none", before.letterDisplay);
       check(result, "letter contains both names", /Gautam/.test(before.letterText) && /Tejasvini/.test(before.letterText), before.letterText);
       check(result, "invitation is hidden before envelope tap", before.pageVisibility === "hidden", before.pageVisibility);
