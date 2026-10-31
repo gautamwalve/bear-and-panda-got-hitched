@@ -13,6 +13,8 @@ const profiles = {
     { name: "Android 13 Pixel-style 412x915", viewport: { width: 412, height: 915 }, dpr: 2.625, mobile: true, touch: true, ua: "Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36" },
     { name: "Android 14 Pixel-style 412x915", viewport: { width: 412, height: 915 }, dpr: 2.625, mobile: true, touch: true, ua: "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36" },
     { name: "Android 15 Pixel-style 430x932", viewport: { width: 430, height: 932 }, dpr: 2.625, mobile: true, touch: true, ua: "Mozilla/5.0 (Linux; Android 15; Pixel 9) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Mobile Safari/537.36" },
+    { name: "Samsung Galaxy S23 FE Chrome Android 14", viewport: { width: 384, height: 854 }, dpr: 2.75, mobile: true, touch: true, ua: "Mozilla/5.0 (Linux; Android 14; SM-S711B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36", tapSurface: "background" },
+    { name: "Samsung Galaxy S23 FE Samsung Internet UA", viewport: { width: 384, height: 854 }, dpr: 2.75, mobile: true, touch: true, ua: "Mozilla/5.0 (Linux; Android 14; SM-S711B) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/27.0 Chrome/130.0.0.0 Mobile Safari/537.36", tapSurface: "background" },
     { name: "Narrow phone / high zoom 320x740", viewport: { width: 320, height: 740 }, dpr: 3, mobile: true, touch: true, ua: "Mozilla/5.0 (Linux; Android 14; Mobile) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36" }
   ],
   webkit: [
@@ -121,11 +123,17 @@ for (const [engineName, configs] of Object.entries(profiles)) {
       check(result, "light theme initially selected", before.theme === "light", before.theme);
       check(result, "no horizontal overflow before opening", before.scrollWidth <= before.viewportWidth, `${before.scrollWidth} > ${before.viewportWidth}`);
 
-      const openRect = await page.locator("#openInvitation").boundingBox();
-      if (!openRect) throw new Error("Envelope button has no visible bounding box");
-      // Use a direct trusted pointer tap. Playwright locator.click waits for
-      // animation stability, while the envelope intentionally floats forever.
-      await page.mouse.click(openRect.x + openRect.width / 2, openRect.y + openRect.height / 2);
+      if (profile.tapSurface === "background") {
+        // Tap a clear corner of the full-screen envelope, outside the envelope button.
+        // This verifies the wrapper-level click handler on Samsung-style profiles.
+        await page.touchscreen.tap(12, 12);
+      } else {
+        const openRect = await page.locator("#openInvitation").boundingBox();
+        if (!openRect) throw new Error("Envelope button has no visible bounding box");
+        // Use a direct trusted pointer tap. Playwright locator.click waits for
+        // animation stability, while the envelope intentionally floats forever.
+        await page.mouse.click(openRect.x + openRect.width / 2, openRect.y + openRect.height / 2);
+      }
       await page.waitForTimeout(700);
       const during = await page.evaluate(() => {
         const letter = document.querySelector(".envelope-inner-letter");
@@ -157,12 +165,16 @@ for (const [engineName, configs] of Object.entries(profiles)) {
       const flapRetracted = Number.parseFloat(during.flapHeight) < Number.parseFloat(before.flapHeight) * 0.25 && Number(during.flapOpacity) < 0.2;
       check(result, "envelope flap opens (rotate or retract)", flapRotated || flapRetracted, JSON.stringify({transform:during.flapTransform,heightBefore:before.flapHeight,heightDuring:during.flapHeight,opacity:during.flapOpacity,dpr:during.devicePixelRatio,appleDpr2Fallback:during.appleDpr2Fallback}));
 
-      await page.waitForFunction(() => getComputedStyle(document.querySelector("#envelopeIntro")).visibility === "hidden", null, { timeout: 8000 });
+      await page.waitForFunction(() => {
+        const overlay = document.querySelector("#envelopeIntro");
+        return !overlay || getComputedStyle(overlay).visibility === "hidden";
+      }, null, { timeout: 8000 });
       await page.waitForTimeout(250);
       const after = await page.evaluate(() => {
         const audio = document.querySelector("#weddingAudio");
+        const overlay = document.querySelector("#envelopeIntro");
         return {
-          overlayVisibility: getComputedStyle(document.querySelector("#envelopeIntro")).visibility,
+          overlayVisibility: overlay ? getComputedStyle(overlay).visibility : "removed",
           pageVisibility: getComputedStyle(document.querySelector(".page")).visibility,
           pageOpacity: getComputedStyle(document.querySelector(".page")).opacity,
           countdown: document.querySelector("#countDays")?.textContent,
@@ -177,7 +189,7 @@ for (const [engineName, configs] of Object.entries(profiles)) {
         };
       });
       result.afterOpen = after;
-      check(result, "cover transitions away", after.overlayVisibility === "hidden", after.overlayVisibility);
+      check(result, "cover transitions away", after.overlayVisibility === "hidden" || after.overlayVisibility === "removed", after.overlayVisibility);
       check(result, "invitation page becomes visible", after.pageVisibility === "visible" && Number(after.pageOpacity) > 0.9, `${after.pageVisibility}, opacity=${after.pageOpacity}`);
       check(result, "countdown is populated", after.countdown && after.countdown !== "--", String(after.countdown));
       check(result, "no horizontal overflow after opening", after.scrollWidth <= after.clientWidth, `${after.scrollWidth} > ${after.clientWidth}`);
