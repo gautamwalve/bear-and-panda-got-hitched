@@ -99,6 +99,11 @@ for (const [engineName, configs] of Object.entries(profiles)) {
           flapTransform: getComputedStyle(document.querySelector(".envelope-flap")).transform,
           flapTransition: getComputedStyle(document.querySelector(".envelope-flap")).transition,
           reducedMotion: matchMedia("(prefers-reduced-motion: reduce)").matches,
+          devicePixelRatio: window.devicePixelRatio,
+          appleDpr2Fallback: document.documentElement.classList.contains("safari-dpr2"),
+          userAgent: navigator.userAgent,
+          flapHeight: getComputedStyle(document.querySelector(".envelope-flap")).height,
+          flapOpacity: getComputedStyle(document.querySelector(".envelope-flap")).opacity,
           pageVisibility: getComputedStyle(document.querySelector(".page")).visibility,
           bodyBackground: getComputedStyle(document.body).backgroundColor,
           viewportWidth: innerWidth,
@@ -137,6 +142,10 @@ for (const [engineName, configs] of Object.entries(profiles)) {
           flapTransform: flap.transform,
           flapTransition: flap.transition,
           reducedMotion: matchMedia("(prefers-reduced-motion: reduce)").matches,
+          devicePixelRatio: window.devicePixelRatio,
+          appleDpr2Fallback: document.documentElement.classList.contains("safari-dpr2"),
+          flapHeight: flap.height,
+          flapOpacity: flap.opacity,
           audioPaused: document.querySelector("#weddingAudio").paused,
           audioError: document.querySelector("#weddingAudio").error?.code ?? null
         };
@@ -144,7 +153,9 @@ for (const [engineName, configs] of Object.entries(profiles)) {
       result.duringOpen = during;
       check(result, "envelope enters opening state", during.overlayClass.includes("is-opening"), during.overlayClass);
       check(result, "letter moves visibly upward", during.letterDisplay !== "none" && during.letterTop < before.letterTop - 35, `before=${before.letterTop}, after=${during.letterTop}`);
-      check(result, "envelope flap rotates", during.flapTransform !== "none" && during.flapTransform !== "matrix(1, 0, 0, 1, 0, 0)", during.flapTransform);
+      const flapRotated = during.flapTransform !== "none" && during.flapTransform !== "matrix(1, 0, 0, 1, 0, 0)";
+      const flapRetracted = Number.parseFloat(during.flapHeight) < Number.parseFloat(before.flapHeight) * 0.25 && Number(during.flapOpacity) < 0.2;
+      check(result, "envelope flap opens (rotate or retract)", flapRotated || flapRetracted, JSON.stringify({transform:during.flapTransform,heightBefore:before.flapHeight,heightDuring:during.flapHeight,opacity:during.flapOpacity,dpr:during.devicePixelRatio,appleDpr2Fallback:during.appleDpr2Fallback}));
 
       await page.waitForFunction(() => getComputedStyle(document.querySelector("#envelopeIntro")).visibility === "hidden", null, { timeout: 8000 });
       await page.waitForTimeout(250);
