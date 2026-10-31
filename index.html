@@ -1782,6 +1782,133 @@ html.safari-dpr2 .envelope-intro.is-opening .envelope-inner-letter{top:50%!impor
   background-image:none!important;
 }
 
+
+/* --- Floral invitation reference pass (preview branch only) --- */
+:root{
+  --paper:#fff9f1;
+  --cream:#fff7ed;
+  --ink:#173d2d;
+  --rose:#c51f55;
+  --rose-dark:#b91e50;
+  --sage:#1d4936;
+  --sage-dark:#214a37;
+  --gold:#c58a2c;
+  --gold-light:#e8c98c;
+  --line:rgba(197,138,44,.72);
+}
+html,body{background:#fff7ed!important;color:#214a37!important}
+body:before{
+  background:
+    radial-gradient(ellipse at 50% 20%,rgba(255,255,255,.9),transparent 58%),
+    linear-gradient(180deg,#fff8ee 0%,#fff4e8 52%,#fff8ef 100%)!important;
+}
+.page{max-width:1080px;padding:12px;margin:0 auto}
+.card{
+  min-height:calc(100svh - 24px);
+  padding:clamp(26px,4.5vw,58px) clamp(18px,5vw,64px) 28px;
+  background:rgba(255,250,243,.97)!important;
+  border:1px solid rgba(197,138,44,.7);
+  border-radius:2px;
+  box-shadow:0 12px 42px rgba(95,67,41,.08);
+  isolation:isolate;
+}
+.card:before{
+  content:""!important;display:block!important;position:absolute;inset:0;z-index:0;
+  pointer-events:none;opacity:.64;
+  background:url("./flower-only-field.svg?v=2") center center/100% 100% no-repeat;
+}
+.card:after{
+  content:""!important;display:block!important;position:absolute;inset:8px;z-index:0;
+  border:1px solid rgba(197,138,44,.28);pointer-events:none;
+}
+.card>*{position:relative;z-index:1}
+.music-row{margin:0 0 10px}
+.theme-toggle{display:none!important}
+.music-toggle{background:rgba(255,250,243,.9);border-color:#b8bda9;color:#214a37}
+.tiny-animals{margin:8px 0 10px;font-size:25px}
+.intro{
+  max-width:690px;width:90%;margin:0 auto 10px;
+  color:#214a37;font-size:clamp(17px,2.3vw,25px);
+  line-height:1.55;text-wrap:balance;
+}
+.hero{max-width:900px;padding:clamp(22px,3vw,38px) 8px 22px;margin:0 auto}
+.arch{inset:0 6% 0;border-color:rgba(197,138,44,.82);border-bottom:0;border-radius:50% 50% 0 0/24% 24% 0 0}
+.arch:after{inset:9px 9px 0;border-color:rgba(197,138,44,.32)}
+.hero .overline{color:#214a37;letter-spacing:.28em;margin-bottom:10px}
+.hero h1{
+  color:#c51f55;font-size:clamp(38px,8.3vw,88px);
+  letter-spacing:-.045em;gap:clamp(4px,1.3vw,18px);
+}
+.hero .and{color:#c58a2c}
+.hero .subtitle{color:#214a37;font-size:clamp(17px,3.1vw,26px);margin-top:12px}
+.ornament{color:#d36b77;margin:17px auto}
+.ornament:before,.ornament:after{background:#d9b46f}
+.countdown-section{
+  max-width:850px;width:100%;margin:10px auto 22px;
+  padding:17px 10px 20px;border-top:1px solid #d9b46f;border-bottom:1px solid #d9b46f;
+}
+.countdown-heading,.detail-label,.section-label{
+  color:#214a37;letter-spacing:.25em;font-size:10px
+}
+.countdown{max-width:760px;gap:clamp(7px,1.5vw,16px)}
+.countdown-unit{
+  background:rgba(255,249,240,.88);border:1px solid #c58a2c;
+  outline:1px solid rgba(197,138,44,.25);outline-offset:2px;
+  border-radius:4px;padding:clamp(10px,1.8vw,17px) 4px;
+}
+.countdown-unit span{color:#c51f55;font-size:clamp(25px,4.6vw,43px)}
+.countdown-unit small{color:#b91e50;letter-spacing:.17em}
+.event-venue-grid{
+  display:flex;flex-direction:column;align-items:center;gap:18px;
+  width:min(100%,820px);margin:20px auto 0;
+}
+.event-venue-grid .details{display:contents}
+.event-venue-grid .detail{
+  order:0;width:100%;padding:20px 12px 15px;
+  background:transparent;border:0;border-radius:0;
+}
+.merged-date{color:#c51f55;font-size:clamp(24px,4.2vw,38px);margin-top:10px}
+.merged-time{color:#c51f55;font-size:clamp(26px,4.4vw,38px)}
+.event-venue-grid .programme{
+  order:1;width:100%;min-height:0;padding:12px 8px;
+  border:1px solid #c58a2c;color:#c51f55;
+  font-size:clamp(15px,2.2vw,21px);background:rgba(255,249,240,.72);
+}
+.date-bottom-divider{max-width:540px;width:90%;height:auto;margin:0 auto}
+.event-venue-grid .venue{
+  order:2;width:100%;padding:16px 12px 22px;
+  background:rgba(255,249,240,.66);border:0;border-radius:0;
+}
+.venue h2{color:#c51f55;font-size:clamp(23px,3.4vw,36px);margin:12px auto 6px}
+.address{color:#214a37;font-size:clamp(15px,2vw,19px);line-height:1.65}
+.map-link{background:rgba(255,250,243,.94);border-color:#66816e;color:#214a37;margin-top:15px}
+.closing{color:#c51f55;font-size:clamp(19px,2.9vw,28px);margin:18px auto 0}
+.bottom-decoration{color:#d08d47;margin-top:12px}
+.playful-runway{margin:12px auto 0;height:205px;max-width:720px}
+.runway-lantern{filter:drop-shadow(0 2px 5px rgba(197,138,44,.22))}
+@media(max-width:620px){
+  .page{padding:6px}
+  .card{min-height:calc(100svh - 12px);padding:18px 12px 20px}
+  .card:before{opacity:.56;background-size:100% 100%}
+  .intro{width:88%;font-size:17px;line-height:1.55;margin-bottom:2px}
+  .hero{padding:24px 0 16px}
+  .hero h1{font-size:clamp(35px,9vw,49px)!important;white-space:normal!important;flex-wrap:wrap!important}
+  .hero .subtitle{font-size:17px!important}
+  .countdown-section{margin:8px auto 14px;padding:14px 5px 17px}
+  .countdown-unit{padding:10px 2px!important}
+  .countdown-unit span{font-size:clamp(22px,6vw,31px)!important}
+  .countdown-unit small{font-size:8px!important}
+  .event-venue-grid{margin:12px auto 0!important;gap:10px}
+  .event-venue-grid .detail{padding:15px 8px 8px}
+  .event-venue-grid .programme{font-size:15px;padding:10px 5px}
+  .event-venue-grid .venue{padding:12px 8px 15px}
+  .playful-runway{height:166px;margin-top:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  .runway-lantern,.runway-petal,.runway-sparkle{animation:none!important}
+}
+/* --- end floral invitation reference pass --- */
+
 </style>
 </head>
 <body>
