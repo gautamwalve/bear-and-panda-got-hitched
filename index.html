@@ -7,30 +7,7 @@
 <meta name="color-scheme" content="light only">
 <meta name="description" content="Gautam and Tejasvini's wedding invitation — Saturday, 12 December 2026, at Shri Kshetra Panchayatan Mandir, Nadhal.">
 <title>Gautam &amp; Tejasvini | Wedding Invitation</title>
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js">
-(function(){
- const root=document.documentElement;
- const toggle=document.getElementById('themeToggle');
- const label=document.getElementById('themeLabel');
- if(!toggle||!label)return;
- function applyTheme(theme){
-   const dark=theme==='dark';
-   root.setAttribute('data-theme',dark?'dark':'light');
-   toggle.setAttribute('aria-pressed',String(dark));
-   toggle.setAttribute('aria-label',dark?'Switch to light theme':'Switch to dark theme');
-   label.textContent=dark?'Light mode':'Dark mode';
-   const icon=toggle.querySelector('[aria-hidden="true"]');
-   if(icon)icon.textContent=dark?'☀':'☾';
-   const meta=document.querySelector('meta[name="theme-color"]');
-   if(meta)meta.setAttribute('content',dark?'#171a24':'#fbf8f0');
- }
- applyTheme('light');
- toggle.addEventListener('click',function(){
-   applyTheme(root.getAttribute('data-theme')==='dark'?'light':'dark');
- });
-})();
-
-</script>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 <style>
 :root{
   color-scheme:only light;
@@ -1614,6 +1591,28 @@ body{background-color:#fbf8ef!important}
    const fallback = viewer.parentElement.querySelector('.model-fallback');
    viewer.addEventListener('load', function(){ if(fallback) fallback.style.opacity='0'; });
    viewer.addEventListener('error', function(){ if(fallback) fallback.style.opacity='1'; });
+ });
+})();
+
+(function(){
+ const root=document.documentElement;
+ const toggle=document.getElementById('themeToggle');
+ const label=document.getElementById('themeLabel');
+ if(!toggle||!label)return;
+ function applyTheme(theme){
+   const dark=theme==='dark';
+   root.setAttribute('data-theme',dark?'dark':'light');
+   toggle.setAttribute('aria-pressed',String(dark));
+   toggle.setAttribute('aria-label',dark?'Switch to light theme':'Switch to dark theme');
+   label.textContent=dark?'Light mode':'Dark mode';
+   const icon=toggle.querySelector('[aria-hidden="true"]');
+   if(icon)icon.textContent=dark?'☀':'☾';
+   const meta=document.querySelector('meta[name="theme-color"]');
+   if(meta)meta.setAttribute('content',dark?'#171a24':'#fbf8f0');
+ }
+ applyTheme('light');
+ toggle.addEventListener('click',function(){
+   applyTheme(root.getAttribute('data-theme')==='dark'?'light':'dark');
  });
 })();
 </script>
