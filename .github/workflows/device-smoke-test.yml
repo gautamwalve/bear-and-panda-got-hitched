@@ -1,0 +1,52 @@
+name: Cross-device browser smoke tests
+
+on:
+  workflow_run:
+    workflows: ["Deploy wedding invitation to GitHub Pages"]
+    types: [completed]
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  device-matrix:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out the exact deployed commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Playwright
+        run: |
+          npm init -y
+          npm install --no-save playwright
+
+      - name: Install browser engines
+        run: npx playwright install --with-deps chromium firefox webkit
+
+      - name: Test published wedding invitation
+        env:
+          BASE_URL: https://gautamwalve.github.io/bear-and-panda-got-hitched/
+          DEPLOYED_SHA: ${{ github.event.workflow_run.head_sha }}
+          CI: true
+        run: node tests/device-matrix.mjs
+
+      - name: Upload screenshots and compatibility report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wedding-invite-device-matrix
+          path: |
+            device-matrix-results.json
+            device-test-artifacts/
+          if-no-files-found: warn
+          retention-days: 14
