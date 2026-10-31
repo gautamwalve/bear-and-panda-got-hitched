@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1310,6 +1310,74 @@ body{background-color:#fbf8ef!important}
 :root[data-theme="dark"] .envelope-kicker{color:#d8bd89}
 .theme-toggle{min-width:112px}
 @media(max-width:620px){.music-row{justify-content:center}.theme-toggle{min-width:104px}}
+
+
+/* Final responsive and theme-state guard: layout follows the available CSS viewport,
+   including browser zoom and narrow phone screens. */
+:root[data-theme="light"]{
+ color-scheme:light!important;
+ --paper:#fffdf8;--cream:#fbf8f0;--cream-dark:#f3eee3;
+ --ink:#565e56;--muted:#777970;--rose:#c87987;--rose-dark:#ac5f70;
+ --sage:#879b8b;--sage-dark:#617b6e;--gold:#c3a56c;--gold-light:#e2d3b1;
+ --line:rgba(195,165,108,.62);
+}
+:root[data-theme="light"] html,
+:root[data-theme="light"] body{background-color:#fbf8f0!important;color:#565e56!important;color-scheme:light!important}
+:root[data-theme="light"] body:before{background:
+ radial-gradient(ellipse at 12% 14%,rgba(223,202,166,.18),transparent 30%),
+ radial-gradient(ellipse at 88% 38%,rgba(200,121,135,.10),transparent 31%),
+ radial-gradient(ellipse at 22% 86%,rgba(135,155,139,.12),transparent 34%),
+ linear-gradient(135deg,#fcfaf4,#f5f0e6)!important}
+:root[data-theme="light"] .card{background:#fffdf8!important;color:#565e56!important}
+:root[data-theme="light"] .detail,
+:root[data-theme="light"] .venue,
+:root[data-theme="light"] .countdown-unit{background-color:rgba(255,253,248,.92)!important;color:#565e56!important}
+:root[data-theme="light"] .intro,
+:root[data-theme="light"] .address,
+:root[data-theme="light"] .detail-date,
+:root[data-theme="light"] .detail-note{color:#565e56!important}
+:root[data-theme="light"] .music-toggle,
+:root[data-theme="light"] .map-link{background:#f8f7ef!important;color:#617b6e!important}
+:root[data-theme="dark"] html,
+:root[data-theme="dark"] body{background-color:#171a24!important;color:#eee6dc!important;color-scheme:dark!important}
+:root[data-theme="dark"] .card{background:#202432!important;color:#eee6dc!important}
+html,body{width:100%;min-width:0;max-width:100%;overflow-x:clip}
+body{min-height:100vh;min-height:100svh}
+.page{width:100%;max-width:100%;min-width:0;padding:clamp(5px,1.5vw,12px)}
+.card{width:100%;min-width:0;min-height:0;overflow:visible;padding:clamp(14px,3.5vw,64px)}
+.hero,.hero-content,.event-venue-grid,.details,.venue{min-width:0;max-width:100%}
+.intro,.address,.venue h2,.closing{overflow-wrap:anywhere}
+h1{max-width:100%;white-space:normal;flex-wrap:wrap;line-height:1.12;font-size:clamp(30px,7.4vw,86px)}
+.subtitle{font-size:clamp(15px,3.2vw,21px)}
+.event-venue-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.music-row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.music-toggle{max-width:100%;white-space:normal}
+@media(max-width:760px){
+ .page{padding:6px}
+ .card{padding:clamp(14px,4vw,26px)}
+ .event-venue-grid{grid-template-columns:minmax(0,1fr);gap:14px}
+ .hero{width:100%!important;margin:0!important;min-height:0!important;padding:clamp(54px,13vw,112px) 8px 28px!important}
+ .hero .arch{top:20px!important;left:4%!important;right:4%!important;height:clamp(135px,42vw,190px)!important}
+ .hero .overline{margin-bottom:clamp(22px,7vw,42px)!important;font-size:clamp(10px,2.5vw,15px)!important}
+ .hero h1{font-size:clamp(32px,8.5vw,62px)!important;gap:clamp(4px,1.5vw,10px)!important;white-space:normal!important}
+ .hero .subtitle{margin-top:18px!important}
+ .hero .floral-spray{width:clamp(64px,17vw,120px)!important;top:35%!important}
+ .countdown{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .countdown-unit{min-width:0}
+ .details,.venue{width:100%}
+ .playful-runway{min-height:clamp(180px,48vw,300px)}
+}
+@media(max-width:420px){
+ .card{padding:12px 10px}
+ .tiny-animals{font-size:20px}
+ .intro{font-size:15px;line-height:1.6}
+ .hero .arch:after{width:58px!important;height:42px!important;font-size:37px!important;letter-spacing:-16px!important;padding-right:14px!important}
+ .countdown{gap:7px}
+ .countdown-unit{padding:10px 5px}
+ .music-toggle{font-size:11px;padding:9px 10px}
+ .venue h2{font-size:clamp(19px,5vw,25px)}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
 </style>
 </head>
