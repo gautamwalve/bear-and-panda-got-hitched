@@ -1740,6 +1740,32 @@ html.safari-dpr2 .envelope-intro.is-opening .envelope-inner-letter{top:50%!impor
   }
 }
 
+
+
+/* Faster hand-off: finish the fold choreography, then reveal without a long pause. */
+.envelope-intro.is-opening .envelope-flap{
+  transition:transform .78s cubic-bezier(.18,.76,.14,1) .02s!important;
+}
+.envelope-intro.is-opening .envelope-left-fold,
+.envelope-intro.is-opening .envelope-right-fold{
+  transition:transform .86s cubic-bezier(.18,.72,.15,1) .10s,opacity .38s ease .58s!important;
+}
+.envelope-intro.is-opening .envelope-bottom-fold{
+  transition:transform .78s cubic-bezier(.18,.72,.15,1) .16s,opacity .34s ease .62s!important;
+}
+.envelope-intro.is-opening .envelope-back{
+  transition:transform .95s cubic-bezier(.2,.72,.18,1),opacity .34s ease .48s,filter .65s ease!important;
+}
+.envelope-intro.is-gone{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  transition:opacity .32s ease,visibility 0s linear .32s!important;
+}
+.page.invitation-reveal{
+  transition:opacity .22s ease!important;
+}
+
 </style>
 </head>
 <body>
@@ -1932,7 +1958,7 @@ html.safari-dpr2 .envelope-intro.is-opening .envelope-inner-letter{top:50%!impor
 
     const reducedMotion = window.matchMedia &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const revealDelay = reducedMotion ? 350 : 2450;
+    const revealDelay = reducedMotion ? 250 : 1100;
 
     window.setTimeout(function(){
       invitationPage.classList.add('invitation-reveal');
