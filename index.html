@@ -2006,25 +2006,68 @@ body:before { background:none !important; }
 }
 
 
-/* Venue and pickup information share the same visual language and balanced card heights. */
-.event-venue-grid{align-items:start!important}
-.event-venue-grid>.details{min-width:0!important}
-.venue-stack{display:grid;grid-template-rows:auto auto;gap:16px;min-width:0;width:100%;height:100%}
-.event-venue-grid .venue{
- min-height:0!important;height:100%;box-sizing:border-box;
- display:flex!important;flex-direction:column;align-items:center;justify-content:center!important;
- padding:clamp(22px,3vw,34px)!important;
+/* Balanced two-card row with a full-width pickup-services panel beneath it. */
+.event-venue-grid{
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+ grid-template-rows:auto auto!important;
+ align-items:stretch!important;
+ gap:16px clamp(16px,2.4vw,28px)!important;
 }
-.event-venue-grid .venue:first-child{min-height:clamp(250px,25vw,290px)!important}
-.pickup-venue{min-height:230px!important}
-.pickup-contacts{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 16px;margin-top:16px;font:12px/1.5 Arial,sans-serif;color:var(--sage-dark)}
+.event-venue-grid>.details{
+ grid-column:1;grid-row:1;min-width:0!important;width:100%!important;
+ display:flex!important;flex-direction:column!important;align-items:center!important;
+ justify-content:center!important;gap:0!important;
+ min-height:clamp(340px,31vw,420px)!important;
+ box-sizing:border-box!important;
+ padding:clamp(22px,3vw,38px) clamp(16px,2.4vw,30px)!important;
+ background:rgba(35,40,47,.94)!important;
+ border:1px solid rgba(195,165,108,.42)!important;
+ border-radius:clamp(24px,3.2vw,48px)!important;
+}
+.event-venue-grid>.venue-stack{display:contents!important}
+.event-venue-grid .venue{
+ grid-column:2;grid-row:1;
+ min-width:0!important;width:100%!important;min-height:clamp(340px,31vw,420px)!important;
+ height:100%!important;box-sizing:border-box!important;
+ display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;
+ padding:clamp(22px,3vw,38px)!important;
+ background:rgba(35,40,47,.94)!important;
+ border:1px solid rgba(195,165,108,.42)!important;
+ border-radius:clamp(24px,3.2vw,48px)!important;
+}
+.event-venue-grid .pickup-venue{
+ grid-column:1/-1!important;grid-row:2!important;
+ min-height:230px!important;height:auto!important;
+}
+.event-venue-grid .merged-detail{
+ width:100%;min-height:0!important;padding:0!important;
+ background:transparent!important;border:0!important;border-radius:0!important;
+ display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;
+ gap:7px!important;
+}
+.event-venue-grid .date-bottom-divider{width:min(82%,420px)!important;height:42px!important;margin:12px auto 4px!important}
+.event-venue-grid .programme{
+ width:100%;min-height:0!important;margin:0!important;padding:8px 4px 12px!important;
+ border:0!important;background:transparent!important;
+ color:#f0e6d8!important;font-size:clamp(14px,1.45vw,18px)!important;
+ text-align:center!important;
+}
+.event-venue-grid .calendar-button{margin:8px auto 0!important}
+.pickup-contacts{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 16px;margin-top:16px;font:12px/1.5 Arial,sans-serif;color:#e7d8bd}
 .pickup-contacts span{width:100%;font-size:10px;letter-spacing:.16em;text-transform:uppercase}
-.pickup-contacts a{color:var(--rose-dark);text-decoration:none;white-space:nowrap}
+.pickup-contacts a{color:#f09aaa;text-decoration:none;white-space:nowrap}
 .pickup-contacts a:hover{text-decoration:underline}
 @media(max-width:620px){
- .venue-stack{gap:12px}
- .event-venue-grid .venue:first-child,.pickup-venue{min-height:0!important}
- .event-venue-grid .venue{padding:24px 14px!important}
+ .event-venue-grid{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto!important;gap:12px!important}
+ .event-venue-grid>.details,.event-venue-grid .venue,.event-venue-grid .pickup-venue{
+  grid-column:1!important;grid-row:auto!important;min-height:0!important;height:auto!important;
+  padding:26px 16px!important;border-radius:28px!important;
+ }
+ .event-venue-grid .date-bottom-divider{height:34px!important;margin:8px auto 2px!important}
+ .event-venue-grid .programme{font-size:14px!important;padding:7px 2px 10px!important}
+ .event-venue-grid .merged-detail .merged-date{font-size:clamp(21px,5.4vw,27px)!important}
+ .event-venue-grid .merged-detail .merged-time{font-size:clamp(24px,6vw,30px)!important}
  .pickup-contacts{gap:8px 12px}
 }
 
@@ -2088,10 +2131,7 @@ body:before { background:none !important; }
       <div class="detail-label">Wedding ceremony &amp; time</div>
       <div class="merged-date">Saturday, 12 December 2026</div>
       <div class="merged-time">12:32 PM</div>
-    </div>
-    <div class="programme">Marriage ceremony followed by lunch &amp; reception</div>
-    <button class="calendar-button" id="addToCalendar" type="button"><span aria-hidden="true">▣</span> Add to calendar</button>
-    <svg class="date-bottom-divider" viewBox="0 0 760 68" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <svg class="date-bottom-divider" viewBox="0 0 760 68" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
   <g fill="none" stroke="#bd914d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M12 34 H326 M434 34 H748"/>
     <path d="M12 34 l12 -7 v14z M748 34 l-12 -7 v14z"/>
@@ -2107,6 +2147,9 @@ body:before { background:none !important; }
     <circle cx="336" cy="34" r="2.5"/><circle cx="424" cy="34" r="2.5"/>
   </g>
 </svg>
+      <div class="programme">Marriage ceremony followed by lunch &amp; reception</div>
+      <button class="calendar-button" id="addToCalendar" type="button"><span aria-hidden="true">▣</span> Add to calendar</button>
+    </div>
   </section>
   <div class="venue-stack">
     <section class="venue" aria-label="Wedding venue">
