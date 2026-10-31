@@ -1517,28 +1517,28 @@ h1{max-width:100%;white-space:normal;flex-wrap:wrap;line-height:1.12;font-size:c
 
 /* Safari DPR-2 fallback, selected by actual device pixel ratio in JavaScript.
    Avoid 3D transforms on the affected iPhone/iPad density; use layout movement. */
-:root.safari-dpr2 .envelope-flap{
+html.safari-dpr2 .envelope-flap{
   transform:none!important;
   height:61%!important;
   opacity:1!important;
   transition:height .5s cubic-bezier(.2,.72,.2,1),opacity .28s ease .12s!important;
 }
-:root.safari-dpr2 .envelope-intro.is-opening .envelope-flap{
+html.safari-dpr2 .envelope-intro.is-opening .envelope-flap{
   transform:none!important;
   height:0!important;
   opacity:0!important;
 }
-:root.safari-dpr2 .envelope-inner-letter{
+html.safari-dpr2 .envelope-inner-letter{
   transform:none!important;
   top:calc(3% + 17px)!important;
   transition:top .78s cubic-bezier(.16,.78,.18,1) .1s,opacity .45s ease .1s,box-shadow .7s ease .1s!important;
 }
-:root.safari-dpr2 .envelope-intro.is-opening .envelope-inner-letter{
+html.safari-dpr2 .envelope-intro.is-opening .envelope-inner-letter{
   transform:none!important;
   top:calc(3% - 68px)!important;
 }
 @media(min-width:621px){
- :root.safari-dpr2 .envelope-intro.is-opening .envelope-inner-letter{
+ html.safari-dpr2 .envelope-intro.is-opening .envelope-inner-letter{
    top:calc(3% - 82px)!important;
  }
 }
