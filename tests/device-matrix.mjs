@@ -86,9 +86,9 @@ for (const [engineName, configs] of Object.entries(profiles)) {
       await page.waitForTimeout(350);
 
       const before = await page.evaluate(() => {
-        const video = document.querySelector("#envelopeEntryVideo");
         return {
           popupCardCount: document.querySelectorAll(".envelope-inner-letter").length,
+          videoElementCount: document.querySelectorAll("video").length,
           title: document.title,
           envelopeBounds: (() => {
             const r = document.querySelector("#openInvitation").getBoundingClientRect();
@@ -108,8 +108,6 @@ for (const [engineName, configs] of Object.entries(profiles)) {
           viewportWidth: innerWidth,
           viewportHeight: innerHeight,
           scrollWidth: document.documentElement.scrollWidth,
-          videoReadyState: video?.readyState ?? -1,
-          videoPaused: video?.paused ?? true,
           audioCanPlayMp3: document.querySelector("#weddingAudio").canPlayType("audio/mpeg")
         };
       });
@@ -121,6 +119,7 @@ for (const [engineName, configs] of Object.entries(profiles)) {
         before.envelopeBounds.bottom >= before.viewportHeight - 1,
         JSON.stringify(before.envelopeBounds));
       check(result, "there is no pop-up invitation card", before.popupCardCount === 0, String(before.popupCardCount));
+      check(result, "entry video element is removed", before.videoElementCount === 0, String(before.videoElementCount));
       check(result, "invitation is hidden before envelope tap", before.pageVisibility === "hidden", before.pageVisibility);
       check(result, "light theme initially selected", before.theme === "light", before.theme);
       check(result, "no horizontal overflow before opening", before.scrollWidth <= before.viewportWidth, `${before.scrollWidth} > ${before.viewportWidth}`);
