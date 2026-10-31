@@ -1782,6 +1782,98 @@ html.safari-dpr2 .envelope-intro.is-opening .envelope-inner-letter{top:50%!impor
   background-image:none!important;
 }
 
+
+/* Manual dark theme: explicit data-theme styling (independent of OS preference). */
+:root[data-theme="dark"]{
+  color-scheme:dark!important;
+  --paper:#20242a!important;--cream:#191d22!important;--cream-dark:#292e35!important;
+  --ink:#eee9df!important;--muted:#c0b9ad!important;--rose:#e5a0ad!important;--rose-dark:#e7a0ad!important;
+  --sage:#a9bcae!important;--sage-dark:#bdcbbb!important;--gold:#d7b77d!important;--gold-light:#796b55!important;
+  --line:rgba(215,183,125,.48)!important;
+}
+:root[data-theme="dark"] html,
+:root[data-theme="dark"] body{
+  background:#191d22!important;color:#eee9df!important;color-scheme:dark!important;
+}
+:root[data-theme="dark"] body:before{
+  background:
+    radial-gradient(ellipse at 12% 14%,rgba(125,103,76,.13),transparent 30%),
+    radial-gradient(ellipse at 88% 38%,rgba(150,91,108,.12),transparent 31%),
+    radial-gradient(ellipse at 22% 86%,rgba(94,126,105,.12),transparent 34%),
+    linear-gradient(135deg,#20242a,#171a1f)!important;
+}
+:root[data-theme="dark"] .page,
+:root[data-theme="dark"] .card{
+  background:transparent!important;color:#eee9df!important;
+}
+:root[data-theme="dark"] .intro,
+:root[data-theme="dark"] .address,
+:root[data-theme="dark"] .detail-date,
+:root[data-theme="dark"] .detail-note,
+:root[data-theme="dark"] .signature,
+:root[data-theme="dark"] .footer{
+  color:#d0c9bd!important;
+}
+:root[data-theme="dark"] .hero{
+  background:radial-gradient(ellipse at 50% 48%,rgba(57,62,65,.82),rgba(38,43,47,.66) 62%,rgba(29,34,38,.5))!important;
+  border-color:rgba(215,183,125,.35)!important;
+  box-shadow:inset 0 0 0 6px rgba(255,255,255,.025)!important;
+}
+:root[data-theme="dark"] .overline,
+:root[data-theme="dark"] .detail-label,
+:root[data-theme="dark"] .section-label,
+:root[data-theme="dark"] .countdown-heading,
+:root[data-theme="dark"] .countdown-unit small,
+:root[data-theme="dark"] .character-name{
+  color:#bdcbbb!important;
+}
+:root[data-theme="dark"] .subtitle,
+:root[data-theme="dark"] .closing,
+:root[data-theme="dark"] .venue h2,
+:root[data-theme="dark"] .merged-date,
+:root[data-theme="dark"] .merged-time,
+:root[data-theme="dark"] .detail-day,
+:root[data-theme="dark"] .detail-time{
+  color:#e7a0ad!important;
+}
+:root[data-theme="dark"] .programme,
+:root[data-theme="dark"] .countdown-section{
+  color:#d9d0c2!important;border-color:rgba(215,183,125,.42)!important;
+}
+:root[data-theme="dark"] .countdown-unit,
+:root[data-theme="dark"] .detail,
+:root[data-theme="dark"] .venue,
+:root[data-theme="dark"] .event-venue-grid .venue{
+  background:rgba(43,48,54,.78)!important;
+  border-color:rgba(215,183,125,.38)!important;
+}
+:root[data-theme="dark"] .countdown-unit span{color:#e7a0ad!important}
+:root[data-theme="dark"] .map-link,
+:root[data-theme="dark"] .music-toggle{
+  background:#303a37!important;color:#d6e1d5!important;
+  border-color:#788f7e!important;
+}
+:root[data-theme="dark"] .map-link:hover,
+:root[data-theme="dark"] .music-toggle:hover{background:#3b4942!important}
+:root[data-theme="dark"] .ornament,
+:root[data-theme="dark"] .bottom-decoration{color:#d7b77d!important}
+:root[data-theme="dark"] .ornament:before,
+:root[data-theme="dark"] .ornament:after{background:#796b55!important}
+:root[data-theme="dark"] .arch,
+:root[data-theme="dark"] .arch:after{border-color:rgba(215,183,125,.35)!important}
+:root[data-theme="dark"] .date-bottom-divider{opacity:.8!important;filter:brightness(1.25)!important}
+:root[data-theme="dark"] .floral-spray{filter:brightness(.82) saturate(.8)!important}
+:root[data-theme="dark"] .playful-runway{filter:brightness(.9)!important}
+:root[data-theme="dark"] .runway-lantern{filter:brightness(.88) drop-shadow(0 2px 5px rgba(197,138,44,.22))!important}
+:root[data-theme="dark"] .runway-sparkle,
+:root[data-theme="dark"] .runway-petal,
+:root[data-theme="dark"] .romance-heart{filter:brightness(1.12)!important}
+:root[data-theme="dark"] .music-toggle:focus-visible,
+:root[data-theme="dark"] .map-link:focus-visible{outline-color:#d7b77d!important}
+@media(prefers-reduced-motion:reduce){
+  :root[data-theme="dark"] *{transition-duration:.01ms!important}
+}
+
 </style>
 </head>
 <body>
