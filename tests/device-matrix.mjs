@@ -124,6 +124,8 @@ for (const [engineName, configs] of Object.entries(profiles)) {
       check(result, "light theme initially selected", before.theme === "light", before.theme);
       check(result, "no horizontal overflow before opening", before.scrollWidth <= before.viewportWidth, `${before.scrollWidth} > ${before.viewportWidth}`);
 
+      await page.evaluate(() => { window.__envelopeTapAt = performance.now(); });
+
       if (profile.tapSurface === "background") {
         // Tap a clear corner of the full-screen envelope, outside the envelope button.
         // This verifies the wrapper-level click handler on Samsung-style profiles.
@@ -178,6 +180,7 @@ for (const [engineName, configs] of Object.entries(profiles)) {
         const overlay = document.querySelector("#envelopeIntro");
         return {
           overlayVisibility: overlay ? getComputedStyle(overlay).visibility : "removed",
+          revealElapsedMs: Math.round(performance.now() - (window.__envelopeTapAt || performance.now())),
           pageVisibility: getComputedStyle(document.querySelector(".page")).visibility,
           pageOpacity: getComputedStyle(document.querySelector(".page")).opacity,
           countdown: document.querySelector("#countDays")?.textContent,
@@ -193,6 +196,7 @@ for (const [engineName, configs] of Object.entries(profiles)) {
       });
       result.afterOpen = after;
       check(result, "cover transitions away", after.overlayVisibility === "hidden" || after.overlayVisibility === "removed", after.overlayVisibility);
+      check(result, "invitation reveal completes within 2 seconds", after.revealElapsedMs < 2000, `${after.revealElapsedMs} ms`);
       check(result, "invitation page becomes visible", after.pageVisibility === "visible" && Number(after.pageOpacity) > 0.9, `${after.pageVisibility}, opacity=${after.pageOpacity}`);
       check(result, "countdown is populated", after.countdown && after.countdown !== "--", String(after.countdown));
       check(result, "no horizontal overflow after opening", after.scrollWidth <= after.clientWidth, `${after.scrollWidth} > ${after.clientWidth}`);
