@@ -113,6 +113,7 @@ for (const [engineName, configs] of Object.entries(profiles)) {
           pageVisibility: getComputedStyle(document.querySelector(".page")).visibility,
           bodyBackground: getComputedStyle(document.body).backgroundColor,
           viewportWidth: innerWidth,
+          viewportHeight: innerHeight,
           scrollWidth: document.documentElement.scrollWidth,
           videoReadyState: video?.readyState ?? -1,
           videoPaused: video?.paused ?? true,
@@ -124,7 +125,7 @@ for (const [engineName, configs] of Object.entries(profiles)) {
       check(result, "envelope itself covers the entire viewport",
         before.envelopeBounds.left <= 1 && before.envelopeBounds.top <= 1 &&
         before.envelopeBounds.right >= before.viewportWidth - 1 &&
-        before.envelopeBounds.bottom >= innerHeight - 1,
+        before.envelopeBounds.bottom >= before.viewportHeight - 1,
         JSON.stringify(before.envelopeBounds));
       check(result, "printed letter is rendered (not display:none)", before.letterDisplay !== "none", before.letterDisplay);
       check(result, "letter contains both names", /Gautam/.test(before.letterText) && /Tejasvini/.test(before.letterText), before.letterText);
