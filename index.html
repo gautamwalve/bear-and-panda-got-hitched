@@ -2217,6 +2217,7 @@ body:before { background:none !important; }
  const toggle=document.getElementById('themeToggle');
  const label=document.getElementById('themeLabel');
  if(!toggle||!label)return;
+ let manualOverride=false;
  function applyTheme(theme){
    const dark=theme==='dark';
    root.setAttribute('data-theme',dark?'dark':'light');
@@ -2230,8 +2231,17 @@ body:before { background:none !important; }
    const schemeMeta=document.querySelector('meta[name="color-scheme"]');
    if(schemeMeta)schemeMeta.setAttribute('content',dark?'dark':'only light');
  }
- applyTheme('light');
+ function applyTimeBasedTheme(){
+   if(manualOverride)return;
+   const hour=new Date().getHours();
+   applyTheme(hour>=18 || hour<6 ? 'dark' : 'light');
+ }
+ // Default to the viewer's local time: light 06:00–17:59, dark 18:00–05:59.
+ applyTimeBasedTheme();
+ // Recheck while the invitation remains open, including across a theme boundary.
+ window.setInterval(applyTimeBasedTheme,60000);
  toggle.addEventListener('click',function(){
+   manualOverride=true;
    applyTheme(root.getAttribute('data-theme')==='dark'?'light':'dark');
  });
 })();
