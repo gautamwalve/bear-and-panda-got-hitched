@@ -990,9 +990,8 @@ html,body{background:#fbf8ef!important}
 .envelope-intro.is-opening{background:#fff3e8!important}
 
 
-/* Full-screen uploaded animation is the envelope entry backdrop. */
-.envelope-entry-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none;background:#f4e8dc}
-.envelope-intro:after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(255,249,240,.14),rgba(255,244,232,.30))}
+/* Floral SVG and parchment gradients provide the static entry backdrop. */
+.envelope-intro:after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 40%,rgba(255,253,245,.36),rgba(255,241,225,.16) 62%,rgba(141,91,78,.10))}
 .entry-floral-field{z-index:2!important}
 .envelope-shell{z-index:5!important}
 
@@ -1745,7 +1744,6 @@ html.safari-dpr2 .envelope-intro.is-opening .envelope-inner-letter{top:50%!impor
 </head>
 <body>
 <div class="envelope-intro" id="envelopeIntro" role="dialog" aria-modal="true" aria-label="Open wedding invitation">
-  <video class="envelope-entry-video" id="envelopeEntryVideo" autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="./cd5ca0f976c25733c68161a6db32987b_720w.mp4" type="video/mp4"></video>
   <div class="entry-floral-field" id="entryFloralField" aria-hidden="true"></div>
   <div class="envelope-shell">
     <button class="envelope-button" id="openInvitation" type="button" aria-label="Open wedding invitation">
@@ -1928,16 +1926,6 @@ html.safari-dpr2 .envelope-intro.is-opening .envelope-inner-letter{top:50%!impor
 
     // Start audio immediately inside the visitor's tap gesture.
     startMusicFromGesture();
-
-    // The entry video is decorative; audio is deliberately muted.
-    const entryVideo = document.getElementById('envelopeEntryVideo');
-    if(entryVideo){
-      entryVideo.muted = true;
-      const videoRequest = entryVideo.play();
-      if(videoRequest && typeof videoRequest.catch === 'function'){
-        videoRequest.catch(() => {});
-      }
-    }
 
     if(openInvitation) openInvitation.disabled = true;
     envelopeIntro.classList.add('is-opening');
