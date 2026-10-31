@@ -1766,6 +1766,22 @@ html.safari-dpr2 .envelope-intro.is-opening .envelope-inner-letter{top:50%!impor
   transition:opacity .22s ease!important;
 }
 
+
+
+/* One uninterrupted warm-ivory canvas: the card must not turn whiter than its page. */
+:root[data-theme="light"],
+:root[data-theme="light"] body,
+:root[data-theme="light"] .page,
+:root[data-theme="light"] .card,
+:root[data-theme="light"] .page .card,
+:root[data-theme="light"] .invitation-shell,
+:root[data-theme="light"] .invitation-shell > .page > .card {
+  background-color:#fbf8f0!important;
+}
+:root[data-theme="light"] .card{
+  background-image:none!important;
+}
+
 </style>
 </head>
 <body>
