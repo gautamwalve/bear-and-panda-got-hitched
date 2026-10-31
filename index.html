@@ -1874,6 +1874,51 @@ html.safari-dpr2 .envelope-intro.is-opening .envelope-inner-letter{top:50%!impor
   :root[data-theme="dark"] *{transition-duration:.01ms!important}
 }
 
+
+/* One continuous invitation canvas: no framed card or outer page margins. */
+html, body {
+  width:100% !important;
+  min-width:0 !important;
+  max-width:none !important;
+  margin:0 !important;
+  padding:0 !important;
+  background:#fbf8f0 !important;
+}
+body:before { background:none !important; }
+.page {
+  width:100% !important;
+  max-width:none !important;
+  min-width:0 !important;
+  min-height:100vh !important;
+  min-height:100svh !important;
+  margin:0 !important;
+  padding:0 !important;
+  background:#fbf8f0 !important;
+}
+.card {
+  width:100% !important;
+  max-width:none !important;
+  min-width:0 !important;
+  min-height:100vh !important;
+  min-height:100svh !important;
+  margin:0 !important;
+  border:0 !important;
+  outline:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  background:#fbf8f0 !important;
+}
+:root[data-theme="dark"] html,
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] .page,
+:root[data-theme="dark"] .card {
+  background:#191d22 !important;
+}
+@media (max-width:440px) {
+  .page { padding:0 !important; }
+  .card { padding:24px 12px !important; }
+}
+
 </style>
 </head>
 <body>
