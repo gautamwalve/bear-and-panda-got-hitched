@@ -2005,6 +2005,29 @@ body:before { background:none !important; }
  .event-venue-grid .venue .address{font-size:14px!important}
 }
 
+
+/* Venue and pickup information share the same visual language and balanced card heights. */
+.event-venue-grid{align-items:start!important}
+.event-venue-grid>.details{min-width:0!important}
+.venue-stack{display:grid;grid-template-rows:auto auto;gap:16px;min-width:0;width:100%;height:100%}
+.event-venue-grid .venue{
+ min-height:0!important;height:100%;box-sizing:border-box;
+ display:flex!important;flex-direction:column;align-items:center;justify-content:center!important;
+ padding:clamp(22px,3vw,34px)!important;
+}
+.event-venue-grid .venue:first-child{min-height:clamp(250px,25vw,290px)!important}
+.pickup-venue{min-height:230px!important}
+.pickup-contacts{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 16px;margin-top:16px;font:12px/1.5 Arial,sans-serif;color:var(--sage-dark)}
+.pickup-contacts span{width:100%;font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+.pickup-contacts a{color:var(--rose-dark);text-decoration:none;white-space:nowrap}
+.pickup-contacts a:hover{text-decoration:underline}
+@media(max-width:620px){
+ .venue-stack{gap:12px}
+ .event-venue-grid .venue:first-child,.pickup-venue{min-height:0!important}
+ .event-venue-grid .venue{padding:24px 14px!important}
+ .pickup-contacts{gap:8px 12px}
+}
+
 </style>
 </head>
 <body>
@@ -2085,13 +2108,21 @@ body:before { background:none !important; }
   </g>
 </svg>
   </section>
-  <section class="venue" aria-label="Wedding venue">
-    
-    <div class="section-label">The venue</div>
-    <h2>Shri Kshetra Panchayatan Mandir</h2>
-    <div class="address">Nadhal, Navi Mumbai – 410206<br>Maharashtra, India</div>
-    <a class="map-link" href="https://www.google.com/maps?q=18.905137816391697,73.22917755573111" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> Open location in Google Maps</a>
-  </section>
+  <div class="venue-stack">
+    <section class="venue" aria-label="Wedding venue">
+      <div class="section-label">The venue</div>
+      <h2>Shri Kshetra Panchayatan Mandir</h2>
+      <div class="address">Nadhal, Navi Mumbai – 410206<br>Maharashtra, India</div>
+      <a class="map-link" href="https://www.google.com/maps?q=18.905137816391697,73.22917755573111" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> Open location in Google Maps</a>
+    </section>
+    <section class="venue pickup-venue" aria-label="Pick up services">
+      <div class="section-label">Pick up services</div>
+      <h2>Khandeshwar Railway Station</h2>
+      <div class="address">Ticket Booking Window</div>
+      <a class="map-link" href="https://maps.app.goo.gl/awHMZsC6ubjYDGB5A" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> Open location in Google Maps</a>
+      <div class="pickup-contacts"><span>For assistance</span><a href="tel:7208351491">7208351491</a><a href="tel:8378878050">8378878050</a><a href="tel:8928044486">8928044486</a></div>
+    </section>
+  </div>
 </div>
 <div class="ornament"><span>✦</span></div>
 <p class="closing">Your presence will make our day even more special.</p>
