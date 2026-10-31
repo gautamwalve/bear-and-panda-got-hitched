@@ -8,7 +8,41 @@
 <meta name="description" content="Gautam and Tejasvini's wedding invitation — Saturday, 12 December 2026, at Shri Kshetra Panchayatan Mandir, Nadhal.">
 <title>Gautam &amp; Tejasvini | Wedding Invitation</title>
 <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=1">
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js">
+(function(){
+ const button=document.getElementById('addToCalendar');
+ if(!button)return;
+ button.addEventListener('click',function(){
+   const lines=[
+     'BEGIN:VCALENDAR',
+     'VERSION:2.0',
+     'PRODID:-//Gautam and Tejasvini//Wedding Invitation//EN',
+     'CALSCALE:GREGORIAN',
+     'METHOD:PUBLISH',
+     'BEGIN:VEVENT',
+     'UID:gautam-tejasvini-wedding-20261212@bear-and-panda-got-hitched',
+     'DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').replace(/\\.\\d{3}/,''),
+     'DTSTART;TZID=Asia/Kolkata:20261212T123200',
+     'SUMMARY:Gautam & Tejasvini — Wedding Ceremony',
+     'DESCRIPTION:Marriage ceremony followed by lunch & reception.',
+     'LOCATION:Shri Kshetra Panchayatan Mandir, Nadhal, Khalapur, Raigad, Maharashtra 410206',
+     'URL:https://gautamwalve.github.io/bear-and-panda-got-hitched/',
+     'END:VEVENT',
+     'END:VCALENDAR'
+   ];
+   const blob=new Blob([lines.join('\\r\\n')+'\\r\\n'],{type:'text/calendar;charset=utf-8'});
+   const url=URL.createObjectURL(blob);
+   const link=document.createElement('a');
+   link.href=url;
+   link.download='Gautam-and-Tejasvini-Wedding.ics';
+   document.body.appendChild(link);
+   link.click();
+   link.remove();
+   window.setTimeout(function(){URL.revokeObjectURL(url);},1000);
+ });
+})();
+
+</script>
 <style>
 :root{
   color-scheme:only light;
@@ -1919,6 +1953,21 @@ body:before { background:none !important; }
   .card { padding:24px 12px !important; }
 }
 
+
+.calendar-button{
+ display:inline-flex;align-items:center;justify-content:center;gap:9px;
+ margin:14px auto 4px;padding:13px 23px;border:1px solid var(--gold);
+ border-radius:99px;background:rgba(195,165,108,.14);color:var(--rose-dark);
+ font:600 12px/1.2 Arial,sans-serif;letter-spacing:.04em;cursor:pointer;
+ transition:background .2s,transform .2s,border-color .2s;
+}
+.calendar-button:hover{background:rgba(195,165,108,.25);transform:translateY(-1px)}
+.calendar-button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+:root[data-theme="dark"] .calendar-button{
+ background:rgba(215,183,125,.12)!important;border-color:#a98a5d!important;color:#f0c9d0!important;
+}
+:root[data-theme="dark"] .calendar-button:hover{background:rgba(215,183,125,.22)!important}
+
 </style>
 </head>
 <body>
@@ -1981,6 +2030,7 @@ body:before { background:none !important; }
       <div class="merged-time">12:32 PM</div>
     </div>
     <div class="programme">Marriage ceremony followed by lunch &amp; reception</div>
+    <button class="calendar-button" id="addToCalendar" type="button"><span aria-hidden="true">▣</span> Add to calendar</button>
     <svg class="date-bottom-divider" viewBox="0 0 760 68" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
   <g fill="none" stroke="#bd914d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M12 34 H326 M434 34 H748"/>
