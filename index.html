@@ -6,10 +6,11 @@
 <meta name="theme-color" content="#fbf8f0">
 <meta name="color-scheme" content="only light">
 <script>
-  // Honour the browser/device dark preference before the page is painted.
-  // This is the standard signal exposed by Android browsers, including Samsung Internet.
+  // Honour a dark preference only in Samsung Internet; desktop Chrome follows local time.
   try {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    const isSamsungInternet = /SamsungBrowser/i.test(navigator.userAgent || '');
+    if (isSamsungInternet && window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches) {
       document.documentElement.setAttribute('data-theme', 'dark');
       document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#171a24');
       document.querySelector('meta[name="color-scheme"]')?.setAttribute('content', 'dark');
@@ -2298,20 +2299,19 @@ body:before {
    if(schemeMeta)schemeMeta.setAttribute('content',scheme);
    root.style.setProperty('color-scheme',scheme);
  }
- const browserPrefersDark = window.matchMedia
+ const isSamsungInternet = /SamsungBrowser/i.test(navigator.userAgent || '');
+ const browserPrefersDark = isSamsungInternet && window.matchMedia
    ? window.matchMedia('(prefers-color-scheme: dark)')
    : null;
  function applyTimeBasedTheme(){
    if(manualOverride)return;
    const hour=new Date().getHours();
-   // If the browser/device requests dark appearance, use our designed dark palette
-   // instead of allowing the browser to algorithmically recolour the light theme.
+   // Only Samsung Internet may opt into the browser-preferred dark palette.
+   // Desktop Chrome and other browsers retain the original local-time behaviour.
    const prefersDark = !!(browserPrefersDark && browserPrefersDark.matches);
    applyTheme(prefersDark || hour>=18 || hour<6 ? 'dark' : 'light');
  }
- // Browser/device dark preference takes priority; otherwise use local time.
  applyTimeBasedTheme();
- // Recheck both the browser preference and local time while the invitation is open.
  window.setInterval(applyTimeBasedTheme,60000);
  if(browserPrefersDark && browserPrefersDark.addEventListener){
    browserPrefersDark.addEventListener('change',applyTimeBasedTheme);
