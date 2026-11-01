@@ -1972,6 +1972,48 @@ body:before {
   .theme-toggle { min-width:104px; }
 }
 
+
+/* Floating music and theme controls stay reachable while the invitation scrolls. */
+.music-row{
+  position:fixed!important;
+  right:max(14px,env(safe-area-inset-right))!important;
+  bottom:max(14px,env(safe-area-inset-bottom))!important;
+  z-index:9999!important;
+  display:flex!important;
+  align-items:center;
+  justify-content:center!important;
+  gap:8px;
+  min-height:0!important;
+  margin:0!important;
+  padding:7px;
+  border:1px solid rgba(195,165,108,.48);
+  border-radius:999px;
+  background:rgba(255,253,248,.92);
+  box-shadow:0 5px 22px rgba(76,62,45,.16);
+  -webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px);
+}
+.music-row .music-toggle{
+  min-height:40px;
+  padding:10px 13px;
+  white-space:nowrap;
+  box-shadow:0 1px 4px rgba(76,62,45,.06);
+}
+@media(max-width:440px){
+  .music-row{
+    right:10px!important;
+    bottom:max(10px,env(safe-area-inset-bottom))!important;
+    gap:6px;
+    padding:6px;
+  }
+  .music-row .music-toggle{
+    min-height:38px;
+    padding:9px 11px;
+    font-size:11px;
+    gap:6px;
+  }
+}
+
 </style>
 </head>
 <body>
