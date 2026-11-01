@@ -1644,9 +1644,9 @@ html, body {
   max-width:none !important;
   margin:0 !important;
   padding:0 !important;
-  background:#fbf8f0 !important;
+  background:var(--page-bg);
 }
-body:before { background:none !important; }
+body:before { background:none; }
 .page {
   width:100% !important;
   max-width:none !important;
@@ -1655,7 +1655,7 @@ body:before { background:none !important; }
   min-height:100svh !important;
   margin:0 !important;
   padding:0 !important;
-  background:#fbf8f0 !important;
+  background:var(--card-bg);
 }
 .card {
   width:100% !important;
@@ -1668,7 +1668,7 @@ body:before { background:none !important; }
   outline:0 !important;
   border-radius:0 !important;
   box-shadow:none !important;
-  background:#fbf8f0 !important;
+  background:var(--card-bg);
 }
 
 @media (max-width:440px) {
@@ -1856,9 +1856,9 @@ html,body {
 }
 body:before {
   background:
-    radial-gradient(ellipse at 12% 14%,rgba(125,103,76,.13),transparent 30%),
-    radial-gradient(ellipse at 88% 38%,rgba(150,91,108,.12),transparent 31%),
-    radial-gradient(ellipse at 22% 86%,rgba(94,126,105,.12),transparent 34%),
+    radial-gradient(ellipse at 12% 14%,rgba(223,202,166,.18),transparent 30%),
+    radial-gradient(ellipse at 88% 38%,rgba(200,121,135,.10),transparent 31%),
+    radial-gradient(ellipse at 22% 86%,rgba(135,155,139,.12),transparent 34%),
     var(--page-gradient);
 }
 .page,.card { color:var(--ink); background:var(--card-bg); }
@@ -1943,6 +1943,21 @@ body:before {
 :root[data-theme="dark"] .runway-sparkle,
 :root[data-theme="dark"] .runway-petal,
 :root[data-theme="dark"] .romance-heart { filter:brightness(1.12); }
+
+
+/* Theme-aware event cards: override their original fixed-colour layout defaults. */
+:root[data-theme="light"] .event-venue-grid>.details,
+:root[data-theme="light"] .event-venue-grid .venue {
+  background:var(--panel-bg);
+  border-color:var(--soft-border);
+  color:var(--ink);
+}
+:root[data-theme="light"] .event-venue-grid .merged-detail {
+  background:transparent;
+  border:0;
+  box-shadow:none;
+}
+:root[data-theme="light"] .event-venue-grid .programme { color:var(--sage-dark); }
 
 /* The envelope is deliberately isolated from the invitation theme. */
 .envelope-intro {
