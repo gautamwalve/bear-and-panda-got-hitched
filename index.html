@@ -5,18 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#fbf8f0">
 <meta name="color-scheme" content="only light">
-<script>
-  // Honour a dark preference only in Samsung Internet; desktop Chrome follows local time.
-  try {
-    const isSamsungInternet = /SamsungBrowser/i.test(navigator.userAgent || '');
-    if (isSamsungInternet && window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#171a24');
-      document.querySelector('meta[name="color-scheme"]')?.setAttribute('content', 'dark');
-    }
-  } catch (_) {}
-</script>
 <meta name="description" content="Gautam and Tejasvini's wedding invitation — Saturday, 12 December 2026, at Shri Kshetra Panchayatan Mandir, Nadhal.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Gautam &amp; Tejasvini | Wedding Invitation">
@@ -2299,23 +2287,13 @@ body:before {
    if(schemeMeta)schemeMeta.setAttribute('content',scheme);
    root.style.setProperty('color-scheme',scheme);
  }
- const isSamsungInternet = /SamsungBrowser/i.test(navigator.userAgent || '');
- const browserPrefersDark = isSamsungInternet && window.matchMedia
-   ? window.matchMedia('(prefers-color-scheme: dark)')
-   : null;
  function applyTimeBasedTheme(){
    if(manualOverride)return;
    const hour=new Date().getHours();
-   // Only Samsung Internet may opt into the browser-preferred dark palette.
-   // Desktop Chrome and other browsers retain the original local-time behaviour.
-   const prefersDark = !!(browserPrefersDark && browserPrefersDark.matches);
-   applyTheme(prefersDark || hour>=18 || hour<6 ? 'dark' : 'light');
+   applyTheme(hour>=18 || hour<6 ? 'dark' : 'light');
  }
  applyTimeBasedTheme();
  window.setInterval(applyTimeBasedTheme,60000);
- if(browserPrefersDark && browserPrefersDark.addEventListener){
-   browserPrefersDark.addEventListener('change',applyTimeBasedTheme);
- }
  toggle.addEventListener('click',function(){
    manualOverride=true;
    applyTheme(root.getAttribute('data-theme')==='dark'?'light':'dark');
