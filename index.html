@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#fbf8f0">
-<meta name="color-scheme" content="only light">
+<meta name="color-scheme" content="light">
 <meta name="description" content="Gautam and Tejasvini's wedding invitation — Saturday, 12 December 2026, at Shri Kshetra Panchayatan Mandir, Nadhal.">
 <title>Gautam &amp; Tejasvini | Wedding Invitation</title>
 <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=1">
@@ -52,8 +52,8 @@
   --line:rgba(195,165,108,.62);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;color-scheme:only light;background-color:#fbf8f0}
-body{margin:0;background:#fbf8f0!important;color:#565e56!important;color-scheme:only light;font-family:Georgia,"Times New Roman",serif;min-height:100vh;overflow-x:hidden}
+html{scroll-behavior:smooth;color-scheme:only light;background-color:var(--page-bg)}
+body{margin:0;background:var(--page-bg);color:var(--ink);color-scheme:only light;font-family:Georgia,"Times New Roman",serif;min-height:100vh;overflow-x:hidden}
 body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:
  radial-gradient(ellipse at 12% 14%,rgba(223,202,166,.18),transparent 30%),
  radial-gradient(ellipse at 88% 38%,rgba(200,121,135,.10),transparent 31%),
@@ -141,13 +141,7 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 @media(max-width:440px){.page{width:100%;margin:0;padding:6px}.card{min-height:calc(100svh - 12px);padding:24px 12px}.tiny-animals{margin-top:12px}.hero{padding:24px 0 22px}h1{font-size:clamp(27px,8.1vw,36px);gap:5px;letter-spacing:-.06em}.event-venue-grid{margin:20px auto}.details{gap:10px;margin:0}.detail{padding:18px 8px}.merged-date{font-size:clamp(18px,5vw,25px)}.merged-time{font-size:25px}.detail-label,.section-label{font-size:9px;letter-spacing:.14em}.detail-date,.detail-note{font-size:14px}.detail-day,.detail-time{font-size:clamp(17px,5vw,22px)}.programme{font-size:14px;padding:14px 6px}.address{font-size:14px}.map-link{font-size:11px;padding:12px 17px}.footer{padding-bottom:6px}}
 @media(prefers-reduced-motion:reduce){.map-link{transition:none}html{scroll-behavior:auto}}
 
-@media (prefers-color-scheme: dark) {
-  :root, html, body { color-scheme: only light !important; background-color: #fbf8f0 !important; color: #565e56 !important; }
-  body { background: #fbf8f0 !important; color: #565e56 !important; }
-  .page { background: transparent !important; }
-  .card { background: #fffdf8 !important; color: #565e56 !important; }
-  .intro, .detail-date, .address { color: #565e56 !important; }
-}
+
 
 /* Warm floral invitation envelope — keeps the original blush, peach and antique-gold palette. */
 .envelope-intro{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:24px 18px;background:radial-gradient(ellipse at 50% 25%,#fffdf8 0%,#fbf4e9 58%,#f0e6d8 100%);transition:opacity .7s ease,visibility .7s ease;color:#565e56}
@@ -1267,27 +1261,6 @@ html,body{background:#fbf8ef!important}
 .envelope-intro.is-opening .entry-floral-field span{display:none!important}
 
 
-/* Cross-device colour lock: the invitation is intentionally light on every OS/browser theme. */
-:root{color-scheme:light!important;forced-color-adjust:none}
-html,body{color-scheme:light!important;background:#fbf8ef!important;color:#565e56!important}
-body{background-color:#fbf8ef!important}
-.page{background:#fbf8ef!important;color:#565e56!important}
-.page .card{background:#fbf8ef!important;color:#565e56!important}
-.page .detail,.page .venue,.page .countdown-unit{color:#565e56!important}
-.page .detail{background:rgba(251,248,240,.76)!important}
-.page .venue{background:rgba(251,248,240,.76)!important}
-.page .countdown-unit{background:rgba(251,248,240,.7)!important}
-.page input,.page button,.page select,.page textarea{color-scheme:light!important}
-@media(prefers-color-scheme:dark){
- :root,html,body,.page,.page .card{color-scheme:light!important;background-color:#fbf8ef!important;color:#565e56!important}
- body{background:#fbf8ef!important}
- .page .card{background:#fbf8ef!important}
- .page .detail,.page .venue{background:rgba(251,248,240,.76)!important;color:#565e56!important}
- .page .countdown-unit{background:rgba(251,248,240,.7)!important;color:#565e56!important}
- .page .intro,.page .address,.page .closing,.page .signature,.page .detail-label,.page .section-label{color:inherit}
-}
-
-
 /* Digital invitation on the left; main wedding website on the right. */
 .invitation-shell{display:grid;grid-template-columns:minmax(250px,390px) minmax(0,1fr);gap:clamp(16px,2vw,30px);align-items:start;width:min(100%,1720px);margin:0 auto;padding:14px}
 .invitation-shell>.page{min-width:0;padding:0;order:2}
@@ -1303,12 +1276,7 @@ body{background-color:#fbf8ef!important}
 .digital-invite-qr span{font:10px/1.5 Arial,sans-serif;text-align:left}
 @media(max-width:900px){.invitation-shell{grid-template-columns:minmax(0,1fr);max-width:760px;padding:8px}.invitation-shell>.page{order:2}.digital-invite-panel{position:static;order:1;width:min(100%,460px);margin:0 auto 12px}.digital-invite-image{max-height:none;width:min(100%,390px);margin:0 auto}}
 @media(max-width:620px){.invitation-shell{padding:6px;gap:12px}.invitation-shell>.page>.card{min-height:calc(100svh - 12px)}}
-@media(prefers-color-scheme:dark){
- html,body,.invitation-shell,.digital-invite-panel{background-color:#fbf8f0!important;color:#565e56!important;color-scheme:light!important}
- .page,.page .card{background-color:#fbf8f0!important;color:#565e56!important}
- .page .detail,.page .venue,.page .countdown-unit{background-color:rgba(251,248,240,.82)!important;color:#565e56!important}
- .digital-invite-panel{background:transparent!important;color:#565e56!important}
-}
+
 
 
 /* Keep the download action visually consistent with the music control. */
@@ -1316,61 +1284,6 @@ body{background-color:#fbf8ef!important}
 @media(max-width:620px){.music-row{justify-content:center;gap:8px}.music-toggle{font-size:11px;padding:10px 12px}}
 
 
-/* User-selectable light and dark invitation themes */
-:root{color-scheme:light}
-:root[data-theme="dark"]{color-scheme:dark;--paper:#171a24;--cream:#202432;--cream-dark:#2b3040;--ink:#eee6dc;--muted:#c1b8ae;--rose:#e39aaa;--rose-dark:#e7a0b0;--sage:#9eb5a6;--sage-dark:#b8cabc;--gold:#d8b779;--gold-light:#8e7957;--line:rgba(216,183,121,.55)}
-:root[data-theme="dark"] html{background:#171a24}
-:root[data-theme="dark"] body{background:#171a24!important;color:#eee6dc!important}
-:root[data-theme="dark"] body:before{background:radial-gradient(ellipse at 12% 14%,rgba(128,93,122,.18),transparent 30%),radial-gradient(ellipse at 88% 38%,rgba(200,121,135,.12),transparent 31%),radial-gradient(ellipse at 22% 86%,rgba(103,137,119,.12),transparent 34%),linear-gradient(135deg,#171a24,#242536)}
-:root[data-theme="dark"] .card{background:#202432!important;border-color:rgba(216,183,121,.55);outline-color:rgba(216,183,121,.18);box-shadow:0 18px 55px rgba(0,0,0,.28)}
-:root[data-theme="dark"] .intro,:root[data-theme="dark"] .address,:root[data-theme="dark"] .detail-date,:root[data-theme="dark"] .detail-note{color:#ded6ce!important}
-:root[data-theme="dark"] .detail,:root[data-theme="dark"] .venue{background:rgba(39,44,59,.88)!important;border-color:rgba(216,183,121,.4);color:#eee6dc}
-:root[data-theme="dark"] .countdown-section{border-color:#76664d}
-:root[data-theme="dark"] .countdown-unit{background:#292e3e!important;border-color:rgba(216,183,121,.42)}
-:root[data-theme="dark"] .programme{border-color:#76664d;color:#c6d5c8}
-:root[data-theme="dark"] .map-link,:root[data-theme="dark"] .music-toggle{background:#30394a!important;border-color:#819888!important;color:#e4e9df!important}
-:root[data-theme="dark"] .map-link:hover,:root[data-theme="dark"] .music-toggle:hover{background:#3a4659!important}
-:root[data-theme="dark"] .closing{color:#e6a4b2}
-:root[data-theme="dark"] .character-name{color:#c6d5c8}
-:root[data-theme="dark"] .playful-runway{background:transparent!important}
-:root[data-theme="dark"] .footer{color:#c1b8ae}
-:root[data-theme="dark"] .envelope-intro{background:radial-gradient(ellipse at 50% 25%,#303044 0%,#222638 58%,#171a24 100%);color:#eee6dc}
-:root[data-theme="dark"] .envelope-inner-letter{background:linear-gradient(180deg,#303044,#25293a);color:#e4d9ca;border-color:rgba(216,183,121,.65)}
-:root[data-theme="dark"] .envelope-inner-small,:root[data-theme="dark"] .envelope-inner-date{color:#d8bd89}
-:root[data-theme="dark"] .envelope-kicker{color:#d8bd89}
-.theme-toggle{min-width:112px}
-@media(max-width:620px){.music-row{justify-content:center}.theme-toggle{min-width:104px}}
-
-
-/* Final responsive and theme-state guard: layout follows the available CSS viewport,
-   including browser zoom and narrow phone screens. */
-:root[data-theme="light"]{
- color-scheme:light!important;
- --paper:#fffdf8;--cream:#fbf8f0;--cream-dark:#f3eee3;
- --ink:#565e56;--muted:#777970;--rose:#c87987;--rose-dark:#ac5f70;
- --sage:#879b8b;--sage-dark:#617b6e;--gold:#c3a56c;--gold-light:#e2d3b1;
- --line:rgba(195,165,108,.62);
-}
-:root[data-theme="light"] html,
-:root[data-theme="light"] body{background-color:#fbf8f0!important;color:#565e56!important;color-scheme:light!important}
-:root[data-theme="light"] body:before{background:
- radial-gradient(ellipse at 12% 14%,rgba(223,202,166,.18),transparent 30%),
- radial-gradient(ellipse at 88% 38%,rgba(200,121,135,.10),transparent 31%),
- radial-gradient(ellipse at 22% 86%,rgba(135,155,139,.12),transparent 34%),
- linear-gradient(135deg,#fcfaf4,#f5f0e6)!important}
-:root[data-theme="light"] .card{background:#fffdf8!important;color:#565e56!important}
-:root[data-theme="light"] .detail,
-:root[data-theme="light"] .venue,
-:root[data-theme="light"] .countdown-unit{background-color:rgba(255,253,248,.92)!important;color:#565e56!important}
-:root[data-theme="light"] .intro,
-:root[data-theme="light"] .address,
-:root[data-theme="light"] .detail-date,
-:root[data-theme="light"] .detail-note{color:#565e56!important}
-:root[data-theme="light"] .music-toggle,
-:root[data-theme="light"] .map-link{background:#f8f7ef!important;color:#617b6e!important}
-:root[data-theme="dark"] html,
-:root[data-theme="dark"] body{background-color:#171a24!important;color:#eee6dc!important;color-scheme:dark!important}
-:root[data-theme="dark"] .card{background:#202432!important;color:#eee6dc!important}
 html,body{width:100%;min-width:0;max-width:100%;overflow-x:clip}
 body{min-height:100vh;min-height:100svh}
 .page{width:100%;max-width:100%;min-width:0;padding:clamp(5px,1.5vw,12px)}
@@ -1408,84 +1321,6 @@ h1{max-width:100%;white-space:normal;flex-wrap:wrap;line-height:1.12;font-size:c
  .venue h2{font-size:clamp(19px,5vw,25px)}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-
-
-/* Use image-backed page backgrounds so mobile browser auto-darkening cannot
-   reinterpret the invitation's chosen palette. Each theme owns its own artwork. */
-:root[data-theme="light"]{
- color-scheme:light!important;
- --invitation-bg-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1200' viewBox='0 0 1600 1200'%3E%3Cdefs%3E%3CradialGradient id='a'%3E%3Cstop stop-color='%23fffdf8'/%3E%3Cstop offset='1' stop-color='%23fbf4e9'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='1600' height='1200' fill='url(%23a)'/%3E%3C/svg%3E");
-}
-:root[data-theme="light"] html,
-:root[data-theme="light"] body{
- background-color:#fbf8f0!important;
- background-image:var(--invitation-bg-image)!important;
- background-repeat:no-repeat!important;
- background-position:center top!important;
- background-size:cover!important;
- background-attachment:fixed!important;
- forced-color-adjust:none;
-}
-:root[data-theme="light"] body:before{
- background:
- radial-gradient(ellipse at 12% 14%,rgba(223,202,166,.18),transparent 30%),
- radial-gradient(ellipse at 88% 38%,rgba(200,121,135,.10),transparent 31%),
- radial-gradient(ellipse at 22% 86%,rgba(135,155,139,.12),transparent 34%)!important;
-}
-:root[data-theme="dark"]{
- color-scheme:dark!important;
- --invitation-bg-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1200' viewBox='0 0 1600 1200'%3E%3Cdefs%3E%3ClinearGradient id='b' x2='1' y2='1'%3E%3Cstop stop-color='%23171a24'/%3E%3Cstop offset='1' stop-color='%23242536'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1600' height='1200' fill='url(%23b)'/%3E%3C/svg%3E");
-}
-:root[data-theme="dark"] html,
-:root[data-theme="dark"] body{
- background-color:#171a24!important;
- background-image:var(--invitation-bg-image)!important;
- background-repeat:no-repeat!important;
- background-position:center top!important;
- background-size:cover!important;
- background-attachment:fixed!important;
- forced-color-adjust:none;
-}
-:root[data-theme="dark"] body:before{
- background:
- radial-gradient(ellipse at 12% 14%,rgba(128,93,122,.18),transparent 30%),
- radial-gradient(ellipse at 88% 38%,rgba(200,121,135,.12),transparent 31%),
- radial-gradient(ellipse at 22% 86%,rgba(103,137,119,.12),transparent 34%)!important;
-}
-@media(max-width:760px){
- :root[data-theme="light"] html,:root[data-theme="light"] body,
- :root[data-theme="dark"] html,:root[data-theme="dark"] body{
-  background-attachment:scroll!important;
-  background-size:auto 100vh!important;
- }
-}
-
-
-/* Do not let browser auto-darkening repaint either user-selected theme.
-   "only" is important here: plain light/dark still permits UA overrides. */
-:root[data-theme="light"],
-:root[data-theme="light"] body,
-:root[data-theme="light"] .page,
-:root[data-theme="light"] .card,
-:root[data-theme="light"] button,
-:root[data-theme="light"] a{
-  color-scheme:only light!important;
-}
-:root[data-theme="light"],
-:root[data-theme="light"] html,
-:root[data-theme="light"] body{
-  background-color:#fbf8f0!important;
-  color:#565e56!important;
-  forced-color-adjust:none!important;
-}
-:root[data-theme="dark"],
-:root[data-theme="dark"] body,
-:root[data-theme="dark"] .page,
-:root[data-theme="dark"] .card,
-:root[data-theme="dark"] button,
-:root[data-theme="dark"] a{
-  color-scheme:only dark!important;
-}
 
 
 /* Final envelope sequence: open flap, lift a printed invitation card, then reveal the page. */
@@ -1802,113 +1637,6 @@ html.safari-dpr2 .envelope-intro.is-opening .envelope-inner-letter{top:50%!impor
 
 
 
-/* One uninterrupted warm-ivory canvas: the card must not turn whiter than its page. */
-:root[data-theme="light"],
-:root[data-theme="light"] body,
-:root[data-theme="light"] .page,
-:root[data-theme="light"] .card,
-:root[data-theme="light"] .page .card,
-:root[data-theme="light"] .invitation-shell,
-:root[data-theme="light"] .invitation-shell > .page > .card {
-  background-color:#fbf8f0!important;
-}
-:root[data-theme="light"] .card{
-  background-image:none!important;
-}
-
-
-/* Manual dark theme: explicit data-theme styling (independent of OS preference). */
-:root[data-theme="dark"]{
-  color-scheme:dark!important;
-  --paper:#20242a!important;--cream:#191d22!important;--cream-dark:#292e35!important;
-  --ink:#eee9df!important;--muted:#c0b9ad!important;--rose:#e5a0ad!important;--rose-dark:#e7a0ad!important;
-  --sage:#a9bcae!important;--sage-dark:#bdcbbb!important;--gold:#d7b77d!important;--gold-light:#796b55!important;
-  --line:rgba(215,183,125,.48)!important;
-}
-:root[data-theme="dark"] html,
-:root[data-theme="dark"] body{
-  background:#191d22!important;color:#eee9df!important;color-scheme:dark!important;
-}
-:root[data-theme="dark"] body:before{
-  background:
-    radial-gradient(ellipse at 12% 14%,rgba(125,103,76,.13),transparent 30%),
-    radial-gradient(ellipse at 88% 38%,rgba(150,91,108,.12),transparent 31%),
-    radial-gradient(ellipse at 22% 86%,rgba(94,126,105,.12),transparent 34%),
-    linear-gradient(135deg,#20242a,#171a1f)!important;
-}
-:root[data-theme="dark"] .page,
-:root[data-theme="dark"] .card{
-  background:transparent!important;color:#eee9df!important;
-}
-:root[data-theme="dark"] .intro,
-:root[data-theme="dark"] .address,
-:root[data-theme="dark"] .detail-date,
-:root[data-theme="dark"] .detail-note,
-:root[data-theme="dark"] .signature,
-:root[data-theme="dark"] .footer{
-  color:#d0c9bd!important;
-}
-:root[data-theme="dark"] .hero{
-  background:radial-gradient(ellipse at 50% 48%,rgba(57,62,65,.82),rgba(38,43,47,.66) 62%,rgba(29,34,38,.5))!important;
-  border-color:rgba(215,183,125,.35)!important;
-  box-shadow:inset 0 0 0 6px rgba(255,255,255,.025)!important;
-}
-:root[data-theme="dark"] .overline,
-:root[data-theme="dark"] .detail-label,
-:root[data-theme="dark"] .section-label,
-:root[data-theme="dark"] .countdown-heading,
-:root[data-theme="dark"] .countdown-unit small,
-:root[data-theme="dark"] .character-name{
-  color:#bdcbbb!important;
-}
-:root[data-theme="dark"] .subtitle,
-:root[data-theme="dark"] .closing,
-:root[data-theme="dark"] .venue h2,
-:root[data-theme="dark"] .merged-date,
-:root[data-theme="dark"] .merged-time,
-:root[data-theme="dark"] .detail-day,
-:root[data-theme="dark"] .detail-time{
-  color:#e7a0ad!important;
-}
-:root[data-theme="dark"] .programme,
-:root[data-theme="dark"] .countdown-section{
-  color:#d9d0c2!important;border-color:rgba(215,183,125,.42)!important;
-}
-:root[data-theme="dark"] .countdown-unit,
-:root[data-theme="dark"] .detail,
-:root[data-theme="dark"] .venue,
-:root[data-theme="dark"] .event-venue-grid .venue{
-  background:rgba(43,48,54,.78)!important;
-  border-color:rgba(215,183,125,.38)!important;
-}
-:root[data-theme="dark"] .countdown-unit span{color:#e7a0ad!important}
-:root[data-theme="dark"] .map-link,
-:root[data-theme="dark"] .music-toggle{
-  background:#303a37!important;color:#d6e1d5!important;
-  border-color:#788f7e!important;
-}
-:root[data-theme="dark"] .map-link:hover,
-:root[data-theme="dark"] .music-toggle:hover{background:#3b4942!important}
-:root[data-theme="dark"] .ornament,
-:root[data-theme="dark"] .bottom-decoration{color:#d7b77d!important}
-:root[data-theme="dark"] .ornament:before,
-:root[data-theme="dark"] .ornament:after{background:#796b55!important}
-:root[data-theme="dark"] .arch,
-:root[data-theme="dark"] .arch:after{border-color:rgba(215,183,125,.35)!important}
-:root[data-theme="dark"] .date-bottom-divider{opacity:.8!important;filter:brightness(1.25)!important}
-:root[data-theme="dark"] .floral-spray{filter:brightness(.82) saturate(.8)!important}
-:root[data-theme="dark"] .playful-runway{filter:brightness(.9)!important}
-:root[data-theme="dark"] .runway-lantern{filter:brightness(.88) drop-shadow(0 2px 5px rgba(197,138,44,.22))!important}
-:root[data-theme="dark"] .runway-sparkle,
-:root[data-theme="dark"] .runway-petal,
-:root[data-theme="dark"] .romance-heart{filter:brightness(1.12)!important}
-:root[data-theme="dark"] .music-toggle:focus-visible,
-:root[data-theme="dark"] .map-link:focus-visible{outline-color:#d7b77d!important}
-@media(prefers-reduced-motion:reduce){
-  :root[data-theme="dark"] *{transition-duration:.01ms!important}
-}
-
-
 /* One continuous invitation canvas: no framed card or outer page margins. */
 html, body {
   width:100% !important;
@@ -1942,12 +1670,7 @@ body:before { background:none !important; }
   box-shadow:none !important;
   background:#fbf8f0 !important;
 }
-:root[data-theme="dark"] html,
-:root[data-theme="dark"] body,
-:root[data-theme="dark"] .page,
-:root[data-theme="dark"] .card {
-  background:#191d22 !important;
-}
+
 @media (max-width:440px) {
   .page { padding:0 !important; }
   .card { padding:24px 12px !important; }
@@ -1963,10 +1686,8 @@ body:before { background:none !important; }
 }
 .calendar-button:hover{background:rgba(195,165,108,.25);transform:translateY(-1px)}
 .calendar-button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-:root[data-theme="dark"] .calendar-button{
- background:rgba(215,183,125,.12)!important;border-color:#a98a5d!important;color:#f0c9d0!important;
-}
-:root[data-theme="dark"] .calendar-button:hover{background:rgba(215,183,125,.22)!important}
+
+
 
 
 /* Harmonise the date/time and venue typography as one invitation system. */
@@ -2079,63 +1800,176 @@ body:before { background:none !important; }
 .card-emblem .emblem-line:last-child{background:linear-gradient(90deg,#d8ad62,transparent)}
 .pickup-contacts a{display:inline-flex;align-items:center;gap:7px}
 .pickup-contacts a svg{width:15px;height:15px;fill:currentColor;stroke:none;flex:0 0 auto}
-:root[data-theme="dark"] .merged-detail .merged-date,
-:root[data-theme="dark"] .merged-detail .merged-time{color:#f09aaa!important}
-:root[data-theme="dark"] .merged-detail .detail-label{color:#e8d9bd!important}
+
+
 @media(max-width:620px){.card-emblem{margin-bottom:8px}.card-emblem svg{width:32px;height:32px}}
 
-/* Theme parity: date card, venue card and text use one coordinated palette per mode. */
-:root[data-theme="light"] .event-venue-grid>.details{
- background:rgba(251,248,240,.92)!important;
- border-color:rgba(195,165,108,.55)!important;
+
+
+/* =========================================================
+   Theme system
+   The theme is selected only by data-theme, never by OS mode.
+   color-scheme stays light to prevent Android/browser auto-darkening;
+   dark appearance is painted explicitly below.
+   ========================================================= */
+:root {
+  color-scheme: only light;
+  --page-bg:#fbf8f0;
+  --page-gradient:linear-gradient(135deg,#fcfaf4,#f5f0e6);
+  --card-bg:#fbf8f0;
+  --panel-bg:rgba(255,253,248,.92);
+  --ink:#565e56;
+  --muted:#777970;
+  --rose:#c87987;
+  --rose-dark:#ac5f70;
+  --sage:#879b8b;
+  --sage-dark:#617b6e;
+  --gold:#c3a56c;
+  --gold-light:#e2d3b1;
+  --line:rgba(195,165,108,.62);
+  --soft-border:rgba(195,165,108,.55);
 }
-:root[data-theme="light"] .event-venue-grid .merged-detail{
- background:transparent!important;border:0!important;box-shadow:none!important;
+:root[data-theme="light"] {
+  color-scheme: only light;
 }
-:root[data-theme="light"] .event-venue-grid .programme{
- color:#617b6e!important;
+:root[data-theme="dark"] {
+  color-scheme: only light;
+  --page-bg:#191d22;
+  --page-gradient:linear-gradient(135deg,#20242a,#171a1f);
+  --card-bg:transparent;
+  --panel-bg:rgba(43,48,54,.88);
+  --ink:#eee9df;
+  --muted:#c0b9ad;
+  --rose:#e5a0ad;
+  --rose-dark:#e7a0ad;
+  --sage:#a9bcae;
+  --sage-dark:#bdcbbb;
+  --gold:#d7b77d;
+  --gold-light:#796b55;
+  --line:rgba(215,183,125,.48);
+  --soft-border:rgba(215,183,125,.38);
 }
-:root[data-theme="light"] .merged-detail .merged-date,
-:root[data-theme="light"] .merged-detail .merged-time{
- color:#ac5f70!important;
+html,body {
+  color-scheme:only light;
+  background-color:var(--page-bg);
+  color:var(--ink);
 }
-:root[data-theme="light"] .event-venue-grid .detail-label{
- color:#617b6e!important;
+body:before {
+  background:
+    radial-gradient(ellipse at 12% 14%,rgba(125,103,76,.13),transparent 30%),
+    radial-gradient(ellipse at 88% 38%,rgba(150,91,108,.12),transparent 31%),
+    radial-gradient(ellipse at 22% 86%,rgba(94,126,105,.12),transparent 34%),
+    var(--page-gradient);
 }
-:root[data-theme="dark"] .event-venue-grid>.details{
- background:rgba(43,48,54,.78)!important;
- border-color:rgba(215,183,125,.38)!important;
+.page,.card { color:var(--ink); background:var(--card-bg); }
+.intro,.address,.detail-date,.detail-note,.signature,.footer { color:var(--muted); }
+.detail,.venue,.countdown-unit {
+  color:var(--ink);
+  background:var(--panel-bg);
+  border-color:var(--soft-border);
 }
-:root[data-theme="dark"] .event-venue-grid .merged-detail{
- background:transparent!important;border:0!important;box-shadow:none!important;
+.countdown-section { border-color:var(--line); }
+.countdown-heading,.detail-label,.section-label,.overline,.character-name {
+  color:var(--sage-dark);
 }
-:root[data-theme="dark"] .event-venue-grid .programme{
- color:#d9d0c2!important;
+.merged-date,.merged-time,.detail-day,.detail-time,.venue h2,.closing {
+  color:var(--rose-dark);
 }
-:root[data-theme="dark"] .merged-detail .merged-date,
-:root[data-theme="dark"] .merged-detail .merged-time{
- color:#f09aaa!important;
+.subtitle { color:var(--rose); }
+.programme { color:var(--sage-dark); border-color:var(--line); }
+.countdown-unit span { color:var(--rose-dark); }
+.map-link,.music-toggle {
+  color:var(--sage-dark);
+  background:var(--cream-dark);
+  border-color:var(--sage);
 }
-:root[data-theme="dark"] .event-venue-grid .detail-label{
- color:#bdcbbb!important;
+.map-link:hover,.music-toggle:hover { background:var(--cream); }
+.calendar-button {
+  color:var(--rose-dark);
+  background:rgba(195,165,108,.14);
+  border-color:var(--gold);
+}
+.card-emblem { color:var(--gold); }
+.card-emblem .emblem-line { background:linear-gradient(90deg,transparent,var(--gold)); }
+.card-emblem .emblem-line:last-child { background:linear-gradient(90deg,var(--gold),transparent); }
+.arch,.arch:after { border-color:var(--line); }
+.hero { color:var(--ink); }
+:root[data-theme="dark"] body:before {
+  background:
+    radial-gradient(ellipse at 12% 14%,rgba(125,103,76,.13),transparent 30%),
+    radial-gradient(ellipse at 88% 38%,rgba(150,91,108,.12),transparent 31%),
+    radial-gradient(ellipse at 22% 86%,rgba(94,126,105,.12),transparent 34%),
+    var(--page-gradient);
+}
+:root[data-theme="dark"] .hero {
+  background:radial-gradient(ellipse at 50% 48%,rgba(57,62,65,.82),rgba(38,43,47,.66) 62%,rgba(29,34,38,.5));
+  border:1px solid rgba(215,183,125,.88);
+  border-radius:10px;
+  box-shadow:inset 0 0 0 1px rgba(215,183,125,.16),0 0 22px rgba(197,154,82,.08);
+}
+:root[data-theme="dark"] .hero .overline { color:#ead9b8; }
+:root[data-theme="dark"] .hero .arch,
+:root[data-theme="dark"] .hero .arch:after { border-color:rgba(215,183,125,.52); }
+:root[data-theme="dark"] .event-venue-grid>.details,
+:root[data-theme="dark"] .event-venue-grid .venue {
+  background:var(--panel-bg);
+  border-color:var(--soft-border);
+}
+:root[data-theme="dark"] .event-venue-grid .merged-detail {
+  background:transparent;
+  border:0;
+  box-shadow:none;
+}
+:root[data-theme="dark"] .event-venue-grid .programme { color:#d9d0c2; }
+:root[data-theme="dark"] .event-venue-grid .detail-label { color:#bdcbbb; }
+:root[data-theme="dark"] .countdown-unit span,
+:root[data-theme="dark"] .merged-date,
+:root[data-theme="dark"] .merged-time { color:#f09aaa; }
+:root[data-theme="dark"] .map-link,
+:root[data-theme="dark"] .music-toggle {
+  background:#303a37;
+  color:#d6e1d5;
+  border-color:#788f7e;
+}
+:root[data-theme="dark"] .calendar-button {
+  background:rgba(215,183,125,.12);
+  border-color:#a98a5d;
+  color:#f0c9d0;
+}
+:root[data-theme="dark"] .date-bottom-divider { opacity:.8;filter:brightness(1.25); }
+:root[data-theme="dark"] .floral-spray { filter:brightness(.82) saturate(.8); }
+:root[data-theme="dark"] .playful-runway { filter:brightness(.9); }
+:root[data-theme="dark"] .runway-lantern { filter:brightness(.88) drop-shadow(0 2px 5px rgba(197,138,44,.22)); }
+:root[data-theme="dark"] .runway-sparkle,
+:root[data-theme="dark"] .runway-petal,
+:root[data-theme="dark"] .romance-heart { filter:brightness(1.12); }
+
+/* The envelope is deliberately isolated from the invitation theme. */
+.envelope-intro {
+  color-scheme:only light;
+  forced-color-adjust:none;
+  background:radial-gradient(ellipse at 50% 25%,#fffdf8 0%,#fbf4e9 58%,#f0e6d8 100%);
+  color:#565e56;
+}
+.envelope-intro .envelope-shell,
+.envelope-intro .envelope-kicker,
+.envelope-intro .envelope-hint { color:#89764f; }
+.envelope-intro .envelope-inner-letter {
+  color:#687565;
+  background:linear-gradient(180deg,#fffdf8 0%,#f8f0e5 100%);
+  border-color:rgba(195,165,108,.76);
+}
+.envelope-intro .envelope-inner-small { color:#8a835f; }
+.envelope-intro .envelope-inner-names { color:#b56f7d; }
+.envelope-intro .envelope-inner-date { color:#89764f; }
+.envelope-intro .envelope-letter-line { color:#9b6d72; }
+.envelope-intro button { color-scheme:only light; }
+.theme-toggle { min-width:112px; }
+@media(max-width:620px) {
+  .music-row { justify-content:center; }
+  .theme-toggle { min-width:104px; }
 }
 
-/* Dark-mode name frame: antique-gold outline around the names only. */
-:root[data-theme="dark"] .hero{
-  border:1px solid rgba(215,183,125,.88)!important;
-  border-radius:10px!important;
-  box-shadow:
-    inset 0 0 0 1px rgba(215,183,125,.16),
-    0 0 22px rgba(197,154,82,.08)!important;
-  padding-left:clamp(18px,3vw,36px)!important;
-  padding-right:clamp(18px,3vw,36px)!important;
-}
-:root[data-theme="dark"] .hero .arch{
-  border-color:rgba(215,183,125,.52)!important;
-}
-:root[data-theme="dark"] .hero .overline{
-  color:#ead9b8!important;
-}
 </style>
 </head>
 <body>
@@ -2455,7 +2289,8 @@ body:before { background:none !important; }
    const meta=document.querySelector('meta[name="theme-color"]');
    if(meta)meta.setAttribute('content',dark?'#171a24':'#fbf8f0');
    const schemeMeta=document.querySelector('meta[name="color-scheme"]');
-   if(schemeMeta)schemeMeta.setAttribute('content',dark?'dark':'only light');
+   if(schemeMeta)schemeMeta.setAttribute('content','light');
+   root.style.colorScheme='only light';
  }
  function applyTimeBasedTheme(){
    if(manualOverride)return;
