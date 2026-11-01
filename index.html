@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#fbf8f0">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="only light">
 <meta name="description" content="Gautam and Tejasvini's wedding invitation — Saturday, 12 December 2026, at Shri Kshetra Panchayatan Mandir, Nadhal.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Gautam &amp; Tejasvini | Wedding Invitation">
@@ -1778,8 +1778,10 @@ body:before { background:none; }
 /* =========================================================
    Theme system
    The theme is selected only by data-theme, never by OS mode.
-   color-scheme stays light to prevent Android/browser auto-darkening;
-   dark appearance is painted explicitly below.
+   The light theme declares "only light" and the dark theme declares "dark", so
+   browser auto-darkening (Chrome/Samsung Internet) has no reason to repaint either
+   theme: light is never darkened, and the explicitly painted dark theme is not
+   darkened a second time. The JS in applyTheme() keeps the meta tag in sync.
    ========================================================= */
 :root {
   color-scheme: only light;
@@ -1802,7 +1804,7 @@ body:before { background:none; }
   color-scheme: only light;
 }
 :root[data-theme="dark"] {
-  color-scheme: only light;
+  color-scheme: dark;
   --page-bg:#191d22;
   --page-gradient:linear-gradient(135deg,#20242a,#171a1f);
   --card-bg:transparent;
@@ -1823,6 +1825,7 @@ html,body {
   background-color:var(--page-bg);
   color:var(--ink);
 }
+:root[data-theme="dark"] body { color-scheme:dark; }
 body:before {
   background:
     radial-gradient(ellipse at 12% 14%,rgba(223,202,166,.18),transparent 30%),
@@ -2280,8 +2283,9 @@ body:before {
    const meta=document.querySelector('meta[name="theme-color"]');
    if(meta)meta.setAttribute('content',dark?'#171a24':'#fbf8f0');
    const schemeMeta=document.querySelector('meta[name="color-scheme"]');
-   if(schemeMeta)schemeMeta.setAttribute('content','light');
-   root.style.colorScheme='only light';
+   const scheme=dark?'dark':'only light';
+   if(schemeMeta)schemeMeta.setAttribute('content',scheme);
+   root.style.setProperty('color-scheme',scheme);
  }
  function applyTimeBasedTheme(){
    if(manualOverride)return;

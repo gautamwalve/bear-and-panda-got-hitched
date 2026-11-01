@@ -251,6 +251,8 @@ for (const [engineName, configs] of Object.entries(profiles)) {
       result.darkTheme = dark;
       check(result, "dark theme switch applies", dark.theme === "dark" && dark.background === "rgb(23, 26, 36)", JSON.stringify(dark));
 
+      check(result, "dark theme declares a dark colour scheme (stops browser double-darkening)", dark.scheme === "dark", dark.scheme);
+
       await page.locator("#themeToggle").click({ timeout: 10000 });
       const light = await page.evaluate(() => ({
         theme: document.documentElement.getAttribute("data-theme"),
