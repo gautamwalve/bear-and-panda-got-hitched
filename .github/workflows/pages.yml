@@ -26,14 +26,8 @@ jobs:
           python -m pip install --disable-pip-version-check pillow
           mkdir _site
           cp index.html favicon.svg floral-spray.svg flower-only-field.svg _site/
-          cp bride-cutout-final.webp groom-cutout.webp _site/
+          cp bride.webp groom.webp bride-cutout-final.webp groom-cutout.webp _site/
           cp "Tumhi Dekho Naa (Sitar Lofi).mp3" "Chand Tu Nabhatla.mp3" _site/
-          python - <<'PY'
-          from PIL import Image
-          for name in ("banner-bride-20261030", "banner-groom-20261030"):
-              with Image.open(f"{name}.webp") as source:
-                  source.convert("RGBA").save(f"_site/{name}.png", "PNG", optimize=True)
-          PY
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
