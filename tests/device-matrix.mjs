@@ -110,7 +110,14 @@ for (const [engineName, configs] of Object.entries(profiles)) {
           viewportWidth: innerWidth,
           viewportHeight: innerHeight,
           scrollWidth: document.documentElement.scrollWidth,
-          audioCanPlayMp3: document.querySelector("#weddingAudio").canPlayType("audio/mpeg")
+          audioCanPlayMp3: document.querySelector("#weddingAudio").canPlayType("audio/mpeg"),
+          characterImages: Array.from(document.querySelectorAll(".playful-runway .model-stage img")).map(img => ({
+            alt: img.alt,
+            src: img.currentSrc || img.src,
+            complete: img.complete,
+            naturalWidth: img.naturalWidth,
+            naturalHeight: img.naturalHeight
+          }))
         };
       });
       result.beforeOpen = before;
@@ -124,6 +131,10 @@ for (const [engineName, configs] of Object.entries(profiles)) {
       check(result, "entry video element is removed", before.videoElementCount === 0, String(before.videoElementCount));
       check(result, "invitation is hidden before envelope tap", before.pageVisibility === "hidden", before.pageVisibility);
       check(result, "light theme initially selected", before.theme === "light", before.theme);
+      check(result, "bride and groom images both decode", 
+        before.characterImages.length >= 2 &&
+        before.characterImages.every(img => img.complete && img.naturalWidth > 0),
+        JSON.stringify(before.characterImages));
       check(result, "no horizontal overflow before opening", before.scrollWidth <= before.viewportWidth, `${before.scrollWidth} > ${before.viewportWidth}`);
 
       await page.evaluate(() => { window.__envelopeTapAt = performance.now(); });
