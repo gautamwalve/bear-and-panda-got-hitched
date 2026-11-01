@@ -260,6 +260,21 @@ for (const [engineName, configs] of Object.entries(profiles)) {
       result.lightTheme = light;
       check(result, "light theme restores ivory background", light.theme === "light" && light.scheme === "only light" && light.background === "rgb(251, 248, 240)", JSON.stringify(light));
 
+      // "Add to calendar" must download a well-formed .ics file.
+      try {
+        const [download] = await Promise.all([
+          page.waitForEvent("download", { timeout: 10000 }),
+          page.locator("#addToCalendar").click({ timeout: 10000 })
+        ]);
+        const ics = fs.readFileSync(await download.path(), "utf8");
+        check(result, "calendar download is named .ics", /\.ics$/i.test(download.suggestedFilename()), download.suggestedFilename());
+        check(result, "calendar file uses CRLF line endings", ics.includes("BEGIN:VCALENDAR\r\nVERSION:2.0\r\n"), JSON.stringify(ics.slice(0, 60)));
+        check(result, "calendar DTSTAMP is valid UTC without milliseconds", /\r\nDTSTAMP:\d{8}T\d{6}Z\r\n/.test(ics));
+        check(result, "calendar start is 12:32 IST (07:02 UTC)", ics.includes("\r\nDTSTART:20261212T070200Z\r\n"));
+      } catch (error) {
+        check(result, "Add to calendar triggers a download", false, String(error));
+      }
+
       // Verify local favicon and media asset HTTP responses were received.
       const faviconResponse = await page.request.get(new URL("./favicon.svg", BASE_URL).href);
       check(result, "favicon returns HTTP 200", faviconResponse.status() === 200, String(faviconResponse.status()));
