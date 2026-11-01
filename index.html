@@ -1804,7 +1804,7 @@ body:before { background:none; }
   color-scheme: only light;
 }
 :root[data-theme="dark"] {
-  color-scheme: dark;
+  color-scheme: only light;
   --page-bg:#171a24;
   --page-gradient:linear-gradient(135deg,#171a24,#242536);
   --card-bg:transparent;
@@ -1825,7 +1825,7 @@ html,body {
   background-color:var(--page-bg);
   color:var(--ink);
 }
-:root[data-theme="dark"] body { color-scheme:dark; }
+:root[data-theme="dark"] body { color-scheme:only light; }
 body:before {
   background:
     radial-gradient(ellipse at 12% 14%,rgba(223,202,166,.18),transparent 30%),
@@ -2282,10 +2282,11 @@ body:before {
    if(icon)icon.textContent=dark?'☀':'☾';
    const meta=document.querySelector('meta[name="theme-color"]');
    if(meta)meta.setAttribute('content',dark?'#171a24':'#fbf8f0');
+   // Keep browser-native controls in light scheme; the page palette is styled explicitly.
+   // This prevents automatic browser darkening from altering the invitation colours.
    const schemeMeta=document.querySelector('meta[name="color-scheme"]');
-   const scheme=dark?'dark':'only light';
-   if(schemeMeta)schemeMeta.setAttribute('content',scheme);
-   root.style.setProperty('color-scheme',scheme);
+   if(schemeMeta)schemeMeta.setAttribute('content','only light');
+   root.style.setProperty('color-scheme','only light');
  }
  function applyTimeBasedTheme(){
    if(manualOverride)return;
