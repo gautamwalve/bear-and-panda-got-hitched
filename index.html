@@ -1742,8 +1742,8 @@ body:before { background:none; }
  min-height:clamp(340px,31vw,420px)!important;
  box-sizing:border-box!important;
  padding:clamp(22px,3vw,38px) clamp(16px,2.4vw,30px)!important;
- background:rgba(35,40,47,.94)!important;
- border:1px solid rgba(195,165,108,.42)!important;
+ background:var(--panel-bg);
+ border:1px solid var(--soft-border);
  border-radius:clamp(24px,3.2vw,48px)!important;
 }
 .event-venue-grid>.venue-stack{display:contents!important}
@@ -1753,8 +1753,8 @@ body:before { background:none; }
  height:100%!important;box-sizing:border-box!important;
  display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;
  padding:clamp(22px,3vw,38px)!important;
- background:rgba(35,40,47,.94)!important;
- border:1px solid rgba(195,165,108,.42)!important;
+ background:var(--panel-bg);
+ border:1px solid var(--soft-border);
  border-radius:clamp(24px,3.2vw,48px)!important;
 }
 .event-venue-grid .pickup-venue{
@@ -1952,6 +1952,14 @@ body:before {
   border-color:var(--soft-border);
   color:var(--ink);
 }
+
+/* The two main event cards always share the active theme palette. */
+.event-venue-grid>.details,
+.event-venue-grid .venue {
+  background:var(--panel-bg);
+  border-color:var(--soft-border);
+  color:var(--ink);
+}
 :root[data-theme="light"] .event-venue-grid .merged-detail {
   background:transparent;
   border:0;
@@ -1961,6 +1969,13 @@ body:before {
 
 /* The envelope is deliberately isolated from the invitation theme. */
 .envelope-intro {
+  color-scheme:only light;
+  forced-color-adjust:none;
+  isolation:isolate;
+  background:radial-gradient(ellipse at 50% 25%,#fffdf8 0%,#fbf4e9 58%,#f0e6d8 100%);
+  color:#565e56;
+}
+:root[data-theme="dark"] .envelope-intro {
   color-scheme:only light;
   forced-color-adjust:none;
   background:radial-gradient(ellipse at 50% 25%,#fffdf8 0%,#fbf4e9 58%,#f0e6d8 100%);
