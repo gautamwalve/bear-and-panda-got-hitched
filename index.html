@@ -2107,11 +2107,11 @@ body:before {
   <span class="runway-sparkle one" aria-hidden="true">✦</span><span class="runway-sparkle two" aria-hidden="true">✧</span><span class="runway-sparkle three" aria-hidden="true">✦</span>
   <span class="romance-heart" aria-hidden="true">♡</span>
   <div class="chibi-runner dudu">
-    <div class="model-stage"><img class="model-fallback character-art" src="banner-bride-20261030.webp?v=20261030" alt="Tejasvini, the bride, in a pink saree and green blouse" loading="eager" decoding="async"></div>
+    <div class="model-stage"><img class="model-fallback character-art" src="./banner-bride-20261030.png?v=20261101" alt="Tejasvini, the bride, in a pink saree and green blouse" loading="eager" decoding="async"></div>
     <span class="character-name">Tejasvini</span>
   </div>
   <div class="chibi-runner bubu">
-    <div class="model-stage"><img class="model-fallback character-art" src="banner-groom-20261030.webp?v=20261030" alt="Gautam, the groom, in a gold sherwani with maroon and green accents" loading="eager" decoding="async"></div>
+    <div class="model-stage"><img class="model-fallback character-art" src="./banner-groom-20261030.png?v=20261101" alt="Gautam, the groom, in a gold sherwani with maroon and green accents" loading="eager" decoding="async"></div>
     <span class="character-name">Gautam</span>
   </div>
 </section>
@@ -2336,6 +2336,26 @@ body:before {
    applyTheme(root.getAttribute('data-theme')==='dark'?'light':'dark');
  });
 })();
+
+/* Character image fallback: use the last known-good cutouts if a generated PNG fails. */
+(function () {
+  const fallbackSources = {
+    "banner-bride-20261030.png": "./bride-cutout-final.webp?v=20261101",
+    "banner-groom-20261030.png": "./groom-cutout.webp?v=20261101"
+  };
+
+  document.querySelectorAll(".model-stage img.model-fallback").forEach(function (img) {
+    img.addEventListener("error", function () {
+      const fileName = (img.currentSrc || img.src).split("/").pop().split("?")[0];
+      const fallback = fallbackSources[fileName];
+      if (fallback && img.dataset.fallbackApplied !== "true") {
+        img.dataset.fallbackApplied = "true";
+        img.src = fallback;
+      }
+    });
+  });
+})();
+
 </script>
 <!-- GitHub Pages fresh deployment run: 2026-10-30 -->
 </body>
