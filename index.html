@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#fbf8f0">
 <meta name="color-scheme" content="only light">
+<script>
+  // Honour the browser/device dark preference before the page is painted.
+  // This is the standard signal exposed by Android browsers, including Samsung Internet.
+  try {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#171a24');
+      document.querySelector('meta[name="color-scheme"]')?.setAttribute('content', 'dark');
+    }
+  } catch (_) {}
+</script>
 <meta name="description" content="Gautam and Tejasvini's wedding invitation — Saturday, 12 December 2026, at Shri Kshetra Panchayatan Mandir, Nadhal.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Gautam &amp; Tejasvini | Wedding Invitation">
@@ -2287,15 +2298,24 @@ body:before {
    if(schemeMeta)schemeMeta.setAttribute('content',scheme);
    root.style.setProperty('color-scheme',scheme);
  }
+ const browserPrefersDark = window.matchMedia
+   ? window.matchMedia('(prefers-color-scheme: dark)')
+   : null;
  function applyTimeBasedTheme(){
    if(manualOverride)return;
    const hour=new Date().getHours();
-   applyTheme(hour>=18 || hour<6 ? 'dark' : 'light');
+   // If the browser/device requests dark appearance, use our designed dark palette
+   // instead of allowing the browser to algorithmically recolour the light theme.
+   const prefersDark = !!(browserPrefersDark && browserPrefersDark.matches);
+   applyTheme(prefersDark || hour>=18 || hour<6 ? 'dark' : 'light');
  }
- // Default to the viewer's local time: light 06:00–17:59, dark 18:00–05:59.
+ // Browser/device dark preference takes priority; otherwise use local time.
  applyTimeBasedTheme();
- // Recheck while the invitation remains open, including across a theme boundary.
+ // Recheck both the browser preference and local time while the invitation is open.
  window.setInterval(applyTimeBasedTheme,60000);
+ if(browserPrefersDark && browserPrefersDark.addEventListener){
+   browserPrefersDark.addEventListener('change',applyTimeBasedTheme);
+ }
  toggle.addEventListener('click',function(){
    manualOverride=true;
    applyTheme(root.getAttribute('data-theme')==='dark'?'light':'dark');
