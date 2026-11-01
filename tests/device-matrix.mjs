@@ -75,7 +75,7 @@ for (const [engineName, configs] of Object.entries(profiles)) {
         result.failedRequests.push({ url: request.url(), error: request.failure()?.errorText || "request failed" });
       });
       page.on("response", response => {
-        if (/\.(mp3|mp4)(\?|$)|favicon\.svg/i.test(response.url())) {
+        if (/\.(mp3|mp4|png|webp)(\?|$)|favicon\.svg/i.test(response.url())) {
           result.assetResponses.push({ url: response.url(), status: response.status() });
         }
       });
