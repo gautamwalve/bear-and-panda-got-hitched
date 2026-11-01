@@ -2367,46 +2367,22 @@ body:before {
 (function(){
  const button=document.getElementById('addToCalendar');
  if(!button)return;
- // RFC 5545: escape \ ; , in TEXT values, fold lines longer than 75 octets, CRLF line endings.
- function esc(text){return String(text).replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,');}
- function fold(line){
-   const out=[];
-   while(line.length>72){out.push(line.slice(0,72));line=' '+line.slice(72);}
-   out.push(line);
-   return out;
- }
  button.addEventListener('click',function(){
-   const stamp=new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
-   const lines=[
-     'BEGIN:VCALENDAR',
-     'VERSION:2.0',
-     'PRODID:-//Gautam and Tejasvini//Wedding Invitation//EN',
-     'CALSCALE:GREGORIAN',
-     'METHOD:PUBLISH',
-     'BEGIN:VEVENT',
-     'UID:gautam-tejasvini-wedding-20261212@bear-and-panda-got-hitched',
-     'DTSTAMP:'+stamp,
-     // 12:32 PM IST (UTC+05:30) = 07:02 UTC. UTC avoids needing a VTIMEZONE block.
-     'DTSTART:20261212T070200Z',
-     'DTEND:20261212T110200Z',
-     'SUMMARY:'+esc('Gautam & Tejasvini — Wedding Ceremony'),
-     'DESCRIPTION:'+esc('Marriage ceremony followed by lunch & reception.'),
-     'LOCATION:'+esc('Shri Kshetra Panchayatan Mandir, Nadhal, Khalapur, Raigad, Maharashtra 410206'),
-     'URL:https://gautamwalve.github.io/bear-and-panda-got-hitched/',
-     'END:VEVENT',
-     'END:VCALENDAR'
-   ].reduce(function(all,line){return all.concat(fold(line));},[]);
-   const blob=new Blob([lines.join('\r\n')+'\r\n'],{type:'text/calendar;charset=utf-8'});
-   const url=URL.createObjectURL(blob);
-   const link=document.createElement('a');
-   link.href=url;
-   link.download='Gautam-and-Tejasvini-Wedding.ics';
-   document.body.appendChild(link);
-   link.click();
-   link.remove();
-   window.setTimeout(function(){URL.revokeObjectURL(url);},1000);
+   // Open a pre-filled Google Calendar event instead of downloading an ICS file.
+   // Google Calendar asks the visitor to confirm by pressing Save.
+   const params=new URLSearchParams({
+     action:'TEMPLATE',
+     text:'Gautam & Tejasvini — Wedding Ceremony',
+     dates:'20261212T123200/20261212T163200',
+     ctz:'Asia/Kolkata',
+     details:'Marriage ceremony followed by lunch & reception.\\n\\nWedding invitation: https://gautamwalve.github.io/bear-and-panda-got-hitched/',
+     location:'Shri Kshetra Panchayatan Mandir, Nadhal, Khalapur, Raigad, Maharashtra 410206'
+   });
+   const calendarUrl='https://calendar.google.com/calendar/render?'+params.toString();
+   const opened=window.open(calendarUrl,'_blank','noopener,noreferrer');
+   if(!opened) window.location.href=calendarUrl;
  });
-})();
+})();;
 
 </script>
 <!-- GitHub Pages fresh deployment run: 2026-10-30 -->
