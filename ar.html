@@ -3,111 +3,73 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#3b0809">
-<meta name="description" content="View Gautam & Tejasvini's live wedding website over your camera view.">
-<title>Gautam &amp; Tejasvini | Live Wedding AR</title>
+<meta name="theme-color" content="#260506">
+<title>Gautam &amp; Tejasvini — Wedding Website AR View</title>
 <style>
-:root{color-scheme:only-light;--wine:#3b0809;--gold:#d8ad62;--cream:#fff1cf}
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:Georgia,"Times New Roman",serif;background:#260506;color:var(--cream)}
-body{min-height:100svh;display:grid;place-items:center;padding:22px;background:radial-gradient(ellipse at 50% 15%,#641417 0,#350809 55%,#1d0405 100%)}
-main{width:min(100%,560px);text-align:center}
-.crest{color:var(--gold);font-size:30px;margin-bottom:10px}
-h1{font-weight:400;font-size:clamp(30px,8vw,48px);line-height:1.1;margin:0 0 12px;color:#f4d28d}
-p{font-size:16px;line-height:1.65;color:#f9e9c9;margin:10px auto;max-width:440px}
-.panel{position:relative;margin:24px auto;padding:26px 18px;border:1px solid #d6a953;outline:1px solid #9d7138;outline-offset:5px;background:linear-gradient(145deg,#570d10,#320608);box-shadow:0 20px 55px #12020399}
-.panel:before{content:"";position:absolute;inset:8px;border:1px solid #b78a48;pointer-events:none}
-.small{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#e8ca8d}
-.names{font-style:italic;font-size:clamp(28px,7vw,42px);color:#e7b95f;margin:12px 0}
-.actions{display:flex;flex-direction:column;gap:12px;margin:24px auto 12px;max-width:330px}
-button,a.button{display:block;border:1px solid #e0b86d;border-radius:999px;padding:15px 22px;background:linear-gradient(135deg,#f3d99d,#c99a4e);color:#39090b;font:600 14px Arial,sans-serif;letter-spacing:.04em;text-decoration:none;cursor:pointer}
-button.secondary,a.secondary{background:transparent;color:#f4d28d}
-.note{font:12px/1.6 Arial,sans-serif;color:#d6bd91}
-#status{min-height:22px;font:13px/1.5 Arial,sans-serif;color:#f1dcae}
-#cameraStage{display:none;position:fixed;inset:0;z-index:10;background:#080808;overflow:hidden}
-#cameraFeed{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-#shade{position:absolute;inset:0;background:linear-gradient(180deg,#0005,transparent 18%,transparent 78%,#0006);pointer-events:none}
-#liveFrame{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(92vw,560px);height:min(78svh,820px);border:2px solid #d8ad62;border-radius:18px;padding:5px;background:linear-gradient(145deg,#f2d28f,#95632b 55%,#e7c47c);box-shadow:0 18px 60px #0009;overflow:hidden}
-#liveSite{width:100%;height:100%;border:0;border-radius:11px;background:#fff1cf}
-#toolbar{position:absolute;z-index:2;top:max(12px,env(safe-area-inset-top));left:12px;right:12px;display:flex;justify-content:space-between;align-items:center;gap:12px;pointer-events:none}
-#toolbar button{pointer-events:auto;padding:10px 15px;min-width:92px}
-#hint{font:11px/1.4 Arial,sans-serif;color:white;text-shadow:0 1px 4px #000;text-align:center;position:absolute;bottom:max(12px,env(safe-area-inset-bottom));left:16px;right:16px;pointer-events:none}
-@media(max-height:620px){#liveFrame{height:72svh;width:min(88vw,520px)}}
-@media(prefers-reduced-motion:no-preference){.panel{animation:arrive .8s ease-out both}@keyframes arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:Arial,sans-serif;background:#260506;color:#fff}
+#launch{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:26px;background:radial-gradient(ellipse at 50% 25%,#641417,#260506 72%)}
+#launch h1{font:normal clamp(28px,7vw,42px)/1.15 Georgia,serif;color:#f0cf8b;margin:0 0 12px}
+#launch p{max-width:360px;color:#f3e4c8;font-size:14px;line-height:1.55;margin:0 0 24px}
+button,a{font:600 14px Arial,sans-serif;letter-spacing:.02em;border:1px solid #e0bd78;border-radius:999px;padding:15px 24px;cursor:pointer;text-decoration:none}
+#start{background:linear-gradient(135deg,#f4dda9,#c99a4e);color:#351012}
+#normal{margin-top:12px;color:#f4dca6;background:transparent}
+#status{min-height:20px;margin-top:16px;color:#f5d9a3;font-size:12px;line-height:1.4}
+#camera{display:none;position:absolute;inset:0;background:#000}
+#feed{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#siteFrame{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);width:min(96vw,900px);height: min(88svh,1100px);border:2px solid #d9b36d;border-radius:15px;padding:4px;background:linear-gradient(135deg,#f5dda2,#a97636 55%,#e8c77f);box-shadow:0 18px 70px #000b;overflow:hidden}
+#site{display:block;width:100%;height:100%;border:0;border-radius:9px;background:#fff}
+#controls{position:absolute;z-index:4;top:max(10px,env(safe-area-inset-top));left:10px;right:10px;display:flex;justify-content:space-between;pointer-events:none}
+#controls button{pointer-events:auto;padding:10px 15px;background:#2e0809eF;color:#f8e3b6}
+@media(max-height:520px){#siteFrame{height:82svh;width:94vw}}
 </style>
 </head>
 <body>
-<main id="landing">
-  <div class="crest" aria-hidden="true">❀</div>
-  <div class="small">A celebration of love</div>
-  <section class="panel" aria-label="Wedding invitation preview">
-    <div class="small">You are invited</div>
-    <p>To the marriage of</p>
-    <div class="names">Gautam &amp; Tejasvini</div>
-    <div class="small">12 December 2026</div>
-  </section>
-  <h1>Our live wedding website, in your camera view</h1>
-  <p>Start the camera to see the actual wedding website in a floating, scrollable frame. You can tap links, use the music controls and explore the page normally.</p>
-  <div class="actions">
-    <button id="startCamera" type="button">Open live website in camera</button>
-    <a class="button secondary" href="https://gautamwalve.github.io/bear-and-panda-got-hitched/">Open wedding website normally</a>
-  </div>
+<main id="launch">
+  <h1>Gautam &amp; Tejasvini</h1>
+  <p>Open the live wedding website over your camera view.</p>
+  <button id="start" type="button">Show my wedding website</button>
+  <a id="normal" href="https://gautamwalve.github.io/bear-and-panda-got-hitched/">Open website without camera</a>
   <div id="status" role="status" aria-live="polite"></div>
-  <p class="note">Camera access requires permission and a secure browser (HTTPS). This is a screen-anchored camera overlay, not a panel anchored to a physical surface; the live website remains fully interactive.</p>
 </main>
-<section id="cameraStage" aria-label="Camera view with live wedding website">
-  <video id="cameraFeed" autoplay muted playsinline></video>
-  <div id="shade"></div>
-  <div id="toolbar">
-    <button id="closeCamera" class="secondary" type="button">Close</button>
-    <button id="openFull" type="button">Open full page</button>
+<section id="camera" aria-label="Live wedding website over camera view">
+  <video id="feed" autoplay muted playsinline></video>
+  <div id="controls">
+    <button id="close" type="button">Close camera</button>
+    <button id="full" type="button">Open full screen page</button>
   </div>
-  <div id="liveFrame"><iframe id="liveSite" title="Live Gautam and Tejasvini wedding website" allow="autoplay; fullscreen"></iframe></div>
-  <div id="hint">The live page is interactive — scroll and tap inside the frame</div>
+  <div id="siteFrame"><iframe id="site" title="Full live wedding website" allow="autoplay; fullscreen"></iframe></div>
 </section>
 <script>
-(function(){
-  const site='https://gautamwalve.github.io/bear-and-panda-got-hitched/';
-  const start=document.getElementById('startCamera');
-  const status=document.getElementById('status');
-  const stage=document.getElementById('cameraStage');
-  const video=document.getElementById('cameraFeed');
-  const iframe=document.getElementById('liveSite');
-  let stream=null;
-
-  async function stopCamera(){
-    if(stream){stream.getTracks().forEach(track=>track.stop());stream=null}
-    video.pause();video.srcObject=null;stage.style.display='none';
-    document.getElementById('landing').style.display='block';
-  }
-  async function startExperience(){
-    if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
-      status.textContent='Camera access is not available in this browser. Open the wedding website normally instead.';
-      return;
-    }
-    start.disabled=true;start.textContent='Starting camera…';
-    try{
-      stream=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:{ideal:'environment'}}});
-      video.srcObject=stream;
-      await video.play();
-      iframe.src=site;
-      document.getElementById('landing').style.display='none';
-      stage.style.display='block';
-      status.textContent='';
-    }catch(error){
-      if(stream){stream.getTracks().forEach(track=>track.stop());stream=null}
-      const denied=error && (error.name==='NotAllowedError'||error.name==='SecurityError');
-      status.textContent=denied
-        ? 'Camera permission was blocked. Allow camera access for this site in Chrome settings, then try again.'
-        : 'Could not start the camera on this device. Please open the wedding website normally.';
-    }finally{
-      start.disabled=false;start.textContent='Try camera view again';
-    }
-  }
-  start.addEventListener('click',startExperience);
-  document.getElementById('closeCamera').addEventListener('click',stopCamera);
-  document.getElementById('openFull').addEventListener('click',()=>{window.location.href=site});
-  window.addEventListener('pagehide',()=>{if(stream)stream.getTracks().forEach(track=>track.stop())});
+(()=>{
+ const url='https://gautamwalve.github.io/bear-and-panda-got-hitched/';
+ const launch=document.getElementById('launch'),camera=document.getElementById('camera');
+ const feed=document.getElementById('feed'),frame=document.getElementById('site');
+ const start=document.getElementById('start'),status=document.getElementById('status');
+ let stream=null;
+ async function stop(){
+   if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}
+   feed.pause();feed.srcObject=null;camera.style.display='none';launch.style.display='flex';
+ }
+ async function begin(){
+   if(!navigator.mediaDevices?.getUserMedia){status.textContent='Camera is unavailable here. Use “Open website without camera”.';return}
+   start.disabled=true;status.textContent='Starting camera…';
+   try{
+     stream=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:{ideal:'environment'}}});
+     feed.srcObject=stream;await feed.play();
+     frame.src=url;
+     launch.style.display='none';camera.style.display='block';
+   }catch(e){
+     if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}
+     status.textContent=(e?.name==='NotAllowedError'||e?.name==='SecurityError')
+       ?'Camera permission is blocked. Allow camera access for this site in browser settings and try again.'
+       :'Could not start camera. You can still open the live website without camera.';
+   }finally{start.disabled=false}
+ }
+ start.addEventListener('click',begin);
+ document.getElementById('close').addEventListener('click',stop);
+ document.getElementById('full').addEventListener('click',()=>{location.href=url});
+ addEventListener('pagehide',()=>{if(stream)stream.getTracks().forEach(t=>t.stop())});
 })();
 </script>
 </body>
