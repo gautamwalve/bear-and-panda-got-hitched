@@ -4,73 +4,165 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#260506">
-<title>Gautam &amp; Tejasvini — Wedding Website AR View</title>
+<title>Gautam &amp; Tejasvini — 3D Wedding AR</title>
 <style>
+:root{color-scheme:dark}
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:Arial,sans-serif;background:#260506;color:#fff}
-#launch{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:26px;background:radial-gradient(ellipse at 50% 25%,#641417,#260506 72%)}
-#launch h1{font:normal clamp(28px,7vw,42px)/1.15 Georgia,serif;color:#f0cf8b;margin:0 0 12px}
-#launch p{max-width:360px;color:#f3e4c8;font-size:14px;line-height:1.55;margin:0 0 24px}
-button,a{font:600 14px Arial,sans-serif;letter-spacing:.02em;border:1px solid #e0bd78;border-radius:999px;padding:15px 24px;cursor:pointer;text-decoration:none}
-#start{background:linear-gradient(135deg,#f4dda9,#c99a4e);color:#351012}
-#normal{margin-top:12px;color:#f4dca6;background:transparent}
-#status{min-height:20px;margin-top:16px;color:#f5d9a3;font-size:12px;line-height:1.4}
-#camera{display:none;position:absolute;inset:0;background:#000}
-#feed{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-#siteFrame{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);width:min(96vw,900px);height: min(88svh,1100px);border:2px solid #d9b36d;border-radius:15px;padding:4px;background:linear-gradient(135deg,#f5dda2,#a97636 55%,#e8c77f);box-shadow:0 18px 70px #000b;overflow:hidden}
-#site{display:block;width:100%;height:100%;border:0;border-radius:9px;background:#fff}
-#controls{position:absolute;z-index:4;top:max(10px,env(safe-area-inset-top));left:10px;right:10px;display:flex;justify-content:space-between;pointer-events:none}
-#controls button{pointer-events:auto;padding:10px 15px;background:#2e0809eF;color:#f8e3b6}
-@media(max-height:520px){#siteFrame{height:82svh;width:94vw}}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#180405;color:#f8e9c8;font-family:Georgia,serif}
+#scene{position:fixed;inset:0}
+#intro{position:fixed;z-index:3;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(ellipse at 50% 30%,#68191c 0,#260809 55%,#100304 100%);text-align:center}
+.panel{width:min(440px,100%);padding:30px 24px;border:1px solid #bd9654;border-radius:22px;background:linear-gradient(145deg,#4a1114ed,#210709f2);box-shadow:0 25px 90px #0009}
+h1{font-size:clamp(30px,8vw,44px);font-weight:400;color:#f2d69b;margin:0 0 12px}
+p{font:14px/1.65 Arial,sans-serif;color:#f3e5ca;margin:0 0 22px}
+button{border:1px solid #e4c27e;border-radius:999px;padding:14px 21px;background:linear-gradient(135deg,#f5dfa9,#c08c43);color:#351013;font-weight:700;font-size:14px;cursor:pointer}
+#fallback{display:block;margin:15px auto 0;color:#f3d9a2;font:13px Arial,sans-serif;text-decoration:underline}
+#hint{position:fixed;z-index:2;left:50%;bottom:max(22px,env(safe-area-inset-bottom));transform:translateX(-50%);width:max-content;max-width:90vw;padding:11px 16px;border:1px solid #c59c5b88;border-radius:30px;background:#260709df;color:#f6e3bd;text-align:center;font:12px/1.4 Arial,sans-serif;display:none}
+#website{position:fixed;z-index:5;inset:0;background:#160405ed;display:none;padding: max(12px,env(safe-area-inset-top)) 10px max(12px,env(safe-area-inset-bottom))}
+#website.open{display:flex;flex-direction:column}
+#webtop{display:flex;align-items:center;justify-content:space-between;padding:8px 4px 12px;color:#f2d69b;font:14px Arial,sans-serif}
+#webtop button{padding:9px 16px}
+#live{width:100%;flex:1;border:1px solid #caa35e;border-radius:12px;background:#fff}
+#unsupported{display:none;position:fixed;inset:0;z-index:4;background:#210709;padding:30px;align-items:center;justify-content:center;text-align:center}
 </style>
 </head>
 <body>
-<main id="launch">
+<div id="scene"></div>
+<section id="intro">
+ <div class="panel">
   <h1>Gautam &amp; Tejasvini</h1>
-  <p>Open the live wedding website over your camera view.</p>
-  <button id="start" type="button">Show my wedding website</button>
-  <a id="normal" href="https://gautamwalve.github.io/bear-and-panda-got-hitched/">Open website without camera</a>
-  <div id="status" role="status" aria-live="polite"></div>
-</main>
-<section id="camera" aria-label="Live wedding website over camera view">
-  <video id="feed" autoplay muted playsinline></video>
-  <div id="controls">
-    <button id="close" type="button">Close camera</button>
-    <button id="full" type="button">Open full screen page</button>
-  </div>
-  <div id="siteFrame"><iframe id="site" title="Full live wedding website" allow="autoplay; fullscreen"></iframe></div>
+  <p>Step into our wedding invitation. Place the 3D frame in your space, then tap the invitation to open the live wedding website.</p>
+  <button id="enter">Enter 3D wedding AR</button>
+  <a id="fallback" href="https://gautamwalve.github.io/bear-and-panda-got-hitched/">Open wedding website normally</a>
+ </div>
 </section>
-<script>
-(()=>{
- const url='https://gautamwalve.github.io/bear-and-panda-got-hitched/';
- const launch=document.getElementById('launch'),camera=document.getElementById('camera');
- const feed=document.getElementById('feed'),frame=document.getElementById('site');
- const start=document.getElementById('start'),status=document.getElementById('status');
- let stream=null;
- async function stop(){
-   if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}
-   feed.pause();feed.srcObject=null;camera.style.display='none';launch.style.display='flex';
+<div id="hint">Move your phone to explore the floating 3D invitation · Tap the envelope to open</div>
+<section id="website" aria-label="Live wedding website">
+ <div id="webtop"><span>Gautam &amp; Tejasvini</span><button id="closeWeb">Close</button></div>
+ <iframe id="live" title="Live wedding website" allow="autoplay; fullscreen"></iframe>
+</section>
+<div id="unsupported"><div class="panel"><h1>AR isn't available here</h1><p>Open this page in a supported Android version of Chrome on an ARCore-compatible device, allow camera access, and try again.</p><a id="fallback2" href="https://gautamwalve.github.io/bear-and-panda-got-hitched/" style="color:#f3d9a2">Open wedding website</a></div></div>
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+
+const siteURL='https://gautamwalve.github.io/bear-and-panda-got-hitched/';
+const host=document.getElementById('scene');
+const intro=document.getElementById('intro');
+const hint=document.getElementById('hint');
+const website=document.getElementById('website');
+const live=document.getElementById('live');
+let renderer,scene,camera,group,sessionActive=false;
+const gold=new THREE.MeshStandardMaterial({color:0xd8b46e,metalness:.72,roughness:.28});
+const darkGold=new THREE.MeshStandardMaterial({color:0x8f602d,metalness:.6,roughness:.36});
+const ruby=new THREE.MeshStandardMaterial({color:0x65171c,roughness:.42});
+const cream=new THREE.MeshStandardMaterial({color:0xf1dfb8,roughness:.5});
+const green=new THREE.MeshStandardMaterial({color:0x315b3b,roughness:.65});
+const pickables=[];
+
+function box(w,h,d,mat,x,y,z,parent=group){
+ const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);m.position.set(x,y,z);parent.add(m);return m;
+}
+function flower(x,y,z,s=1,parent=group){
+ const f=new THREE.Group();f.position.set(x,y,z);f.scale.setScalar(s);parent.add(f);
+ const petalMat=new THREE.MeshStandardMaterial({color:0xe9d5b1,roughness:.62});
+ for(let i=0;i<7;i++){
+  const a=i*Math.PI*2/7;
+  const p=new THREE.Mesh(new THREE.SphereGeometry(.075,14,10),petalMat);
+  p.scale.set(.7,1.25,.45);p.position.set(Math.cos(a)*.09,Math.sin(a)*.09,0);p.rotation.z=a;f.add(p);
  }
- async function begin(){
-   if(!navigator.mediaDevices?.getUserMedia){status.textContent='Camera is unavailable here. Use “Open website without camera”.';return}
-   start.disabled=true;status.textContent='Starting camera…';
-   try{
-     stream=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:{ideal:'environment'}}});
-     feed.srcObject=stream;await feed.play();
-     frame.src=url;
-     launch.style.display='none';camera.style.display='block';
-   }catch(e){
-     if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}
-     status.textContent=(e?.name==='NotAllowedError'||e?.name==='SecurityError')
-       ?'Camera permission is blocked. Allow camera access for this site in browser settings and try again.'
-       :'Could not start camera. You can still open the live website without camera.';
-   }finally{start.disabled=false}
+ const c=new THREE.Mesh(new THREE.SphereGeometry(.055,16,12),gold);f.add(c);
+ return f;
+}
+function leaf(x,y,z,rot,parent=group){
+ const l=new THREE.Mesh(new THREE.SphereGeometry(.11,12,8),green);
+ l.scale.set(.48,1.7,.25);l.position.set(x,y,z);l.rotation.z=rot;parent.add(l);
+}
+function createInvitation(){
+ group=new THREE.Group();scene.add(group);
+ // Floating, deep, bevelled architectural frame
+ box(1.72,2.42,.12,darkGold,0,0,0);
+ box(1.66,2.36,.07,gold,0,0,.075);
+ box(1.57,2.27,.055,ruby,0,0,.12);
+ // inset ivory invitation face
+ box(1.42,2.08,.025,cream,0,0,.16);
+ // inner ruby mat and gold border lines
+ box(1.31,1.96,.018,ruby,0,0,.18);
+ box(1.25,1.90,.014,cream,0,0,.195);
+ for(const x of [-.65,.65]) box(.018,2.05,.025,gold,x,0,.21);
+ for(const y of [-1.03,1.03]) box(1.34,.018,.025,gold,0,y,.21);
+ // Center dimensional envelope
+ const env=new THREE.Group();env.position.set(0,-.08,.29);group.add(env);
+ const body=new THREE.Mesh(new THREE.BoxGeometry(.96,.62,.09),ruby);env.add(body);
+ const flapShape=new THREE.Shape();flapShape.moveTo(-.48,.31);flapShape.lineTo(0,-.04);flapShape.lineTo(.48,.31);flapShape.close();
+ const flap=new THREE.Mesh(new THREE.ShapeGeometry(flapShape),gold);flap.position.z=.052;env.add(flap);
+ const fold1=new THREE.Mesh(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-.47,-.3,.055),new THREE.Vector3(0,.02,.055),new THREE.Vector3(.47,-.3,.055)]),new THREE.LineBasicMaterial({color:0xe5c47f}));env.add(fold1);
+ const seal=new THREE.Mesh(new THREE.CylinderGeometry(.085,.085,.025,32),gold);seal.rotation.x=Math.PI/2;seal.position.set(0,-.02,.11);env.add(seal);
+ const sealCore=new THREE.Mesh(new THREE.SphereGeometry(.035,16,12),ruby);sealCore.position.set(0,-.02,.13);env.add(sealCore);
+ pickables.push(env);
+ // Title plaques, decorative medallions
+ const plaque=box(.94,.27,.035,ruby,0,.78,.24);
+ const med=new THREE.Mesh(new THREE.TorusGeometry(.13,.018,8,48),gold);med.position.set(0,.99,.25);group.add(med);
+ // floral sprays in front and behind the frame
+ for(let i=0;i<9;i++){
+  const side=i<5?-1:1, n=i<5?i:i-5;
+  const x=side*(.65+n*.055), y=-.82+n*.27;
+  leaf(x-side*.06,y-.08,.22,-side*.7);
+  leaf(x+side*.02,y-.12,.23,side*.8);
+  flower(x,y,.27,.72+(n%2)*.2);
  }
- start.addEventListener('click',begin);
- document.getElementById('close').addEventListener('click',stop);
- document.getElementById('full').addEventListener('click',()=>{location.href=url});
- addEventListener('pagehide',()=>{if(stream)stream.getTracks().forEach(t=>t.stop())});
-})();
+ flower(-.72,1.0,.24,1.05);flower(.72,1.0,.24,1.05);
+ // top/bottom gold corner details
+ for(const x of [-.77,.77])for(const y of [-1.13,1.13]){
+  const gem=new THREE.Mesh(new THREE.OctahedronGeometry(.07),gold);gem.position.set(x,y,.24);group.add(gem);
+ }
+ // soft dimensional floating motes
+ for(let i=0;i<18;i++){
+  const mote=new THREE.Mesh(new THREE.SphereGeometry(.012+(i%3)*.006,8,8),gold);
+  mote.position.set((Math.random()-.5)*2.2,(Math.random()-.5)*2.8,(Math.random()-.5)*.5);
+  group.add(mote);
+ }
+ group.position.set(0,0,-1.65);
+ group.scale.setScalar(.78);
+}
+
+async function startAR(){
+ const button=document.getElementById('enter');button.disabled=true;button.textContent='Preparing your AR…';
+ try{
+  if(!navigator.xr) throw new Error('WebXR is not available in this browser');
+  const supported=await navigator.xr.isSessionSupported('immersive-ar');
+  if(!supported) throw new Error('Immersive AR is not supported on this device');
+  renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  renderer.setSize(innerWidth,innerHeight);
+  renderer.xr.enabled=true;renderer.xr.setReferenceSpaceType('local');
+  host.appendChild(renderer.domElement);
+  scene=new THREE.Scene();
+  camera=new THREE.PerspectiveCamera(70,innerWidth/innerHeight,.01,20);
+  scene.add(new THREE.HemisphereLight(0xffe8cb,0x341014,2.0));
+  const key=new THREE.DirectionalLight(0xffd99b,2.5);key.position.set(1,2,3);scene.add(key);
+  const fill=new THREE.PointLight(0x9e3940,1.4,5);fill.position.set(-1,-1,1);scene.add(fill);
+  createInvitation();
+  const session=await navigator.xr.requestSession('immersive-ar',{requiredFeatures:['local'],optionalFeatures:['dom-overlay'],domOverlay:{root:document.body}});
+  await renderer.xr.setSession(session);sessionActive=true;
+  intro.style.display='none';hint.style.display='block';
+  session.addEventListener('end',()=>{sessionActive=false;intro.style.display='flex';hint.style.display='none';});
+  const controller=renderer.xr.getController(0);scene.add(controller);
+  controller.addEventListener('select',()=>openWebsite());
+  renderer.setAnimationLoop((time)=>{
+   if(group){group.rotation.y=Math.sin(time*.00035)*.035;group.position.y=Math.sin(time*.0007)*.025;}
+   renderer.render(scene,camera);
+  });
+ }catch(err){
+  document.getElementById('unsupported').style.display='flex';
+  console.warn(err);
+ }finally{button.disabled=false;button.textContent='Enter 3D wedding AR';}
+}
+function openWebsite(){
+ if(!sessionActive)return;
+ live.src=siteURL;website.classList.add('open');hint.style.display='none';
+}
+document.getElementById('enter').addEventListener('click',startAR);
+document.getElementById('closeWeb').addEventListener('click',()=>{website.classList.remove('open');hint.style.display='block';});
+addEventListener('resize',()=>{if(renderer){renderer.setSize(innerWidth,innerHeight);if(camera){camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();}}});
 </script>
 </body>
 </html>
