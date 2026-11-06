@@ -41,13 +41,13 @@ button.secondary,a.secondary{background:transparent;color:#f4d28d}
     <div class="small">12 December 2026</div>
   </section>
   <h1>Experience our invitation</h1>
-  <p>Place our wedding invitation in your space using augmented reality, or open the full wedding website.</p>
+  <p>See our wedding invitation floating in your camera view, or open the full wedding website.</p>
   <div class="actions">
     <button id="startAR" type="button">View invitation in AR</button>
     <a class="button secondary" href="https://gautamwalve.github.io/bear-and-panda-got-hitched/">Open wedding website</a>
   </div>
   <div id="arStatus" role="status" aria-live="polite"></div>
-  <p class="note">AR works on supported Android phones using Chrome and Google Play Services for AR. If AR isn't supported, open the wedding website above.</p>
+  <p class="note">For the AR camera experience, use a supported Android phone with Chrome and Google Play Services for AR.</p>
 </main>
 <div id="xrOverlay">
   <button id="openSiteAR" type="button">Open wedding website</button>
@@ -62,7 +62,7 @@ const status=document.getElementById('arStatus');
 const landing=document.getElementById('landing');
 const overlay=document.getElementById('xrOverlay');
 const exitButton=document.getElementById('exitAR');
-let renderer,scene,camera,reticle,frameGroup,hitTestSource=null,hitTestSourceRequested=false,placed=false,session=null;
+let renderer,scene,camera,frameGroup,session=null;
 
 function makeInvitationTexture(){
   const c=document.createElement('canvas'); c.width=1200;c.height=760;
@@ -90,7 +90,7 @@ function buildFrame(){
   const gold=new THREE.MeshBasicMaterial({color:0xd6a953});
   const border=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.PlaneGeometry(w+.035,h+.035)),gold);border.position.z=.002;frameGroup.add(border);
   const backing=new THREE.Mesh(new THREE.PlaneGeometry(w+.025,h+.025),new THREE.MeshBasicMaterial({color:0x260405,side:THREE.DoubleSide}));backing.position.z=-.012;frameGroup.add(backing);
-  scene.add(frameGroup);frameGroup.visible=false;
+  scene.add(frameGroup);frameGroup.visible=false;frameGroup.matrixAutoUpdate=false;
 }
 function setupRenderer(){
   renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
@@ -98,9 +98,6 @@ function setupRenderer(){
   renderer.xr.enabled=true;renderer.setClearColor(0x000000,0);
   document.body.appendChild(renderer.domElement);
   scene=new THREE.Scene();camera=new THREE.PerspectiveCamera();
-  const ring=new THREE.RingGeometry(.055,.075,32);
-  reticle=new THREE.Mesh(ring,new THREE.MeshBasicMaterial({color:0xffd782,side:THREE.DoubleSide}));
-  reticle.rotation.x=-Math.PI/2;reticle.matrixAutoUpdate=false;reticle.visible=false;scene.add(reticle);
   buildFrame();
   renderer.setAnimationLoop(()=>renderer.render(scene,camera));
 }
@@ -110,30 +107,26 @@ async function beginAR(){
     const supported=await navigator.xr.isSessionSupported('immersive-ar');
     if(!supported){status.textContent='AR is not available on this phone. Please open the wedding website.';return}
     setupRenderer();
-    session=await navigator.xr.requestSession('immersive-ar',{requiredFeatures:['hit-test'],optionalFeatures:['dom-overlay'],domOverlay:{root:document.body}});
+    session=await navigator.xr.requestSession('immersive-ar',{optionalFeatures:['dom-overlay'],domOverlay:{root:document.body}});
     session.addEventListener('end',onEnd);
     renderer.xr.setReferenceSpaceType('local');
     await renderer.xr.setSession(session);
-    const viewerSpace=await session.requestReferenceSpace('viewer');
-    hitTestSource=await session.requestHitTestSource({space:viewerSpace});
     landing.style.display='none';overlay.style.display='block';exitButton.style.display='block';
     status.textContent='';
     renderer.setAnimationLoop((time,frame)=>{
       if(frame){
         const refSpace=renderer.xr.getReferenceSpace();
-        if(hitTestSource){
-          const results=frame.getHitTestResults(hitTestSource);
-          if(results.length){
-            const pose=results[0].getPose(refSpace);reticle.visible=!placed;
-            reticle.matrix.fromArray(pose.transform.matrix);
-            if(!placed){frameGroup.position.setFromMatrixPosition(reticle.matrix);frameGroup.quaternion.setFromRotationMatrix(new THREE.Matrix4().extractRotation(reticle.matrix));frameGroup.position.y+=.43;frameGroup.visible=true;}
-          }else if(!placed){reticle.visible=false;frameGroup.visible=false}
+        const viewerPose=frame.getViewerPose(refSpace);
+        if(viewerPose){
+          // Keep the invitation floating about 1.25 metres in front of the camera.
+          // This avoids relying on hit-test support or surface detection.
+          const poseMatrix=new THREE.Matrix4().fromArray(viewerPose.transform.matrix);
+          poseMatrix.multiply(new THREE.Matrix4().makeTranslation(0,0,-1.25));
+          frameGroup.matrix.copy(poseMatrix);
+          frameGroup.visible=true;
         }
       }
       renderer.render(scene,camera);
-    });
-    session.addEventListener('select',()=>{
-      if(!placed && reticle.visible){placed=true;frameGroup.visible=true;reticle.visible=false}
     });
   }catch(e){
     status.textContent='Could not start AR. Please use the wedding website link instead.';
@@ -141,12 +134,12 @@ async function beginAR(){
   }
 }
 function onEnd(){
-  session=null;hitTestSource=null;placed=false;overlay.style.display='none';exitButton.style.display='none';
+  session=null;overlay.style.display='none';exitButton.style.display='none';
   if(renderer){renderer.setAnimationLoop(null);renderer.dispose();renderer.domElement.remove();renderer=null}
   landing.style.display='block';
   start.disabled=false;start.textContent='View invitation in AR';
 }
-start.addEventListener('click',async()=>{start.disabled=true;start.textContent='Starting camera…';status.textContent='Allow camera access and point your phone at a flat surface.';await beginAR();if(!session){start.disabled=false;start.textContent='Try AR again'}});
+start.addEventListener('click',async()=>{start.disabled=true;start.textContent='Starting camera…';status.textContent='Allow camera access. Your wedding invitation will appear in front of you.';await beginAR();if(!session){start.disabled=false;start.textContent='Try AR again'}});
 document.getElementById('openSiteAR').addEventListener('click',()=>{window.location.href=site});
 exitButton.addEventListener('click',()=>{if(session)session.end()});
 window.addEventListener('resize',()=>{if(renderer){renderer.setSize(window.innerWidth,window.innerHeight)}});
