@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#3b0809">
+<meta name="description" content="Experience Gautam & Tejasvini's wedding invitation in augmented reality.">
+<title>Gautam &amp; Tejasvini | Wedding AR</title>
+<style>
+:root{color-scheme:only-light;--wine:#3b0809;--gold:#d8ad62;--cream:#fff1cf}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Georgia,"Times New Roman",serif;background:#260506;color:var(--cream)}
+body{min-height:100svh;display:grid;place-items:center;padding:22px;background:radial-gradient(ellipse at 50% 15%,#641417 0,#350809 55%,#1d0405 100%)}
+main{width:min(100%,560px);text-align:center}
+.crest{color:var(--gold);font-size:30px;margin-bottom:10px}
+h1{font-weight:400;font-size:clamp(30px,8vw,48px);line-height:1.1;margin:0 0 12px;color:#f4d28d}
+.names{font-style:italic;font-size:clamp(28px,7vw,42px);color:#e7b95f;margin:12px 0}
+p{font-size:16px;line-height:1.65;color:#f9e9c9;margin:10px auto;max-width:420px}
+.panel{position:relative;margin:24px auto;padding:26px 18px;border:1px solid #d6a953;outline:1px solid #9d7138;outline-offset:5px;background:linear-gradient(145deg,#570d10,#320608);box-shadow:0 20px 55px #12020399}
+.panel:before{content:"";position:absolute;inset:8px;border:1px solid #b78a48;pointer-events:none}
+.panel .small{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#e8ca8d}
+.actions{display:flex;flex-direction:column;gap:12px;margin:24px auto 12px;max-width:330px}
+button,a.button{display:block;border:1px solid #e0b86d;border-radius:999px;padding:15px 22px;background:linear-gradient(135deg,#f3d99d,#c99a4e);color:#39090b;font:600 14px Arial,sans-serif;letter-spacing:.04em;text-decoration:none;cursor:pointer}
+button.secondary,a.secondary{background:transparent;color:#f4d28d}
+.note{font:12px/1.6 Arial,sans-serif;color:#d6bd91}
+#arStatus{min-height:22px;font:13px/1.5 Arial,sans-serif;color:#f1dcae}
+#xrOverlay{position:fixed;inset:auto 14px max(18px,env(safe-area-inset-bottom));z-index:5;display:none;text-align:center;pointer-events:none}
+#xrOverlay button{pointer-events:auto;width:min(100%,330px);margin:auto}
+#exitAR{position:fixed;top:max(16px,env(safe-area-inset-top));right:16px;z-index:6;display:none;padding:10px 15px}
+@media(prefers-reduced-motion:no-preference){.panel{animation:arrive .8s ease-out both}@keyframes arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}}
+</style>
+</head>
+<body>
+<main id="landing">
+  <div class="crest" aria-hidden="true">❀</div>
+  <div class="small">A celebration of love</div>
+  <section class="panel" aria-label="Wedding invitation preview">
+    <div class="small">You are invited</div>
+    <p>To the marriage of</p>
+    <div class="names">Gautam &amp; Tejasvini</div>
+    <div class="small">12 December 2026</div>
+  </section>
+  <h1>Experience our invitation</h1>
+  <p>Place our wedding invitation in your space using augmented reality, or open the full wedding website.</p>
+  <div class="actions">
+    <button id="startAR" type="button">View invitation in AR</button>
+    <a class="button secondary" href="https://gautamwalve.github.io/bear-and-panda-got-hitched/">Open wedding website</a>
+  </div>
+  <div id="arStatus" role="status" aria-live="polite"></div>
+  <p class="note">AR works on supported Android phones using Chrome and Google Play Services for AR. If AR isn't supported, open the wedding website above.</p>
+</main>
+<div id="xrOverlay">
+  <button id="openSiteAR" type="button">Open wedding website</button>
+</div>
+<button id="exitAR" class="secondary" type="button">Exit AR</button>
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+
+const site='https://gautamwalve.github.io/bear-and-panda-got-hitched/';
+const start=document.getElementById('startAR');
+const status=document.getElementById('arStatus');
+const landing=document.getElementById('landing');
+const overlay=document.getElementById('xrOverlay');
+const exitButton=document.getElementById('exitAR');
+let renderer,scene,camera,reticle,frameGroup,hitTestSource=null,hitTestSourceRequested=false,placed=false,session=null;
+
+function makeInvitationTexture(){
+  const c=document.createElement('canvas'); c.width=1200;c.height=760;
+  const x=c.getContext('2d');
+  const g=x.createLinearGradient(0,0,1200,760);g.addColorStop(0,'#650d10');g.addColorStop(.55,'#3b0709');g.addColorStop(1,'#260405');
+  x.fillStyle=g;x.fillRect(0,0,c.width,c.height);
+  // subtle paper grain
+  for(let i=0;i<15000;i++){const a=Math.random()*.08;x.fillStyle='rgba(255,220,160,'+a+')';x.fillRect(Math.random()*1200,Math.random()*760,1.5,1.5)}
+  x.strokeStyle='#d9ad60';x.lineWidth=8;x.strokeRect(30,30,1140,700);x.lineWidth=2;x.strokeRect(48,48,1104,664);
+  x.fillStyle='#e9c477';x.textAlign='center';
+  x.font='30px Georgia';x.fillText('✦',600,150);
+  x.font='54px Georgia';x.fillText('You are Invited',600,270);
+  x.fillStyle='#fff0d0';x.font='38px Georgia';x.fillText('To the Marriage of',600,350);
+  x.fillStyle='#e6b45d';x.font='italic 70px Georgia';x.fillText('Gautam & Tejasvini',600,465);
+  x.strokeStyle='#d9ad60';x.lineWidth=3;x.beginPath();x.moveTo(280,525);x.lineTo(920,525);x.stroke();
+  x.fillStyle='#f6e6c4';x.font='30px Georgia';x.fillText('12 December 2026',600,600);
+  x.font='22px Georgia';x.fillText('Tap “Open wedding website” to view the full invitation',600,660);
+  const tex=new THREE.CanvasTexture(c);tex.colorSpace=THREE.SRGBColorSpace;return tex;
+}
+function buildFrame(){
+  frameGroup=new THREE.Group();
+  const w=1.05,h=.665;
+  const mat=new THREE.MeshBasicMaterial({map:makeInvitationTexture(),side:THREE.DoubleSide});
+  const face=new THREE.Mesh(new THREE.PlaneGeometry(w,h),mat);frameGroup.add(face);
+  const gold=new THREE.MeshBasicMaterial({color:0xd6a953});
+  const border=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.PlaneGeometry(w+.035,h+.035)),gold);border.position.z=.002;frameGroup.add(border);
+  const backing=new THREE.Mesh(new THREE.PlaneGeometry(w+.025,h+.025),new THREE.MeshBasicMaterial({color:0x260405,side:THREE.DoubleSide}));backing.position.z=-.012;frameGroup.add(backing);
+  scene.add(frameGroup);frameGroup.visible=false;
+}
+function setupRenderer(){
+  renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(window.innerWidth,window.innerHeight);
+  renderer.xr.enabled=true;renderer.setClearColor(0x000000,0);
+  document.body.appendChild(renderer.domElement);
+  scene=new THREE.Scene();camera=new THREE.PerspectiveCamera();
+  const ring=new THREE.RingGeometry(.055,.075,32);
+  reticle=new THREE.Mesh(ring,new THREE.MeshBasicMaterial({color:0xffd782,side:THREE.DoubleSide}));
+  reticle.rotation.x=-Math.PI/2;reticle.matrixAutoUpdate=false;reticle.visible=false;scene.add(reticle);
+  buildFrame();
+  renderer.setAnimationLoop(()=>renderer.render(scene,camera));
+}
+async function beginAR(){
+  if(!navigator.xr){status.textContent='This browser does not support WebXR AR. Please open the wedding website.';return}
+  try{
+    const supported=await navigator.xr.isSessionSupported('immersive-ar');
+    if(!supported){status.textContent='AR is not available on this phone. Please open the wedding website.';return}
+    setupRenderer();
+    session=await navigator.xr.requestSession('immersive-ar',{requiredFeatures:['hit-test'],optionalFeatures:['dom-overlay'],domOverlay:{root:document.body}});
+    session.addEventListener('end',onEnd);
+    renderer.xr.setReferenceSpaceType('local');
+    await renderer.xr.setSession(session);
+    const viewerSpace=await session.requestReferenceSpace('viewer');
+    hitTestSource=await session.requestHitTestSource({space:viewerSpace});
+    landing.style.display='none';overlay.style.display='block';exitButton.style.display='block';
+    status.textContent='';
+    renderer.setAnimationLoop((time,frame)=>{
+      if(frame){
+        const refSpace=renderer.xr.getReferenceSpace();
+        if(hitTestSource){
+          const results=frame.getHitTestResults(hitTestSource);
+          if(results.length){
+            const pose=results[0].getPose(refSpace);reticle.visible=!placed;
+            reticle.matrix.fromArray(pose.transform.matrix);
+            if(!placed){frameGroup.position.setFromMatrixPosition(reticle.matrix);frameGroup.quaternion.setFromRotationMatrix(new THREE.Matrix4().extractRotation(reticle.matrix));frameGroup.position.y+=.43;frameGroup.visible=true;}
+          }else if(!placed){reticle.visible=false;frameGroup.visible=false}
+        }
+      }
+      renderer.render(scene,camera);
+    });
+    session.addEventListener('select',()=>{
+      if(!placed && reticle.visible){placed=true;frameGroup.visible=true;reticle.visible=false}
+    });
+  }catch(e){
+    status.textContent='Could not start AR. Please use the wedding website link instead.';
+    if(session)try{await session.end()}catch(_){}
+  }
+}
+function onEnd(){
+  session=null;hitTestSource=null;placed=false;overlay.style.display='none';exitButton.style.display='none';
+  if(renderer){renderer.setAnimationLoop(null);renderer.dispose();renderer.domElement.remove();renderer=null}
+  landing.style.display='block';
+  start.disabled=false;start.textContent='View invitation in AR';
+}
+start.addEventListener('click',async()=>{start.disabled=true;start.textContent='Starting camera…';status.textContent='Allow camera access and point your phone at a flat surface.';await beginAR();if(!session){start.disabled=false;start.textContent='Try AR again'}});
+document.getElementById('openSiteAR').addEventListener('click',()=>{window.location.href=site});
+exitButton.addEventListener('click',()=>{if(session)session.end()});
+window.addEventListener('resize',()=>{if(renderer){renderer.setSize(window.innerWidth,window.innerHeight)}});
+</script>
+</body>
+</html>
