@@ -25,7 +25,7 @@ jobs:
         run: |
           python -m pip install --disable-pip-version-check pillow
           mkdir _site
-          cp index.html favicon.svg floral-spray.svg flower-only-field.svg _site/
+          cp index.html ar.html favicon.svg floral-spray.svg flower-only-field.svg _site/
           cp bride.webp groom.webp bride-cutout-final.webp groom-cutout.webp _site/
           cp "Tumhi Dekho Naa (Sitar Lofi).mp3" "Chand Tu Nabhatla.mp3" _site/
       - name: Upload site artifact
