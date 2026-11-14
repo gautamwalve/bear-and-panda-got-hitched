@@ -51,7 +51,7 @@ h1{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;whi
 .ornament:before,.ornament:after{content:"";height:1px;background:var(--gold-light);width:min(22%,105px)}
 .ornament span{font-size:17px}
 .intro{width:min(100%,900px);max-width:900px;margin:0 auto;text-align:center;color:#696960;font-size:clamp(16px,2.2vw,22px);line-height:1.8}
-.event-venue-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch;gap:clamp(12px,2.4vw,28px);width:min(100%,1250px);margin:clamp(22px,3vw,36px) auto}.details{display:flex;flex-direction:column;gap:12px;width:100%;margin:0}.event-venue-grid .detail{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center}.event-venue-grid .programme{display:flex;align-items:center;justify-content:center;min-height:78px;margin:0}.event-venue-grid .venue{display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(251,248,240,.76);border:1px solid rgba(195,165,108,.55);border-radius:3px;padding:clamp(18px,3vw,34px) clamp(10px,2vw,22px);min-width:0}.countdown-section{text-align:center;width:min(100%,1000px);margin:clamp(18px,3vw,32px) auto 0;padding:clamp(14px,2.2vw,24px);border-top:1px solid var(--gold-light);border-bottom:1px solid var(--gold-light)}.countdown-heading{font:10px/1.5 Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--sage-dark);margin-bottom:12px}.countdown{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(6px,1.3vw,14px);max-width:700px;margin:0 auto}.countdown-unit{border:1px solid rgba(195,165,108,.45);background:rgba(251,248,240,.7);border-radius:3px;padding:clamp(9px,1.6vw,16px) 4px}.countdown-unit span{display:block;color:var(--rose-dark);font-size:clamp(22px,4vw,38px);font-variant-numeric:tabular-nums;line-height:1.1}.countdown-unit small{display:block;color:var(--sage-dark);font:9px/1.5 Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;margin-top:6px}
+.event-venue-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch;gap:clamp(12px,2.4vw,28px);width:min(100%,1250px);margin:clamp(22px,3vw,36px) auto}.details{display:flex;flex-direction:column;gap:12px;width:100%;margin:0}.event-venue-grid .detail{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center}.event-venue-grid .programme{display:flex;align-items:center;justify-content:center;min-height:78px;margin:0}.event-venue-grid .venue{display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(251,248,240,.76);border:1px solid rgba(195,165,108,.55);border-radius:3px;padding:clamp(18px,3vw,34px) clamp(10px,2vw,22px);min-width:0}.countdown-section{text-align:center;width:min(100%,1000px);margin:clamp(18px,3vw,32px) auto 0;padding:clamp(14px,2.2vw,24px);border-bottom:1px solid var(--gold-light)}.countdown-heading{font:10px/1.5 Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--sage-dark);margin-bottom:12px}.countdown{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(6px,1.3vw,14px);max-width:700px;margin:0 auto}.countdown-unit{border:1px solid rgba(195,165,108,.45);background:rgba(251,248,240,.7);border-radius:3px;padding:clamp(9px,1.6vw,16px) 4px}.countdown-unit span{display:block;color:var(--rose-dark);font-size:clamp(22px,4vw,38px);font-variant-numeric:tabular-nums;line-height:1.1}.countdown-unit small{display:block;color:var(--sage-dark);font:9px/1.5 Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;margin-top:6px}
 .detail{background:rgba(251,248,240,.76);border:1px solid rgba(195,165,108,.55);border-radius:3px;padding:clamp(20px,3vw,32px) 16px;text-align:center}.merged-detail{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px}.merged-date{font-size:clamp(20px,3.5vw,31px);line-height:1.35;color:var(--rose-dark);margin-top:5px}.merged-time{font-size:clamp(24px,4vw,34px);line-height:1.2;color:var(--rose-dark);margin-top:3px}
 .detail-label,.section-label{font:10px/1.5 Arial,sans-serif;letter-spacing:.22em;color:var(--sage-dark);text-transform:uppercase}
 .detail-day{font-size:clamp(19px,4vw,25px);color:var(--rose-dark);margin:12px 0 6px}
@@ -2078,14 +2078,14 @@ body:before {
 
 /* Keep pick-up information within the main venue card as a sub-section. */
 .event-venue-grid .pickup-details{width:100%;margin:clamp(24px,3vw,34px) 0 0;padding:clamp(20px,2.6vw,28px) 8px 0;border-top:1px solid var(--gold-light);display:flex;flex-direction:column;align-items:center;gap:10px}
-.event-venue-grid .pickup-subheading{font:600 11px/1.5 Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--sage-dark);margin-bottom:3px}
+.event-venue-grid .pickup-subheading{max-width:680px;font:600 clamp(15px,1.7vw,18px)/1.5 Arial,sans-serif;letter-spacing:.015em;text-transform:none;text-align:center;color:var(--sage-dark);margin:0 0 3px}
 .event-venue-grid .pickup-details h3{margin:0;color:var(--rose-dark);font:clamp(20px,2.4vw,28px)/1.25 Georgia,"Times New Roman",serif;text-align:center}
 .event-venue-grid .pickup-details .address{margin:0}
 .event-venue-grid .pickup-map-link{margin-top:3px}
 .event-venue-grid .pickup-contacts{margin-top:10px}
 .event-venue-grid .pickup-contacts span{color:var(--sage-dark)!important}
 .event-venue-grid .pickup-contacts a{color:var(--rose-dark)!important}
-@media(max-width:620px){.event-venue-grid .pickup-details{margin-top:22px;padding-top:18px}.event-venue-grid .pickup-details h3{font-size:21px}}
+@media(max-width:620px){.event-venue-grid .pickup-details{margin-top:22px;padding-top:0}.event-venue-grid .pickup-subheading{font-size:15px;line-height:1.55}}
 </style>
 </head>
 <body>
@@ -2173,13 +2173,10 @@ body:before {
       <div class="address">Nadhal, Navi Mumbai – 410206<br>Maharashtra, India</div>
       <a class="map-link" href="https://www.google.com/maps?q=18.905137816391697,73.22917755573111" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> Open location in Google Maps</a>
       <div class="pickup-details" aria-label="Pick-up services">
-        <div class="pickup-subheading">Pick-up services</div>
-        <h3>Khandeshwar Railway Station</h3>
-        <div class="address">Ticket Booking Window</div>
+        <div class="pickup-subheading">Pickup services available at Khandeshwar station booking window</div>
         <a class="map-link pickup-map-link" href="https://maps.app.goo.gl/awHMZsC6ubjYDGB5A" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> Open location in Google Maps</a>
         <div class="pickup-contacts"><span>For assistance</span><a href="tel:+917208351491"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 2.8 10 7.2 7.8 9.4c1.2 2.5 3.2 4.5 5.7 5.7l2.2-2.2 4.4 3.4-.9 3.1c-.3 1-1.3 1.6-2.3 1.4C8.8 19.2 4.8 15.2 3.2 7.1c-.2-1 .4-2 1.4-2.3l2-.9Z"/></svg>7208351491</a><a href="tel:+918378878050"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 2.8 10 7.2 7.8 9.4c1.2 2.5 3.2 4.5 5.7 5.7l2.2-2.2 4.4 3.4-.9 3.1c-.3 1-1.3 1.6-2.3 1.4C8.8 19.2 4.8 15.2 3.2 7.1c-.2-1 .4-2 1.4-2.3l2-.9Z"/></svg>8378878050</a><a href="tel:+918928044486"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 2.8 10 7.2 7.8 9.4c1.2 2.5 3.2 4.5 5.7 5.7l2.2-2.2 4.4 3.4-.9 3.1c-.3 1-1.3 1.6-2.3 1.4C8.8 19.2 4.8 15.2 3.2 7.1l2-.9Z"/></svg>8928044486</a></div>
-      </div>
-    </section>
+      </div>   </section>
 
   </div>
 </div>
