@@ -2075,6 +2075,17 @@ body:before {
   .music-row .music-toggle.icon-control{width:38px!important;min-width:38px!important;height:38px!important;min-height:38px!important}
 }
 
+
+/* Keep pick-up information within the main venue card as a sub-section. */
+.event-venue-grid .pickup-details{width:100%;margin:clamp(24px,3vw,34px) 0 0;padding:clamp(20px,2.6vw,28px) 8px 0;border-top:1px solid var(--gold-light);display:flex;flex-direction:column;align-items:center;gap:10px}
+.event-venue-grid .pickup-subheading{font:600 11px/1.5 Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--sage-dark);margin-bottom:3px}
+.event-venue-grid .pickup-details h3{margin:0;color:var(--rose-dark);font:clamp(20px,2.4vw,28px)/1.25 Georgia,"Times New Roman",serif;text-align:center}
+.event-venue-grid .pickup-details .address{margin:0}
+.event-venue-grid .pickup-map-link{margin-top:3px}
+.event-venue-grid .pickup-contacts{margin-top:10px}
+.event-venue-grid .pickup-contacts span{color:var(--sage-dark)!important}
+.event-venue-grid .pickup-contacts a{color:var(--rose-dark)!important}
+@media(max-width:620px){.event-venue-grid .pickup-details{margin-top:22px;padding-top:18px}.event-venue-grid .pickup-details h3{font-size:21px}}
 </style>
 </head>
 <body>
@@ -2161,14 +2172,15 @@ body:before {
       <h2>Shri Kshetra Panchayatan Mandir</h2>
       <div class="address">Nadhal, Navi Mumbai – 410206<br>Maharashtra, India</div>
       <a class="map-link" href="https://www.google.com/maps?q=18.905137816391697,73.22917755573111" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> Open location in Google Maps</a>
+      <div class="pickup-details" aria-label="Pick-up services">
+        <div class="pickup-subheading">Pick-up services</div>
+        <h3>Khandeshwar Railway Station</h3>
+        <div class="address">Ticket Booking Window</div>
+        <a class="map-link pickup-map-link" href="https://maps.app.goo.gl/awHMZsC6ubjYDGB5A" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> Open location in Google Maps</a>
+        <div class="pickup-contacts"><span>For assistance</span><a href="tel:+917208351491"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 2.8 10 7.2 7.8 9.4c1.2 2.5 3.2 4.5 5.7 5.7l2.2-2.2 4.4 3.4-.9 3.1c-.3 1-1.3 1.6-2.3 1.4C8.8 19.2 4.8 15.2 3.2 7.1c-.2-1 .4-2 1.4-2.3l2-.9Z"/></svg>7208351491</a><a href="tel:+918378878050"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 2.8 10 7.2 7.8 9.4c1.2 2.5 3.2 4.5 5.7 5.7l2.2-2.2 4.4 3.4-.9 3.1c-.3 1-1.3 1.6-2.3 1.4C8.8 19.2 4.8 15.2 3.2 7.1c-.2-1 .4-2 1.4-2.3l2-.9Z"/></svg>8378878050</a><a href="tel:+918928044486"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 2.8 10 7.2 7.8 9.4c1.2 2.5 3.2 4.5 5.7 5.7l2.2-2.2 4.4 3.4-.9 3.1c-.3 1-1.3 1.6-2.3 1.4C8.8 19.2 4.8 15.2 3.2 7.1l2-.9Z"/></svg>8928044486</a></div>
+      </div>
     </section>
-    <section class="venue pickup-venue" aria-label="Pick up services">
-      <div class="card-emblem" aria-hidden="true"><span class="emblem-line"></span><svg viewBox="0 0 48 40"><path d="M7 9h34v22H7zM11 5h26v4H11zM12 31v4m24-4v4M12 14h24v10H12z"/><circle cx="14" cy="29" r="3"/><circle cx="34" cy="29" r="3"/></svg><span class="emblem-line"></span></div><div class="section-label">Pick up services</div>
-      <h2>Khandeshwar Railway Station</h2>
-      <div class="address">Ticket Booking Window</div>
-      <a class="map-link" href="https://maps.app.goo.gl/awHMZsC6ubjYDGB5A" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> Open location in Google Maps</a>
-      <div class="pickup-contacts"><span>For assistance</span><a href="tel:+917208351491"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 2.8 10 7.2 7.8 9.4c1.2 2.5 3.2 4.5 5.7 5.7l2.2-2.2 4.4 3.4-.9 3.1c-.3 1-1.3 1.6-2.3 1.4C8.8 19.2 4.8 15.2 3.2 7.1c-.2-1 .4-2 1.4-2.3l2-.9Z"/></svg>7208351491</a><a href="tel:+918378878050"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 2.8 10 7.2 7.8 9.4c1.2 2.5 3.2 4.5 5.7 5.7l2.2-2.2 4.4 3.4-.9 3.1c-.3 1-1.3 1.6-2.3 1.4C8.8 19.2 4.8 15.2 3.2 7.1c-.2-1 .4-2 1.4-2.3l2-.9Z"/></svg>8378878050</a><a href="tel:+918928044486"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 2.8 10 7.2 7.8 9.4c1.2 2.5 3.2 4.5 5.7 5.7l2.2-2.2 4.4 3.4-.9 3.1c-.3 1-1.3 1.6-2.3 1.4C8.8 19.2 4.8 15.2 3.2 7.1c-.2-1 .4-2 1.4-2.3l2-.9Z"/></svg>8928044486</a></div>
-    </section>
+
   </div>
 </div>
 <div class="ornament"><span>✦</span></div>
