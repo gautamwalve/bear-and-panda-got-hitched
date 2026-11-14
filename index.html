@@ -2014,6 +2014,67 @@ body:before {
   }
 }
 
+
+/* Refined compact controls and accessible light-theme contrast. */
+.visually-hidden{
+  position:absolute!important;width:1px!important;height:1px!important;padding:0!important;
+  margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;border:0!important;
+}
+.music-row{
+  position:fixed!important;
+  top:max(12px,env(safe-area-inset-top))!important;
+  left:max(12px,env(safe-area-inset-left))!important;
+  right:auto!important;bottom:auto!important;
+  z-index:9999!important;display:flex!important;align-items:center;justify-content:flex-start!important;
+  gap:7px;min-height:0!important;margin:0!important;padding:5px;
+  border:1px solid var(--line)!important;border-radius:999px;
+  background:var(--panel-bg)!important;color:var(--ink)!important;
+  box-shadow:0 4px 16px rgba(76,62,45,.12);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+}
+.music-row .music-toggle.icon-control{
+  display:grid!important;place-items:center!important;
+  width:40px!important;min-width:40px!important;height:40px!important;min-height:40px!important;
+  padding:0!important;border:1px solid var(--sage)!important;border-radius:50%!important;
+  background:var(--cream-dark)!important;color:var(--sage-dark)!important;
+  box-shadow:none!important;white-space:nowrap;
+}
+.music-row .music-toggle.icon-control:hover{background:var(--cream)!important}
+.music-row .control-icon{font:700 19px/1 Arial,sans-serif}
+:root[data-theme="dark"] .music-row{
+  background:var(--panel-bg)!important;border-color:var(--line)!important;
+  box-shadow:0 4px 18px rgba(0,0,0,.25);
+}
+:root[data-theme="dark"] .music-row .music-toggle.icon-control{
+  background:#30394a!important;color:#e4e9df!important;border-color:#819888!important;
+}
+:root[data-theme="dark"] .music-row .music-toggle.icon-control:hover{background:#3b4659!important}
+.programme,.event-venue-grid .programme{
+  color:var(--sage-dark)!important;
+  font-weight:600!important;
+  opacity:1!important;
+  text-shadow:none!important;
+}
+.pickup-contacts,.pickup-contacts span{
+  color:var(--sage-dark)!important;
+  opacity:1!important;
+}
+.pickup-contacts a{
+  color:var(--rose-dark)!important;
+  font-weight:600!important;
+  opacity:1!important;
+}
+:root[data-theme="dark"] .programme,
+:root[data-theme="dark"] .event-venue-grid .programme,
+:root[data-theme="dark"] .pickup-contacts,
+:root[data-theme="dark"] .pickup-contacts span{color:var(--sage-dark)!important}
+:root[data-theme="dark"] .pickup-contacts a{color:var(--rose-dark)!important}
+@media(max-width:440px){
+  .music-row{top:max(9px,env(safe-area-inset-top))!important;left:max(9px,env(safe-area-inset-left))!important}
+  .music-row .music-toggle.icon-control{width:38px!important;min-width:38px!important;height:38px!important;min-height:38px!important}
+}
+
 </style>
 </head>
 <body>
@@ -2043,7 +2104,7 @@ body:before {
 <article class="card">
 
 
-<div class="music-row"><button class="music-toggle" id="musicToggle" type="button" aria-pressed="false"><span aria-hidden="true">♫</span><span id="musicLabel">Play our wedding song</span></button><button class="music-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false"><span aria-hidden="true">☾</span><span id="themeLabel">Dark mode</span></button></div>
+<div class="music-row" role="group" aria-label="Invitation controls"><button class="music-toggle icon-control" id="musicToggle" type="button" aria-pressed="false" aria-label="Play wedding song" title="Play wedding song"><span class="control-icon" id="musicIcon" aria-hidden="true">♫</span><span class="visually-hidden" id="musicLabel">Play our wedding song</span></button><button class="music-toggle theme-toggle icon-control" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to dark theme" title="Switch theme"><span class="control-icon" id="themeIcon" aria-hidden="true">☾</span><span class="visually-hidden" id="themeLabel">Dark mode</span></button></div>
 <div class="tiny-animals" aria-label="A bear and a panda">🐻 · 🐼</div>
 <p class="intro">With love and the blessings of our families, we invite you to share in the joy of our wedding and the beginning of our forever.</p>
 <section class="hero" aria-label="The wedding of Gautam and Tejasvini">
@@ -2174,6 +2235,9 @@ body:before {
     label.textContent = playing ? 'Pause wedding song' : 'Play our wedding song';
     button.setAttribute('aria-pressed', String(playing));
     button.setAttribute('aria-label', playing ? 'Pause wedding song' : 'Play our wedding song');
+    button.setAttribute('title', playing ? 'Pause wedding song' : 'Play wedding song');
+    const icon = document.getElementById('musicIcon');
+    if(icon) icon.textContent = playing ? 'Ⅱ' : '♫';
   }
 
   function showMusicError(message){
@@ -2258,6 +2322,18 @@ body:before {
     audio.addEventListener('error', () => {
       showMusicError('Music unavailable — tap to retry');
     });
+
+    // Stop playback whenever the page is backgrounded, hidden, or being closed.
+    // Do not auto-resume when the visitor returns; require an intentional tap.
+    function pauseWhenLeaving(){
+      if(!audio.paused) audio.pause();
+    }
+    document.addEventListener('visibilitychange', function(){
+      if(document.visibilityState === 'hidden') pauseWhenLeaving();
+    });
+    window.addEventListener('pagehide', pauseWhenLeaving);
+    window.addEventListener('freeze', pauseWhenLeaving);
+    window.addEventListener('beforeunload', pauseWhenLeaving);
   }
 })();
 (function(){
