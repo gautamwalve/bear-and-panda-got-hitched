@@ -2136,6 +2136,46 @@ body:before {
  .prewedding-section h2{font-size:clamp(21px,5.4vw,27px)!important;line-height:1.28!important;margin:10px auto 12px!important}
 }
 
+
+/* Haldi: open ornamental section, matching the venue typography in both themes. */
+.prewedding-section{
+ width:min(100%,1250px);box-sizing:border-box;margin:clamp(22px,3vw,34px) auto 0!important;
+ padding:0 clamp(10px,2vw,22px)!important;background:transparent!important;
+ border:0!important;border-radius:0!important;box-shadow:none!important;text-align:center;
+}
+.prewedding-section .section-label{margin:0 auto 8px;color:var(--sage-dark)!important}
+.prewedding-section h2{
+ font-family:Georgia,"Times New Roman",serif!important;font-weight:400!important;
+ font-size:clamp(22px,3.1vw,36px)!important;line-height:1.25!important;
+ letter-spacing:normal!important;color:var(--rose-dark)!important;
+ margin:12px auto 10px!important;max-width:850px!important;
+}
+.prewedding-section .prewedding-date{
+ font-family:Georgia,"Times New Roman",serif;color:var(--rose-dark)!important;
+ font-size:clamp(17px,2.1vw,22px);line-height:1.5;margin:2px auto 5px
+}
+.prewedding-section .address{
+ color:var(--ink)!important;font-family:Georgia,"Times New Roman",serif;
+ font-size:15px;line-height:1.85;margin:0 auto
+}
+.haldi-divider{
+ display:flex;align-items:center;justify-content:center;gap:16px;
+ width:min(76%,470px);margin:0 auto 22px;color:var(--gold)
+}
+.haldi-divider:before,.haldi-divider:after{
+ content:"";height:1px;flex:1;
+ background:linear-gradient(90deg,transparent,var(--gold),var(--gold))
+}
+.haldi-divider:after{background:linear-gradient(90deg,var(--gold),var(--gold),transparent)}
+.haldi-divider span{font-size:27px;line-height:1;color:var(--gold);text-shadow:0 1px 0 rgba(255,255,255,.15)}
+.haldi-divider-bottom{margin:22px auto 0}
+@media(max-width:620px){
+ .prewedding-section{margin:22px auto 0!important;padding:0 12px!important}
+ .prewedding-section h2{font-size:clamp(22px,6vw,29px)!important}
+ .haldi-divider{width:82%;gap:12px;margin-bottom:18px}
+ .haldi-divider-bottom{margin-top:18px}
+}
+
 </style>
 </head>
 <body>
@@ -2231,10 +2271,12 @@ body:before {
   </div>
 </div>
 <section class="venue prewedding-section" aria-label="Pre-wedding samarambh">
+  <div class="haldi-divider" aria-hidden="true"><span>❀</span></div>
   <div class="section-label">Pre-wedding samarambh</div>
   <h2>Haldi</h2>
   <div class="prewedding-date">11th December 2026 · 6:00 PM onwards</div>
   <div class="address">At our respective residence</div>
+  <div class="haldi-divider haldi-divider-bottom" aria-hidden="true"><span>✿</span></div>
 </section>
 <div class="ornament"><span>✦</span></div>
 <p class="closing">Your presence will make our day even more special.</p>
