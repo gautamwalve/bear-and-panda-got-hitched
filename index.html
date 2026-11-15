@@ -2086,6 +2086,19 @@ body:before {
 .event-venue-grid .pickup-contacts span{color:var(--sage-dark)!important}
 .event-venue-grid .pickup-contacts a{color:var(--rose-dark)!important}
 @media(max-width:620px){.event-venue-grid .pickup-details{margin-top:22px;padding-top:0}.event-venue-grid .pickup-subheading{font-size:15px;line-height:1.55}}
+
+/* Pre-wedding event, styled to match the wedding venue typography and theme. */
+.prewedding-section{
+ width:min(100%,1250px);box-sizing:border-box;margin:clamp(18px,2.5vw,30px) auto 0;
+ padding:clamp(24px,3vw,36px) 18px!important;
+ background:var(--panel-bg);border:1px solid var(--soft-border);
+ border-radius:clamp(22px,3vw,40px);text-align:center;
+}
+.prewedding-section .section-label{margin-bottom:10px}
+.prewedding-section h2{font-family:Georgia,"Times New Roman",serif;color:var(--rose-dark);font-weight:normal;font-size:clamp(22px,3.1vw,36px);line-height:1.25;margin:8px auto 10px}
+.prewedding-section .address{font-family:Georgia,"Times New Roman",serif;color:var(--ink-muted);font-size:clamp(15px,1.8vw,19px);line-height:1.7}
+@media(max-width:620px){.prewedding-section{margin:16px auto 0;padding:26px 20px!important}.prewedding-section h2{font-size:clamp(22px,6vw,29px)}}
+
 </style>
 </head>
 <body>
@@ -2168,7 +2181,7 @@ body:before {
   </section>
   <div class="venue-stack">
     <section class="venue" aria-label="Wedding venue">
-      <div class="card-emblem" aria-hidden="true"><span class="emblem-line"></span><svg viewBox="0 0 32 40"><path d="M16 37S4 22 4 14a12 12 0 1 1 24 0c0 8-12 23-12 23Z"/><circle cx="16" cy="14" r="4"/></svg><span class="emblem-line"></span></div><div class="section-label">The venue</div>
+      <div class="card-emblem" aria-hidden="true"><span class="emblem-line"></span><svg viewBox="0 0 32 40"><path d="M16 37S4 22 4 14a12 12 0 1 1 24 0c0 8-12 23-12 23Z"/><circle cx="16" cy="14" r="4"/></svg><span class="emblem-line"></span></div><div class="section-label">Wedding Venue</div>
       <h2>Shri Kshetra Panchayatan Mandir</h2>
       <div class="address">Nadhal, Navi Mumbai – 410206<br>Maharashtra, India</div>
       <a class="map-link" href="https://www.google.com/maps?q=18.905137816391697,73.22917755573111" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> Open location in Google Maps</a>
@@ -2180,6 +2193,11 @@ body:before {
 
   </div>
 </div>
+<section class="venue prewedding-section" aria-label="Pre-wedding samarambh">
+  <div class="section-label">Pre-wedding samarambh</div>
+  <h2>Haldi</h2>
+  <div class="address">There at our respective residence</div>
+</section>
 <div class="ornament"><span>✦</span></div>
 <p class="closing">Your presence will make our day even more special.</p>
 
